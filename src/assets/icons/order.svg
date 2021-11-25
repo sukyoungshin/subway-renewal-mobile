@@ -1,11 +1,3 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="32" height="32" rx="16" fill="#009743"/>
-<rect x="22" width="10" height="10" rx="5" fill="#FFCB08"/>
-<path d="M7.73828 15.4739H24.26L22.6078 26.0001H9.39046L7.73828 15.4739Z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-<path d="M16 19.158V22.3158" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="bevel"/>
-<path d="M19.9141 19.158V22.3158" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="bevel"/>
-<path d="M12.0859 19.158V22.3158" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="bevel"/>
-<rect x="6" y="11.2632" width="20" height="4.2105" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-<path d="M10.3477 11.2631L11.652 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="bevel"/>
-<path d="M21.2148 11.2631L19.9105 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="bevel"/>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M48 24C48 30.3652 45.4714 36.4697 40.9706 40.9706C36.4697 45.4714 30.3652 48 24 48C17.6348 48 11.5303 45.4714 7.02944 40.9706C2.52856 36.4697 0 30.3652 0 24C0 17.6348 2.52856 11.5303 7.02944 7.02944C11.5303 2.52856 17.6348 0 24 0C30.3652 0 36.4697 2.52856 40.9706 7.02944C45.4714 11.5303 48 17.6348 48 24V24ZM25.5 13.5C25.5 13.1022 25.342 12.7206 25.0607 12.4393C24.7794 12.158 24.3978 12 24 12C23.6022 12 23.2206 12.158 22.9393 12.4393C22.658 12.7206 22.5 13.1022 22.5 13.5V22.5H13.5C13.1022 22.5 12.7206 22.658 12.4393 22.9393C12.158 23.2206 12 23.6022 12 24C12 24.3978 12.158 24.7794 12.4393 25.0607C12.7206 25.342 13.1022 25.5 13.5 25.5H22.5V34.5C22.5 34.8978 22.658 35.2794 22.9393 35.5607C23.2206 35.842 23.6022 36 24 36C24.3978 36 24.7794 35.842 25.0607 35.5607C25.342 35.2794 25.5 34.8978 25.5 34.5V25.5H34.5C34.8978 25.5 35.2794 25.342 35.5607 25.0607C35.842 24.7794 36 24.3978 36 24C36 23.6022 35.842 23.2206 35.5607 22.9393C35.2794 22.658 34.8978 22.5 34.5 22.5H25.5V13.5Z" fill="#009F21"/>
 </svg>
