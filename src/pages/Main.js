@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
-import Logo from "../assets/splash-logo.png";
-import Cart from "../assets/icons/order.svg";
-import { HiMenuAlt1 } from "react-icons/hi";
+import React, { useState } from "react";
+import Sample from "../assets/sample.png";
+import OrderIcon from "../assets/icons/order.svg";
 import styled from "styled-components";
+import Navbar from "../components/Navbar";
+import Header from "../components/Header";
 import "./Main.css";
+import Footer from "../components/Footer";
 
 const AD_CONTENTS = [
   {
@@ -30,9 +32,9 @@ const AD_CONTENTS = [
 ];
 const CarouselWrapper = styled.div`
   width: 100vw;
-  height: 200px;
-  position: relative;
+  height: 232px;
   overflow: hidden;
+  position: relative;
 `;
 const AdWrapper = styled(CarouselWrapper)`
   padding: 16px;
@@ -40,14 +42,16 @@ const AdWrapper = styled(CarouselWrapper)`
 
   display: inline-flex;
   flex-direction: column;
-  grid-gap: 8px;
-  gap: 8px;
+  grid-gap: 16px;
+  gap: 16px;
 `;
 const TitleWrapper = styled.div`
   h2:first-child {
+    font-size: 20px;
     color: var(--color-yellow);
   }
   h2:last-child {
+    font-size: 18px;
     color: var(--color-white);
   }
 `;
@@ -76,68 +80,52 @@ const Pagination = styled.ul`
 
   display: inline-flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  grid-gap: 8px; /* cross-browsing */
-  gap: 8px;
+  grid-gap: 16px; /* cross-browsing */
+  gap: 16px;
 
   list-style: none;
 
   position: absolute;
   left: 50%;
-  bottom: 0.8rem;
+  bottom: 0.4rem;
   transform: translateX(-50%);
   z-index: 50;
 `;
-
 const PaginationList = styled.li`
-  display: block;
+  width: 12px;
+  height: 12px;
   font-size: 1.6rem;
-  
-  &::before{
-    content: '\25CF'; /* filled circle */
-    color: var(--color-white);
-  };
+  border-radius: 12px;
+  background-color: ${(props) =>
+    props.isSelected ? `var(--color-white)` : null};
+  border: ${(props) =>
+    props.isSelected ? null : `1px solid var(--color-white)`};
 `;
 
 const Main = () => {
-  const [index, setIndex] = useState(0);
-  const pageRef = useRef(); // 현재 선택한 캐러셀 페이지네이션
-  const HandleCarouselIndex = (e) => {
-    const { target } = e;
+  const [isNavOpened, setIsNavOpened] = useState(false); // navbar 클릭
+  const handleNavbar = () => setIsNavOpened((prev) => !prev);
 
-    console.log(target);
-  };
+  // 🤔
+  const [currentIndex, setCurrentIndex] = useState(0); // 현재 선택한 페이지네이션의 index
+  const [pageIndex, setPageIndex] = useState(null); // 페이지네이션#
+  const [isSelected, setIsSelected] = useState(false);
+  const handleClick = (index) => () => {
+    console.log(pageIndex);
+    setCurrentIndex(index);
+    setIsSelected((prev) => !prev);
+  }; // 커링 : 함수를 실행해서 새로만든 함수를 리턴
 
   return (
     <div className="main-wrapper">
-      <header>
-        <nav>
-          <ul className="header-nav-wrapper">
-            <li>
-              <a href="#" title="">
-                <HiMenuAlt1 style={{ width: "32px", height: "32px" }} />
-              </a>
-            </li>
-            <li>
-              <a href="#" title="">
-                <img
-                  src={Logo}
-                  alt="logo"
-                  style={{ width: "calc(50%)", height: "calc(50%)" }}
-                />
-              </a>
-            </li>
-            <li>
-              <a href="#" title="" className="cart-btn">
-                <img src={Cart} alt="장바구니 아이콘" />
-                <span>0</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      {/* 메뉴바 */}
+      {isNavOpened ? <Navbar handleNavbar={handleNavbar} /> : null}
+      {/* 헤더 */}
+      <Header handleNavbar={handleNavbar} />
 
+      {/* 메인 */}
       <main>
         {/* 광고 캐러셀 WRAPPER */}
         <CarouselWrapper>
@@ -146,8 +134,9 @@ const Main = () => {
             {AD_CONTENTS.map((content) => (
               <PaginationList
                 key={content.id}
-                ref={pageRef}
-                onClick={HandleCarouselIndex}
+                isSelected={isSelected}
+                pageIndex={content.id === currentIndex} // 안먹히는 것 같은데... 그리고 의미를 잘 모르겠음
+                onClick={handleClick}
               ></PaginationList>
             ))}
           </Pagination>
@@ -170,8 +159,33 @@ const Main = () => {
           ))}
         </CarouselWrapper>
       </main>
+      {/* 추천메뉴 */}
+      <section>
+        <h2>추천메뉴</h2>
+        <article className="imglist">
+          {[1, 2, 3, 4].map((item) => (
+            <div>
+              <img
+                src={Sample}
+                alt="첫번째 샌드위치 이미지"
+                style={{ width: "235px", height: "135px" }}
+              />
+              <h3>다이어터를 위한</h3>
+              <p>245kcal</p>
+              <button type="button">
+                <img src={OrderIcon} alt="주문하기 버튼" />
+              </button>
+            </div>
+          ))}
+        </article>
+      </section>
+      {/* footer */}
+      <Footer />
     </div>
   );
 };
 
 export default Main;
+
+// styled-components
+// https://styled-components.com/docs/basics#adapting-based-on-props
