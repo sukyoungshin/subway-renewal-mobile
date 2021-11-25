@@ -1,0 +1,48 @@
+
+/* mobile first */
+@media all and (max-width: 450px) {
+  .main-wrapper{
+    width: 100vw;
+  }
+  .main-wrapper header {
+    width: 100vw;
+    height: 56px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+  }
+  .main-wrapper header nav {
+    height: 100%;
+  }
+  .header-nav-wrapper {
+    height: 100%;
+    list-style-type: none;
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .header-nav-wrapper li {
+    padding: 12px;
+  }
+  .cart-btn {
+    position: relative;
+    font-size: 8px;
+    color: #009743;
+  }
+  .cart-btn span {
+    position: absolute;
+    top: -0.1rem;
+    right: 0.1rem;
+  }
+
+  /* 페이지네이션 */
+  .ad_pagination li::before{
+    content: '\25CF'; /* filled circle */
+    color: var(--color-white);
+  }
+  .ad_pagination li.check::before{
+    content: '\25CF'; /* filled circle */
+    color: var(--color-yellow);
+  }
+
+
+}
