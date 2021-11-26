@@ -1,5 +1,4 @@
 import React from 'react';
-import './Signin.css';
 import Logo from '../assets/small-logo.png';
 
 function Signin() {
