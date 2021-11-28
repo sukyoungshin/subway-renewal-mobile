@@ -4,10 +4,15 @@
 
 <br/>
 
-## Dependencies
+## Project 소개
 
-- CSS in JS (styled-components)
--
+### Features
+- 모바일 웹앱
+
+### Dependencies
+- ⚙ 패키지매니저 : yarn install <br/>
+- 🔨 Dependencies : `react`, `styled-components`<br/>
+
 
 ## 프로젝트 회고
-- [프로젝트 진행하며 겪은 이슈정리](https://github.com/sukyoungshin/TIL/blob/main/Note/subway-renewal-mobile.md)
+[프로젝트 진행하며 겪은 이슈정리](https://github.com/sukyoungshin/TIL/blob/main/Note/subway-renewal-mobile.md)
