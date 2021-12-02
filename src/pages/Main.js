@@ -1,118 +1,41 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import OrderIcon from "../assets/icons/order.svg";
 // ICONS
 import Sample from "../assets/sample.png";
-import OrderIcon from "../assets/icons/order.svg";
 // COMPONENTS
-import Header from '../components/Header';
 import Carousel from '../components/Carousel';
-import Footer from '../components/Footer';
 // STYLE
-import styled from 'styled-components';
+import { MainArticle, MainSection, MainWrapper } from '../common/Styled';
+// DATA
+import { MenuRecommended } from '../common/Datas';
 
-// STYLE
-const MainWrapper = styled.div`
-  width: 100vw;
-`;
-const Section = styled.section`
-  margin-bottom: 56px;
-  width: 100%;
 
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-
-  h2{
-  margin: 32px 0 24px 0;
-  text-align: center;
-  color: var(--color-black);
-  font-size: 20px;
-  }
-`;
-const Article = styled.article`
-  width: 270px;
-  height: fit-content;
-
-  display:flex;
-  flex-direction: column;
-  text-align: center;
-  grid-gap: 32px;
-  gap: 32px;
-
-  div{
-    padding: 16px;
-    width: 270px;
-    height: 240px; 
-
-    display:inline-block;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
-    position: relative;
-    box-sizing: border-box;
-  }
-  div > img {
-    width: 235px;
-    height: 135px;
-  }
-  h3{
-    margin-top: 10px;
-    margin-bottom: 11px;
-    color: var(--color-black);
-    font-size: 14px;
-  }
-  p{
-    font-size: 14px;
-    color: var(--color-grey);
-  }
-  button[type="button"] {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 0;
-
-    width: fit-content;
-    height: 48px;
-
-    position: absolute; 
-    left: 50%; 
-    bottom: 0; 
-    transform: translate(-50%, 50%); 
-  }
-`;
-
-// COMPONENT
 const Main = () => {
   const navigate = useNavigate();
 
   return (
-    <MainWrapper>
-      {/* Header : 모달팝업, 로그인팝업, 헤더 */}
-      <Header />
-
-      {/* Main : 광고 캐러셀 WRAPPER */}
-      <Carousel />
-
-      {/* Section : 추천메뉴 */}
-      <Section>
-        <h2>추천메뉴</h2>
-        <Article className="imglist">
-          {[1, 2, 3, 4].map((item, index) => (
-            <div key={index}>
-              <img src={Sample} alt="첫번째 샌드위치 이미지" />
-              <h3>다이어터를 위한</h3>
-              <p>245kcal</p>
-              <button type="button" onClick={() => navigate('/order')}>
-                <img src={OrderIcon} alt="주문하기 버튼" />
-              </button>
-            </div>
-          ))}
-        </Article>
-      </Section>
-
-      {/* Footer : 푸터 */}
-      <Footer />
-
-    </MainWrapper>
-  );
+      <MainWrapper>
+        {/* Main : 광고 캐러셀 WRAPPER */}
+        <Carousel />
+        {/* MainSection : 추천메뉴 */}
+        <MainSection>
+          <h2>추천메뉴</h2>
+          <MainArticle className="imglist">
+            {MenuRecommended.map((item) => (
+              <div key={item.id}>
+                <img src={Sample} alt="첫번째 샌드위치 이미지" />
+                <h3>{item.menuName}</h3>
+                <p>{item.kcal}kcal</p>
+                <button type="button" onClick={() => navigate('/order')}>
+                  <img src={OrderIcon} alt="주문하기 버튼" />
+                </button>
+              </div>
+            ))}
+          </MainArticle>
+        </MainSection>
+      </MainWrapper>
+    );
 };
 
 export default Main;

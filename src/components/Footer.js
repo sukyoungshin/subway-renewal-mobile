@@ -1,25 +1,6 @@
 import React from "react";
-import styled from 'styled-components';
+import { MainFooter } from '../common/Styled';
 
-// STYLE
-const MainFooter = styled.footer`
-    width: 100vw;
-    height: 80px;
-    font-size: 10px;
-    color: var(--color-white);
-    background-color: var(--color-black);
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-  address {
-    width: 270px;
-  }
-`;
-
-// COMPONENT
 const Footer = () => {
   return (
     <MainFooter>

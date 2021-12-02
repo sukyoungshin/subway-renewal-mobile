@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../assets/small-logo.png';
 
-function Signin() {
+const Signin = () => {
   return (
     <main className="signin-wrapper">
       Signin

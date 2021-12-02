@@ -1,63 +1,9 @@
 /* global kakao */
 import React, { useState, useEffect } from "react";
-import Header, { BtnContainer, Button, InputContainer } from '../components/Header';
-import styled from 'styled-components';
-import './Order.css';
-import Footer from '../components/Footer';
-
 // STYLE
-const OrderFormWrapper = styled.form`
-  padding: 16px;
-  width: 100vw;
-  height: calc(100vh - 56px); 
+import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, BtnContainer, Button } from '../common/Styled';
+import './Order.css';
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  grid-gap: 16px;
-  gap: 16px;
-
-  p,
-  label {
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--color-black);
-  }
-`;
-const MapViewer = styled.div`
-  padding: ${(props) => props.padding? '12px' : '0px' };
-  width: 100%;
-  height: calc(100%);
-
-  border-radius: 8px;
-  background-color: var(--color-light-grey);
-
-  position: relative;
-
-  p {
-    font-size: 12px;
-    font-weight: normal;
-    color: var(--color-grey);
-  }
-`;
-const ContentWrapper = styled.div`
-  display: inline-flex;
-  flex-direction: column;
-  grid-gap: 8px;
-  gap: 8px;
-`;
-const Map = styled.div`
-  height: 100%;
-  /* display: ${(props) => props.hidden && 'hidden' }; */
-`;
-const ButtonWrapper = styled.div`
-  display: inline-flex;
-  justify-content: space-between;
-  grid-gap: 16px;
-  gap: 16px;
-`;
-
-// COMPONENT
 const Order = () => {
   const [ addrValue, setAddrValue ] = useState(''); // 고객의 주소지
   const handleAddress = (e) => {
@@ -86,9 +32,7 @@ const Order = () => {
 
   return (
     <>
-      <Header />
       <OrderFormWrapper>
-
         {/* 배송지 및 주소검색 input */}
         <ContentWrapper>
           <label htmlFor="addrSearch">배송지</label>
@@ -116,22 +60,14 @@ const Order = () => {
               <MapViewer className="addr_wrapper">
                 <Map id="map"></Map>
                 <ul className="placesList">
-                  <li>
-                    <input type="text" name="placelists" value="써브웨이 문래점 (배달가능, 픽업가능)" className="placenames" readOnly />
-                    <span>1.2km</span>
-                  </li>
-                  <li>
-                    <input type="text" name="placelists" value="써브웨이 문래점 (배달가능, 픽업가능)" className="placenames" readOnly />
-                    <span>1.2km</span>
-                  </li>
-                  <li>
-                    <input type="text" name="placelists" value="써브웨이 문래점 (배달가능, 픽업가능)" className="placenames" readOnly />
-                    <span>1.2km</span>
-                  </li>
-                  <li>
-                    <input type="text" name="placelists" value="써브웨이 문래점 (배달가능, 픽업가능)" className="placenames" readOnly />
-                    <span>1.2km</span>
-                  </li>
+                  {
+                    [1,2,3,4].map((item) => (
+                      <li key={item}>
+                        <input type="text" name="placelists" value="써브웨이 문래점 (배달가능, 픽업가능)" className="placenames" readOnly />
+                        <span>1.2km</span>
+                      </li>
+                    ))
+                  }
                 </ul>
               </MapViewer>
               )
@@ -155,7 +91,6 @@ const Order = () => {
           </BtnContainer>
         </ButtonWrapper>
       </OrderFormWrapper>
-      <Footer />
     </>
   );
 };
