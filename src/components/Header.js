@@ -7,6 +7,7 @@ const Header = () => {
   const [ navModalOpened, setNavModalOpened ] = useState(false); // navbar 클릭
   const handleNavbar = () => setNavModalOpened((prev) => !prev); // navbar 스위치
 
+  // eslint-disable-next-line
   const [ isLoggedIn, setIsLoggedIn ] = useState(false); // 로그인 완료여부
   const [ loginModalOpened, setLoginModalOpened ] = useState(false); // 로그인팝업창
   const getLoginModal = () => setLoginModalOpened(loginModalOpened => !loginModalOpened); // 로그인 팝업창

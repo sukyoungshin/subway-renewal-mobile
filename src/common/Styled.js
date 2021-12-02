@@ -565,7 +565,7 @@ export const AdButtonWrapper = styled.div`
     background-color: transparent;
     border: 1px solid var(--color-white);
 
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-smallest);
     transition: all 0.4s;
   }
 `;
