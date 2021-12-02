@@ -47,6 +47,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-transparent: rgba(255,255,255,0.5);
     --color-kakao: #FFE812;
     --color-facebook: #3C5997;
+    --color-google: rgb(66, 133, 244);
     --font-size-medium: 14px;
   }
   // MOUSE DRAG EFFECT
@@ -246,6 +247,36 @@ export const LoginButton = styled.div`
   div.abcRioButton.abcRioButtonLightBlue{
     width: 100% !important;
     border-radius: 8px !important;
+    box-shadow: none !important;
+    color: var(--color-white) !important;
+    background-color: var(--color-google) !important;
+
+    .abcRioButtonContentWrapper {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+      
+      .abcRioButtonContents{
+        line-height: 0 !important;
+        font-size: var(--font-size-medium) !important;
+      }
+    }
+    .abcRioButtonIcon {
+
+      div {
+        width: 14px !important;
+        height: 14px !important;
+        
+        svg {
+          width: 14px !important;
+          height: 14px !important;
+          filter: drop-shadow(0 0 0.1px white) !important;
+
+        }
+      }
+    }
+
   }
 `;
 

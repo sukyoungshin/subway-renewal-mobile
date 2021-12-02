@@ -4,6 +4,7 @@ import { LoginButton, LogoutButton } from '../common/Styled';
 const GoogleLogin = () => {
   // 구글 oauth 로그인
   const [ isLoggedIn, setIsLoggedIn ] = useState(false); // 로그인여부
+  // eslint-disable-next-line
   const [ userInfo, setUserInfo ] = useState(null); // ✅ 리덕스로 전역관리 해줘야 할 듯
 
   const onSignIn = useCallback((googleUser) => {

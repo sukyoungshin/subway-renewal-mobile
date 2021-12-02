@@ -6,6 +6,7 @@ import { AdContents } from '../common/Datas';
 
 const Carousel = () => {
   const [selectedId, setSelectedId] = useState(0); // 선택한 페이지네이션 및 캐러셀 index#
+    // eslint-disable-next-line
   const [isSelected, setIsSelected] = useState(false); // 페이지네이션 및 캐러셀 스위치
   const handleClick = useCallback((id) => 
   // 커링 : 함수를 실행해서 새로만든 함수를 리턴
