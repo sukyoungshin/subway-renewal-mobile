@@ -1,21 +1,27 @@
 import React from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineChevronLeft } from "react-icons/hi";
 import { RiFacebookCircleFill, RiKakaoTalkFill } from "react-icons/ri";
 // ICONS
 import LogoSmall from "../assets/small-logo.png";
 // STYLE
 import { BtnContainer, Button, CloseBtnContainer, InputContainer, ItemBlock, LogoContainer, ModalWrapper } from '../common/Styled';
-import GoogleLogin from './GoogleLogin';
+import GoogleLogin from '../components/GoogleLogin';
 
-const LoginModal = ({ getLoggedIn, getLoginModal }) => {
+const Login = ({ getLoggedIn, getLoginModal }) => {
+
+  const navigate = useNavigate();
+  const goBack = () => {navigate(-1)}; // 뒤로가기
 
   return (
     <ModalWrapper>
-      <CloseBtnContainer onClick={getLoginModal}>
+      <CloseBtnContainer onClick={goBack}>
         <HiOutlineChevronLeft />
       </CloseBtnContainer>
       <LogoContainer>
-        <img src={LogoSmall} alt="로고" />
+        <Link to="/">
+          <img src={LogoSmall} alt="로고" />
+        </Link>
       </LogoContainer>
       <InputContainer>
         <input type="text" placeholder="아이디를 입력하세요" />
@@ -32,7 +38,7 @@ const LoginModal = ({ getLoggedIn, getLoginModal }) => {
         >로그인</Button>
       </BtnContainer>
       <ItemBlock className="signup-wrapper">
-        <p>아직 회원이 아니시라면, 회원가입</p>
+        <p>아직 회원이 아니시라면, <Link to="/singup">회원가입</Link></p>
       </ItemBlock>
       <ItemBlock className="signin-title">
         <p>간편로그인</p>
@@ -59,4 +65,4 @@ const LoginModal = ({ getLoggedIn, getLoginModal }) => {
   );
 };
 
-export default LoginModal;
+export default Login;

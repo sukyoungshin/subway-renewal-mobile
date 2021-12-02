@@ -15,11 +15,13 @@ const Navbar = ({ isLoggedIn, handleNavbar, getLoggedIn }) => {
     <SideNavWrapper>
       <SideHeader>
         <div>
-          <img
-            src={LogoSmall}
-            alt="로고"
-            style={{ width: "128px", height: "32px" }}
-          />
+          <Link to="/" onClick={handleNavbar}>
+            <img
+              src={LogoSmall}
+              alt="로고"
+              style={{ width: "128px", height: "32px" }}
+            />
+          </Link>
         </div>
         <div onClick={handleNavbar}>
           <HiOutlineChevronLeft style={{ width: "24px", height: "24px" }} />
@@ -30,7 +32,9 @@ const Navbar = ({ isLoggedIn, handleNavbar, getLoggedIn }) => {
           {
             NavCategories.map(category => (
               <li key={category.pathName}>
-                <Link to={`/${category.pathName}`}>{category.categoryName}</Link>
+                <Link to={`/${category.pathName}`} onClick={handleNavbar}>
+                  {category.categoryName}
+                </Link>
               </li>
             ))
           }
@@ -56,7 +60,7 @@ const Navbar = ({ isLoggedIn, handleNavbar, getLoggedIn }) => {
         <div className="login-icon-wrapper">
           { isLoggedIn 
           ? <HiLogout onClick={() => console.log('로그아웃 기능구현 필요')} /> 
-          : <HiLogin onClick={getLoggedIn} />}
+          : <Link to="/login"><HiLogin /></Link>}
         </div>
         {
           isLoggedIn 

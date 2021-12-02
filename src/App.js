@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router";
 import SplashScreen from './pages/SplashScreen';
 import Layout from './pages/Layout';
 import Main from "./pages/Main";
+import Login from "./pages/Login";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Order from './pages/Order';
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<Main />} />
               <Route path="main" element={<Main />} />
+              <Route path="login" element={<Login />} />
               <Route path="order" element={<Order />} />
               <Route path="signin" element={<Signin />} />
               <Route path="signup" element={<Signup />} />

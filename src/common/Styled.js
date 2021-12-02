@@ -48,7 +48,13 @@ export const GlobalStyle = createGlobalStyle`
     --color-kakao: #FFE812;
     --color-facebook: #3C5997;
     --color-google: rgb(66, 133, 244);
+
+    --font-size-largest: 24px;
+    --font-size-larger: 20px;
+    --font-size-large: 18px;
     --font-size-medium: 14px;
+    --font-size-smaller: 12px;
+    --font-size-smallest: 10px;
   }
   // MOUSE DRAG EFFECT
   ::selection{ 
@@ -92,8 +98,8 @@ export const SplashLogoWrapper = styled.section`
   }
 `;
 export const SplashFooterWrapper = styled.footer`
-  font-size: 10px;
   color: var(--color-white);
+  font-size: var(--font-size-smallest);
 `;
 
 // LoginModal
@@ -120,6 +126,18 @@ export const ItemBlock = styled.div`
   height: fit-content;
   text-align: center;
 
+  a {
+    color: var(--color-grey);
+    font-size: var(--font-size-small);
+    border-bottom: 1px solid var(--color-white);
+    transition: all 0.4s;
+
+    &:hover {
+      border-bottom: 1px solid var(--color-green);
+      color: var(--color-green);
+    }
+  }
+
   &.btn-wrapper {
     display: inline-flex;
     flex-direction: column;
@@ -143,6 +161,7 @@ export const ItemBlock = styled.div`
       display: flex;
       flex-basis: 100%;
       align-items: center;
+      font-size: inherit;
       color: var(--color-grey);
       margin: 8px 0;
     }
@@ -151,14 +170,14 @@ export const ItemBlock = styled.div`
       flex-grow: 1;
       margin: 0px 16px;
       background-color: var(--color-light-grey);
-      height: 0.5px;
+      height: 1px; /* cross-browsing issue: chrome은 0.5px -> 1px, fireFox는 0.5px -> 0 */
     }
     p::after {
       content: '';
       flex-grow: 1;
       margin: 0px 16px;
       background-color: var(--color-light-grey);
-      height: 0.5px;
+      height: 1px; /* cross-browsing issue: chrome은 0.5px -> 1px, fireFox는 0.5px -> 0 */
     }
   }
 `;
@@ -185,18 +204,19 @@ export const InputContainer = styled(ItemBlock)`
     box-sizing: border-box;
 
     color: var(--color-grey);
+    font-size: var(--font-size-smaller);
     border: 1px solid var(--color-light-grey);
     border-radius: 8px;
   }
   input[type="text"]::placeholder {
-    font-size: 12px;
     color: var(--color-grey);
+    font-size: var(--font-size-smaller);
   }
 `;
 export const CloseBtnContainer = styled.div`
   width: 24px;
   height: 24px;
-  font-size: 24px;
+  font-size: var(--font-size-largest);
 
   position: absolute;
   top: 16px;
@@ -272,14 +292,12 @@ export const LoginButton = styled.div`
           width: 14px !important;
           height: 14px !important;
           filter: drop-shadow(0 0 0.1px white) !important;
-
         }
       }
     }
 
   }
 `;
-
 
 // HeaderNav
 export const HeaderWrapper = styled.header`
@@ -307,8 +325,8 @@ export const HeaderWrapper = styled.header`
   };
   a.cart-btn {
     position: relative;
-    font-size: 8px;
-    color: #009743;
+    color: var(--color-green);
+    font-size: var(--font-size-smallest);
   };
   a.cart-btn span {
     position: absolute;
@@ -356,14 +374,14 @@ export const SideNav = styled.nav`
   }
   a:link,
   a:visited {
-    font-size: 14px;
     color: var(--color-black);
+    font-size: var( --font-size-medium);
     transition: color 0.4s;
   }
   a:active,
   a:focus {
-    font-size: 14px;
     color: var(--color-green);    
+    font-size: var( --font-size-medium);
     transition: color 0.4s;
   }
 `;
@@ -382,7 +400,7 @@ export const SideMain = styled.main`
     font-size: 18px;
   }
   div {
-    font-size: 14px;
+    font-size: var(--font-size-medium);
 
     display: inline-flex;
     flex-direction: column;
@@ -418,10 +436,10 @@ export const MainSection = styled.section`
   align-items: center;
 
   h2{
-  margin: 32px 0 24px 0;
-  text-align: center;
-  color: var(--color-black);
-  font-size: 20px;
+    margin: 32px 0 24px 0;
+    text-align: center;
+    color: var(--color-black);
+    font-size: var(--font-size-larger);
   }
 `;
 export const MainArticle = styled.article`
@@ -437,7 +455,7 @@ export const MainArticle = styled.article`
   div{
     padding: 16px;
     width: 270px;
-    height: 240px; 
+    height: 260px; 
 
     display:inline-block;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
@@ -452,11 +470,11 @@ export const MainArticle = styled.article`
     margin-top: 10px;
     margin-bottom: 11px;
     color: var(--color-black);
-    font-size: 14px;
+    font-size: var(--font-size-medium);
   }
   p{
-    font-size: 14px;
     color: var(--color-grey);
+    font-size: var(--font-size-medium);
   }
   button[type="button"] {
     border: none;
@@ -503,7 +521,7 @@ export const AdPagination = styled.ul`
 export const AdPaginationList = styled.li`
   width: 12px;
   height: 12px;
-  font-size: 1.6rem;
+  font-size: var(--font-size-medium);
   border-radius: 12px;
   background-color: ${(props) => props.isSelected ? `var(--color-white)` : null};
   border: ${(props) => props.isSelected ? null : `1px solid var(--color-white)`};
@@ -524,17 +542,17 @@ export const AdWrapper = styled(CarouselWrapper)`
 `;
 export const AdTitleWrapper = styled.div`
   h2:first-child {
-    font-size: 20px;
     color: var(--color-yellow);
+    font-size: var(--font-size-larger);
   }
   h2:last-child {
-    font-size: 18px;
     color: var(--color-white);
+    font-size: var(--font-size-larger);
   }
 `;
 export const AdEventWrapper = styled.div`
   color: var(--color-white);
-  font-size: 14px;
+  font-size: var(--font-size-medium);
 `;
 export const AdButtonWrapper = styled.div`
   button[type="button"] {
@@ -547,7 +565,7 @@ export const AdButtonWrapper = styled.div`
     background-color: transparent;
     border: 1px solid var(--color-white);
 
-    font-size: 10px;
+    font-size: var(--font-size-large);
     transition: all 0.4s;
   }
 `;
@@ -566,7 +584,7 @@ export const OrderFormWrapper = styled.form`
 
   p,
   label {
-    font-size: 14px;
+    font-size: var(--font-size-medium);
     font-weight: bold;
     color: var(--color-black);
   }
@@ -582,7 +600,7 @@ export const MapViewer = styled.div`
   position: relative;
 
   p {
-    font-size: 12px;
+    font-size: var(--font-size-smaller);
     font-weight: normal;
     color: var(--color-grey);
   }
@@ -608,7 +626,7 @@ export const ButtonWrapper = styled.div`
 export const MainFooter = styled.footer`
     width: 100vw;
     height: 80px;
-    font-size: 10px;
+    font-size: var(--font-size-smallest);
     color: var(--color-white);
     background-color: var(--color-black);
 
