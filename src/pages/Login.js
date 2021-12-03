@@ -8,10 +8,11 @@ import LogoSmall from "../assets/small-logo.png";
 import { BtnContainer, Button, CloseBtnContainer, InputContainer, ItemBlock, LogoContainer, ModalWrapper } from '../common/Styled';
 import GoogleLogin from '../components/GoogleLogin';
 
-const Login = ({ getLoggedIn, getLoginModal }) => {
+const Login = ({ getLoggedIn }) => {
 
   const navigate = useNavigate();
   const goBack = () => {navigate(-1)}; // 뒤로가기
+
 
   return (
     <ModalWrapper>

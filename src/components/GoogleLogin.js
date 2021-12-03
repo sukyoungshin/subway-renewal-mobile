@@ -20,7 +20,6 @@ const GoogleLogin = () => {
       email : profile.getEmail(), // This is null if the 'email' scope is not present.
     });
     setIsLoggedIn(true);
-    console.log('로그인 완료');
   }, []);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ const GoogleLogin = () => {
     });
     setIsLoggedIn(false);
     setUserInfo(null);
-
+    
     // 로그아웃버튼이 눌리면 메인페이지로 리디렉션
     navigate('/');
   };

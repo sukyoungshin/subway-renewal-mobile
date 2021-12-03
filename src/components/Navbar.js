@@ -9,7 +9,7 @@ import { NavCategories } from '../common/Datas';
 import { SideNavWrapper, SideHeader, SideNav, SideMain, SideFooter } from '../common/Styled';
 
 
-const Navbar = ({ isLoggedIn, handleNavbar, getLoggedIn }) => {
+const Navbar = ({ isLoggedIn, handleNavbar }) => {
 
   return (
     <SideNavWrapper>
