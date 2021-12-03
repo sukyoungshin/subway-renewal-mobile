@@ -247,14 +247,13 @@ export const Button = styled.button`
 export const LogoutButton = styled(Button)`
   outline: none;
   border: none;
-  display: ${props => props.isLoggedIn? 'block' : 'none'};
   
   padding: 4px;
   width: 100%;
   height: 100%;
-  font-size: inherit;
-  color: var(--color-grey);
-  background-color: transparent;
+  color: var(--color-white);
+  font-size: var(--font-size-medium);
+  background-color: var(--color-google);
 
   &:active {
     color: var(--color-black);
@@ -284,6 +283,8 @@ export const LoginButton = styled.div`
     }
     .abcRioButtonIcon {
 
+      padding: 0 !important;
+
       div {
         width: 14px !important;
         height: 14px !important;
@@ -291,7 +292,7 @@ export const LoginButton = styled.div`
         svg {
           width: 14px !important;
           height: 14px !important;
-          filter: drop-shadow(0 0 0.1px white) !important;
+          filter: drop-shadow(0 0 1px white) !important;
         }
       }
     }
