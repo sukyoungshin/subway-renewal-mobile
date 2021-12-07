@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Order from './pages/Order';
+import PostSearch from './pages/PostSearch';
 import NoMatch from './pages/NoMatch';
 // STYLE
 import { GlobalStyle } from './common/Styled';
@@ -38,6 +39,7 @@ const App = () => {
               <Route path="main" element={<Main />} />
               <Route path="login" element={<Login />} />
               <Route path="order" element={<Order />} />
+              <Route path="search" element={<PostSearch />} />
               <Route path="signin" element={<Signin />} />
               <Route path="signup" element={<Signup />} />
               <Route path="*" element={<NoMatch />} />

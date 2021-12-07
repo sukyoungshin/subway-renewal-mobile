@@ -601,11 +601,61 @@ export const MapViewer = styled.div`
   position: relative;
 
   p {
-    font-size: var(--font-size-smaller);
-    font-weight: normal;
     color: var(--color-grey);
+    font-weight: normal;
+    font-size: var(--font-size-smaller);
+  }
+
+  ul.placesList {
+    width: 100%; 
+    display: block;
+
+    position: absolute; 
+    top: 0px; 
+    right: 0px; 
+    z-index: 10;
+
+    display: inline-flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    gap: 8px;
+
+    background-color: var(--color-transparent);
+
+    li {
+      width: 100%;
+      position: relative;
+    }
   }
 `;
+
+export const InputAddress = styled.input`
+  outline:none;
+
+  padding-left: 22px;
+  width: 100%; 
+  height: 40px;
+  box-sizing:border-box;
+
+  background-color: var(--color-transparent);
+  border: 1px solid var(--color-white);
+  border-radius: 8px;
+
+  font-size: 12px;
+  color: var(--color-black);
+  cursor: pointer;
+
+  & + span {
+    display:inline-block;
+    font-size: 12px;
+    color: var(--main-text-color);
+    position:absolute; 
+    top: 50%; 
+    left: 80%;
+    transform: translateY(-50%);
+  }
+`;
+
 export const ContentWrapper = styled.div`
   display: inline-flex;
   flex-direction: column;
