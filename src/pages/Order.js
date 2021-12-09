@@ -116,11 +116,10 @@ const Order = () => {
     });
   };
 
-  // ✅ 수정 : 써브웨이 리스트를 클릭하면 실행할 함수
+  // 써브웨이 리스트를 클릭하면 선택된 매장 정보를 저장 및 업데이트
   const setMarkerLocation = useCallback((currentPlace) => 
     () => {
       setIsSelectedSubway(currentPlace); // 선택된 써브웨이매장 정보를 저장
-      // 해당 정보를 handleButtonClicked 함수를 실행하여 다음 페이지로 넘어갈때 전달해주도록 로직구현 필요
     }
   );
 
@@ -152,8 +151,6 @@ const Order = () => {
     kakaoMap.current = map;
   }, []);
 
-  // 주문가능매장 Input
-
   // 버튼
   const navigate = useNavigate();
   const [ selectedBtnId, setSelectedBtnId ] = useState(0); // 선택한 버튼 index#
@@ -162,7 +159,7 @@ const Order = () => {
     () => {
       setSelectedBtnId(id); // 선택한 버튼의 인덱스 저장
       setIsBtnSelected((prev) => !prev); // 버튼 스위치
-      navigate('/menu'); // ✅ 수정 : 메뉴선택 페이지로 이동, 이때 setMarkerLocation 내부에서 설정한 써브웨이매장 정보를 같이 넘겨주도록 로직구현 필요
+      navigate('/menu',  { state: isSelectedSubway }); // 선택된 써브웨이매장 정보를 다음페이지(/menu)로 전달한다.
     }
   );
 

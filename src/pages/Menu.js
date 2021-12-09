@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { MainWrapper } from '../common/Styled';
 
-function Menu() {
+const Menu = () => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.state === null) {
+      window.alert('주문하실 매장을 선택하세요');
+      return navigate(-1);
+    } // 이전페이지에서 써브웨이 매장 정보가 넘어오지 않았으면 이전 페이지로 강제이동
+    console.log(location.state); // 정보가 넘어왔으면 콘솔에 출력
+  }, [])
+
   return (
     <MainWrapper>
       menu
