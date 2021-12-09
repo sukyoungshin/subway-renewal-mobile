@@ -8,6 +8,7 @@
 
 ### Features
 - 모바일 웹앱
+- 적응형 (후에 데스크탑뷰 만들어서 서버연동계획)
 
 ### Doc
 - yarn install <br/>
