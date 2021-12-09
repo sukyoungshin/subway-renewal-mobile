@@ -358,8 +358,23 @@ export const SideHeader = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  grid-gap: 8px;
+  gap: 8px;
 
   font-size: 0;
+
+  div:first-child {
+    flex: 1;
+  }
+  div:not(:first-child) {
+    a {
+      width: 24px;
+      height: 24px;
+    }
+    svg {
+      font-size: var(--font-size-largest);
+    }
+  }
 `;
 export const SideNav = styled.nav`
   flex: 1;

@@ -23,8 +23,13 @@ const Navbar = ({ isLoggedIn, handleNavbar }) => {
             />
           </Link>
         </div>
+        <div>
+          { isLoggedIn 
+          ? <HiLogout onClick={() => console.log('로그아웃 기능구현 필요')} /> 
+          : <Link to="/login"><HiLogin /></Link>}
+        </div>
         <div onClick={handleNavbar}>
-          <HiOutlineChevronLeft style={{ width: "24px", height: "24px" }} />
+          <HiOutlineChevronLeft />
         </div>
       </SideHeader>
       <SideNav>
@@ -57,11 +62,7 @@ const Navbar = ({ isLoggedIn, handleNavbar }) => {
         : null
       }
       <SideFooter>
-        <div className="login-icon-wrapper">
-          { isLoggedIn 
-          ? <HiLogout onClick={() => console.log('로그아웃 기능구현 필요')} /> 
-          : <Link to="/login"><HiLogin /></Link>}
-        </div>
+
         {
           isLoggedIn 
           ? (
