@@ -1,10 +1,12 @@
 import React, { useState, useCallback } from 'react';
+import { useNavigate } from "react-router-dom";
 import { CarouselWrapper, AdPagination, AdPaginationList, AdWrapper, AdTitleWrapper, AdEventWrapper, AdButtonWrapper } from '../common/Styled';
 // DATA
 import { AdContents } from '../common/Datas';
 
 
 const Carousel = () => {
+  const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState(0); // 선택한 페이지네이션 및 캐러셀 index#
     // eslint-disable-next-line
   const [isSelected, setIsSelected] = useState(false); // 페이지네이션 및 캐러셀 스위치
@@ -45,7 +47,9 @@ const Carousel = () => {
             <p>{content.eventDate}</p>
           </AdEventWrapper>
           <AdButtonWrapper>
-            <button type="button">ORDER NOW</button>
+            <button type="button" onClick={() => navigate('/order')}>
+              ORDER NOW
+            </button>
           </AdButtonWrapper>
         </AdWrapper>
       ))}
