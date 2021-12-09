@@ -9,9 +9,10 @@
 ### Features
 - 모바일 웹앱
 
-### Dependencies
-- ⚙ 패키지매니저 : yarn install <br/>
-- 🔨 Dependencies : `react` `styled-components` `react-router` `react-daum-postcode`<br/>
+### Doc
+- yarn install <br/>
+- node -v : 17.1.0
+- tool : `react` `styled-components` `react-router` `react-daum-postcode`<br/>
 ```
 "dependencies": {
   "@testing-library/jest-dom": "^5.11.4",
