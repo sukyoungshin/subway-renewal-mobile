@@ -1,5 +1,6 @@
 /* global kakao */
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
 import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, BtnContainer, DeliveryButton, InputAddress } from '../common/Styled';
 
 const ButtonOptions = [
@@ -18,6 +19,7 @@ const Order = () => {
   const [ position, setPosition ] = useState(''); // 고객의 위치 좌표
   const kakaoMap = useRef(); // KakaoMap 상태관리
   const [ subwayPlaces, setSubwayPlaces ] = useState([]); // 써브웨이 리스트 및 거리를 저장할 배열
+  const [ isSelectedSubway, setIsSelectedSubway ] = useState(null);// 주문을 위해 선택된 써브웨이 매장정보
 
   // postMessage
   const HandlePopUp = () => {
@@ -29,6 +31,7 @@ const Order = () => {
     const receiveMessage = (event) => {
       if (event.origin !== window.location.origin) return;
       if (event.source.name !== 'addressSearch') return;
+
       setAddrValue(event.data); // 고객의 주소지 저장
       getGeocode(event.data); // x좌표 y좌표 셋팅
       setSubwayPlaces([]); // 기존값 삭제
@@ -38,43 +41,88 @@ const Order = () => {
   }, []);
 
   // RepaintMap
-  useEffect(() => {
-    if (kakaoMap.current === undefined) return;
-
-    const markerPosition  = new kakao.maps.LatLng(position.y, position.x); 
-    keywordSearch(); // 키워드검색
-
+  const repaintMap = (markerPosition) => {
     kakaoMap.current.relayout(); 
     kakaoMap.current.setCenter(markerPosition); // 지도 중심을 변경 (고객이 요청한 위치로 좌표값 셋팅)
     kakaoMap.current.setDraggable(true); // 마우스 드래그 or 모바일 터치를 이용한 지도이동 가능
-    kakaoMap.current.setZoomable(true); // 지도의 마우스 휠 or 모바일 터치를 이용한 확대/축소 기능하
+    kakaoMap.current.setZoomable(true); // 지도의 마우스 휠 or 모바일 터치를 이용한 확대/축소 기능
+  };
 
-    setMarker(markerPosition); // 마커 그려줌
+  useEffect(() => {
+    if (kakaoMap.current === undefined) return;
+    // 마커위치 지정
+    const markerPosition  = new kakao.maps.LatLng(position.y, position.x); 
     
+    // Keyword Search
+    const keywordSearch = () => {
+    // 장소 검색 서비스 객체를 생성
+    const places = new kakao.maps.services.Places();
+
+    // 장소 검색이 완료됐을 때 호출되는 콜백함수
+    const callback = function(result, status) {
+      let placeNamesArr = []; // 장소이름을 저장할 배열
+
+      if (status === kakao.maps.services.Status.OK) {
+        // 정상적으로 검색이 완료됐으면, 검색목록과 마커를 표시한다.
+        for(let i = 0; i < result.length; i++) { // 받아온 주소지 근처의 모든 써브웨이 지점을 불러옴
+          const markerPosition  = new kakao.maps.LatLng(result[i].y, result[i].x); 
+          setSubwayPlaces( previous => ([
+            ...previous, {
+              id: i,
+              name : result[i].place_name, // 써브웨이 지점명
+              distance : result[i].distance, // 입력받은 주소지부터 근처 써브웨이까지의 거리 (m)
+              address : result[i].road_address_name, // 써브웨이 지점 도로명주소
+              phone : result[i].phone, // 써브웨이 지점 전화번호
+              url : result[i].place_url, // 써브웨이 지점 링크
+            }]));
+          placeNamesArr.push({
+            id: i,
+            name : result[i].place_name,
+          });
+          setMarker(markerPosition); // 마커를 생성하고 지도에 표시
+          setInfoWindow(markerPosition, placeNamesArr, i); // 인포윈도우를 생성하고 지도에 표시
+        };
+        };
+      };
+  
+      // 고객이 입력한 좌표 근처의 '써브웨이' 키워드를 callback 함수를 이용하여 검색한다.
+      places.keywordSearch('써브웨이', callback, {
+        location: new kakao.maps.LatLng(position.y, position.x),
+        radius : 1500,
+      });
+    };
+
+    keywordSearch(); // 키워드검색
+    repaintMap(markerPosition); // 지도 그려줌
+    setMarker(markerPosition); // 마커 그려줌
+
   }, [position]);
 
   // Marker를 생성하고 지도에 표시하는 함수
   const setMarker = (LatLng) => {
-    // 마커 생성
-    const marker = new kakao.maps.Marker({
-      position: LatLng
-    });
-    marker.setMap(kakaoMap.current); // 지도에 마커를 올린다.
-    marker.setPosition(LatLng);// 마커를 결과값으로 받은 위치로 옮긴다. 
+    const marker = new kakao.maps.Marker({ position: LatLng }); // 마커 생성
+    marker.setMap(kakaoMap.current); // 지도에 마커를 올림
+    marker.setPosition(LatLng);// 마커를 결과값으로 받은 위치로 옮김
   };
 
   // 지도에 올릴 장소명 인포윈도우 생성 및 표시
   const setInfoWindow = (markerPosition, subwaylists, i) => {
-
-    const infowindow = new kakao.maps.InfoWindow({
+    // 인포윈도우 생성
+    new kakao.maps.InfoWindow({
       map: kakaoMap.current, // 인포윈도우가 표시될 지도
       position: markerPosition, //인포윈도우 표시 위치
       content: subwaylists[i].name, // 인포윈도우 표시될 이름
       removable : true, // 인포윈도우를 닫을 수 있는 x버튼이 표시
     });
-    
   };
 
+  // ✅ 수정 : 써브웨이 리스트를 클릭하면 실행할 함수
+  const setMarkerLocation = useCallback((currentPlace) => 
+    () => {
+      setIsSelectedSubway(currentPlace); // 선택된 써브웨이매장 정보를 저장
+      // 해당 정보를 handleButtonClicked 함수를 실행하여 다음 페이지로 넘어갈때 전달해주도록 로직구현 필요
+    }
+  );
 
   // Geocoder init
   const getGeocode = (addrValue) => {
@@ -88,45 +136,6 @@ const Order = () => {
           x : result[0].x
         });
       };
-    });
-  };
-
-  // Keyword Search
-  const keywordSearch = () => {
-    // 장소 검색 서비스 객체를 생성
-    const places = new kakao.maps.services.Places();
-
-    // 장소 검색이 완료됐을 때 호출되는 콜백함수
-    const callback = function(result, status) {
-
-      let placeNamesArr = []; // 장소이름을 저장할 배열
-
-      if (status === kakao.maps.services.Status.OK) {
-        // 정상적으로 검색이 완료됐으면, 검색목록과 마커를 표시한다.
-        for(let i = 0; i < result.length; i++) { // 받아온 주소지 근처의 모든 써브웨이 지점을 불러옴
-          const markerPosition  = new kakao.maps.LatLng(result[i].y, result[i].x); 
-          setSubwayPlaces( previous => ([
-            ...previous, {
-              id: i,
-              name : result[i].place_name, // (조건에 맞는) 써브웨이 리스트를 저장함
-              distance : result[i].distance, // (조건에 맞는) 써브웨이 거리를 저장함
-            }]));
-          placeNamesArr.push({
-            id: i,
-            name : result[i].place_name,
-            y: result[i].y,
-            x: result[i].x,
-          });
-          setMarker(markerPosition); // 마커를 생성하고 지도에 표시
-          setInfoWindow(markerPosition, placeNamesArr, i); // 인포윈도우를 생성하고 지도에 표시
-        };
-      };
-    };
-
-    // 고객이 입력한 좌표 근처의 '써브웨이' 키워드를 callback 함수를 이용하여 검색한다.
-    places.keywordSearch('써브웨이', callback, {
-      location: new kakao.maps.LatLng(position.y, position.x),
-      radius : 1500,
     });
   };
 
@@ -146,18 +155,20 @@ const Order = () => {
   // 주문가능매장 Input
 
   // 버튼
+  const navigate = useNavigate();
   const [ selectedBtnId, setSelectedBtnId ] = useState(0); // 선택한 버튼 index#
   const [ isBtnSelected, setIsBtnSelected ] = useState(false); // 버튼 클릭 여부
   const handleBtnSelected = useCallback((id) => 
     () => {
       setSelectedBtnId(id); // 선택한 버튼의 인덱스 저장
       setIsBtnSelected((prev) => !prev); // 버튼 스위치
+      navigate('/menu'); // ✅ 수정 : 메뉴선택 페이지로 이동, 이때 setMarkerLocation 내부에서 설정한 써브웨이매장 정보를 같이 넘겨주도록 로직구현 필요
     }
   );
 
+
   return (
     <>
-    
       <OrderFormWrapper>
         {/* 배송지 및 주소검색 input */}
         <ContentWrapper>
@@ -186,12 +197,13 @@ const Order = () => {
                 <Map id="map"></Map>
                 <ul className="placesList">
                   {
-                    subwayPlaces.map((place, index) => (
-                      <li key={index}>
+                    subwayPlaces.map((place) => (
+                      <li key={place.id}>
                         <InputAddress
                           type="text" 
                           name="placelists" 
                           value={place.name} 
+                          onClick={setMarkerLocation(place)}
                           readOnly 
                         />
                         <span>{place.distance}km</span>

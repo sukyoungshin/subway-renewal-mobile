@@ -1,10 +1,11 @@
 import React from 'react';
+import { MainWrapper } from '../common/Styled';
 
 const NoMatch = () => {
   return (
-    <div style={{ width: '100%', minHeight : 'calc(100% - 136px)', textAlign : 'center'}}>
+    <MainWrapper style={{ textAlign : 'center'}}>
       ⚠ No match ⚠
-    </div>
+    </MainWrapper>
   );
 };
 
