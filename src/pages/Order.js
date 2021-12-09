@@ -1,6 +1,6 @@
 /* global kakao */
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, BtnContainer, Button, InputAddress } from '../common/Styled';
+import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, BtnContainer, DeliveryButton, InputAddress } from '../common/Styled';
 
 const ButtonOptions = [
   {
@@ -216,14 +216,14 @@ const Order = () => {
           {
             ButtonOptions.map((option) => (
               <BtnContainer key={option.id}>
-                <Button 
+                <DeliveryButton 
                   type="button" 
                   id={option.id}
                   isBtnSelected={option.id === selectedBtnId} 
                   onClick={handleBtnSelected(option.id)} 
                 >
                   {option.text}
-                </Button>
+                </DeliveryButton>
               </BtnContainer>
             ))
           }

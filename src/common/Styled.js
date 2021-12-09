@@ -241,6 +241,15 @@ export const Button = styled.button`
   border: 1px solid var(--color-green);
   border-radius: 8px;
 
+  color: ${(props) => props.color ? `var(--color-${props.color})` : 'var(--color-white)'};
+  font-size: var(--font-size-medium);
+  font-weight: ${(props) => props.bold && 'bold'};
+  background-color: ${(props) => props.bgColor? `var(--color-${props.bgColor})` : 'transparent' };
+  border: ${(props) => props.bgColor? null : '1px solid var(--color-green)}'};
+  border-radius: 8px;
+`;
+
+export const DeliveryButton = styled(Button)`
   color: ${(props) => props.isBtnSelected ? 'var(--color-white)' : 'var(--color-green)'};
   font-weight: ${(props) => props.isBtnSelected ? 'bold' : 'normal'};
   background-color: ${(props) => props.isBtnSelected ? 'var(--color-green)' : 'transparent'};
