@@ -11,7 +11,6 @@ const Carousel = () => {
   const handleClick = useCallback((id) => 
   // 커링 : 함수를 실행해서 새로만든 함수를 리턴
     () => {
-      console.log(id);
       setSelectedId(id); // 페이지네이션 인덱스 설정
       setIsSelected((prev) => !prev); // 페이지네이션 스위치
     }, []); 
@@ -24,7 +23,7 @@ const Carousel = () => {
         {AdContents.map((content) => (
           <AdPaginationList
             key={content.id}
-            isSelected={content.id === selectedId}// isSelected의 값이랑 내 값이랑 같은 것만 선택
+            isSelected={content.id === selectedId}
             onClick={handleClick(content.id)}
           ></AdPaginationList>
         ))}
@@ -34,7 +33,7 @@ const Carousel = () => {
       {AdContents.map((content) => (
         <AdWrapper 
           key={content.id}
-          isSelected={content.id === selectedId} // isSelected의 값이랑 내 값이랑 같은 것만 선택
+          isSelected={content.id === selectedId} 
           onClick={handleClick(content.id)}
         >
           <AdTitleWrapper>

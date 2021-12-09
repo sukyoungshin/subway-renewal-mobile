@@ -17,12 +17,19 @@ export const GlobalStyle = createGlobalStyle`
   ul {
     list-style-type: none;
   }
+  a, button, input {
+    cursor: pointer;
+  }
   a {
     display: inline-block;
     text-decoration: none;
     color: inherit;
     font-size: 0;
     text-align: center;
+  }
+  input, button {
+    border: none;
+    outline: none;
   }
   html,
   body {
@@ -195,9 +202,6 @@ export const InputContainer = styled(ItemBlock)`
   height: 48px;
 
   input[type="text"] {
-    border: none;
-    outline: none;
-
     padding: 12px;
     width: 100%;
     height: 100%;
@@ -226,28 +230,23 @@ export const BtnContainer = styled(ItemBlock)`
   height: 48px;
 `;
 export const Button = styled.button`
-  border: none;
-  outline: none;
-
   width: 100%;
   height: 100%; 
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 
-  color: ${(props) => props.color ? `var(--color-${props.color})` : 'var(--color-white)'};
   font-size: var(--font-size-medium);
-  font-weight: ${(props) => props.bold && 'bold'};
-  background-color: ${(props) => props.bgColor? `var(--color-${props.bgColor})` : 'transparent' };
-  border: ${(props) => props.bgColor? null : '1px solid var(--color-green)}'};
+  border: 1px solid var(--color-green);
   border-radius: 8px;
+
+  color: ${(props) => props.isBtnSelected ? 'var(--color-white)' : 'var(--color-green)'};
+  font-weight: ${(props) => props.isBtnSelected ? 'bold' : 'normal'};
+  background-color: ${(props) => props.isBtnSelected ? 'var(--color-green)' : 'transparent'};
 `;
+
 export const LogoutButton = styled(Button)`
-  outline: none;
-  border: none;
-  
   padding: 4px;
   width: 100%;
   height: 100%;
@@ -319,8 +318,6 @@ export const HeaderWrapper = styled.header`
     height: 56px;
   };
   ul.header-nav-wrapper button[type="button"] {
-    border: none;
-    outline: none;
     background-color: transparent;
     font-size: 0;
   };
@@ -493,8 +490,6 @@ export const MainArticle = styled.article`
     font-size: var(--font-size-medium);
   }
   button[type="button"] {
-    border: none;
-    outline: none;
     background-color: transparent;
     font-size: 0;
 
@@ -572,9 +567,6 @@ export const AdEventWrapper = styled.div`
 `;
 export const AdButtonWrapper = styled.div`
   button[type="button"] {
-    border: none;
-    outline: none;
-
     padding: 8px 16px;
     color: var(--color-white);
     border-radius: 8px;
@@ -645,8 +637,6 @@ export const MapViewer = styled.div`
 `;
 
 export const InputAddress = styled.input`
-  outline:none;
-
   padding-left: 22px;
   width: 100%; 
   height: 40px;
@@ -656,18 +646,27 @@ export const InputAddress = styled.input`
   border: 1px solid var(--color-white);
   border-radius: 8px;
 
-  font-size: 12px;
   color: var(--color-black);
-  cursor: pointer;
+  font-size: var(--font-size-smaller);
 
   & + span {
     display:inline-block;
-    font-size: 12px;
+    
     color: var(--main-text-color);
+    font-size: var(--font-size-smaller);
+
     position:absolute; 
     top: 50%; 
     left: 80%;
     transform: translateY(-50%);
+  }
+
+  &:active,
+  &:focus,
+  &:active + span,
+  &:focus + span {
+    color: var(--color-white);
+    background-color: var(--color-green);
   }
 `;
 
