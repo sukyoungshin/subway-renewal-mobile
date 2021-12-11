@@ -716,10 +716,12 @@ export const ButtonWrapper = styled.div`
 
 // Footer
 export const MainFooter = styled.footer`
+    padding: 10px;
     width: 100vw;
     height: 80px;
-    font-size: var(--font-size-smaller);
-    color: var(--color-white);
+
+    color: var(--color-grey);
+    font-size: var(--font-size-smallest);
     background-color: var(--color-black);
 
     display: flex;
@@ -728,6 +730,6 @@ export const MainFooter = styled.footer`
     align-items: center;
 
   address {
-    max-width: 270px;
+    width: 100%;
   }
 `;

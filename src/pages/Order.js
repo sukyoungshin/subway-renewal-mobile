@@ -114,8 +114,7 @@ const Order = () => {
         <p>연락처 : ${subwaylists[i].phone}</p>
         <p>영업시간 : 매장문의</p>
         <p>거리 : ${subwaylists[i].distance}m</p>
-        <p> </p>
-      `, // 인포윈도우 표시될 이름
+      `, // 인포윈도우에 나타낼 정보
     });
   };
 
