@@ -147,7 +147,7 @@ const Order = () => {
     const options = {
       center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488), // 지도의 중심좌표
       draggable: true, // 지도 이동 및 확대/축소 가능
-      level: 3 // 지도의 확대레벨
+      level: 5 // 지도의 확대레벨
     };
     // 지도 생성 및 상태관리
     const map = new kakao.maps.Map(container, options);
