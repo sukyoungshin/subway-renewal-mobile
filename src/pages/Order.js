@@ -2,17 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, BtnContainer, DeliveryButton, InputAddress } from '../common/Styled';
-
-const ButtonOptions = [
-  {
-    id: 0,
-    text: '배달'
-  },
-  {
-    id: 1,
-    text: '픽업'
-  }
-];
+import { ButtonOptions } from '../common/Datas'; 
 
 const Order = () => {
   const [ addrValue, setAddrValue ] = useState(''); // 고객의 주소지
@@ -78,6 +68,8 @@ const Order = () => {
           placeNamesArr.push({
             id: i,
             name : result[i].place_name,
+            address : result[i].road_address_name, 
+            phone : result[i].phone, 
           });
           setMarker(markerPosition); // 마커를 생성하고 지도에 표시
           setInfoWindow(markerPosition, placeNamesArr, i); // 인포윈도우를 생성하고 지도에 표시
@@ -100,7 +92,12 @@ const Order = () => {
 
   // Marker를 생성하고 지도에 표시하는 함수
   const setMarker = (LatLng) => {
-    const marker = new kakao.maps.Marker({ position: LatLng }); // 마커 생성
+    // 마커 생성
+    const marker = new kakao.maps.Marker({ 
+      position: LatLng,
+      clickable: true, // 클릭 가능한 마커
+
+    }); 
     marker.setMap(kakaoMap.current); // 지도에 마커를 올림
     marker.setPosition(LatLng);// 마커를 결과값으로 받은 위치로 옮김
   };
@@ -111,8 +108,13 @@ const Order = () => {
     new kakao.maps.InfoWindow({
       map: kakaoMap.current, // 인포윈도우가 표시될 지도
       position: markerPosition, //인포윈도우 표시 위치
-      content: subwaylists[i].name, // 인포윈도우 표시될 이름
-      removable : true, // 인포윈도우를 닫을 수 있는 x버튼이 표시
+      content: `
+        <p><strong>${subwaylists[i].name}</strong></p>
+        <p>${subwaylists[i].address}</p>
+        <p>연락처 : ${subwaylists[i].phone}</p>
+        <p>영업시간 : 매장문의</p>
+      `, // 인포윈도우 표시될 이름
+      removable : false, // 인포윈도우를 닫을 수 있는 x버튼이 표시
     });
   };
 

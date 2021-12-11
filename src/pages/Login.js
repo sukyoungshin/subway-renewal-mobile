@@ -11,8 +11,7 @@ import GoogleLogin from '../components/GoogleLogin';
 const Login = ({ getLoggedIn }) => {
 
   const navigate = useNavigate();
-  const goBack = () => {navigate(-1)}; // 뒤로가기
-
+  const goBack = () => navigate(-1); // 뒤로가기
 
   return (
     <ModalWrapper>

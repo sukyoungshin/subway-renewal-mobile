@@ -8,12 +8,9 @@ const Menu = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.state === null) {
-      window.alert('주문하실 매장을 선택하세요');
-      return navigate(-1);
-    } // 이전페이지에서 써브웨이 매장 정보가 넘어오지 않았으면 이전 페이지로 강제이동
+    if (location.state === null) return navigate(-1); // 이전페이지에서 써브웨이 매장 정보가 넘어오지 않았으면 이전 페이지로 강제이동
     
-  }, []);
+  }, [location.state, navigate]);
 
   return (
     <MainWrapper>

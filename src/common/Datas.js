@@ -73,3 +73,15 @@ export const AdContents = [
   },
 ];
 
+// Order페이지 버튼옵션
+export const ButtonOptions = [
+  {
+    id: 0,
+    text: '배달'
+  },
+  {
+    id: 1,
+    text: '픽업'
+  }
+];
+

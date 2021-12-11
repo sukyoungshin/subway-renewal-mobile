@@ -13,12 +13,10 @@ import Order from './pages/Order';
 import Menu from './pages/Menu';
 import PostSearch from './pages/PostSearch';
 import NoMatch from './pages/NoMatch';
-
 // STYLE
 import { GlobalStyle } from './common/Styled';
 
 const App = () => {
-
   // Splash Screen
   const [ isLoading, setIsLoading ] = useState(true);
   useEffect(() => {
@@ -28,30 +26,28 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <BrowserRouter>
-        <Routes>
-        { 
-          isLoading
-          ? <Route path="/" element={<SplashScreen />} />
-          : (
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Main />} />
-              <Route path="main" element={<Main />} />
-              <Route path="login" element={<Login />} />
-              <Route path="order" element={<Order />} />
-              <Route path="menu" element={<Menu />} />
-              <Route path="search" element={<PostSearch />} />
-              <Route path="signin" element={<Signin />} />
-              <Route path="signup" element={<Signup />} />
-              <Route path="*" element={<NoMatch />} />
-            </Route>          
-            )
-        }
-        </Routes>
-      </BrowserRouter>
-    </>
+      <Routes>
+      { 
+        isLoading
+        ? <Route path="/" element={<SplashScreen />} />
+        : (
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Main />} />
+            <Route path="main" element={<Main />} />
+            <Route path="login" element={<Login />} />
+            <Route path="order" element={<Order />} />
+            <Route path="menu" element={<Menu />} />
+            <Route path="search" element={<PostSearch />} />
+            <Route path="signin" element={<Signin />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="*" element={<NoMatch />} />
+          </Route>          
+          )
+      }
+      </Routes>
+    </BrowserRouter>
   );
 };
 
