@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { LoginButton, LogoutButton } from '../common/Styled';
+import { GoogleLoginButton, GoogleLogoutButton } from '../common/Styled';
 import { RiGoogleLine } from "react-icons/ri";
 import { useNavigate } from 'react-router';
 
@@ -49,8 +49,8 @@ const GoogleLogin = () => {
     <>
     {
       isLoggedIn
-      ? <LogoutButton type="button" onClick={signOut}><RiGoogleLine /> 구글logout</LogoutButton>
-      : <LoginButton className="g-signin2" data-height="48" data-onsuccess="onSignIn"/>
+      ? <GoogleLogoutButton type="button" onClick={signOut}><RiGoogleLine /> 구글logout</GoogleLogoutButton>
+      : <GoogleLoginButton className="g-signin2" data-height="48" data-onsuccess="onSignIn"/>
     }
     </>
   );

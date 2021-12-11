@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 /**************
   GLOBAL-STYLE
@@ -237,9 +237,6 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  font-size: var(--font-size-medium);
-  border-radius: 8px;
-
   color: ${(props) => props.color ? `var(--color-${props.color})` : 'var(--color-white)'};
   font-size: var(--font-size-medium);
   font-weight: ${(props) => props.bold && 'bold'};
@@ -248,13 +245,19 @@ export const Button = styled.button`
 `;
 
 export const DeliveryButton = styled(Button)`
-  color: ${(props) => props.isBtnSelected ? 'var(--color-white)' : 'var(--color-green)'};
-  font-weight: ${(props) => props.isBtnSelected ? 'bold' : 'normal'};
-  background-color: ${(props) => props.isBtnSelected ? 'var(--color-green)' : 'transparent'};
+  color: var(--color-green);
+  font-weight: var(--normal);
+  background-color: var(--transparent);
   border: 1px solid var(--color-green);
+  
+  ${props => props.isBtnSelected && css`
+    color: ${(props) => props.isBtnSelected ? 'var(--color-white)' : 'var(--color-green)'};
+    font-weight: ${(props) => props.isBtnSelected ? 'bold' : 'normal'};
+    background-color: ${(props) => props.isBtnSelected ? 'var(--color-green)' : 'transparent'};
+  `};
 `;
 
-export const LogoutButton = styled(Button)`
+export const GoogleLogoutButton = styled(Button)`
   padding: 4px;
   width: 100%;
   height: 100%;
@@ -262,11 +265,13 @@ export const LogoutButton = styled(Button)`
   font-size: var(--font-size-medium);
   background-color: var(--color-google);
 
-  &:active {
+  &:active,
+  &:focus,
+  &:hover {
     color: var(--color-black);
   }
 `;
-export const LoginButton = styled.div`
+export const GoogleLoginButton = styled.div`
   border-radius: 8px;
 
   /* css override - 구글기본스타일을 override하기 위해 어쩔 수 없이 important 사용*/
@@ -276,7 +281,7 @@ export const LoginButton = styled.div`
     box-shadow: none !important;
     color: var(--color-white) !important;
     background-color: var(--color-google) !important;
-
+    
     .abcRioButtonContentWrapper {
       display: inline-flex !important;
       flex-direction: row !important;
@@ -289,7 +294,6 @@ export const LoginButton = styled.div`
       }
     }
     .abcRioButtonIcon {
-
       padding: 0 !important;
 
       div {
@@ -331,13 +335,19 @@ export const HeaderWrapper = styled.header`
   };
   a.cart-btn {
     position: relative;
-    color: var(--color-green);
-    font-size: var(--font-size-smallest);
   };
   a.cart-btn span {
+    padding: 2px 6px;
+    color: var(--color-white);
+    font-size: var(--font-size-smallest);
+    font-weight: 600;
+    background-color: var(--color-yellow);
+    border-radius: 50%;
+
     position: absolute;
-    top: -0.1rem;
-    right: 0.1rem;
+    top: 50%;
+    left: 0;
+    transform: translateX(-30%);
   };
 `;
 
@@ -541,9 +551,17 @@ export const AdPaginationList = styled.li`
   width: 12px;
   height: 12px;
   font-size: var(--font-size-medium);
+
+  background-color: transparent;
+  border: 1px solid var(--color-white);
   border-radius: 12px;
-  background-color: ${(props) => props.isSelected ? `var(--color-white)` : null};
-  border: ${(props) => props.isSelected ? null : `1px solid var(--color-white)`};
+  transition: all 0.4s;
+
+  ${(props) => props.isSelected && css`
+    background-color: var(--color-white);
+    border: none;
+  `}
+
 `;
 export const AdWrapper = styled(CarouselWrapper)`
   padding: 16px;
@@ -686,7 +704,6 @@ export const ContentWrapper = styled.div`
 `;
 export const Map = styled.div`
   height: 100%;
-  /* display: ${(props) => props.hidden && 'hidden' }; */
 `;
 export const ButtonWrapper = styled.div`
   display: inline-flex;
@@ -699,7 +716,7 @@ export const ButtonWrapper = styled.div`
 export const MainFooter = styled.footer`
     width: 100vw;
     height: 80px;
-    font-size: var(--font-size-smallest);
+    font-size: var(--font-size-smaller);
     color: var(--color-white);
     background-color: var(--color-black);
 
@@ -709,6 +726,6 @@ export const MainFooter = styled.footer`
     align-items: center;
 
   address {
-    width: 270px;
+    max-width: 270px;
   }
 `;

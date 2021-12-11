@@ -42,7 +42,7 @@ const Login = ({ getLoggedIn }) => {
         <p>아직 회원이 아니시라면, <Link to="/singup">회원가입</Link></p>
       </ItemBlock>
       <ItemBlock className="signin-title">
-        <p>간편로그인</p>
+        <p>간편 SNS 로그인</p>
       </ItemBlock>
       <ItemBlock className="btn-wrapper">
         {/* 구글로그인 */}
