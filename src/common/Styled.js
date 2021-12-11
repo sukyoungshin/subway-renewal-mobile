@@ -395,6 +395,9 @@ export const SideHeader = styled.header`
       font-size: var(--font-size-largest);
     }
   }
+  svg {
+    cursor: pointer; /* HiOutlineChevronLeft 때문에 추가. 나중에 수정 */
+  }
 `;
 export const SideNav = styled.nav`
   flex: 1;
@@ -408,17 +411,22 @@ export const SideNav = styled.nav`
     grid-gap: 16px;
     gap: 16px;
   }
+
+  li {
+    background-color: transparent;
+    transition: all 0.4s;
+
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: rgba(0,0,0,0.1); /* modify later */
+    }
+  }
+
   a:link,
   a:visited {
     color: var(--color-black);
     font-size: var( --font-size-medium);
-    transition: color 0.4s;
-  }
-  a:active,
-  a:focus {
-    color: var(--color-green);    
-    font-size: var( --font-size-medium);
-    transition: color 0.4s;
   }
 `;
 export const SideMain = styled.main`
@@ -557,16 +565,15 @@ export const AdPaginationList = styled.li`
   height: 12px;
   font-size: var(--font-size-medium);
 
-  background-color: transparent;
-  border: 1px solid var(--color-white);
   border-radius: 12px;
-  transition: all 0.4s;
+  border: 1px solid var(--color-white);
+  background-color: transparent;
+  transition: background-color 0.4s;
 
   ${(props) => props.isSelected && css`
     background-color: var(--color-white);
     border: none;
   `}
-
 `;
 export const AdWrapper = styled(CarouselWrapper)`
   padding: 16px;
@@ -599,13 +606,20 @@ export const AdEventWrapper = styled.div`
 export const AdButtonWrapper = styled.div`
   button[type="button"] {
     padding: 8px 16px;
-    color: var(--color-white);
     border-radius: 8px;
     background-color: transparent;
     border: 1px solid var(--color-white);
-
+    
+    color: var(--color-white);
     font-size: var(--font-size-smallest);
-    transition: all 0.4s;
+
+    transition: background-color 0.4s;
+
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: var(--color-transparent);
+    }
   }
 `;
 
@@ -690,6 +704,10 @@ export const InputAddress = styled.input`
     top: 50%; 
     right: 5%;
     transform: translateY(-50%);
+
+    a {
+      font-size: var(--font-size-smaller);
+    }
   }
 
   &:active,
@@ -719,7 +737,7 @@ export const ButtonWrapper = styled.div`
 
 // Footer
 export const MainFooter = styled.footer`
-    padding: 10px;
+    padding: 0 16px;
     width: 100vw;
     height: 80px;
 
@@ -734,5 +752,6 @@ export const MainFooter = styled.footer`
 
   address {
     width: 100%;
+    word-break: break-all;
   }
 `;

@@ -199,7 +199,13 @@ const Order = () => {
                           onClick={setMarkerLocation(place)}
                           readOnly 
                         />
-                        <span>선택</span>
+                        <span>
+                          <a href={place.url} title={`${place.name} 웹페이지로 이동`} target="_blank" rel="noreferrer">
+                          웹페이지
+                          </a>
+                          {' '} / {' '}
+                          주문선택
+                        </span>
                       </li>
                     ))
                   }
@@ -224,7 +230,7 @@ const Order = () => {
               isBtnSelected={isBtnSelected}
               onClick={HandleOrderStart} 
             >
-              주문시작하기
+              주문하기
             </DeliveryButton>
           </BtnContainer>
         </ButtonWrapper>
