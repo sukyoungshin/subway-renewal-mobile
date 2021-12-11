@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, BtnContainer, DeliveryButton, InputAddress } from '../common/Styled';
-import { ButtonOptions } from '../common/Datas'; 
 
 const Order = () => {
   const [ addrValue, setAddrValue ] = useState(''); // 고객의 주소지
@@ -10,6 +9,13 @@ const Order = () => {
   const kakaoMap = useRef(); // KakaoMap 상태관리
   const [ subwayPlaces, setSubwayPlaces ] = useState([]); // 써브웨이 리스트 및 거리를 저장할 배열
   const [ isSelectedSubway, setIsSelectedSubway ] = useState(null);// 주문을 위해 선택된 써브웨이 매장정보
+
+  // 버튼
+  const navigate = useNavigate();
+  const [ isBtnSelected, setIsBtnSelected ] = useState(false); // 주문하기버튼 활성화 여부
+  const HandleOrderStart = useCallback(() => {
+    navigate('/menu',  { state: isSelectedSubway })
+  }); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
 
   // postMessage
   const HandlePopUp = () => {
@@ -122,6 +128,7 @@ const Order = () => {
   const setMarkerLocation = useCallback((currentPlace) => 
     () => {
       setIsSelectedSubway(currentPlace); // 선택된 써브웨이매장 정보를 저장
+      setIsBtnSelected(true); // 주문하기버튼 활성화
     }
   );
 
@@ -152,18 +159,6 @@ const Order = () => {
     const map = new kakao.maps.Map(container, options);
     kakaoMap.current = map;
   }, []);
-
-  // 버튼
-  const navigate = useNavigate();
-  const [ selectedBtnId, setSelectedBtnId ] = useState(0); // 선택한 버튼 index#
-  const [ isBtnSelected, setIsBtnSelected ] = useState(false); // 버튼 클릭 여부
-  const handleBtnSelected = useCallback((id) => 
-    () => {
-      setSelectedBtnId(id); // 선택한 버튼의 인덱스 저장
-      setIsBtnSelected((prev) => !prev); // 버튼 스위치
-      navigate('/menu',  { state: isSelectedSubway }); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
-    }
-  );
 
   return (
     <>
@@ -212,7 +207,7 @@ const Order = () => {
               </MapViewer>
               )
             : (
-              <MapViewer className="addr_wrapper" padding>
+              <MapViewer padding>
                 {/* 높이값을 없애서 화면에서 없앰 */}
                 <Map id="map" hidden></Map>
                 <p>주문 가능한 주변 매장을 알려드립니다.</p>
@@ -223,20 +218,15 @@ const Order = () => {
 
         {/* 버튼 */}
         <ButtonWrapper>
-          {
-            ButtonOptions.map((option) => (
-              <BtnContainer key={option.id}>
-                <DeliveryButton 
-                  type="button" 
-                  id={option.id}
-                  isBtnSelected={option.id === selectedBtnId} 
-                  onClick={handleBtnSelected(option.id)} 
-                >
-                  {option.text}
-                </DeliveryButton>
-              </BtnContainer>
-            ))
-          }
+          <BtnContainer>
+            <DeliveryButton 
+              type="button" 
+              isBtnSelected={isBtnSelected}
+              onClick={HandleOrderStart} 
+            >
+              주문시작하기
+            </DeliveryButton>
+          </BtnContainer>
         </ButtonWrapper>
       </OrderFormWrapper>
     </>

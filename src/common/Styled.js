@@ -247,15 +247,18 @@ export const Button = styled.button`
 `;
 
 export const DeliveryButton = styled(Button)`
-  color: var(--color-green);
-  font-weight: var(--normal);
+  color: var(--color-grey);
+  font-weight: normal;
   background-color: var(--transparent);
-  border: 1px solid var(--color-green);
+  border: 1px solid var(--color-light-grey);
+  
+  transition: all 0.3s;
   
   ${props => props.isBtnSelected && css`
-    color: ${(props) => props.isBtnSelected ? 'var(--color-white)' : 'var(--color-green)'};
-    font-weight: ${(props) => props.isBtnSelected ? 'bold' : 'normal'};
-    background-color: ${(props) => props.isBtnSelected ? 'var(--color-green)' : 'transparent'};
+    color: var(--color-white);
+    font-weight: bold;
+    border: 1px solid var(--color-green);
+    background-color: var(--color-green);
   `};
 `;
 
@@ -631,7 +634,7 @@ export const MapViewer = styled.div`
   height: calc(100%);
 
   border-radius: 8px;
-  background-color: var(--color-light-grey);
+  border: 1px solid var(--color-light-grey);
 
   position: relative;
 
