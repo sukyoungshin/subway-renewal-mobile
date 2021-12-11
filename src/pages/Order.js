@@ -68,6 +68,7 @@ const Order = () => {
           placeNamesArr.push({
             id: i,
             name : result[i].place_name,
+            distance : result[i].distance,
             address : result[i].road_address_name, 
             phone : result[i].phone, 
           });
@@ -96,7 +97,6 @@ const Order = () => {
     const marker = new kakao.maps.Marker({ 
       position: LatLng,
       clickable: true, // 클릭 가능한 마커
-
     }); 
     marker.setMap(kakaoMap.current); // 지도에 마커를 올림
     marker.setPosition(LatLng);// 마커를 결과값으로 받은 위치로 옮김
@@ -113,8 +113,8 @@ const Order = () => {
         <p>${subwaylists[i].address}</p>
         <p>연락처 : ${subwaylists[i].phone}</p>
         <p>영업시간 : 매장문의</p>
+        <p>거리 : ${subwaylists[i].distance}m</p>
       `, // 인포윈도우 표시될 이름
-      removable : false, // 인포윈도우를 닫을 수 있는 x버튼이 표시
     });
   };
 
@@ -161,10 +161,9 @@ const Order = () => {
     () => {
       setSelectedBtnId(id); // 선택한 버튼의 인덱스 저장
       setIsBtnSelected((prev) => !prev); // 버튼 스위치
-      navigate('/menu',  { state: isSelectedSubway }); // 선택된 써브웨이매장 정보를 다음페이지(/menu)로 전달한다.
+      navigate('/menu',  { state: isSelectedSubway }); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
     }
   );
-
 
   return (
     <>
@@ -205,7 +204,7 @@ const Order = () => {
                           onClick={setMarkerLocation(place)}
                           readOnly 
                         />
-                        <span>{place.distance}km</span>
+                        <span>선택</span>
                       </li>
                     ))
                   }

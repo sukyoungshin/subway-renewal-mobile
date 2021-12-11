@@ -201,6 +201,8 @@ export const LogoContainer = styled(ItemBlock)`
 export const InputContainer = styled(ItemBlock)`
   height: 48px;
 
+  position: relative;
+
   input[type="text"] {
     padding: 12px;
     width: 100%;
@@ -681,9 +683,9 @@ export const InputAddress = styled.input`
     color: var(--main-text-color);
     font-size: var(--font-size-smaller);
 
-    position:absolute; 
+    position: absolute; 
     top: 50%; 
-    left: 80%;
+    right: 5%;
     transform: translateY(-50%);
   }
 
