@@ -246,7 +246,9 @@ export const Button = styled.button`
   border-radius: 8px;
 `;
 
-export const DeliveryButton = styled(Button)`
+export const CompleteButton = styled(Button)`
+  height: 48px;
+
   color: var(--color-grey);
   font-weight: normal;
   background-color: var(--transparent);
@@ -261,6 +263,8 @@ export const DeliveryButton = styled(Button)`
     background-color: var(--color-green);
   `};
 `;
+
+
 
 export const GoogleLogoutButton = styled(Button)`
   padding: 4px;
@@ -550,6 +554,9 @@ export const MapWrapper = styled.main`
     color: var(--color-black);
     font-size: var(--font-size-medium);
   }
+  .address-wrapper {
+    flex: 1;
+  }
 `;
 export const MapSection = styled.section`
   width: 100%;
@@ -769,6 +776,14 @@ export const Map = styled.div`
 export const ButtonWrapper = styled.div`
   width: 100%;
   height: 48px;
+`;
+export const ButtonsWrapper = styled.div`
+  width: 100%;
+
+  display: inline-flex;
+  flex-direction: column;
+  grid-gap: 16px;
+  gap: 16px;
 `;
 
 // Footer

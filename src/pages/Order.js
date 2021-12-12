@@ -1,7 +1,7 @@
 /* global kakao */
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
-import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, BtnContainer, DeliveryButton, InputAddress } from '../common/Styled';
+import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, CompleteButton, InputAddress } from '../common/Styled';
 
 const Order = () => {
   const [ addrValue, setAddrValue ] = useState(''); // 고객의 주소지
@@ -225,13 +225,13 @@ const Order = () => {
 
         {/* 버튼 */}
         <ButtonWrapper>
-          <DeliveryButton 
+          <CompleteButton 
             type="button" 
             isBtnSelected={isBtnSelected}
             onClick={HandleOrderStart} 
           >
             주문하기
-          </DeliveryButton>
+          </CompleteButton>
         </ButtonWrapper>
       </OrderFormWrapper>
     </>
