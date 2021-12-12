@@ -38,7 +38,10 @@ const Login = ({ getLoggedIn }) => {
         >로그인</Button>
       </BtnContainer>
       <ItemBlock className="signup-wrapper">
-        <p>아직 회원이 아니시라면, <Link to="/singup">회원가입</Link></p>
+        <p>
+          아직 회원이 아니시라면, 
+          <Link to="/singup">회원가입</Link>
+        </p>
       </ItemBlock>
       <ItemBlock className="signin-title">
         <p>간편 SNS 로그인</p>

@@ -46,6 +46,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     --color-yellow: #FFCB08;
     --color-green: #009743;
+    --color-green-dark: #007936;
     --color-red: #FF0000;
     --color-white: #FFFFFF;
     --color-grey: #8C8C8C;
@@ -82,7 +83,7 @@ export const SplashWrapper = styled.main`
   padding: 8px 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-green);
+  background-color: var(--color-green-dark);
 
   display: inline-flex;
   flex-direction: column;
@@ -133,18 +134,6 @@ export const ItemBlock = styled.div`
   height: fit-content;
   text-align: center;
 
-  a {
-    color: var(--color-grey);
-    font-size: var(--font-size-small);
-    border-bottom: 1px solid var(--color-white);
-    transition: all 0.4s;
-
-    &:hover {
-      border-bottom: 1px solid var(--color-green);
-      color: var(--color-green);
-    }
-  }
-
   &.btn-wrapper {
     display: inline-flex;
     flex-direction: column;
@@ -158,10 +147,20 @@ export const ItemBlock = styled.div`
   }
   &.signup-wrapper {
     padding: 8px;
-    height: 30px;
+    height: auto;
+
+    p {
+      font-weight: 300;
+    }
+    a {
+      font-weight: 600;
+      color: var(--color-grey);
+      font-size: var(--font-size-small);
+      border-bottom: 1px solid var(--color-white);
+    }
   }
   &.signin-title {
-    height: 40px;
+    height: auto;
 
     /* line그리기 */
     p {
@@ -170,7 +169,6 @@ export const ItemBlock = styled.div`
       align-items: center;
       font-size: inherit;
       color: var(--color-grey);
-      margin: 8px 0;
     }
     p::before {
       content: '';
@@ -189,11 +187,11 @@ export const ItemBlock = styled.div`
   }
 `;
 export const LogoContainer = styled(ItemBlock)`
-  height: 150px;
+  height: 104px;
 
   img {
     display: inline-block;
-    margin-top: 70px;
+    margin-top: 40px;
     width: 180px;
     height: 48px;
   }
@@ -219,7 +217,7 @@ export const InputContainer = styled(ItemBlock)`
     font-size: var(--font-size-smaller);
   }
 `;
-export const CloseBtnContainer = styled.div`
+export const CloseBtnContainer = styled.span`
   width: 24px;
   height: 24px;
   font-size: var(--font-size-largest);
@@ -238,6 +236,8 @@ export const Button = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  grid-gap: 8px; 
+  gap: 8px;
 
   color: ${(props) => props.color ? `var(--color-${props.color})` : 'var(--color-white)'};
   font-size: var(--font-size-medium);
@@ -298,6 +298,7 @@ export const GoogleLoginButton = styled.div`
       align-items: center !important;
       
       .abcRioButtonContents{
+        margin-left: 8px !important;
         line-height: 0 !important;
         font-size: var(--font-size-medium) !important;
       }
