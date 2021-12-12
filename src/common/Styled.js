@@ -534,6 +534,44 @@ export const MainArticle = styled.article`
   }
 `;
 
+// KakaoMap
+export const MapWrapper = styled.main`
+  padding: 16px;
+  width: 100%;
+  min-height: calc(100% - 136px);
+
+  display: inline-flex;
+  flex-direction: column;
+  grid-gap: 16px;
+  gap: 16px;
+
+  h1 {
+    font-weight: bold;
+    color: var(--color-black);
+    font-size: var(--font-size-medium);
+  }
+`;
+export const MapSection = styled.section`
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  grid-gap: 8px;
+  gap: 8px;
+
+  h2  {
+    color: var(--color-grey);
+    font-size: var(--font-size-smaller);
+  }
+
+  input[type="text"] {
+    padding: 12px;
+    width: 100%;
+    font-size: var(--font-size-smaller);
+    border: 1px solid var(--color-light-grey);
+    border-radius: 8px;
+  }
+`;
+
 // Carousel
 export const CarouselWrapper = styled.div`
   width: 100vw;
@@ -729,10 +767,8 @@ export const Map = styled.div`
   height: 100%;
 `;
 export const ButtonWrapper = styled.div`
-  display: inline-flex;
-  justify-content: space-between;
-  grid-gap: 16px;
-  gap: 16px;
+  width: 100%;
+  height: 48px;
 `;
 
 // Footer

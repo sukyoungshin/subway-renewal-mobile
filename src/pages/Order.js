@@ -14,12 +14,13 @@ const Order = () => {
   const navigate = useNavigate();
   const [ isBtnSelected, setIsBtnSelected ] = useState(false); // 주문하기버튼 활성화 여부
   const HandleOrderStart = useCallback(() => {
-    navigate('/menu',  { state: isSelectedSubway })
+    if (!isBtnSelected) return window.alert('배달받으실 주소를 입력하세요.');
+    navigate('/menu',  { state: isSelectedSubway });
   }); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
 
   // postMessage
   const HandlePopUp = () => {
-    window.open('search', 'addressSearch', "width=380 height=580 left=726 top=306").postMessage('message');
+    window.open('search', 'addressSearch', "width=380 height=500 left=726 top=306").postMessage('message');
   };
 
   // Dispatch Event
@@ -224,15 +225,13 @@ const Order = () => {
 
         {/* 버튼 */}
         <ButtonWrapper>
-          <BtnContainer>
-            <DeliveryButton 
-              type="button" 
-              isBtnSelected={isBtnSelected}
-              onClick={HandleOrderStart} 
-            >
-              주문하기
-            </DeliveryButton>
-          </BtnContainer>
+          <DeliveryButton 
+            type="button" 
+            isBtnSelected={isBtnSelected}
+            onClick={HandleOrderStart} 
+          >
+            주문하기
+          </DeliveryButton>
         </ButtonWrapper>
       </OrderFormWrapper>
     </>
