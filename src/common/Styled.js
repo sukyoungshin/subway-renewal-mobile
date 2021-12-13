@@ -42,7 +42,8 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
-  // COLOR & FONT-SIZE
+  // CSS VARIABLES
+  // COLOR, FONT-SIZE, FONT-WEIGHT
   html {
     --color-yellow: #FFCB08;
     --color-green: #009743;
@@ -57,12 +58,16 @@ export const GlobalStyle = createGlobalStyle`
     --color-facebook: #3C5997;
     --color-google: rgb(66, 133, 244);
 
-    --font-size-largest: 24px;
-    --font-size-larger: 20px;
-    --font-size-large: 18px;
-    --font-size-medium: 14px;
-    --font-size-smaller: 12px;
-    --font-size-smallest: 10px;
+    --font-size-24: 24px;
+    --font-size-20: 20px;
+    --font-size-18: 18px;
+    --font-size-16: 16px;
+    --font-size-14: 14px;
+    --font-size-12: 12px;
+    --font-size-10: 10px;
+
+    --font-weight-normal: 300;
+    --font-weight-bold: 600;
   }
   // MOUSE DRAG EFFECT
   ::selection{ 
@@ -107,7 +112,7 @@ export const SplashLogoWrapper = styled.section`
 `;
 export const SplashFooterWrapper = styled.footer`
   color: var(--color-white);
-  font-size: var(--font-size-smallest);
+  font-size: var(--font-size-10);
 `;
 
 // LoginModal
@@ -150,12 +155,12 @@ export const ItemBlock = styled.div`
     height: auto;
 
     p {
-      font-weight: 300;
+      font-weight: var(--font-weight-normal);
     }
     a {
-      font-weight: 600;
       color: var(--color-grey);
       font-size: var(--font-size-small);
+      font-weight: var(--font-weight-bold);
       border-bottom: 1px solid var(--color-white);
     }
   }
@@ -208,13 +213,13 @@ export const InputContainer = styled(ItemBlock)`
     box-sizing: border-box;
 
     color: var(--color-grey);
-    font-size: var(--font-size-smaller);
+    font-size: var(--font-size-12);
     border: 1px solid var(--color-light-grey);
     border-radius: 8px;
   }
   input[type="text"]::placeholder {
     color: var(--color-grey);
-    font-size: var(--font-size-smaller);
+    font-size: var(--font-size-12);
   }
 `;
 export const AddressInput = styled.input`
@@ -224,7 +229,7 @@ export const AddressInput = styled.input`
   box-sizing: border-box;
 
   color: var(--color-grey);
-  font-size: var(--font-size-smaller);
+  font-size: var(--font-size-12);
   border: 1px solid var(--color-light-grey);
   border-radius: 8px;
 
@@ -232,13 +237,13 @@ export const AddressInput = styled.input`
 
   &::placeholder {
     color: var(--color-grey);
-    font-size: var(--font-size-smaller);
+    font-size: var(--font-size-12);
   }
 `;
 export const CloseBtnContainer = styled.span`
   width: 24px;
   height: 24px;
-  font-size: var(--font-size-largest);
+  font-size: var(--font-size-24);
 
   position: absolute;
   top: 16px;
@@ -258,8 +263,8 @@ export const Button = styled.button`
   gap: 8px;
 
   color: ${(props) => props.color ? `var(--color-${props.color})` : 'var(--color-white)'};
-  font-size: var(--font-size-medium);
-  font-weight: ${(props) => props.bold && 'bold'};
+  font-size: var(--font-size-14);
+  font-weight: ${(props) => props.bold && 'var(--font-weight-bold)'};
   background-color: ${(props) => props.bgColor? `var(--color-${props.bgColor})` : 'transparent' };
   border-radius: 8px;
 `;
@@ -268,7 +273,7 @@ export const CompleteButton = styled(Button)`
   height: 48px;
 
   color: var(--color-grey);
-  font-weight: normal;
+  font-weight: var(--font-weight-normal);
   background-color: var(--transparent);
   border: 1px solid var(--color-light-grey);
   
@@ -276,7 +281,7 @@ export const CompleteButton = styled(Button)`
   
   ${props => props.isBtnSelected && css`
     color: var(--color-white);
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     border: 1px solid var(--color-green);
     background-color: var(--color-green);
   `};
@@ -289,7 +294,7 @@ export const GoogleLogoutButton = styled(Button)`
   width: 100%;
   height: 100%;
   color: var(--color-white);
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-14);
   background-color: var(--color-google);
 
   &:active,
@@ -318,7 +323,7 @@ export const GoogleLoginButton = styled.div`
       .abcRioButtonContents{
         margin-left: 8px !important;
         line-height: 0 !important;
-        font-size: var(--font-size-medium) !important;
+        font-size: var(--font-size-14) !important;
       }
     }
     .abcRioButtonIcon {
@@ -367,8 +372,8 @@ export const HeaderWrapper = styled.header`
   a.cart-btn span {
     padding: 2px 6px;
     color: var(--color-white);
-    font-size: var(--font-size-smallest);
-    font-weight: 600;
+    font-size: var(--font-size-10);
+    font-weight: var(--font-weight-bold);
     background-color: var(--color-yellow);
     border-radius: 50%;
 
@@ -415,7 +420,7 @@ export const SideHeader = styled.header`
       height: 24px;
     }
     svg {
-      font-size: var(--font-size-largest);
+      font-size: var(--font-size-24);
     }
   }
   svg {
@@ -449,7 +454,7 @@ export const SideNav = styled.nav`
   a:link,
   a:visited {
     color: var(--color-black);
-    font-size: var( --font-size-medium);
+    font-size: var( --font-size-14);
   }
 `;
 export const SideMain = styled.main`
@@ -467,7 +472,7 @@ export const SideMain = styled.main`
     font-size: 18px;
   }
   div {
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-14);
 
     display: inline-flex;
     flex-direction: column;
@@ -506,7 +511,7 @@ export const MainSection = styled.section`
     margin: 32px 0 24px 0;
     text-align: center;
     color: var(--color-black);
-    font-size: var(--font-size-larger);
+    font-size: var(--font-size-20);
   }
 `;
 export const MainArticle = styled.article`
@@ -537,11 +542,11 @@ export const MainArticle = styled.article`
     margin-top: 10px;
     margin-bottom: 11px;
     color: var(--color-black);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-14);
   }
   p{
     color: var(--color-grey);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-14);
   }
   button[type="button"] {
     background-color: transparent;
@@ -569,9 +574,9 @@ export const MapWrapper = styled.main`
   gap: 16px;
 
   h1 {
-    font-weight: bold;
     color: var(--color-black);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-bold);
   }
   .address-wrapper {
     flex: 1;
@@ -586,13 +591,13 @@ export const MapSection = styled.section`
 
   h2  {
     color: var(--color-grey);
-    font-size: var(--font-size-smaller);
+    font-size: var(--font-size-12);
   }
 
   input[type="text"] {
     padding: 12px;
     width: 100%;
-    font-size: var(--font-size-smaller);
+    font-size: var(--font-size-12);
     border: 1px solid var(--color-light-grey);
     border-radius: 8px;
   }
@@ -627,7 +632,7 @@ export const AdPagination = styled.ul`
 export const AdPaginationList = styled.li`
   width: 12px;
   height: 12px;
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-14);
 
   border-radius: 12px;
   border: 1px solid var(--color-white);
@@ -660,16 +665,16 @@ export const AdWrapper = styled.section`
 export const AdTitleWrapper = styled.article`
   h2:first-child {
     color: var(--color-yellow);
-    font-size: var(--font-size-larger);
+    font-size: var(--font-size-20);
   }
   h2:last-child {
     color: var(--color-white);
-    font-size: var(--font-size-larger);
+    font-size: var(--font-size-20);
   }
 `;
 export const AdEventWrapper = styled.article`
   color: var(--color-white);
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-14);
 `;
 export const AdButtonWrapper = styled.article`
   button[type="button"] {
@@ -679,7 +684,7 @@ export const AdButtonWrapper = styled.article`
     border: 1px solid var(--color-white);
     
     color: var(--color-white);
-    font-size: var(--font-size-smallest);
+    font-size: var(--font-size-10);
 
     transition: background-color 0.4s;
 
@@ -705,8 +710,8 @@ export const OrderFormWrapper = styled.form`
 
   p,
   label {
-    font-size: var(--font-size-medium);
-    font-weight: bold;
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-bold);
     color: var(--color-black);
   }
 `;
@@ -722,8 +727,8 @@ export const MapViewer = styled.div`
 
   p {
     color: var(--color-grey);
-    font-weight: normal;
-    font-size: var(--font-size-smaller);
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-normal);
   }
 
   ul.placesList {
@@ -760,13 +765,13 @@ export const InputAddress = styled.input`
   border-radius: 8px;
 
   color: var(--color-black);
-  font-size: var(--font-size-smaller);
+  font-size: var(--font-size-12);
 
   & + span {
     display:inline-block;
     
     color: var(--main-text-color);
-    font-size: var(--font-size-smaller);
+    font-size: var(--font-size-12);
 
     position: absolute; 
     top: 50%; 
@@ -774,7 +779,7 @@ export const InputAddress = styled.input`
     transform: translateY(-50%);
 
     a {
-      font-size: var(--font-size-smaller);
+      font-size: var(--font-size-12);
     }
   }
 
@@ -823,12 +828,9 @@ export const MenuSection = styled.section`
   gap: 8px;
 
   h2 {
-    font-size: var(--font-size-medium);
-    font-weight: bold;
     color: var(--color-black);
-  }
-  article {
-    overflow-x : auto;
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-bold);
   }
   ul {
     display: inline-flex;
@@ -842,6 +844,7 @@ export const MenuSection = styled.section`
 export const MenuWrapper = styled(MainWrapper)`
   padding: 16px;
   position: relative;
+  overflow-y: auto; /* 스크롤처리했음 */
 `;
 export const MenuCategoryList = styled.ul`
 
@@ -853,8 +856,8 @@ export const CategoryBtn = styled.button`
   height: 104px;
 
   color: var(--color-white);
-  font-weight: 300;
-  font-size: var(--font-size-smaller);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
   background-color: var(--color-light-grey);
   border-radius: 8px;
   
@@ -875,7 +878,7 @@ export const CategoryBtn = styled.button`
   ${(props) => props.isBtnSelected && css`
     color: var(--color-white);
     background-color: var(--color-green);
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
 
     img {
       transform: scale(1.4);
@@ -884,36 +887,110 @@ export const CategoryBtn = styled.button`
 `;
 
 // grid 작업중...
-export const MenuListGrid = styled.article`
+export const MenuListGrid = styled.div`
   width: 100%;
 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(156px, auto);
+  grid-gap: 20px;
+`;
+export const MenuArticle = styled.article`
+  padding: 8px;
+  width: 100%;
 
+  display: inline-flex;
+  flex-direction: column;
+  grid-gap: 8px;
+  gap: 8px;
+
+  border: 2px solid var(--color-light-grey);
+  border-radius: 8px;
+
+  position: relative;
+
+  .menu-name-wrapper {
+    max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
+
+    .menu-name-kor {
+      font-size: var(--font-size-12);  
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .menu-name-eng {
+      font-size: var(--font-size-10);  
+    }
+  }
+  .menu-img {
+    width: 100%;
+    flex: 1;
+
+    font-size: var(--font-size-10);
+  }
+  .menu-price {
+    font-size: var(--font-size-10);  
+  }
+
+  ${(props) => props.isMenuSelected && css`
+    border: 2px solid var(--color-green);
+  `}
 `;
 
+export const OrderIconButton = styled.button`
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  
+  color: var(--color-white);
+  font-size: 0;
+  background-color: var(--color-light-grey);
+  border-radius: 0 8px 0 8px;
 
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  z-index: 1;
+
+  svg {
+    font-size: var(--font-size-16);
+  }
+
+  ${(props) => props.isMenuSelected && css`
+    background-color: var(--color-green);
+  `}
+`;
+
+/* 
+수정 : 
+스크롤이 하단에 도착하면 
+FloatBtn은 footer 높이를 고려하여 
+bottom 포지션이 96이 되어야 한다. 
+*/
 export const FloatBtn = styled.button`
   width: calc(100% - 32px);
   height: 48px;
 
   color: var(--color-grey);
-  font-weight: normal;
+  font-weight: var(--font-weight-normal);
   background-color: var(--transparent);
   border: 1px solid var(--color-light-grey);
   border-radius: 8px;
 
   position: fixed;
   left: 50%;
-  bottom: 96px;
+  bottom: 16px;
   transform: translateX(-50%);
+  z-index: 100;
 
-  /*
-  ${props => props.isBtnSelected && css`
+  transition: all 0.3s;
+  
+  ${props => props.isBtnActivated && css`
     color: var(--color-white);
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     border: 1px solid var(--color-green);
     background-color: var(--color-green);
   `};
-*/
 `;
 
 
@@ -924,7 +1001,7 @@ export const MainFooter = styled.footer`
     height: 80px;
 
     color: var(--color-grey);
-    font-size: var(--font-size-smallest);
+    font-size: var(--font-size-10);
     background-color: var(--color-black);
 
     display: flex;
