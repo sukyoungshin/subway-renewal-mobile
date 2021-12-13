@@ -51,16 +51,16 @@ const Login = ({ getLoggedIn }) => {
         <BtnContainer>
           <GoogleLogin />
         </BtnContainer>
-
-        <BtnContainer>
-          <Button type="button" bgColor={'facebook'}>
-            <RiFacebookCircleFill /> 페이스북으로 시작
-          </Button>
-        </BtnContainer>
         {/* 카카오로그인 */}
         <BtnContainer>
           <Button type="button" bgColor={'kakao'} color={'black'}>
             <RiKakaoTalkFill /> 카카오로 시작
+          </Button>
+        </BtnContainer>
+        {/* facebook 로그인 */}
+        <BtnContainer>
+          <Button type="button" bgColor={'facebook'}>
+            <RiFacebookCircleFill /> 페이스북으로 시작
           </Button>
         </BtnContainer>
       </ItemBlock>

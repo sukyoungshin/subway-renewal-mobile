@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
-import { useNavigate } from 'react-router-dom';
 import { MapWrapper, MapSection, ButtonsWrapper, CompleteButton } from '../common/Styled'; 
 
 const PostSearch = (data) => {

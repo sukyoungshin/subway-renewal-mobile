@@ -217,6 +217,24 @@ export const InputContainer = styled(ItemBlock)`
     font-size: var(--font-size-smaller);
   }
 `;
+export const AddressInput = styled.input`
+  padding: 12px;
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+
+  color: var(--color-grey);
+  font-size: var(--font-size-smaller);
+  border: 1px solid var(--color-light-grey);
+  border-radius: 8px;
+
+  position: relative;
+
+  &::placeholder {
+    color: var(--color-grey);
+    font-size: var(--font-size-smaller);
+  }
+`;
 export const CloseBtnContainer = styled.span`
   width: 24px;
   height: 24px;
@@ -472,7 +490,7 @@ export const SideFooter = styled.footer`
 `;
 
 // Main
-export const MainWrapper = styled.div`
+export const MainWrapper = styled.main`
   width: 100vw;
   min-height: calc(100% - 136px);
 `;
@@ -581,7 +599,7 @@ export const MapSection = styled.section`
 `;
 
 // Carousel
-export const CarouselWrapper = styled.div`
+export const CarouselWrapper = styled.section`
   width: 100vw;
   height: 232px;
   overflow: hidden;
@@ -621,8 +639,12 @@ export const AdPaginationList = styled.li`
     border: none;
   `}
 `;
-export const AdWrapper = styled(CarouselWrapper)`
+export const AdWrapper = styled.section`
   padding: 16px;
+  width: 100vw;
+  height: 232px;
+  overflow: hidden;
+  position: relative;
   background-color: var(--color-green);
 
   display: inline-flex;
@@ -635,7 +657,7 @@ export const AdWrapper = styled(CarouselWrapper)`
   left: 0;
   z-index: ${(props) => props.isSelected ? 5 : null};
 `;
-export const AdTitleWrapper = styled.div`
+export const AdTitleWrapper = styled.article`
   h2:first-child {
     color: var(--color-yellow);
     font-size: var(--font-size-larger);
@@ -645,11 +667,11 @@ export const AdTitleWrapper = styled.div`
     font-size: var(--font-size-larger);
   }
 `;
-export const AdEventWrapper = styled.div`
+export const AdEventWrapper = styled.article`
   color: var(--color-white);
   font-size: var(--font-size-medium);
 `;
-export const AdButtonWrapper = styled.div`
+export const AdButtonWrapper = styled.article`
   button[type="button"] {
     padding: 8px 16px;
     border-radius: 8px;
@@ -765,7 +787,11 @@ export const InputAddress = styled.input`
   }
 `;
 
-export const ContentWrapper = styled.div`
+export const FormFieldset = styled.fieldset`
+  margin:0;
+  padding: 0;
+  border: none;
+
   display: inline-flex;
   flex-direction: column;
   grid-gap: 8px;
@@ -786,6 +812,110 @@ export const ButtonsWrapper = styled.div`
   grid-gap: 16px;
   gap: 16px;
 `;
+
+// Menu
+export const MenuSection = styled.section`
+  width: 100%;
+
+  display: inline-flex;
+  flex-direction: column;
+  grid-gap: 8px;
+  gap: 8px;
+
+  h2 {
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+    color: var(--color-black);
+  }
+  article {
+    overflow-x : auto;
+  }
+  ul {
+    display: inline-flex;
+    flex-direction: row;
+    grid-gap: 20px;
+    gap: 20px;
+
+    font-size: 0; /* removed unexpected space */
+  }
+`;
+export const MenuWrapper = styled(MainWrapper)`
+  padding: 16px;
+  position: relative;
+`;
+export const MenuCategoryList = styled.ul`
+
+`;
+export const CategoryBtn = styled.button`
+  padding: 8px;
+  width: 100%;
+  min-width: 65px;
+  height: 104px;
+
+  color: var(--color-white);
+  font-weight: 300;
+  font-size: var(--font-size-smaller);
+  background-color: var(--color-light-grey);
+  border-radius: 8px;
+  
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  grid-gap: 16px;
+  gap: 16px;
+
+  transition: all 0.3s;
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  ${(props) => props.isBtnSelected && css`
+    color: var(--color-white);
+    background-color: var(--color-green);
+    font-weight: 600;
+
+    img {
+      transform: scale(1.4);
+    }
+  `}
+`;
+
+// grid 작업중...
+export const MenuListGrid = styled.article`
+  width: 100%;
+
+
+`;
+
+
+export const FloatBtn = styled.button`
+  width: calc(100% - 32px);
+  height: 48px;
+
+  color: var(--color-grey);
+  font-weight: normal;
+  background-color: var(--transparent);
+  border: 1px solid var(--color-light-grey);
+  border-radius: 8px;
+
+  position: fixed;
+  left: 50%;
+  bottom: 96px;
+  transform: translateX(-50%);
+
+  /*
+  ${props => props.isBtnSelected && css`
+    color: var(--color-white);
+    font-weight: bold;
+    border: 1px solid var(--color-green);
+    background-color: var(--color-green);
+  `};
+*/
+`;
+
 
 // Footer
 export const MainFooter = styled.footer`

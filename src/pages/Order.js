@@ -1,7 +1,7 @@
 /* global kakao */
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
-import { OrderFormWrapper, ContentWrapper, MapViewer, Map, ButtonWrapper, InputContainer, CompleteButton, InputAddress } from '../common/Styled';
+import { OrderFormWrapper, FormFieldset, MapViewer, Map, AddressInput, CompleteButton, InputAddress } from '../common/Styled';
 
 const Order = () => {
   const [ addrValue, setAddrValue ] = useState(''); // 고객의 주소지
@@ -13,10 +13,11 @@ const Order = () => {
   // 버튼
   const navigate = useNavigate();
   const [ isBtnSelected, setIsBtnSelected ] = useState(false); // 주문하기버튼 활성화 여부
-  const HandleOrderStart = useCallback(() => {
+  const HandleOrderStart = useCallback((e) => {
+    e.preventDefault();
     if (!isBtnSelected) return window.alert('배달받으실 주소를 입력하세요.');
     navigate('/menu',  { state: isSelectedSubway });
-  }); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
+  }, [isBtnSelected, isSelectedSubway, navigate]); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
 
   // postMessage
   const HandlePopUp = () => {
@@ -78,6 +79,7 @@ const Order = () => {
             distance : result[i].distance,
             address : result[i].road_address_name, 
             phone : result[i].phone, 
+            url : result[i].place_url,
           });
           setMarker(markerPosition); // 마커를 생성하고 지도에 표시
           setInfoWindow(markerPosition, placeNamesArr, i); // 인포윈도우를 생성하고 지도에 표시
@@ -116,11 +118,31 @@ const Order = () => {
       map: kakaoMap.current, // 인포윈도우가 표시될 지도
       position: markerPosition, //인포윈도우 표시 위치
       content: `
-        <p><strong>${subwaylists[i].name}</strong></p>
-        <p>${subwaylists[i].address}</p>
-        <p>연락처 : ${subwaylists[i].phone}</p>
-        <p>영업시간 : 매장문의</p>
-        <p>거리 : ${subwaylists[i].distance}m</p>
+        <p>
+          <strong>
+          ${subwaylists[i].name}
+          </strong>
+        </p>
+        <p>
+          ${subwaylists[i].address}
+        </p>
+        <p>
+          연락처 : ${subwaylists[i].phone}
+        </p>
+        <p>
+          영업시간 : 
+          <a 
+            href=${subwaylists[i].url} 
+            title="상세 정보를 확인하기 위해 카카오맵 웹페이지로 이동하기"
+            target="_blank" 
+            style="font-size: inherit; text-decoration: underline;"
+          >
+          홈페이지${' '}참고
+          </a>
+        </p>
+        <p>
+          거리 : ${subwaylists[i].distance}m
+        </p>
       `, // 인포윈도우에 나타낼 정보
     });
   };
@@ -130,7 +152,7 @@ const Order = () => {
     () => {
       setIsSelectedSubway(currentPlace); // 선택된 써브웨이매장 정보를 저장
       setIsBtnSelected(true); // 주문하기버튼 활성화
-    }
+    }, []
   );
 
   // Geocoder init
@@ -162,26 +184,24 @@ const Order = () => {
   }, []);
 
   return (
-    <>
-      <OrderFormWrapper>
+    <main>
+      <OrderFormWrapper onSubmit={HandleOrderStart} >
         {/* 배송지 및 주소검색 input */}
-        <ContentWrapper>
+        <FormFieldset>
           <label htmlFor="addrSearch">배송지</label>
-          <InputContainer>
-            <input 
-              type="text" 
-              id="addrSearch" 
-              name="addrSearch" 
-              placeholder="배달 받으실 주소를 입력해주세요" 
-              value={addrValue} 
-              onClick={HandlePopUp}
-              readOnly
+          <AddressInput
+            type="text" 
+            id="addrSearch" 
+            name="addrSearch" 
+            placeholder="배달 받으실 주소를 입력해주세요" 
+            value={addrValue} 
+            onClick={HandlePopUp}
+            readOnly
             />
-          </InputContainer>
-        </ContentWrapper>
+        </FormFieldset>
 
         {/* 지도 출력하는 영역 */}
-        <ContentWrapper style={{ flex: 1 }}>
+        <FormFieldset style={{ flex: 1 }}>
           <p>주문가능매장</p>
           {/* 입력받은 주소값이 있으면 지도 보여주고, 없으면 글귀 보여줌 */}
           {
@@ -201,11 +221,7 @@ const Order = () => {
                           readOnly 
                         />
                         <span>
-                          <a href={place.url} title={`${place.name} 웹페이지로 이동`} target="_blank" rel="noreferrer">
-                          웹페이지
-                          </a>
-                          {' '} / {' '}
-                          주문선택
+                          선택
                         </span>
                       </li>
                     ))
@@ -221,20 +237,19 @@ const Order = () => {
               </MapViewer>
               )
           }
-        </ContentWrapper>
+        </FormFieldset>
 
         {/* 버튼 */}
-        <ButtonWrapper>
+        <FormFieldset>
           <CompleteButton 
-            type="button" 
+            type="submit" 
             isBtnSelected={isBtnSelected}
-            onClick={HandleOrderStart} 
           >
             주문하기
           </CompleteButton>
-        </ButtonWrapper>
+        </FormFieldset>
       </OrderFormWrapper>
-    </>
+    </main>
   );
 };
 

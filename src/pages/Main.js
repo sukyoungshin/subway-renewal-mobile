@@ -39,14 +39,3 @@ const Main = () => {
 };
 
 export default Main;
-
-// styled-components
-// https://styled-components.com/docs/basics#adapting-based-on-props
-
-
-// 커링 currying
-// 커링은 f(a, b, c)처럼 단일 호출로 처리하는 함수를 f(a)(b)(c)와 같이 각각의 인수가 호출 가능한 프로세스로 호출된 후 병합되도록 변환하는 것입니다.
-// 📌 Hof커링, 고차함수 (Higher-Order Functions)
-// https://eloquentjavascript.net/05_higher_order.html
-// https://joeun.dev/functional-js-study-1
-// https://velog.io/@kwonh/ES6-%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98-%EC%BB%A4%EB%A7%81-%EB%B6%80%EB%B6%84%EC%A0%81%EC%9A%A9%ED%95%A8%EC%88%98

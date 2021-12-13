@@ -18,7 +18,7 @@ const Carousel = () => {
     }, []); 
 
   return (
-    <main>
+    <>
     <CarouselWrapper>
       {/* 캐러셀 페이지네이션 */}
       <AdPagination className="ad_pagination">
@@ -54,7 +54,7 @@ const Carousel = () => {
         </AdWrapper>
       ))}
     </CarouselWrapper>
-    </main>
+    </>
   );
 };
 
