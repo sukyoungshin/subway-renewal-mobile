@@ -865,8 +865,8 @@ export const CategoryBtn = styled.button`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  grid-gap: 16px;
-  gap: 16px;
+  grid-gap: 24px;
+  gap: 24px;
 
   transition: all 0.3s;
 
@@ -881,7 +881,8 @@ export const CategoryBtn = styled.button`
     font-weight: var(--font-weight-bold);
 
     img {
-      transform: scale(1.4);
+      transform: scale(2);
+      transition: transform 0.3s;
     }
   `}
 `;

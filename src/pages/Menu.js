@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle, FloatBtn } from '../common/Styled';
 import { BsCart2 } from "react-icons/bs";
-import { MenuCategories, Sandwiches } from '../common/Datas';
+import { MenuCategories, TabContents, BASEURL } from '../common/Datas';
 
 const Menu = () => {
 
@@ -21,8 +21,13 @@ const Menu = () => {
     () => {
       setCategoryId(id); // 선택된 버튼의 인덱싱값 저장
       setIsSelected(prev => !prev); // 선택된 버튼 css변경
+      setCategoryTitle(category); // 선택된 카테고리 저장
     }
   ), []);
+
+  // 선택된 카테고리 저장
+  const [ CategoryTitle, setCategoryTitle ] = useState(MenuCategories[0].titleEng); // 'Default'
+  const currentSelectedMenuItems = TabContents[CategoryTitle];
 
   // 메뉴선택 관련
   const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
@@ -36,6 +41,13 @@ const Menu = () => {
   ), []);
   const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
 
+  // 메뉴선택 완료버튼
+  const handleOrderProcess = useCallback((e) => {
+    e.preventDefault();
+    //navigate('/bread',  { state: '선택한 메뉴정보 넘기셈' });
+  });
+
+  const [] = useState(); // 선택한 메뉴정보 저장
 
   return (
     <MenuWrapper>
@@ -44,17 +56,18 @@ const Menu = () => {
         <article>
           <ul>
             {
-              MenuCategories.map((category) => (
-                <li key={category.id}>
-                  <CategoryBtn 
-                    type="button"
-                    isBtnSelected={category.id === categoryId}
-                    onClick={handleButtonActive(category.id, category.titleEng)}
-                  >
-                    <img src={category.imgSrc} alt={category.title} />
-                    <span>{category.title}</span>
-                  </CategoryBtn>
-                </li>
+              MenuCategories
+                .map((category) => (
+                  <li key={category.id}>
+                    <CategoryBtn 
+                      type="button"
+                      isBtnSelected={category.id === categoryId}
+                      onClick={handleButtonActive(category.id, category.titleEng)}
+                    >
+                      <img src={`${BASEURL}${category.imgSrc}`} alt={category.title} />
+                      <span>{category.title}</span>
+                    </CategoryBtn>
+                  </li>
               ))
             }
           </ul>
@@ -64,30 +77,37 @@ const Menu = () => {
         <h2>메뉴선택</h2>
         <MenuListGrid>
           {
-            Sandwiches.map((sandwich) => (
+            currentSelectedMenuItems
+            .map((menu) => (
               <MenuArticle 
-                key={sandwich.id}
-                isMenuSelected={menuId === sandwich.id} 
+                key={menu.id}
+                isMenuSelected={menuId === menu.id} 
               >
                 <OrderIconButton 
-                  isMenuSelected={menuId === sandwich.id} 
-                  onClick={handleOrderMenu(sandwich.id)}
+                  isMenuSelected={menuId === menu.id} 
+                  onClick={handleOrderMenu(menu.id)}
                 >
                   <BsCart2 />
                 </OrderIconButton>
                 <div className="menu-name-wrapper">
-                  <h3 className="menu-name-kor">{sandwich.nameKor}</h3>
-                  <p className='menu-name-eng'>{sandwich.nameEng}</p>
+                  <h3 className="menu-name-kor">{menu.nameKor}</h3>
+                  <p className='menu-name-eng'>{menu.nameEng}</p>
                 </div>
-                <img src="" alt="샌드위치이미지" className="menu-img" />
-                <p className="menu-price">4,300 KRW</p>
+                <img src={`${BASEURL}${menu.imgSrc}`} alt={`${menu.nameKor}`} className="menu-img" />
+                <p className="menu-price">{menu.price} KRW</p>
               </MenuArticle>
             ))
           }
+
         </MenuListGrid>
       </MenuSection>
 
-      <FloatBtn type="button" isBtnActivated={isBtnActivated}>
+      <FloatBtn 
+        type="button" 
+        isBtnActivated={isBtnActivated}
+        disabled={isBtnActivated ? false : true}
+        onClick={handleOrderProcess}
+      >
         메뉴 선택 (1 / 7)
       </FloatBtn>
     </MenuWrapper>
