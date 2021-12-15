@@ -2,6 +2,7 @@ import React from "react";
 import { MainFooter } from '../common/Styled';
 
 const Footer = () => {
+
   return (
     <MainFooter>
       <address>

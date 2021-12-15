@@ -10,6 +10,19 @@ export const GlobalStyle = createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
   h1, h2, h3, h4, h5, h6, p, ul {
     margin: 0;
     padding: 0;
@@ -31,17 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
   }
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-  }
-  #root {
-    width: 100%;
-    height: 100%;
-  }
+
   // CSS VARIABLES
   // COLOR, FONT-SIZE, FONT-WEIGHT
   html {
@@ -842,9 +845,10 @@ export const MenuSection = styled.section`
   }
 `;
 export const MenuWrapper = styled(MainWrapper)`
+  // overflow-y: auto; /* 내용이 많아지면 자동스크롤 */
   padding: 16px;
   position: relative;
-  overflow-y: auto; /* 스크롤처리했음 */
+  //margin-bottom: 64px; 
 `;
 export const MenuCategoryList = styled.ul`
 
@@ -857,7 +861,7 @@ export const CategoryBtn = styled.button`
 
   color: var(--color-white);
   font-size: var(--font-size-12);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   background-color: var(--color-light-grey);
   border-radius: 8px;
   
@@ -883,6 +887,7 @@ export const CategoryBtn = styled.button`
     img {
       transform: scale(2);
       transition: transform 0.3s;
+      filter : drop-shadow(0px 2px 2px var(--color-black));
     }
   `}
 `;
@@ -912,23 +917,64 @@ export const MenuArticle = styled.article`
 
   .menu-name-wrapper {
     max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
+    max-height: 30px; 
 
     .menu-name-kor {
       font-size: var(--font-size-12);  
-      text-overflow: ellipsis;
+      
+      text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
       white-space: nowrap;
       overflow: hidden;
     }
     .menu-name-eng {
       font-size: var(--font-size-10);  
+      
+      text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
-  .menu-img {
-    width: 100%;
-    flex: 1;
 
-    font-size: var(--font-size-10);
+  .menu-img-wrapper{
+    width: 100%;
+    max-height: 84px;
+    flex: 1;
+    font-size: 0; 
+
+    position: relative;
+    
+    
+    .menu-img {
+      width: 100%;
+      position: relative;
+      font-size: var(--font-size-10);
+
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+    .menu-description {
+      width: 100%;
+      font-size: var(--font-size-10);
+      
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    ${(props) => props.isMenuSelected && css`
+      .menu-img {
+        opacity: 0.3;
+      }
+      .menu-description {
+        opacity: 1;
+      }
+    `}
   }
+
   .menu-price {
     font-size: var(--font-size-10);  
   }
@@ -962,26 +1008,22 @@ export const OrderIconButton = styled.button`
   `}
 `;
 
-/* 
-수정 : 
-스크롤이 하단에 도착하면 
-FloatBtn은 footer 높이를 고려하여 
-bottom 포지션이 96이 되어야 한다. 
-*/
 export const FloatBtn = styled.button`
-  width: calc(100% - 32px);
+  display: block;
+  margin: auto;
+  width: 100%;
   height: 48px;
 
   color: var(--color-grey);
   font-weight: var(--font-weight-normal);
-  background-color: var(--transparent);
+  background-color: rgba(233,233,233,0.4);
   border: 1px solid var(--color-light-grey);
+  backdrop-filter: blur(4px);
   border-radius: 8px;
 
-  position: fixed;
-  left: 50%;
+  position: sticky; /* 부모요소에 overflow 요소가 있으면 작동안함 */
   bottom: 16px;
-  transform: translateX(-50%);
+  left: 0;
   z-index: 100;
 
   transition: all 0.3s;

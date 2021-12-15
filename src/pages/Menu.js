@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle, FloatBtn } from '../common/Styled';
 import { BsCart2 } from "react-icons/bs";
@@ -10,8 +10,8 @@ const Menu = () => {
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    if (location.state === null) return navigate(-1); // 이전페이지에서 써브웨이 매장 정보가 넘어오지 않았으면 이전 페이지로 강제이동
-    console.log('@@order페이지에서 받아온 정보', location.state);
+    if (location.state === null) return navigate('/'); // 이전페이지에서 써브웨이 매장 정보가 넘어오지 않았으면 메인페이지로 강제이동
+    // console.log('@@order페이지에서 받아온 정보', location.state);
   }, [location.state, navigate]);
 
   // 카테고리 선택 관련
@@ -27,9 +27,9 @@ const Menu = () => {
 
   // 선택된 카테고리 저장
   const [ CategoryTitle, setCategoryTitle ] = useState(MenuCategories[0].titleEng); // 'Default'
-  const currentSelectedMenuItems = TabContents[CategoryTitle];
+  const currentSelectedMenuItems = TabContents[CategoryTitle]; // 리액트에서는 Object를 child를 사용할 수 없기 때문에, Array로 만들어주었다.
 
-  // 메뉴선택 관련
+  // 아이템선택 관련
   const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
   const [ isMenuSelected, setIsMenuSelected ] = useState(false); // 선택된 버튼 및 wrapper의 색상변경
   const handleOrderMenu = useCallback((id) => (
@@ -40,14 +40,19 @@ const Menu = () => {
     }
   ), []);
   const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
+  const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장한다
 
-  // 메뉴선택 완료버튼
+  // 최종적으로 선택한 메뉴
+  useEffect(() => {
+    setCurrentMenu(currentSelectedMenuItems[menuId]); // 고객이 최종적으로 선택한 메뉴
+  }, [currentSelectedMenuItems, menuId]);
+
+  // 아이템선택 완료버튼
   const handleOrderProcess = useCallback((e) => {
     e.preventDefault();
-    //navigate('/bread',  { state: '선택한 메뉴정보 넘기셈' });
+    navigate('/bread',  { state: currentMenu }); // 고객이 최종적으로 선택한 메뉴 정보를 다음페이지로 전달
   });
 
-  const [] = useState(); // 선택한 메뉴정보 저장
 
   return (
     <MenuWrapper>
@@ -93,12 +98,14 @@ const Menu = () => {
                   <h3 className="menu-name-kor">{menu.nameKor}</h3>
                   <p className='menu-name-eng'>{menu.nameEng}</p>
                 </div>
-                <img src={`${BASEURL}${menu.imgSrc}`} alt={`${menu.nameKor}`} className="menu-img" />
+                <div className="menu-img-wrapper">
+                  <img src={`${BASEURL}${menu.imgSrc}`} alt={`${menu.nameKor}`} className="menu-img" />
+                  <span className="menu-description">{menu.description}</span>
+                </div>
                 <p className="menu-price">{menu.price} KRW</p>
               </MenuArticle>
             ))
           }
-
         </MenuListGrid>
       </MenuSection>
 
