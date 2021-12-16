@@ -56,7 +56,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-grey: #8C8C8C;
     --color-light-grey: #DFDFDF;
     --color-black: #292F28;
-    --color-transparent: rgba(255,255,255,0.5);
+    --color-transparent: rgba(233,233,233,0.4);
+    //--color-transparent: rgba(255,255,255,0.5);
     --color-kakao: #FFE812;
     --color-facebook: #3C5997;
     --color-google: rgb(66, 133, 244);
@@ -678,6 +679,10 @@ export const AdTitleWrapper = styled.article`
 export const AdEventWrapper = styled.article`
   color: var(--color-white);
   font-size: var(--font-size-14);
+
+  p {
+    line-height: 1.3rem;
+  }
 `;
 export const AdButtonWrapper = styled.article`
   button[type="button"] {
@@ -761,10 +766,10 @@ export const InputAddress = styled.input`
   padding-left: 22px;
   width: 100%; 
   height: 40px;
-  box-sizing:border-box;
+  box-sizing: border-box;
 
-  background-color: var(--color-transparent);
-  border: 1px solid var(--color-white);
+  background-color: rgba(255,255,255,0.5);
+  border: 1px solid var(--color-light-grey)
   border-radius: 8px;
 
   color: var(--color-black);
@@ -859,10 +864,11 @@ export const CategoryBtn = styled.button`
   min-width: 65px;
   height: 104px;
 
-  color: var(--color-white);
+  color: var(--color-grey);
   font-size: var(--font-size-12);
   font-weight: var(--font-weight-normal);
-  background-color: var(--color-light-grey);
+  background-color: rgba(233,233,233,0.4);
+  border: 1px solid var(--color-light-grey);
   border-radius: 8px;
   
   display: inline-flex;
@@ -892,8 +898,8 @@ export const CategoryBtn = styled.button`
   `}
 `;
 
-// grid 작업중...
 export const MenuListGrid = styled.div`
+  margin-bottom: 16px;
   width: 100%;
 
   display: grid;
@@ -910,7 +916,7 @@ export const MenuArticle = styled.article`
   grid-gap: 8px;
   gap: 8px;
 
-  border: 2px solid var(--color-light-grey);
+  border: 1px solid var(--color-light-grey);
   border-radius: 8px;
 
   position: relative;
@@ -989,9 +995,9 @@ export const OrderIconButton = styled.button`
   width: 32px;
   height: 32px;
   
-  color: var(--color-white);
+  color: var(--color-light-grey);
   font-size: 0;
-  background-color: var(--color-light-grey);
+  background-color: var(--color-transparent);
   border-radius: 0 8px 0 8px;
 
   position: absolute;
@@ -1016,7 +1022,7 @@ export const FloatBtn = styled.button`
 
   color: var(--color-grey);
   font-weight: var(--font-weight-normal);
-  background-color: rgba(233,233,233,0.4);
+  background-color: var(--color-transparent);
   border: 1px solid var(--color-light-grey);
   backdrop-filter: blur(4px);
   border-radius: 8px;
