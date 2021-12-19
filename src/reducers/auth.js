@@ -11,15 +11,16 @@ const initialState = {
 
 // 리듀서
 function auth(state = initialState, action) {
+
   switch (action.type) {
     case 'LOGIN':
       return { 
         ...state,
         userInfo : {
-          id: action.id,
-          userName: action.userName,
-          imageURL: action.imageURL,
-          email: action.email, // 로그인 된 유저의 정보
+          id: action.userInfo.id,
+          userName: action.userInfo.userName,
+          imageURL: action.userInfo.imageURL,
+          email: action.userInfo.email, // 로그인 된 유저의 정보
         }, 
         isLoggedIn : true, // 로그인여부
       };

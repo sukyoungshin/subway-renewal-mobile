@@ -7,9 +7,14 @@ import { HiOutlineChevronLeft, HiLogout, HiLogin, HiUser } from "react-icons/hi"
 import { NavCategories } from '../common/Datas';
 // STYLE
 import { SideNavWrapper, SideHeader, SideNav, SideMain, SideFooter } from '../common/Styled';
+// React-redux
+import { useSelector } from 'react-redux';
 
-
-const Navbar = ({ isLoggedIn, handleNavbar }) => {
+const Navbar = ({ handleNavbar }) => {
+  // 리덕스 스토어의 상태를 조회
+  // eslint-disable-next-line
+  const { userInfo, isLoggedIn } = useSelector((state) => state.auth); 
+  console.log(userInfo);
 
   return (
     <SideNavWrapper>
@@ -24,9 +29,11 @@ const Navbar = ({ isLoggedIn, handleNavbar }) => {
           </Link>
         </div>
         <div>
-          { isLoggedIn 
-          ? <HiLogout onClick={() => console.log('로그아웃 기능구현 필요')} /> 
-          : <Link to="/login"><HiLogin /></Link>}
+          { 
+            isLoggedIn 
+            ? <HiLogout onClick={() => console.log('로그아웃 기능구현 필요')} /> 
+            : <Link to="/login"><HiLogin /></Link>
+          }
         </div>
         <div onClick={handleNavbar}>
           <HiOutlineChevronLeft />
@@ -51,7 +58,7 @@ const Navbar = ({ isLoggedIn, handleNavbar }) => {
         ? (
           <>
             <SideMain>
-              <h1>안녕하세요, ㅇㅇㅇ님</h1>
+              <h1>안녕하세요, {userInfo}님</h1>
               <div>
                 <p>멤버십포인트 : 000원</p>
                 <p>주문내역 : 0건</p>
