@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { HiOutlineChevronLeft } from "react-icons/hi";
-import { RiFacebookCircleFill, RiKakaoTalkFill } from "react-icons/ri";
 // ICONS
+import { HiOutlineChevronLeft } from "react-icons/hi";
 import LogoSmall from "../assets/small-logo.png";
 // STYLE
 import { BtnContainer, Button, CloseBtnContainer, InputContainer, ItemBlock, LogoContainer, ModalWrapper } from '../common/Styled';
 import GoogleLogin from '../components/GoogleLogin';
+import KakaoLogin from '../components/KakaoLogin';
+import FacebookLogin from '../components/FacebookLogin';
 
 const Login = ({ getLoggedIn }) => {
 
@@ -53,15 +54,11 @@ const Login = ({ getLoggedIn }) => {
         </BtnContainer>
         {/* 카카오로그인 */}
         <BtnContainer>
-          <Button type="button" bgColor={'kakao'} color={'black'}>
-            <RiKakaoTalkFill /> 카카오로 시작
-          </Button>
+          <KakaoLogin />
         </BtnContainer>
         {/* facebook 로그인 */}
         <BtnContainer>
-          <Button type="button" bgColor={'facebook'}>
-            <RiFacebookCircleFill /> 페이스북으로 시작
-          </Button>
+          <FacebookLogin />
         </BtnContainer>
       </ItemBlock>
     </ModalWrapper>

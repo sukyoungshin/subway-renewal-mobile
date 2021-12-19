@@ -17,6 +17,7 @@ import NoMatch from './pages/NoMatch';
 import { GlobalStyle } from './common/Styled';
 
 const App = () => {
+  
   // Splash Screen
   const [ isLoading, setIsLoading ] = useState(true);
   useEffect(() => {
