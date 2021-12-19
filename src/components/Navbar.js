@@ -14,7 +14,7 @@ const Navbar = ({ handleNavbar }) => {
   // 리덕스 스토어의 상태를 조회
   // eslint-disable-next-line
   const { userInfo, isLoggedIn } = useSelector((state) => state.auth); 
-  console.log(userInfo);
+  const userName = userInfo.userName; // Objects are not valid as a React child 
 
   return (
     <SideNavWrapper>
@@ -58,7 +58,7 @@ const Navbar = ({ handleNavbar }) => {
         ? (
           <>
             <SideMain>
-              <h1>안녕하세요, {userInfo}님</h1>
+              <h1>안녕하세요, {userName}님</h1>
               <div>
                 <p>멤버십포인트 : 000원</p>
                 <p>주문내역 : 0건</p>
