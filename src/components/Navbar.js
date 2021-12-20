@@ -2,19 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 // ICONS
 import LogoSmall from "../assets/small-logo.png";
-import { HiOutlineChevronLeft, HiLogout, HiLogin, HiUser } from "react-icons/hi";
+import { HiX, HiLogout, HiUser } from "react-icons/hi";
 // DATA
 import { NavCategories } from '../common/Datas';
 // STYLE
 import { SideNavWrapper, SideHeader, SideNav, SideMain, SideFooter } from '../common/Styled';
 // React-redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = ({ handleNavbar }) => {
   // 리덕스 스토어의 상태를 조회
   // eslint-disable-next-line
   const { userInfo, isLoggedIn } = useSelector((state) => state.auth); 
   const userName = userInfo.userName; // Objects are not valid as a React child 
+  
+  const dispatch = useDispatch();
+  const signOut = () => {
+    dispatch({ 
+      type : 'LOGOUT',  // 액션타입
+      isLoggedIn : false, // 로그인여부
+      userInfo : {
+        id: null,
+        userName: null,
+        imageURL: null,
+        email: null, 
+      }, // 로그인 된 유저의 정보저장
+    });
+  };
 
   return (
     <SideNavWrapper>
@@ -28,15 +42,8 @@ const Navbar = ({ handleNavbar }) => {
             />
           </Link>
         </div>
-        <div>
-          { 
-            isLoggedIn 
-            ? <HiLogout onClick={() => console.log('로그아웃 기능구현 필요')} /> 
-            : <Link to="/login"><HiLogin /></Link>
-          }
-        </div>
         <div onClick={handleNavbar}>
-          <HiOutlineChevronLeft />
+          <HiX />
         </div>
       </SideHeader>
       <SideNav>
@@ -44,7 +51,10 @@ const Navbar = ({ handleNavbar }) => {
           {
             NavCategories.map(category => (
               <li key={category.pathName}>
-                <Link to={`/${category.pathName}`} onClick={handleNavbar}>
+                <Link 
+                  to={`/${category.pathName}`} 
+                  onClick={handleNavbar}
+                >
                   {category.categoryName}
                 </Link>
               </li>
@@ -57,6 +67,7 @@ const Navbar = ({ handleNavbar }) => {
         isLoggedIn 
         ? (
           <>
+          
             <SideMain>
               <h1>안녕하세요, {userName}님</h1>
               <div>
@@ -66,15 +77,22 @@ const Navbar = ({ handleNavbar }) => {
             </SideMain>
           </>
           ) 
-        : null
+        : (
+          <Link 
+            to="/login" 
+            className="loginlink"
+          >로그인</Link>
+        )
       }
       <SideFooter>
-
         {
           isLoggedIn 
           ? (
             <div className="mypage-icon-wrapper">
               <HiUser />
+              <HiLogout 
+                onClick={signOut} 
+              /> 
             </div>
             ) 
           : null

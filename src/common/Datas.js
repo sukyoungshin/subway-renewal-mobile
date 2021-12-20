@@ -10,7 +10,7 @@ export const NavCategories = [
     categoryName: '메인화면',
   },
   {
-    pathName : 'order',
+    pathName : 'addr',
     categoryName: '주문하기',
   },
   {

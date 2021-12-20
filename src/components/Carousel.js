@@ -47,7 +47,7 @@ const Carousel = () => {
             <p>{content.eventDate}</p>
           </AdEventWrapper>
           <AdButtonWrapper>
-            <button type="button" onClick={() => navigate('/order')}>
+            <button type="button" onClick={() => navigate('/addr')}>
               ORDER NOW
             </button>
           </AdButtonWrapper>

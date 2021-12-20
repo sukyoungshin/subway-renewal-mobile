@@ -393,8 +393,8 @@ export const SideNavWrapper = styled.aside`
   padding: 16px;
   width: calc(100vw / 4 * 3); 
   height: 100vh;
-  background-color: var(--color-light-grey); /* need to change colors */
-
+  background-color: #ebebeb; // todo : 색상변경
+  
   display: inline-flex;
   flex-direction: column;
 
@@ -402,6 +402,17 @@ export const SideNavWrapper = styled.aside`
   top:0;
   left:0;
   z-index: 999;
+
+  .loginlink {
+    height: 40px;
+    line-height: 40px;
+
+    color: var(--color-white);
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-normal);
+    background-color: var(--color-black);
+    border-radius: 8px;
+  }
 `;
 export const SideHeader = styled.header`
   width: 100%;
@@ -419,11 +430,8 @@ export const SideHeader = styled.header`
     flex: 1;
   }
   div:not(:first-child) {
-    a {
-      width: 24px;
-      height: 24px;
-    }
     svg {
+      font-size: var(--font-size-12);
       font-size: var(--font-size-24);
     }
   }

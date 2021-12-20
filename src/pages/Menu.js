@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle, FloatBtn } from '../common/Styled';
 import { BsCart2 } from "react-icons/bs";
@@ -12,6 +12,7 @@ const Menu = () => {
   useEffect(() => {
     if (location.state === null) return navigate('/'); // 이전페이지에서 써브웨이 매장 정보가 넘어오지 않았으면 메인페이지로 강제이동
     // console.log('@@order페이지에서 받아온 정보', location.state);
+
   }, [location.state, navigate]);
 
   // 카테고리 선택 관련
@@ -45,6 +46,7 @@ const Menu = () => {
   // 최종적으로 선택한 메뉴
   useEffect(() => {
     setCurrentMenu(currentSelectedMenuItems[menuId]); // 고객이 최종적으로 선택한 메뉴
+    console.log(currentSelectedMenuItems[menuId]);
   }, [currentSelectedMenuItems, menuId]);
 
   // 아이템선택 완료버튼

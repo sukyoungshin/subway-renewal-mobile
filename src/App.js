@@ -9,8 +9,9 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
-import Order from './pages/Order';
+import Addr from './pages/Addr';
 import Menu from './pages/Menu';
+import Bread from './pages/Bread';
 import PostSearch from './pages/PostSearch';
 import NoMatch from './pages/NoMatch';
 // STYLE
@@ -38,9 +39,20 @@ const App = () => {
             <Route index element={<Main />} />
             <Route path="main" element={<Main />} />
             <Route path="login" element={<Login />} />
-            <Route path="order" element={<Order />} />
-            <Route path="menu" element={<Menu />} />
+            <Route path="addr" element={<Addr />} />
             <Route path="search" element={<PostSearch />} />
+            <Route path="menu" element={<Menu />} />
+            <Route path="bread" element={<Bread />} />
+            {/* <Route path="cheese" element={<Cheese />} />
+            <Route path="veggie" element={<Veggie />} />
+            <Route path="sauce" element={<Sauce />} />
+            <Route path="extra" element={<ExtraMenu />} />
+
+            <Route path="order" element={<OrderTemplate /> }>
+              <Route index element={<OrderInfo />} />
+              <Route path="detail" element={<OrderDetail />} />
+            </Route> */}
+
             <Route path="signin" element={<Signin />} />
             <Route path="signup" element={<Signup />} />
             <Route path="*" element={<NoMatch />} />

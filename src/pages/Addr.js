@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import { OrderFormWrapper, FormFieldset, MapViewer, Map, AddressInput, CompleteButton, InputAddress } from '../common/Styled';
 
-const Order = () => {
+const Addr = () => {
   const [ addrValue, setAddrValue ] = useState(''); // 고객의 주소지
   const [ position, setPosition ] = useState(''); // 고객의 위치 좌표
   const kakaoMap = useRef(); // KakaoMap 상태관리
@@ -17,6 +17,7 @@ const Order = () => {
     e.preventDefault();
     if (!isBtnSelected) return window.alert('배달받으실 주소를 입력하세요.');
     navigate('/menu',  { state: isSelectedSubway });
+    
   }, [isBtnSelected, isSelectedSubway, navigate]); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
 
   // postMessage
@@ -253,4 +254,4 @@ const Order = () => {
   );
 };
 
-export default Order;
+export default Addr;
