@@ -567,62 +567,126 @@ export const TabContents = {
 
 // 재료 리스트
 // 빵 옵션
-
-
-export const BreadOptions = {
-  // 빵 사이즈(cm)에 따라, 추가금액(krw)을 따로 지정
-  size : {
-    halfSize : {
-      size : 15, 
-      price : '', 
-    },
-    fullSize : {
-      size : 30,
-      price : '',
+export const breadOptionLists = [
+  {
+    id: 0,
+    name : '빵 길이',
+    nameEng : 'size',
+    option: {
+      'option1' : {
+        text: '15cm',
+        default : true,
+        price: 999,
+      },
+      'option2' : {
+        text: '30cm',
+        default : false,
+        price: 999,
+      },
     },
   },
-  toast : true, // 빵 데우기 옵션
-  digOut : false, // 빵 속 파내기 옵션
-  cutting: true,  // 빵 컷팅 (30cm일때만 선택가능),
-};
+  {
+    id: 1,
+    name : '토스팅',
+    nameEng : 'toasting',
+    option: {
+      'option1' : {
+        text: '토스팅',
+        default : true,
+        price: 0,
+      },
+      'option2' : {
+        text : '토스팅안함',
+        default : false,
+        price : null,
+      },
+    },
+  },
+  {
+    id: 2,
+    name : '빵 속 파기',
+    nameEng : 'digOut',
+    option: {
+      'option1' : {
+        text : '속 파기',
+        default: false,
+        price : 0,
+      },
+      'option2' : {
+        text : '안함',
+        default: true,
+        price : null,
+      },
+    },
+  },
+  {
+    id: 3,
+    name : '빵 컷팅',
+    nameEng : 'cutting',
+    option : {
+      'option1' : {
+        text : '빵 컷팅',
+        default : false,
+        price : 0,
+      },
+      'option2' : {
+        text : '컷팅안함',
+        default : true,
+        price: null,
+      },
+    },
+  },
+];
 
 // 빵 리스트
 export const Breads = [
   {
     id: 0,
     nameKor : '허니오트',
+    nameEng : 'Honey Oat',
     description : '고소한 위트빵에 오트밀 가루를 묻혀 고소함과 식감이 두배로',
-    imgSrc : '',
+    imgSrc : '/bread/honeyoat.png',
+    price: '',
   },
   {
     id: 1,
     nameKor : '하티',
+    nameEng : 'Hearty Italian',
     description : '부드러운 화이트빵에 옥수수가루를 묻혀 겉은 바삭하고 고소하며 속은 부드럽게',
-    imgSrc : '',
+    imgSrc : '/bread/hearty.png',
+    price: '',
   },
   {
     id: 2,
     nameKor : '위트',
+    nameEng : 'Wheat',
     description : '9가지 곡물로 만들어 건강하고 고소한 맛의 곡물빵',
-    imgSrc : '',
+    imgSrc : '/bread/wheat.png',
+    price: '',
   },
   {
     id: 3,
     nameKor : '파마산오레가노',
+    nameEng : 'Parmesan Oregano',
     description : '부드러운 화이트빵에 파마산 오레가노 시즈닝을 묻혀 허브향 가득',
-    imgSrc : '',
+    imgSrc : '/bread/parmesan.png',
+    price: '',
   },
   {
     id: 4,
     nameKor : '화이트',
+    nameEng : 'White',
     description : '가장 클래식한 빵으로 부드러운 식감이 매력 포인트',
-    imgSrc : '',
+    imgSrc : '/bread/white.png',
+    price: '',
   },
   {
     id: 5,
     nameKor : '플랫브래드',
+    nameEng : 'Flat Bread',
     description : '납작한 모양의 식감이 쫀득한 빵',
-    imgSrc : '',
+    imgSrc : '/bread/flatbread.png',
+    price: '',
   },
 ];
 // 야채 리스트

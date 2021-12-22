@@ -1,66 +1,86 @@
-// // 액션타입
-// const LOGIN = 'cart/LOGIN';
-// const INSERT = 'cart/INSERT'; // 새로운 item을 등록함
-// const TOGGLE = 'cart/TOGGLE'; // item를 체크/체크 해제함
-// const REMOVE = 'cart/REMOVE'; // item를 제거함
+// 모듈의 초기 상태 
+const initialState = [
+  {
+    id: 0,
+    // order페이지에서 주소지랑 정보 받아옴
+    subwayInfo : {
+      id: 0,
+      name : null,
+      distance : 0,
+      address : null, 
+      phone : null, 
+      url : null,
+    },
+    // menu페이지에서 카테고리 선택 후 업데이트
+    category : {
+      id : 0,
+      nameKor : null,
+      nameEng : null,
+      kcal : 0,
+      imgSrc : null,
+      description: null,
+      price: 0,
+    },
+    // bread페이지
+    bread : {
+      id : 0,
+      nameKor : null,
+      nameEng : null,
+      imgSrc : null,
+      description: null,
+      price: 0,
+    },
+    breadOptions : {
+      size : {
+        length: 15,
+        price: 0,
+      },
+      toasting : true,
+      digOut : true,
+      cutting: false,
+    },
+  }
+];
 
-// // 액션생성함수
-// export const changeInput = (input) => ({ 
-//   type : CHANGE_INPUT,
-//   input,
-// });
+// 리듀서
+function cart (state = initialState, action) {
+  const SUBWAYINFO = 'cart/subwayInfo';
+  const CATEGORY = 'cart/category';
+  const BREAD = 'cart/bread';
+  
+  switch (action.type) {
+    case SUBWAYINFO:
+      console.log('subwayinfo', SUBWAYINFO, action.payload);
+      return action.payload;
+    case CATEGORY:
+      console.log('CATEGORY', CATEGORY, action.payload);
+      return action.payload;
+    case BREAD:
+      console.log('BREAD', BREAD, action.payload);
+      return action.payload;
+    default:
+      return state;
+  };
+};
 
-// let id = 3; // insert가 호출될 때마다 1씩 더해집니다.
-// export const insert = (text) => ({
-//   type : INSERT,
-//   todo : {
-//     id : id++,
-//     text,
-//     done: false,
-//   }
-// });
+export default cart;
 
-// export const toggle = (id) => ({
-//   type : TOGGLE,
-//   id
-// });
+// ✅ 파이프-필터, 데코레이터 패턴 (차후 이렇게 수정)
 
-// export const remove = (id) => ({
-//   type : REMOVE,
-//   id,
-// });
 
-// // 모듈의 초기 상태 
-// const initialState = {
-//   input: '',
-//   todos: [
-//     {
-//       id: 1,
-//       text: '리덕스 기초 배우기',
-//       done: true
-//     },
-//     {
-//       id: 2,
-//       text: '리액트와 리덕스 사용하기',
-//       done: false
-//     }
-//   ]
-// };
+// id: 1,
+// 고객주소지
+// 근처의 써브웨이 매장이름, 매장전화번호, 매장주소
 
-// // 리듀서
-// function auths (state = initialState, action) {
-//   switch (action.type) {
-//     case CHANGE_INPUT:
-//       return {...state, input: action.input};
-//     case INSERT:
-//       return {...state, todos: state.todos.concat(action.todo)};
-//     case TOGGLE:
-//       return {...state, todos: state.todos.map(todo => todo.id === action.id ? {...todo, done: !todo.done} : todo)};
-//     case REMOVE:
-//       return {...state, todos: state.todos.filter(todo => todo.id !== action.id)};
-//     default:
-//       return state;
-//   };
-// };
+// 메뉴카테고리
+// 메뉴이름
+// 빵옵션, 빵종류
+// 치즈옵션, 치즈종류
+// 야채옵션, 야채수량
+// 소스옵션, 소스 종류 (3개)
+// 추가메뉴 옵션
+// 세트메뉴 : 단품/셋트
+// 주문수량변경
 
-// export default auths;
+// 배송방법 옵션 : 배달 / 직접 방문수령
+// 주문요청사항

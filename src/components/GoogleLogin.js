@@ -10,7 +10,7 @@ const GoogleLogin = () => {
   const navigate = useNavigate();
 
   // 리덕스 스토어의 상태를 조회
-    // eslint-disable-next-line
+  // eslint-disable-next-line
   const { userInfo, isLoggedIn } = useSelector((state) => state.auth); 
 
   // 리덕스 스토어의 dispatch 를 함수에서 사용 할 수 있게 한다.

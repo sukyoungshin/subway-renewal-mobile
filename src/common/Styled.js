@@ -43,6 +43,8 @@ export const GlobalStyle = createGlobalStyle`
   input, button {
     border: none;
     outline: none;
+    margin: 0;
+    padding: 0;
   }
 
   // CSS VARIABLES
@@ -848,15 +850,72 @@ export const MenuSection = styled.section`
     font-size: var(--font-size-14);
     font-weight: var(--font-weight-bold);
   }
+
   ul {
+    font-size: 0; /* removed unexpected space */
+  }
+
+  ul:not(option-wrapper) {
     display: inline-flex;
     flex-direction: row;
     grid-gap: 20px;
     gap: 20px;
+  }
 
-    font-size: 0; /* removed unexpected space */
+  ul.option-wrapper {
+    width: 100%;
+    min-height: 104px;
+
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-gap: 8px;
+    gap: 8px;
+
+    background-color: var(--color-transparent);
   }
 `;
+
+export const OptionLists = styled.li`
+  display: inline-flex;
+  justify-content: space-between;
+  flex-direction: row;
+  grid-gap: 16px;
+  gap: 16px;
+
+  font-size: var(--font-size-12);
+
+  .option {
+    width: 238px;
+    display: inline-flex;
+    flex-direction: row;
+    grid-gap: 16px;
+    gap: 16px;
+  }
+`;
+
+export const OptionList = styled.li`
+  display: inline-flex;
+  align-items: center;
+  grid-gap: 8px;
+  gap: 8px;
+`;
+export const RadioButton = styled.input`
+  /* display: none; */
+`;
+export const RadioButtonLabel = styled.label`
+  font-size: var(--font-size-12);
+
+  &:checked + ${RadioButton} {
+    
+  }
+`;
+
+
+
+
+
+
 export const MenuWrapper = styled(MainWrapper)`
   // overflow-y: auto; /* 내용이 많아지면 자동스크롤 */
   padding: 16px;
@@ -921,6 +980,7 @@ export const MenuArticle = styled.article`
 
   display: inline-flex;
   flex-direction: column;
+  justify-content: center;
   grid-gap: 8px;
   gap: 8px;
 
@@ -956,7 +1016,6 @@ export const MenuArticle = styled.article`
     font-size: 0; 
 
     position: relative;
-    
     
     .menu-img {
       width: 100%;

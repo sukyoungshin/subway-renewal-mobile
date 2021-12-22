@@ -88,12 +88,16 @@ const Navbar = ({ handleNavbar }) => {
         {
           isLoggedIn 
           ? (
-            <div className="mypage-icon-wrapper">
+            <>
+            <div>
               <HiUser />
+            </div>
+            <div>
               <HiLogout 
                 onClick={signOut} 
               /> 
             </div>
+            </>
             ) 
           : null
         }

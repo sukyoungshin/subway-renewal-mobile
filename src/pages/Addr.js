@@ -1,23 +1,33 @@
 /* global kakao */
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { OrderFormWrapper, FormFieldset, MapViewer, Map, AddressInput, CompleteButton, InputAddress } from '../common/Styled';
 
 const Addr = () => {
+  // 리덕스
+  const dispatch = useDispatch(); // 리덕스 스토어의 dispatch 를 함수에서 사용 할 수 있게 한다.
+
+  // 고객주소지 정보
   const [ addrValue, setAddrValue ] = useState(''); // 고객의 주소지
   const [ position, setPosition ] = useState(''); // 고객의 위치 좌표
   const kakaoMap = useRef(); // KakaoMap 상태관리
   const [ subwayPlaces, setSubwayPlaces ] = useState([]); // 써브웨이 리스트 및 거리를 저장할 배열
   const [ isSelectedSubway, setIsSelectedSubway ] = useState(null);// 주문을 위해 선택된 써브웨이 매장정보
 
-  // 버튼
+  // CTA 버튼
   const navigate = useNavigate();
   const [ isBtnSelected, setIsBtnSelected ] = useState(false); // 주문하기버튼 활성화 여부
   const HandleOrderStart = useCallback((e) => {
     e.preventDefault();
     if (!isBtnSelected) return window.alert('배달받으실 주소를 입력하세요.');
-    navigate('/menu',  { state: isSelectedSubway });
-    
+
+    dispatch({
+      type : 'cart/subwayInfo',
+      payload : isSelectedSubway,
+    }); // 리덕스 store로 고객 주소지 전달
+    navigate('/menu'); // 페이지이동
+    // eslint-disable-next-line
   }, [isBtnSelected, isSelectedSubway, navigate]); // 선택된 써브웨이 매장정보를 다음페이지(/menu)로 전달
 
   // postMessage

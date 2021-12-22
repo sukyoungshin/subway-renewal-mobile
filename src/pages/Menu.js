@@ -1,27 +1,22 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle, FloatBtn } from '../common/Styled';
-import { BsCart2 } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { MenuCategories, TabContents, BASEURL } from '../common/Datas';
+import { BsCart2 } from "react-icons/bs";
+import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle, FloatBtn } from '../common/Styled';
 
 const Menu = () => {
-
-  // 리디렉션 (커스텀 훅으로 만들어서 전체 컴포넌트에 적용해야할 듯)
-  const location = useLocation();
+  // 리덕스 : dispatch 를 함수에서 사용
+  const dispatch = useDispatch(); 
+  // 라우터
   const navigate = useNavigate();
-  useEffect(() => {
-    if (location.state === null) return navigate('/'); // 이전페이지에서 써브웨이 매장 정보가 넘어오지 않았으면 메인페이지로 강제이동
-    // console.log('@@order페이지에서 받아온 정보', location.state);
-
-  }, [location.state, navigate]);
 
   // 카테고리 선택 관련
   const [ categoryId, setCategoryId ] = useState(0); // 선택된 카테고리 인덱스#
-  const [ isBtnSelected, setIsSelected ] = useState(false); // 선택된 버튼
+  // eslint-disable-next-line
   const handleButtonActive = useCallback((id, category) => (
     () => {
       setCategoryId(id); // 선택된 버튼의 인덱싱값 저장
-      setIsSelected(prev => !prev); // 선택된 버튼 css변경
       setCategoryTitle(category); // 선택된 카테고리 저장
     }
   ), []);
@@ -32,11 +27,9 @@ const Menu = () => {
 
   // 아이템선택 관련
   const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
-  const [ isMenuSelected, setIsMenuSelected ] = useState(false); // 선택된 버튼 및 wrapper의 색상변경
   const handleOrderMenu = useCallback((id) => (
     () => {
       setMenuId(id);
-      setIsMenuSelected(prev => !prev);
       setIsBtnActivated(true); // 하나라도 클릭되면 변화가 있으면 하단 메뉴버튼 활성화
     }
   ), []);
@@ -46,15 +39,19 @@ const Menu = () => {
   // 최종적으로 선택한 메뉴
   useEffect(() => {
     setCurrentMenu(currentSelectedMenuItems[menuId]); // 고객이 최종적으로 선택한 메뉴
-    console.log(currentSelectedMenuItems[menuId]);
   }, [currentSelectedMenuItems, menuId]);
 
   // 아이템선택 완료버튼
+  // eslint-disable-next-line
   const handleOrderProcess = useCallback((e) => {
     e.preventDefault();
-    navigate('/bread',  { state: currentMenu }); // 고객이 최종적으로 선택한 메뉴 정보를 다음페이지로 전달
+    // 리덕스 store로 고객 주소지 전달
+    dispatch({
+      type : 'cart/category',
+      payload : currentMenu,
+    }); 
+    navigate('/bread'); 
   });
-
 
   return (
     <MenuWrapper>
