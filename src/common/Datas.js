@@ -566,7 +566,7 @@ export const TabContents = {
 
 
 // 재료 리스트
-// 빵 옵션
+// 빵 옵션 (화면에 나타내줄)
 export const breadOptionLists = [
   {
     id: 0,
@@ -593,7 +593,7 @@ export const breadOptionLists = [
       'option1' : {
         text: '토스팅',
         default : true,
-        price: 0,
+        price: null,
       },
       'option2' : {
         text : '토스팅안함',
@@ -610,7 +610,7 @@ export const breadOptionLists = [
       'option1' : {
         text : '속 파기',
         default: false,
-        price : 0,
+        price : null,
       },
       'option2' : {
         text : '안함',
@@ -627,7 +627,7 @@ export const breadOptionLists = [
       'option1' : {
         text : '빵 컷팅',
         default : false,
-        price : 0,
+        price : null,
       },
       'option2' : {
         text : '컷팅안함',
@@ -637,16 +637,42 @@ export const breadOptionLists = [
     },
   },
 ];
-
-// 빵 리스트
-export const Breads = [
+// 빵 옵션 기본값
+export const breadOptionsDefault = [
+  {
+    id : 0,
+    name : 'size',
+    bool : true,
+    price : 0,
+  },
+  {
+    id : 1,
+    name : 'toasting',
+    bool : true,
+    price : null,
+  },
+  {
+    id : 2,
+    name : 'digOut',
+    bool : false,
+    price : null,
+  },
+  {
+    id : 3,
+    name : 'cutting',
+    bool : false,
+    price : null,
+  },
+];
+// 빵 리스트`
+export const breads = [
   {
     id: 0,
     nameKor : '허니오트',
     nameEng : 'Honey Oat',
     description : '고소한 위트빵에 오트밀 가루를 묻혀 고소함과 식감이 두배로',
     imgSrc : '/bread/honeyoat.png',
-    price: '',
+    price: null,
   },
   {
     id: 1,
@@ -654,7 +680,7 @@ export const Breads = [
     nameEng : 'Hearty Italian',
     description : '부드러운 화이트빵에 옥수수가루를 묻혀 겉은 바삭하고 고소하며 속은 부드럽게',
     imgSrc : '/bread/hearty.png',
-    price: '',
+    price: null,
   },
   {
     id: 2,
@@ -662,7 +688,7 @@ export const Breads = [
     nameEng : 'Wheat',
     description : '9가지 곡물로 만들어 건강하고 고소한 맛의 곡물빵',
     imgSrc : '/bread/wheat.png',
-    price: '',
+    price: null,
   },
   {
     id: 3,
@@ -670,7 +696,7 @@ export const Breads = [
     nameEng : 'Parmesan Oregano',
     description : '부드러운 화이트빵에 파마산 오레가노 시즈닝을 묻혀 허브향 가득',
     imgSrc : '/bread/parmesan.png',
-    price: '',
+    price: null,
   },
   {
     id: 4,
@@ -678,7 +704,7 @@ export const Breads = [
     nameEng : 'White',
     description : '가장 클래식한 빵으로 부드러운 식감이 매력 포인트',
     imgSrc : '/bread/white.png',
-    price: '',
+    price: null,
   },
   {
     id: 5,
@@ -686,86 +712,98 @@ export const Breads = [
     nameEng : 'Flat Bread',
     description : '납작한 모양의 식감이 쫀득한 빵',
     imgSrc : '/bread/flatbread.png',
-    price: '',
+    price: null,
   },
 ];
-// 야채 리스트
-export const vegetables = [
-  {
-    id: 0,
-    nameKor : '양상추',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 1,
-    nameKor : '토마토',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 2,
-    nameKor : '오이',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 3,
-    nameKor : '피망',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 4,
-    nameKor : '피클',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 5,
-    nameKor : '올리브',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 6,
-    nameKor : '할라피뇨',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 7,
-    nameKor : '아보카도',
-    description : '',
-    imgSrc : '',
-  },
-  {
-    id: 8,
-    nameKor : '양상추',
-    description : '',
-    imgSrc : '',
-  },
-];
+
 
 // 치즈 리스트
 export const cheeses = [
   {
     id: 0,
     nameKor : '아메리칸 치즈',
+    nameEng : 'American Cheese',
     description : '',
     imgSrc : '',
   },
   {
     id: 1,
     nameKor : '슈레드 치즈',
+    nameEng : 'Shredded Cheese',
     description : '',
     imgSrc : '',
   },
   {
     id: 2,
     nameKor : '모차렐라 치즈',
+    nameEng : '',
     description : '',
     imgSrc : '',
+  },
+  {
+    id: 3,
+    nameKor : '치즈제외',
+    nameEng : '',
+    description : '',
+    imgSrc : '',
+  }
+];
+
+// 야채 리스트
+export const vegetables = [
+  {
+    id: 0,
+    nameKor : '양상추',
+    description : '',
+    imgSrc : '/veg/lettuce.jpg',
+  },
+  {
+    id: 1,
+    nameKor : '토마토',
+    description : '',
+    imgSrc : '/veg/tomatoes.jpg',
+  },
+  {
+    id: 2,
+    nameKor : '오이',
+    description : '',
+    imgSrc : '/veg/cucumbers.jpg',
+  },
+  {
+    id: 3,
+    nameKor : '피망',
+    description : '',
+    imgSrc : '/veg/peppers.jpg',
+  },
+  {
+    id: 4,
+    nameKor : '피클',
+    description : '',
+    imgSrc : '/veg/pickles.jpg',
+  },
+  {
+    id: 5,
+    nameKor : '올리브',
+    description : '',
+    imgSrc : '/veg/olives.jpg',
+  },
+  {
+    id: 6,
+    nameKor : '할라피뇨',
+    description : '',
+    imgSrc : '/veg/jalapenos.jpg',
+  },
+  {
+    id: 7,
+    nameKor : '아보카도',
+    description : '',
+    imgSrc : '/veg/avocado.jpg',
+  },
+  {
+    id: 8,
+    nameKor : '양파',
+    description : '',
+    imgSrc : '/veg/redonion.jpg',
   },
 ];
 

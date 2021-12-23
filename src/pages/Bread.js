@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { BASEURL, Breads, breadOptionLists } from '../common/Datas';
+import { BASEURL, breads, breadOptionLists, breadOptionsDefault } from '../common/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
-import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OptionLists, OptionList, RadioButton, RadioButtonLabel, OrderIconButton, FloatBtn } from '../common/Styled';
+import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OptionLists, OptionList, RadioButton, RadioButtonLabel, OrderIconButton } from '../common/Styled';
+import FloatButton from '../components/FloatButton';
 
-// 빵메뉴 리스트
 const Bread = () => {
-  // 리덕스 : dispatch 를 함수에서 사용
-  const dispatch = useDispatch(); 
-  // 라우터
-  const navigate = useNavigate();
+  const dispatch = useDispatch(); // 리덕스 
+  const navigate = useNavigate(); // 라우터
   // 아이템선택 관련
   const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
   const handleOrderMenu = useCallback((id) => (
@@ -20,40 +18,43 @@ const Bread = () => {
     }
   ), []);
   const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
-  const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장
-
-  const [ breadOptions, setBreadOptions ] = useState([]); // 빵 옵션
+  // 선택한 빵 및 빵옵션 저장
+  const [ currentMenu, setCurrentMenu ] = useState(null); // 선택한 빵을 저장
+  const [ breadOptions, setBreadOptions ] = useState(breadOptionsDefault); // 선택한 빵 옵션을 저장
 
   // 아이템선택 완료버튼
   // eslint-disable-next-line
   const handleOrderProcess = useCallback((e) => {
     e.preventDefault();
+    // 리덕스로 선택한 빵 및 빵옵션 전달
     dispatch({
       type: 'cart/bread',
-      payload : currentMenu,
-    }); // 선택한 빵 스토어에 전달
-    // navigate('/',  { state: currentMenu }); // 고객이 최종적으로 선택한 메뉴 정보를 다음페이지로 전달
+      payload : {
+        currentMenu, // 선택한 빵
+        breadOptions, // 선택한 빵옵션
+      },
+    }); 
+    navigate('/cheese'); // 페이지 이동
   });
 
   // 최종적으로 선택한 메뉴
   useEffect(() => {
-    setCurrentMenu(Breads[menuId]); // 고객이 최종적으로 선택한 메뉴
+    setCurrentMenu(breads[menuId]);
   }, [menuId]);
 
-  // todo : 선택된 빵 옵션 저장
-  const selectedInput = useCallback(({name, bool, price}) => (
+  // 선택된 빵 옵션 저장
+  const selectedRadio = useCallback(({ id, name, bool, price }) => (
     () => {
-      setBreadOptions({
+      // 선택한 옵션이름 + 선택
+      const newBreadOptions = {
+        id,
         name, 
         bool, 
         price
-      }); // 선택한 옵션이름 + 선택
+      };
+      setBreadOptions(breadOptions, newBreadOptions); // 선택한 빵 옵션 저장 
     }
-  ), []);
-
-  useEffect(() => {
-    console.log(breadOptions);
-  }, [breadOptions]);
+  ), [breadOptions]);
 
   return (
     <MenuWrapper>
@@ -74,7 +75,8 @@ const Bread = () => {
                       id={list.option['option1'].text} 
                       name={list.nameEng} 
                       defaultChecked={list.option['option1'].default}
-                      onChange={selectedInput({
+                      onChange={selectedRadio({
+                        id : list.id,
                         name : list.nameEng, 
                         bool : list.option['option1'].default,
                         price : list.option['option1'].price,
@@ -92,7 +94,8 @@ const Bread = () => {
                       id={list.option['option2'].text} 
                       name={list.nameEng}
                       defaultChecked={list.option['option2'].default}
-                      onChange={selectedInput({
+                      onChange={selectedRadio({
+                        id : list.id,
                         name : list.nameEng, 
                         bool : list.option['option2'].default,
                         price : list.option['option2'].price,
@@ -117,7 +120,7 @@ const Bread = () => {
         <h2>빵선택</h2>
         <MenuListGrid>
           {
-            Breads.map((bread) => (
+            breads.map((bread) => (
               <MenuArticle 
                 key={bread.id}
                 isMenuSelected={menuId === bread.id} 
@@ -147,8 +150,7 @@ const Bread = () => {
                   </span>
                 </div>
                 <p className="menu-price">
-                  {bread.price} 
-                  KRW
+                  {bread.price ? `${bread.price}KRW` : null} 
                 </p>
               </MenuArticle>
             ))
@@ -156,14 +158,12 @@ const Bread = () => {
         </MenuListGrid>
       </MenuSection>
 
-      <FloatBtn 
-        type="button" 
+      <FloatButton
         isBtnActivated={isBtnActivated}
-        disabled={isBtnActivated ? false : true}
-        onClick={handleOrderProcess}
+        handleOrderProcess={handleOrderProcess}
       >
         빵 선택 (2 / 7)
-      </FloatBtn>
+      </FloatButton>
 
     </MenuWrapper>
   );

@@ -862,7 +862,7 @@ export const MenuSection = styled.section`
     gap: 20px;
   }
 
-  ul.option-wrapper {
+  ul.option-wrapper{
     width: 100%;
     min-height: 104px;
 
@@ -885,6 +885,9 @@ export const OptionLists = styled.li`
 
   font-size: var(--font-size-12);
 
+  span {
+    margin-left: 8px;
+  }
   .option {
     width: 238px;
     display: inline-flex;
@@ -900,6 +903,7 @@ export const OptionList = styled.li`
   grid-gap: 8px;
   gap: 8px;
 `;
+// todo : 라디오버튼 커스터마이징
 export const RadioButton = styled.input`
   /* display: none; */
 `;
@@ -911,16 +915,9 @@ export const RadioButtonLabel = styled.label`
   }
 `;
 
-
-
-
-
-
 export const MenuWrapper = styled(MainWrapper)`
-  // overflow-y: auto; /* 내용이 많아지면 자동스크롤 */
   padding: 16px;
   position: relative;
-  //margin-bottom: 64px; 
 `;
 export const MenuCategoryList = styled.ul`
 
@@ -965,6 +962,7 @@ export const CategoryBtn = styled.button`
   `}
 `;
 
+// 각 재료 선택 (야채제외)
 export const MenuListGrid = styled.div`
   margin-bottom: 16px;
   width: 100%;
@@ -1056,7 +1054,6 @@ export const MenuArticle = styled.article`
     border: 2px solid var(--color-green);
   `}
 `;
-
 export const OrderIconButton = styled.button`
   padding: 0;
   width: 32px;
@@ -1079,6 +1076,74 @@ export const OrderIconButton = styled.button`
   ${(props) => props.isMenuSelected && css`
     background-color: var(--color-green);
   `}
+`;
+
+// 야채 선택
+export const VegListGrid = styled.div`
+  margin-bottom: 16px;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  grid-auto-rows: minmax(156px, auto);
+  grid-gap: 20px;
+`;
+export const VegArticle = styled.article`
+  padding: 8px;
+  width: 100%;
+
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 2px solid var(--color-green);
+  border-radius: 8px;
+
+  position: relative;
+`;
+export const VegArticleHeader = styled.div`
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  label {
+    font-size: var(--font-size-14);
+  }
+`;
+export const VegAmountButton = styled.button`
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  
+  color: var(--color-grey);
+  font-size: var(--font-size-18);
+  background-color: var(--color-transparent);
+  border-radius: 50%;
+  
+  &:focus {
+    color: var(--color-white);
+    background-color: var(--color-green);
+  }
+  svg {
+    font-size: var(--font-size-16);
+  }
+`;
+
+export const VegContentWrapper = styled.div`
+  width: 100%;
+  font-size: 0; /* remove space */
+
+  img {
+    width: 100%;
+    max-height: 84px;
+    object-fit: contain;
+  }
+
+  input[type="range"] {
+    width: 100%;
+  }
 `;
 
 export const FloatBtn = styled.button`

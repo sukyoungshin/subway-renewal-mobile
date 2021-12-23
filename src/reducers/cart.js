@@ -47,6 +47,8 @@ function cart (state = initialState, action) {
   const SUBWAYINFO = 'cart/subwayInfo';
   const CATEGORY = 'cart/category';
   const BREAD = 'cart/bread';
+  const CHEESE = 'cart/cheese';
+  const VEGGIE = 'cart/veggie';
   
   switch (action.type) {
     case SUBWAYINFO:
@@ -58,6 +60,13 @@ function cart (state = initialState, action) {
     case BREAD:
       console.log('BREAD', BREAD, action.payload);
       return action.payload;
+    case CHEESE:
+      console.log('CHEESE', CHEESE, action.payload);
+      return action.payload;
+    case VEGGIE:
+      console.log('VEGGIE', VEGGIE, action.payload);
+      return action.payload;
+          
     default:
       return state;
   };

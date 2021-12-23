@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { MenuCategories, TabContents, BASEURL } from '../common/Datas';
 import { BsCart2 } from "react-icons/bs";
-import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle, FloatBtn } from '../common/Styled';
+import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle } from '../common/Styled';
+import FloatButton from '../components/FloatButton';
 
 const Menu = () => {
-  // 리덕스 : dispatch 를 함수에서 사용
-  const dispatch = useDispatch(); 
-  // 라우터
-  const navigate = useNavigate();
+  
+  const dispatch = useDispatch(); // 리덕스 
+  const navigate = useNavigate();// 라우터
 
   // 카테고리 선택 관련
   const [ categoryId, setCategoryId ] = useState(0); // 선택된 카테고리 인덱스#
@@ -45,11 +45,10 @@ const Menu = () => {
   // eslint-disable-next-line
   const handleOrderProcess = useCallback((e) => {
     e.preventDefault();
-    // 리덕스 store로 고객 주소지 전달
     dispatch({
       type : 'cart/category',
       payload : currentMenu,
-    }); 
+    }); // 리덕스 store로 고객 주소지 전달
     navigate('/bread'); 
   });
 
@@ -61,17 +60,20 @@ const Menu = () => {
           <ul>
             {
               MenuCategories
-                .map((category) => (
-                  <li key={category.id}>
-                    <CategoryBtn 
-                      type="button"
-                      isBtnSelected={category.id === categoryId}
-                      onClick={handleButtonActive(category.id, category.titleEng)}
-                    >
-                      <img src={`${BASEURL}${category.imgSrc}`} alt={category.title} />
-                      <span>{category.title}</span>
-                    </CategoryBtn>
-                  </li>
+              .map((category) => (
+                <li key={category.id}>
+                  <CategoryBtn 
+                    type="button"
+                    isBtnSelected={category.id === categoryId}
+                    onClick={handleButtonActive(category.id, category.titleEng)}
+                  >
+                    <img 
+                      src={`${BASEURL}${category.imgSrc}`} 
+                      alt={category.title}
+                    />
+                    <span>{category.title}</span>
+                  </CategoryBtn>
+                </li>
               ))
             }
           </ul>
@@ -98,8 +100,14 @@ const Menu = () => {
                   <p className='menu-name-eng'>{menu.nameEng}</p>
                 </div>
                 <div className="menu-img-wrapper">
-                  <img src={`${BASEURL}${menu.imgSrc}`} alt={`${menu.nameKor}`} className="menu-img" />
-                  <span className="menu-description">{menu.description}</span>
+                  <img 
+                    src={`${BASEURL}${menu.imgSrc}`} 
+                    alt={`${menu.nameKor}`} 
+                    className="menu-img" 
+                  />
+                  <span className="menu-description">
+                    {menu.description}
+                  </span>
                 </div>
                 <p className="menu-price">{menu.price} KRW</p>
               </MenuArticle>
@@ -108,14 +116,13 @@ const Menu = () => {
         </MenuListGrid>
       </MenuSection>
 
-      <FloatBtn 
-        type="button" 
+      <FloatButton
         isBtnActivated={isBtnActivated}
-        disabled={isBtnActivated ? false : true}
-        onClick={handleOrderProcess}
+        handleOrderProcess={handleOrderProcess}
       >
         메뉴 선택 (1 / 7)
-      </FloatBtn>
+      </FloatButton>
+
     </MenuWrapper>
   );
 };

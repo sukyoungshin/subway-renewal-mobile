@@ -10,9 +10,11 @@ import Login from "./pages/Login";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Addr from './pages/Addr';
+import PostSearch from './pages/PostSearch';
 import Menu from './pages/Menu';
 import Bread from './pages/Bread';
-import PostSearch from './pages/PostSearch';
+import Cheese from './pages/Cheese';
+import Veggie from './pages/Veggie';
 import NoMatch from './pages/NoMatch';
 // STYLE
 import { GlobalStyle } from './common/Styled';
@@ -43,9 +45,9 @@ const App = () => {
             <Route path="search" element={<PostSearch />} />
             <Route path="menu" element={<Menu />} />
             <Route path="bread" element={<Bread />} />
-            {/* <Route path="cheese" element={<Cheese />} />
+            <Route path="cheese" element={<Cheese />} />
             <Route path="veggie" element={<Veggie />} />
-            <Route path="sauce" element={<Sauce />} />
+            {/*<Route path="sauce" element={<Sauce />} />
             <Route path="extra" element={<ExtraMenu />} />
 
             <Route path="order" element={<OrderTemplate /> }>

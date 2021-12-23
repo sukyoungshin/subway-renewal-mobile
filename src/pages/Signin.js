@@ -5,7 +5,11 @@ const Signin = () => {
   return (
     <main className="signin-wrapper">
       Signin
-      <img src={Logo} alt="로고" style={{ width: 'calc(50%)' }} />
+      <img 
+        src={Logo} 
+        alt="로고" 
+        style={{ width: 'calc(50%)' }} 
+      />
     </main>
   );
 };
