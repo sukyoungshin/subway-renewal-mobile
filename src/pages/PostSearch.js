@@ -41,6 +41,7 @@ const PostSearch = (data) => {
     window.opener.postMessage(fullAddress);  // 주소 '/order' 페이지로 전체주소 전달
     window.close(); // 현재 팝업창 닫기
   };
+  
   // 다시입력 (이전페이지로 이동하기)
   const handleClose = () => {
     const confirm = window.confirm('다시 입력하시겠습니까? 이전 페이지로 돌아갑니다.');

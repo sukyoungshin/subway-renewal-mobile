@@ -7,12 +7,13 @@ import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, M
 import FloatButton from '../components/FloatButton';
 
 const Menu = () => {
-  
+  /* 리덕스 및 라우터 셋팅 */
   const dispatch = useDispatch(); // 리덕스 
-  const navigate = useNavigate();// 라우터
+  const navigate = useNavigate(); // 라우터 
 
-  // 카테고리 선택 관련
+  /* 카테고리 선택 관련 */
   const [ categoryId, setCategoryId ] = useState(0); // 선택된 카테고리 인덱스#
+  // 카테고리 클릭 버튼
   // eslint-disable-next-line
   const handleButtonActive = useCallback((id, category) => (
     () => {
@@ -41,7 +42,7 @@ const Menu = () => {
     setCurrentMenu(currentSelectedMenuItems[menuId]); // 고객이 최종적으로 선택한 메뉴
   }, [currentSelectedMenuItems, menuId]);
 
-  // 아이템선택 완료버튼
+  /* CTA 버튼 관련 */
   // eslint-disable-next-line
   const handleOrderProcess = useCallback((e) => {
     e.preventDefault();

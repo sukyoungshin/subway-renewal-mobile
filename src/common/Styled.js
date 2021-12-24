@@ -905,6 +905,7 @@ export const OptionList = styled.li`
 `;
 // todo : 라디오버튼 커스터마이징
 export const RadioButton = styled.input`
+  accent-color: var(--color-green);
   /* display: none; */
 `;
 export const RadioButtonLabel = styled.label`
@@ -1145,6 +1146,11 @@ export const VegContentWrapper = styled.div`
     width: 100%;
   }
 `;
+
+export const RangeButton = styled.input`
+  accent-color: var(--color-green);
+`;
+
 
 export const FloatBtn = styled.button`
   display: block;

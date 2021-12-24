@@ -1,53 +1,43 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MenuWrapper, MenuSection, VegListGrid, VegArticle, VegArticleHeader, VegAmountButton, VegContentWrapper } from '../common/Styled';
+import { MenuWrapper, MenuSection, VegListGrid, VegArticle, VegArticleHeader, VegAmountButton, VegContentWrapper, RangeButton } from '../common/Styled';
 import FloatButton from '../components/FloatButton';
 import { BASEURL, vegetables } from '../common/Datas';
 
 const Veggie = () => {
+  /* 리덕스 및 라우터 셋팅 */
   const dispatch = useDispatch(); // 리덕스
   const navigate = useNavigate(); // 라우터
 
-  // range 기본값
-  const [ step, setStep ] = useState(vegetables.reduce((result, veg) => {
-    result[veg.id] = 50;
-    return result;
-  }, {})); 
+  /* range 관련 */
+  const [ step, setStep ] = useState(
+    // vegetables 배열의 갯수만큼 step생성 (기본값 50)
+    vegetables.reduce((result, veg) => {
+      result[veg.id] = 50;
+      return result;
+    }, {})
+  ); 
+
   // eslint-disable-next-line
   const handleStepChange = useCallback((id) => 
     (e) => {
       const range = e.target.valueAsNumber; // 숫자로 바꿔줌
       setStep({
         ...step,
-        [id] : range, 
+        [id] : range,  
       });
-  });
+    }
+  );
 
-  useEffect(() => {
-    console.log('@@step~~', step);
-  }, [step]);
-
-  // 아이템선택 완료버튼
-  // eslint-disable-next-line
-  const handleOrderProcess = useCallback((e) => {
-    e.preventDefault();
-    // 리덕스로 선택한 야채 전달
-    dispatch({
-      type: 'cart/veggie',
-      payload : step, // 선택한 야채 및 수량
-    }); 
-    // 페이지 이동
-    navigate('/sauce'); 
-  });
-
-  // 수량조절 버튼 핸들러
+  /* 수량조절 버튼 핸들러 */
   const handleAmountVeg = (id, direction) => 
     () => {
       // 버튼방향
       const NEXT = 'next';
       const PREV = 'prev';
 
+      // PREV 및 NEXT 버튼을 클릭 시, range step을 이동
       switch (direction) {
         case PREV:
           if (step[id] <= 0 ) return 0;
@@ -56,6 +46,7 @@ const Veggie = () => {
             [id] : step[id] - 10,
           });
           break;
+
         case NEXT:
           if (step[id] >= 100 ) return 100;
           setStep({
@@ -63,10 +54,22 @@ const Veggie = () => {
             [id] : step[id] + 10,
           });
           break;
+
         default:
           console.log('NaN');
-      }
+    };
   };
+
+  /* CTA버튼 관련 */
+  // eslint-disable-next-line
+  const handleOrderProcess = useCallback((e) => {
+    e.preventDefault();
+    dispatch({
+      type: 'cart/veggie',
+      payload : step, 
+    }); 
+    navigate('/sauce'); 
+  });
 
   return (
     <MenuWrapper>
@@ -87,18 +90,14 @@ const Veggie = () => {
                   key={veg.id}
                 >
                   <VegArticleHeader>
-                    <VegAmountButton
-                      onClick={handleAmountVeg(veg.id, 'prev')}
-                    >
+                    <VegAmountButton onClick={handleAmountVeg(veg.id, 'prev')}> 
                       -
                     </VegAmountButton>
                     <label htmlFor={veg.id}>
                       {veg.nameKor}
                     </label>
-                    <VegAmountButton
-                      onClick={handleAmountVeg(veg.id, 'next')}
-                    >
-                      +
+                    <VegAmountButton onClick={handleAmountVeg(veg.id, 'next')}>
+                      + 
                     </VegAmountButton>
                   </VegArticleHeader>
                   <VegContentWrapper>
@@ -108,13 +107,13 @@ const Veggie = () => {
                     />
                   </VegContentWrapper>
                   <VegContentWrapper>
-                    <input 
+                    <RangeButton 
                       id={veg.id}
                       type="range" 
                       min="0"
                       max="100"
                       step="10"
-                      value={step[veg.id]} /* 비제어 컴포넌트 */
+                      value={step[veg.id]} 
                       onChange={handleStepChange(veg.id)}
                     />
                   </VegContentWrapper>

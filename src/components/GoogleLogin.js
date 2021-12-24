@@ -21,7 +21,7 @@ const GoogleLogin = () => {
     const profile = googleUser.getBasicProfile();
     
     dispatch({ 
-      type : 'LOGIN', 
+      type : 'auth/login', 
       userInfo : {
         id : profile.getId(),// Do not send to your backend! Use an ID token instead.
         userName : profile.getName(),
@@ -50,7 +50,7 @@ const GoogleLogin = () => {
       console.log('User signed out.');
     });
     dispatch({ 
-      type : 'LOGOUT',  // 액션타입
+      type : 'auth/logout',  // 액션타입
       isLoggedIn : false, // 로그인여부
       userInfo : {
         id: null,

@@ -2,7 +2,7 @@
 const initialState = [
   {
     id: 0,
-    // order페이지에서 주소지랑 정보 받아옴
+    // 유저의 주소지 및 써브웨이 매장 정보 (order)
     subwayInfo : {
       id: 0,
       name : null,
@@ -11,7 +11,7 @@ const initialState = [
       phone : null, 
       url : null,
     },
-    // menu페이지에서 카테고리 선택 후 업데이트
+    // 선택된 메뉴 카테고리 정보 (menu)
     category : {
       id : 0,
       nameKor : null,
@@ -21,7 +21,7 @@ const initialState = [
       description: null,
       price: 0,
     },
-    // bread페이지
+    // 빵 및 옵션 정보 (bread)
     bread : {
       id : 0,
       nameKor : null,
@@ -42,7 +42,7 @@ const initialState = [
   }
 ];
 
-// 리듀서
+// 리듀서 함수
 function cart (state = initialState, action) {
   const SUBWAYINFO = 'cart/subwayInfo';
   const CATEGORY = 'cart/category';
@@ -52,16 +52,12 @@ function cart (state = initialState, action) {
   
   switch (action.type) {
     case SUBWAYINFO:
-      console.log('subwayinfo', SUBWAYINFO, action.payload);
       return action.payload;
     case CATEGORY:
-      console.log('CATEGORY', CATEGORY, action.payload);
       return action.payload;
     case BREAD:
-      console.log('BREAD', BREAD, action.payload);
       return action.payload;
     case CHEESE:
-      console.log('CHEESE', CHEESE, action.payload);
       return action.payload;
     case VEGGIE:
       console.log('VEGGIE', VEGGIE, action.payload);

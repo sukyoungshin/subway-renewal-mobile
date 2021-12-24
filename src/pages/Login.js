@@ -10,7 +10,7 @@ import KakaoLogin from '../components/KakaoLogin';
 import FacebookLogin from '../components/FacebookLogin';
 
 const Login = ({ getLoggedIn }) => {
-
+  /* 라우터 셋팅 */
   const navigate = useNavigate();
   const goBack = () => navigate(-1); // 뒤로가기
 

@@ -7,34 +7,35 @@ import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OrderIconButton } 
 import FloatButton from '../components/FloatButton';
 
 const Cheese = () => {
-  const dispatch = useDispatch(); // 리덕스
-  const navigate = useNavigate(); // 라우터
+  /* 리덕스 및 라우터 셋팅 */
+  const dispatch = useDispatch(); // 리덕스 
+  const navigate = useNavigate(); // 라우터 
 
-  // 아이템선택 관련
+  /* 아이템선택 관련 */
   const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
+  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화여부
+  const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장
   const handleOrderMenu = useCallback((id) => (
     () => {
       setMenuId(id);
-      setIsBtnActivated(true); // 하나라도 클릭되면 변화가 있으면 하단 메뉴버튼 활성화
+      setIsBtnActivated(true); // 하나라도 선택된 항목이 있으면 하단 CTA버튼 활성화
     }
   ), []);
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
-  const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장한다
-
-  // 최종적으로 선택한 메뉴
+  
+  // 최종적으로 선택한 메뉴 저장
   useEffect(() => {
     setCurrentMenu(cheeses[menuId]); 
   }, [menuId]);
 
-  // 아이템선택 완료버튼
+  /* CTA 버튼 관련 */
   // eslint-disable-next-line
   const handleOrderProcess = useCallback((e) => {
     e.preventDefault();
     dispatch({
       type: 'cart/cheese',
       payload : currentMenu,
-    }); // 리덕스로 치즈정보 전달
-    navigate('/veggie'); // 페이지 이동
+    }); 
+    navigate('/veggie'); 
   });
 
   return (

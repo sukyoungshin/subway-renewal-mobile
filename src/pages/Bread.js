@@ -7,35 +7,24 @@ import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OptionLists, Optio
 import FloatButton from '../components/FloatButton';
 
 const Bread = () => {
+  /* 리덕스 및 라우터 셋팅 */
   const dispatch = useDispatch(); // 리덕스 
   const navigate = useNavigate(); // 라우터
-  // 아이템선택 관련
-  const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
+
+  /* 아이템선택 관련 */
+  const [ menuId, setMenuId ] = useState(0); // 선택된 메뉴 버튼의 인덱싱#
+  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화 여부
   const handleOrderMenu = useCallback((id) => (
     () => {
       setMenuId(id);
       setIsBtnActivated(true); // 하나라도 클릭되면 변화가 있으면 하단 메뉴버튼 활성화
     }
   ), []);
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
+
+  /* CTA버튼 관련 */
   // 선택한 빵 및 빵옵션 저장
   const [ currentMenu, setCurrentMenu ] = useState(null); // 선택한 빵을 저장
   const [ breadOptions, setBreadOptions ] = useState(breadOptionsDefault); // 선택한 빵 옵션을 저장
-
-  // 아이템선택 완료버튼
-  // eslint-disable-next-line
-  const handleOrderProcess = useCallback((e) => {
-    e.preventDefault();
-    // 리덕스로 선택한 빵 및 빵옵션 전달
-    dispatch({
-      type: 'cart/bread',
-      payload : {
-        currentMenu, // 선택한 빵
-        breadOptions, // 선택한 빵옵션
-      },
-    }); 
-    navigate('/cheese'); // 페이지 이동
-  });
 
   // 최종적으로 선택한 메뉴
   useEffect(() => {
@@ -45,16 +34,23 @@ const Bread = () => {
   // 선택된 빵 옵션 저장
   const selectedRadio = useCallback(({ id, name, bool, price }) => (
     () => {
-      // 선택한 옵션이름 + 선택
-      const newBreadOptions = {
-        id,
-        name, 
-        bool, 
-        price
-      };
+      const newBreadOptions = { id, name,  bool, price }; // 새로 선택된 빵 옵션
       setBreadOptions(breadOptions, newBreadOptions); // 선택한 빵 옵션 저장 
     }
   ), [breadOptions]);
+
+  // eslint-disable-next-line
+  const handleOrderProcess = useCallback((e) => {
+    e.preventDefault();
+    dispatch({
+      type: 'cart/bread',
+      payload : {
+        currentMenu, // 선택한 빵
+        breadOptions, // 선택한 빵옵션
+      },
+    }); 
+    navigate('/cheese');
+  });
 
   return (
     <MenuWrapper>

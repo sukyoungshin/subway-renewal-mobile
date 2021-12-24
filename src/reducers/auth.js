@@ -1,39 +1,43 @@
 // 모듈의 초기 상태 
 const initialState = { 
+  // 로그인 된 유저정보
   userInfo : {
     id: null,
     userName: null,
     imageURL: null,
     email: null, 
-  },  // 로그인 된 유저의 정보저장
-  isLoggedIn : false, // 로그인여부
+  },  
+  // 유저의 로그인여부
+  isLoggedIn : false, 
 };
 
 // 리듀서
 function auth(state = initialState, action) {
+  const LOGIN = 'auth/login';
+  const LOGOUT = 'auth/logout';
 
   switch (action.type) {
-    case 'LOGIN':
+    case LOGIN:
       return { 
         ...state,
         userInfo : {
           id: action.userInfo.id,
           userName: action.userInfo.userName,
           imageURL: action.userInfo.imageURL,
-          email: action.userInfo.email, // 로그인 된 유저의 정보
+          email: action.userInfo.email, 
         }, 
-        isLoggedIn : true, // 로그인여부
+        isLoggedIn : true,
       };
-    case 'LOGOUT':
+    case LOGOUT:
       return { 
         ...state,
         userInfo : {
           id: null,
           userName: null,
           imageURL: null,
-          email: null, // 로그인 된 유저의 정보저장
+          email: null,
         },  
-        isLoggedIn : false, // 로그인여부
+        isLoggedIn : false,
       };
     default:
       return state;
