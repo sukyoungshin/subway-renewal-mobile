@@ -52,12 +52,16 @@ function cart (state = initialState, action) {
   
   switch (action.type) {
     case SUBWAYINFO:
+      console.log('SUBWAYINFO', SUBWAYINFO, action.payload);
       return action.payload;
     case CATEGORY:
+      console.log('CATEGORY', CATEGORY, action.payload);
       return action.payload;
     case BREAD:
+      console.log('BREAD', BREAD, action.payload); // breadOptions [{}, {}, {}, {}], currentMenu [{},{},{},{]}]
       return action.payload;
     case CHEESE:
+      console.log('CHEESE', CHEESE, action.payload); // {}
       return action.payload;
     case VEGGIE:
       console.log('VEGGIE', VEGGIE, action.payload);

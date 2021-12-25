@@ -37,9 +37,9 @@ const Menu = () => {
   const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
   const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장한다
 
-  // 최종적으로 선택한 메뉴
+  // 최종적으로 선택한 메뉴저장
   useEffect(() => {
-    setCurrentMenu(currentSelectedMenuItems[menuId]); // 고객이 최종적으로 선택한 메뉴
+    setCurrentMenu(currentSelectedMenuItems[menuId]); 
   }, [currentSelectedMenuItems, menuId]);
 
   /* CTA 버튼 관련 */
@@ -49,7 +49,7 @@ const Menu = () => {
     dispatch({
       type : 'cart/category',
       payload : currentMenu,
-    }); // 리덕스 store로 고객 주소지 전달
+    }); 
     navigate('/bread'); 
   });
 

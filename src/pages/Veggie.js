@@ -1,14 +1,23 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MenuWrapper, MenuSection, VegListGrid, VegArticle, VegArticleHeader, VegAmountButton, VegContentWrapper, RangeButton } from '../common/Styled';
+import { MenuWrapper, MenuSection, VegListGrid, VegArticle, VegArticleHeader, VegAmountButton, VegContentWrapper, RangeButton, OptionLists, OptionList, RadioButton, RadioButtonLabel } from '../common/Styled';
 import FloatButton from '../components/FloatButton';
-import { BASEURL, vegetables } from '../common/Datas';
+import { BASEURL, vegetables, vegetableOptionLists } from '../common/Datas';
 
 const Veggie = () => {
   /* 리덕스 및 라우터 셋팅 */
   const dispatch = useDispatch(); // 리덕스
   const navigate = useNavigate(); // 라우터
+
+  /* 옵션선택 관련 */
+  // 선택된 빵 옵션 저장
+  const [] = useState({});
+  const selectedRadio = useCallback((bool) => (
+    () => {
+      console.log(bool);
+    }
+  ), []);
 
   /* range 관련 */
   const [ step, setStep ] = useState(
@@ -77,7 +86,31 @@ const Veggie = () => {
       <h2>옵션선택</h2>
         <article>
           <ul className="option-wrapper">
-            {/* 빈 공간 */}
+            {
+              vegetableOptionLists.map((list) => (
+                <OptionLists key={list.id}>
+                  <span>
+                    {list.name}
+                  </span>
+                  <ul className="option">
+                    <OptionList>
+                      <RadioButton 
+                        type="radio" 
+                        // id={list.nameEng}
+                        // name={list.nameEng}
+                        // defaultChecked={list.bool}
+                        // onChange={selectedRadio(list.bool)}
+                      />
+                      <RadioButtonLabel 
+                        htmlFor={list.nameEng}
+                      >
+                        {list.option.text}
+                      </RadioButtonLabel>
+                    </OptionList>
+                  </ul>
+                </OptionLists>
+              ))
+            }
           </ul>
         </article>
       </MenuSection>
@@ -86,42 +119,42 @@ const Veggie = () => {
         <VegListGrid>
           {
             vegetables.map((veg) => (
-                <VegArticle 
-                  key={veg.id}
-                >
-                  <VegArticleHeader>
-                    <VegAmountButton onClick={handleAmountVeg(veg.id, 'prev')}> 
-                      -
-                    </VegAmountButton>
-                    <label htmlFor={veg.id}>
-                      {veg.nameKor}
-                    </label>
-                    <VegAmountButton onClick={handleAmountVeg(veg.id, 'next')}>
-                      + 
-                    </VegAmountButton>
-                  </VegArticleHeader>
-                  <VegContentWrapper>
-                    <img 
-                      src={`${BASEURL}${veg.imgSrc}`} 
-                      alt={veg.nameKor} 
-                    />
-                  </VegContentWrapper>
-                  <VegContentWrapper>
-                    <RangeButton 
-                      id={veg.id}
-                      type="range" 
-                      min="0"
-                      max="100"
-                      step="10"
-                      value={step[veg.id]} 
-                      onChange={handleStepChange(veg.id)}
-                    />
-                  </VegContentWrapper>
-                </VegArticle>
-                ))
-              }
-            </VegListGrid>
-          </MenuSection>
+              <VegArticle 
+                key={veg.id}
+              >
+                <VegArticleHeader>
+                  <VegAmountButton onClick={handleAmountVeg(veg.id, 'prev')}> 
+                    -
+                  </VegAmountButton>
+                  <label htmlFor={veg.id}>
+                    {veg.nameKor}
+                  </label>
+                  <VegAmountButton onClick={handleAmountVeg(veg.id, 'next')}>
+                    + 
+                  </VegAmountButton>
+                </VegArticleHeader>
+                <VegContentWrapper>
+                  <img 
+                    src={`${BASEURL}${veg.imgSrc}`} 
+                    alt={veg.nameKor} 
+                  />
+                </VegContentWrapper>
+                <VegContentWrapper>
+                  <RangeButton 
+                    id={veg.id}
+                    type="range" 
+                    min="0"
+                    max="100"
+                    step="10"
+                    value={step[veg.id]} 
+                    onChange={handleStepChange(veg.id)}
+                  />
+                </VegContentWrapper>
+              </VegArticle>
+            ))
+          }
+          </VegListGrid>
+        </MenuSection>
       <FloatButton
         isBtnActivated={true}
         handleOrderProcess={handleOrderProcess}

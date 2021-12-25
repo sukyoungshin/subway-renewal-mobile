@@ -164,7 +164,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/eggmayo.png',
     kcal : 480,
     description : '부드러운 달걀과 고소한 마요네즈가 만나 더 부드러운 스테디셀러',
-    price : '',
+    price : 4300,
   },
   {
     id: 1,
@@ -173,7 +173,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/italianbmt.png',
     kcal : 410,
     description : '페퍼로니, 살라미 그리고 햄이 만들어내는 최상의 조화! 전세계가 사랑하는 써브웨이의 베스트셀러! Biggest Meatiest Tastiest, its’ B.M.T!',
-    price : '',
+    price : 5400,
   },
   {
     id: 2,
@@ -182,7 +182,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/blt.png',
     kcal : 300,
     description : '오리지널 아메리칸 스타일 베이컨의 풍미와 바삭함 그대로~',
-    price : '',
+    price : 5400,
   },
   {
     id: 3,
@@ -191,7 +191,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/meatball.png',
     kcal : 480,
     description : '이탈리안 스타일 비프 미트볼에 써브웨이만의 풍부한 토마토 향이 살아있는 마리나라소스를 듬뿍',
-    price : '',
+    price : 5300,
   },
   {
     id: 4,
@@ -200,7 +200,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/ham.png',
     kcal : 290,
     description : '기본 중에 기본! 풍부한 햄이 만들어내는 입 안 가득 넘치는 맛의 향연',
-    price : '',
+    price : 4800,
   },
   {
     id: 5,
@@ -209,7 +209,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/tuna.png',
     kcal : 480,
     description : '남녀노소 누구나 좋아하는 담백한 참치와 고소한 마요네즈의 완벽한 조화',
-    price : '',
+    price : 4800,
   },
   
   {
@@ -219,7 +219,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/roastedchicken.png',
     kcal : 320,
     description : '오븐에 구워 담백한 저칼로리 닭가슴살의 건강한 풍미',
-    price : '',
+    price : 6100,
   },
   {
     id: 7,
@@ -228,7 +228,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/roatisery.png',
     kcal : 350,
     description : '촉촉한 바비큐 치킨의 풍미가득. 손으로 찢어 더욱 부드러운 치킨의 혁명',
-    price : '',
+    price : 6100,
   },
   {
     id: 8,
@@ -237,7 +237,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/subwayclub.png',
     kcal : 293,
     description : '명실공히 시그니처 써브! 터키, 햄, 베이컨의 완벽한 앙상블',
-    price : '',
+    price : 5900,
   },
   {
     id: 9,
@@ -246,7 +246,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/turkey.png',
     kcal : 280,
     description : '280kcal로 슬림하게 즐기는 오리지날 터키 샌드위치',
-    price : '',
+    price : 5300,
   },
   {
     id: 10,
@@ -264,7 +264,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/shrimp.png',
     kcal : 229,
     description : '탱글한 식감이 그대로 살아있는 통새우가 5마리 들어가 한 입 베어 먹을 때 마다 진짜 새우의 풍미가 가득',
-    price : '',
+    price : 5900,
   },
   {
     id: 12,
@@ -273,7 +273,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/kbbq.png',
     kcal : 372,
     description : '써브웨이 최초의 코리안 스타일 샌드위치! 마늘, 간장 그리고 은은한 불맛까지!',
-    price : '',
+    price : 6100,
   },
   {
     id: 13,
@@ -282,7 +282,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/pulledpork.png',
     kcal : 327,
     description : '미국 스타일의 풀드 포크 바비큐가 가득 들어간 샌드위치',
-    price : '',
+    price : 6000,
   },
   {
     id: 14,
@@ -291,7 +291,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/steakandcheese.png',
     kcal : 380,
     description : '육즙이 쫙~풍부한 비프 스테이크의 풍미가 입안 한가득',
-    price : '',
+    price : 6500,
   },
   {
     id: 15,
@@ -300,7 +300,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/turkeybacon.png',
     kcal : 420,
     description : '담백한 터키와 바삭한 베이컨 환상조합에 부드러운 아보카도는 신의 한수',
-    price : '',
+    price : 6500,
   },
   {
     id: 16,
@@ -309,7 +309,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/spicyitalian.png',
     kcal : 480,
     description : '살라미, 페퍼로니가 입안 한가득! 쏘 핫한 이탈리아의 맛',
-    price : '',
+    price : 5700,
   },
   {
     id: 17,
@@ -318,7 +318,7 @@ export const Sandwiches = [
     imgSrc : '/sandwich/chickenterriyaki.png',
     kcal : 370,
     description : '담백한 치킨 스트립에 달콤짭쪼름한 써브웨이 특제 데리야끼 소스와의 환상적인 만남',
-    price : '',
+    price : 5700,
   }
 ];
 
@@ -331,7 +331,7 @@ export const Salads = [
     imgSrc : '/salad/shrimp.png',
     kcal : 67,
     description : '탱글한 식감이 그대로 살아있는 통새우가 5마리가 샐러드에 쏙 ! Fresh함이 그대로~',
-    price : '',
+    price : 7600,
   },
   {
     id: 1,
@@ -340,16 +340,16 @@ export const Salads = [
     imgSrc : '/salad/k-bbq.jpg',
     kcal : 210,
     description : '써브웨이 최초의 코리안 스타일 샐러드! 마늘, 간장 그리고 은은한 불맛까지!',
-    price : '',
+    price : 7800,
   },
   {
     id: 2,
-    nameKor : '로티세리 치킨',
+    nameKor : '로티세리 바비큐 치킨',
     nameEng : 'Rotisserie Chicken',
     imgSrc : '/salad/rotisery.jpg',
     kcal : 480,
     description : '촉촉한 바비큐 치킨의 풍미가득. 손으로 찢어 더욱 부드러운 치킨이 샐러드에 쏙',
-    price : '',
+    price : 7800,
   },
   {
     id: 3,
@@ -358,7 +358,7 @@ export const Salads = [
     imgSrc : '/salad/pulledpork.jpg',
     kcal : 165,
     description : '훈연한 미국 스타일의 풀드 포크 바비큐가 가득 올라간 풍미 가득한 샐러드',
-    price : '',
+    price : 7700,
   },
   {
     id: 4,
@@ -367,7 +367,7 @@ export const Salads = [
     imgSrc : '/salad/itlianbmt.jpg',
     kcal : 480,
     description : '페퍼로니, 살라미 그리고 햄이 만들어내는 최상의 조화! 전세계가 사랑하는 써브웨이의 베스트셀러! Biggest Meatiest Tastiest, its’ B.M.T! 샐러드',
-    price : '',
+    price : 7100,
   },
   {
     id: 5,
@@ -376,7 +376,7 @@ export const Salads = [
     imgSrc : '/salad/blt.png',
     kcal : 153,
     description : '오리지널 아메리칸 스타일 베이컨의 풍미와 바삭함 그대로~',
-    price : '',
+    price : 7100,
   },
   {
     id: 6,
@@ -385,7 +385,7 @@ export const Salads = [
 			imgSrc : '/salad/eggmayo.jpg',
     kcal : 310,
     description : '부드러운 달걀과 고소한 마요네즈가 만나 더 부드러운 스테디셀러',
-    price : '',
+    price : 6000,
   },
   {
     id: 7,
@@ -394,7 +394,7 @@ export const Salads = [
     imgSrc : '/salad/roatstedchicken.jpg',
     kcal : 150,
     description : '오븐에 구워 담백한 저칼로리 닭가슴살의 건강한 풍미',
-    price : '',
+    price : 7800,
   },
   {
     id: 8,
@@ -403,16 +403,16 @@ export const Salads = [
     imgSrc : '/salad/subwayclub.png',
     kcal : 138,
     description : '터키, 햄, 베이컨의 완벽한 앙상블과 즐기는 샐러드',
-    price : '',
+    price : 7600,
   },
   {
     id: 9,
-    nameKor : '터키',
+    nameKor : '터키 샐러드',
     nameEng : 'Turkey',
     imgSrc : '/salad/turkey.jpg',
     kcal : 110,
     description : '더 슬림하게 즐기자! 오리지날 터키 샐러드',
-    price : '',
+    price : 7000,
   },
   {
     id: 10,
@@ -421,7 +421,7 @@ export const Salads = [
     imgSrc : '/salad/veggie.jpg',
     kcal : 60,
     description : '7가지 야채만으로도 깔끔한 조화! 기본에 충실한 베지 샐러드',
-    price : '',
+    price : 5600,
   },
   {
     id: 11,
@@ -430,7 +430,7 @@ export const Salads = [
     imgSrc : '/salad/steakandcheese.jpg',
     kcal : 210,
     description : '육즙이 쫙~풍부한 비프 스테이크의 풍미 가득 스테이크 & 치즈 샐러드!',
-    price : '',
+    price : 8200,
   },
   {
     id: 12,
@@ -439,7 +439,7 @@ export const Salads = [
     imgSrc : '/salad/turkeyandbacon.png',
     kcal : 238,
     description : '담백한 터키와 바삭한 베이컨 환상조합에 부드러운 아보카도는 신의 한수',
-    price : '',
+    price : 8200,
   },
   {
     id: 13,
@@ -448,7 +448,7 @@ export const Salads = [
     imgSrc : '/salad/splicyitalian.jpg',
     kcal : 310,
     description : '살라미, 페퍼로니가 입안 한가득! 진짜 이탈리아의 맛 가득한 샐러드',
-    price : '',
+    price : 7400,
   },
   {
     id: 14,
@@ -457,7 +457,7 @@ export const Salads = [
     imgSrc : '/salad/chickenteriyaki.jpg',
     kcal : 230,
     description : '담백한 치킨 스트립에 달콤짭쪼름한 써브웨이 특제 데리야끼 소스 토핑으로 더 풍성한 샐러드',
-    price : '',
+    price : 7400,
   },
 ];
 
@@ -465,39 +465,39 @@ export const Salads = [
 export const Wraps = [
   {
     id: 0,
-    nameKor : '쉬림프 에그 그릴드 랩',
+    nameKor : '쉬림프 에그마요 랩',
     nameEng : 'Shrimp Egg Grilled Wrap',
     imgSrc : '/wrap/shrimp_egg_grilled_wrap.png',
     kcal : 427,
     description : '더 뜨겁게, 더 맛있게 즐기자! 탱글한 새우와 부드러운 오믈렛의 만남',
-    price : '',
+    price : 5000,
   },
   {
     id: 1,
-    nameKor : '스테이크 & 치즈 아보카도 그릴드 랩',
+    nameKor : '스테이크&치즈 아보카도 랩',
     nameEng : 'Steak & Cheese Avocado Grilled Wrap',
     imgSrc : '/wrap/steak_n_cheese_avocado_grilled_wrap.png',
     kcal : 451,
     description : '더 뜨겁게, 더 맛있게 즐기자! 육즙이 쫙~ 비프 스테이크와 아보카도가 만나다!',
-    price : '',
+    price : 5700,
   },
   {
     id: 2,
-    nameKor : '치킨 베이컨 미니 그릴드 랩',
+    nameKor : '치킨 베이컨 미니 랩',
     nameEng : 'Chicken Bacon Mini Grilled Wrap',
     imgSrc : '/wrap/chicken_bacon_mini_grilled_wrap.png',
     kcal : 376,
     description : '더 뜨겁게 더 맛있게 즐기자! 담백한 치킨, 바삭한 베이컨 비츠가 쏙',
-    price : '',
+    price : 2900,
   },
   {
     id: 3,
-    nameKor : '이탈리안 미니 그릴드 랩',
+    nameKor : '이탈리안 미니 랩',
     nameEng : 'Italian Mini Grilled Wrap',
-    imgSrc : '/wrap/italian_mini_grilled_wrap.png',
+    imgSrc : '/wrap/italian_mini_wrap.jpg',
     kcal : 405,
     description : '더 뜨겁게 더 맛있게 즐기자! 페퍼로니, 살라미 풍미 넘치는 한입 매콤한 핫칠리로 놓칠 수 없는 맛',
-    price : '',
+    price : 3400,
   },
   {
     id: 4,
@@ -519,38 +519,47 @@ export const Wraps = [
   },
   {
     id: 6,
-    nameKor : '이탈리안 미니 랩',
-    nameEng : 'Italian Mini Wrap',
-    imgSrc : '/wrap/italian_mini_wrap.jpg',
-    kcal : 230,
-    description : '작지만 화끈하다! 입안 가득 즐기는 이탈리아의 풍미. 이탈리안 미니랩!',
-    price : '',
+    nameKor : '오늘의 수프',
+    nameEng : '',
+    imgSrc : '',
+    kcal : 0,
+    description : '',
+    price : 2900,
   },
   {
     id: 7,
-    nameKor : '스테이크 & 치즈 아보카도 랩',
-    nameEng : 'Steak & Cheese Avocado Wrap',
-    imgSrc : '/wrap/steak_n_cheese_avocado_wrap.jpg',
-    kcal : 405,
-    description : '육즙 가득 스테이크에 프레쉬함을 더해줄 아보카도와 슈레드치즈 그리고 모차렐라치즈까지! 최상의 야채와 소스 조합으로 탄생한 스테이크 & 치즈 아보카도 랩!',
+    nameKor : '코카콜라 (355ml)',
+    nameEng : '',
+    imgSrc : '',
+    kcal : 0,
+    description : '',
     price : '',
   },
   {
     id: 8,
-    nameKor : '쉬림프 에그마요 랩',
-    nameEng : 'Shrimp Egg Mayo Wrap',
-    imgSrc : '/wrap/shrimp_egg_mayo_wrap.jpg',
-    kcal : 459,
-    description : '부드럽고 고소한 에그마요 안에 탱글한 통새우가 푹~! 최상의 야채와 소스 조합으로 탄생한 쉬림프 에그마요 랩!!',
+    nameKor : '스프라이트 (355ml)',
+    nameEng : '',
+    imgSrc : '',
+    kcal : 0,
+    description : '',
     price : '',
   },
   {
     id: 9,
-    nameKor : '치킨 베이컨 미니 랩',
-    nameEng : 'Chicken Bacon Mini Wrap',
-    imgSrc : '/wrap/chicken_bacon_mini_wrap.jpg',
-    kcal : 376,
-    description : '담백한 치킨, 바삭한 베이컨 비츠가 쫀득한 통밀 랩에 쏘옥! 치킨 베이컨 미니 랩',
+    nameKor : '닥터페퍼 (355ml)',
+    nameEng : '',
+    imgSrc : '',
+    kcal : 0,
+    description : '',
+    price : '',
+  },
+  {
+    id: 10,
+    nameKor : '코카콜라 제로 (355ml)',
+    nameEng : '',
+    imgSrc : '',
+    kcal : 0,
+    description : '',
     price : '',
   },
 ];
@@ -747,6 +756,31 @@ export const cheeses = [
     nameEng : '',
     description : '',
     imgSrc : '',
+  }
+];
+
+
+// 야채옵션 리스트
+export const vegetableOptionLists = [
+  {
+    id: 0,
+    name : '야채 선택',
+    nameEng : 'selectAll',
+    option : {
+      text: '야채 전부 선택',
+      default : true,
+      price: null,
+    },
+  },
+  {
+    id: 1,
+    name : '야채 제외',
+    nameEng : 'exceptAll',
+    option : {
+      text: '야채 제외',
+      default : false,
+      price: null,
+    },
   }
 ];
 

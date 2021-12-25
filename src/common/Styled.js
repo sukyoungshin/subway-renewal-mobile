@@ -35,10 +35,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   a {
     display: inline-block;
-    text-decoration: none;
-    color: inherit;
     font-size: 0;
+    color: inherit;
     text-align: center;
+    text-decoration: none;
   }
   input, button {
     border: none;
@@ -59,7 +59,6 @@ export const GlobalStyle = createGlobalStyle`
     --color-light-grey: #DFDFDF;
     --color-black: #292F28;
     --color-transparent: rgba(233,233,233,0.4);
-    //--color-transparent: rgba(255,255,255,0.5);
     --color-kakao: #FFE812;
     --color-facebook: #3C5997;
     --color-google: rgb(66, 133, 244);
@@ -209,7 +208,6 @@ export const LogoContainer = styled(ItemBlock)`
 `;
 export const InputContainer = styled(ItemBlock)`
   height: 48px;
-
   position: relative;
 
   input[type="text"] {
@@ -292,8 +290,6 @@ export const CompleteButton = styled(Button)`
     background-color: var(--color-green);
   `};
 `;
-
-
 
 export const GoogleLogoutButton = styled(Button)`
   padding: 4px;
