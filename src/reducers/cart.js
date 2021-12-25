@@ -64,7 +64,7 @@ function cart (state = initialState, action) {
       console.log('CHEESE', CHEESE, action.payload); // {}
       return action.payload;
     case VEGGIE:
-      console.log('VEGGIE', VEGGIE, action.payload);
+      console.log('VEGGIE', VEGGIE, action.payload); // 0~8까지 야채순서대로 수량 전달
       return action.payload;
           
     default:

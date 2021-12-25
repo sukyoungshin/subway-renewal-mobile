@@ -847,6 +847,10 @@ export const MenuSection = styled.section`
     font-weight: var(--font-weight-bold);
   }
 
+  .description {
+    font-size: var(--font-size-12);
+  }
+
   ul {
     font-size: 0; /* removed unexpected space */
   }
@@ -871,6 +875,7 @@ export const MenuSection = styled.section`
     background-color: var(--color-transparent);
   }
 `;
+
 
 export const OptionLists = styled.li`
   display: inline-flex;
@@ -899,18 +904,22 @@ export const OptionList = styled.li`
   grid-gap: 8px;
   gap: 8px;
 `;
-// todo : 라디오버튼 커스터마이징
+// 라디오버튼 커스터마이징
 export const RadioButton = styled.input`
   accent-color: var(--color-green);
   /* display: none; */
 `;
 export const RadioButtonLabel = styled.label`
   font-size: var(--font-size-12);
-
-  &:checked + ${RadioButton} {
-    
-  }
 `;
+
+export const CheckBoxButton = styled.input`
+  accent-color: var(--color-green);
+`;
+export const CheckBoxButtonLabel = styled.label`
+  font-size: var(--font-size-12);
+`;
+
 
 export const MenuWrapper = styled(MainWrapper)`
   padding: 16px;
@@ -1093,10 +1102,14 @@ export const VegArticle = styled.article`
   flex-direction: column;
   justify-content: space-between;
 
-  border: 2px solid var(--color-green);
+  border: 2px solid var(--color-light-grey);
   border-radius: 8px;
 
   position: relative;
+
+  ${(props) => props.isMenuSelected && css`
+    border: 2px solid var(--color-green);
+  `}
 `;
 export const VegArticleHeader = styled.div`
   width: 100%;
@@ -1162,7 +1175,7 @@ export const FloatBtn = styled.button`
   border-radius: 8px;
 
   position: sticky; /* 부모요소에 overflow 요소가 있으면 작동안함 */
-  bottom: 16px;
+  bottom: 0px;
   left: 0;
   z-index: 100;
 

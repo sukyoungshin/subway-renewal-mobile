@@ -726,7 +726,6 @@ export const breads = [
   },
 ];
 
-
 // 치즈 리스트
 export const cheeses = [
   {
@@ -756,31 +755,6 @@ export const cheeses = [
     nameEng : '',
     description : '',
     imgSrc : '',
-  }
-];
-
-
-// 야채옵션 리스트
-export const vegetableOptionLists = [
-  {
-    id: 0,
-    name : '야채 선택',
-    nameEng : 'selectAll',
-    option : {
-      text: '야채 전부 선택',
-      default : true,
-      price: null,
-    },
-  },
-  {
-    id: 1,
-    name : '야채 제외',
-    nameEng : 'exceptAll',
-    option : {
-      text: '야채 제외',
-      default : false,
-      price: null,
-    },
   }
 ];
 
