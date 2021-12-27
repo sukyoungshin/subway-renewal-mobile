@@ -1175,7 +1175,7 @@ export const FloatBtn = styled.button`
   border-radius: 8px;
 
   position: sticky; /* 부모요소에 overflow 요소가 있으면 작동안함 */
-  bottom: 0px;
+  bottom: 16px;
   left: 0;
   z-index: 100;
 

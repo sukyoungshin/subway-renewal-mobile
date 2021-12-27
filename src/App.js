@@ -15,6 +15,7 @@ import Menu from './pages/Menu';
 import Bread from './pages/Bread';
 import Cheese from './pages/Cheese';
 import Veggie from './pages/Veggie';
+import Sauce from './pages/Sauce';
 import NoMatch from './pages/NoMatch';
 // STYLE
 import { GlobalStyle } from './common/Styled';
@@ -47,8 +48,8 @@ const App = () => {
             <Route path="bread" element={<Bread />} />
             <Route path="cheese" element={<Cheese />} />
             <Route path="veggie" element={<Veggie />} />
-            {/*<Route path="sauce" element={<Sauce />} />
-            <Route path="extra" element={<ExtraMenu />} />
+            <Route path="sauce" element={<Sauce />} />
+            {/*<Route path="extra" element={<ExtraMenu />} />
 
             <Route path="order" element={<OrderTemplate /> }>
               <Route index element={<OrderInfo />} />

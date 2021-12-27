@@ -10,9 +10,6 @@ const Veggie = () => {
   const dispatch = useDispatch(); // 리덕스
   const navigate = useNavigate(); // 라우터
 
-  /* 아이템선택 관련 */
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화 여부
-
   /* 옵션선택 관련 */
   const [ isChecked, setIsChecked ] = useState(false); // 체크박스 관리
   /* range 관련 */
@@ -23,7 +20,7 @@ const Veggie = () => {
       return result;
     }, {})
   ); 
-  // 야채 전부다 10이상이면, 전체선택 체크박스가 체크된다.
+  // 야채 전부 다 10이상이면, 전체선택 체크박스가 체크된다.
   useEffect(() => {
     const vegAmounts = Object.values(step); 
     const condition = vegAmounts.every((v) => v >= 10);
@@ -43,9 +40,12 @@ const Veggie = () => {
     }
   );
 
+  /* 아이템선택 관련 */
+  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화 여부
+
   const selectedCheckBox = (e) => {
     const newStateChecked = e.target.checked;
-    setIsChecked(newStateChecked); // 현재 체크된 상태
+    setIsChecked(newStateChecked); // 현재 체크된 상태로 업데이트
     
     if (newStateChecked) {
       // 전체선택 버튼이 클릭되었을 때, 슬라이더 조정
@@ -82,8 +82,7 @@ const Veggie = () => {
           if ( step[id] > 0 && step[id] <= 10 ) {
             setIsChecked(false);
           };
-          if (step[id] <= 0 ) return 0;
-
+          if ( step[id] <= 0 ) return 0;
           setStep({
             ...step,
             [id] : step[id] - 10,
@@ -91,8 +90,7 @@ const Veggie = () => {
           break;
 
         case NEXT:          
-          if (step[id] >= 100 ) return 100;
-
+          if ( step[id] >= 100 ) return 100;
           setStep({
             ...step,
             [id] : step[id] + 10,

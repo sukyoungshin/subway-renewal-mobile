@@ -39,6 +39,8 @@ const initialState = [
       digOut : true,
       cutting: false,
     },
+
+    // 내용추가 필요
   }
 ];
 
@@ -49,6 +51,7 @@ function cart (state = initialState, action) {
   const BREAD = 'cart/bread';
   const CHEESE = 'cart/cheese';
   const VEGGIE = 'cart/veggie';
+  const SAUCE = 'cart/sauce';
   
   switch (action.type) {
     case SUBWAYINFO:
@@ -65,6 +68,9 @@ function cart (state = initialState, action) {
       return action.payload;
     case VEGGIE:
       console.log('VEGGIE', VEGGIE, action.payload); // 0~8까지 야채순서대로 수량 전달
+      return action.payload;
+    case SAUCE:
+      console.log('SAUCE', SAUCE, action.payload); // 0~8까지 야채순서대로 수량 전달
       return action.payload;
           
     default:
