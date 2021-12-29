@@ -13,6 +13,9 @@ import { MenuRecommended } from '../common/Datas';
 
 const Main = () => {
   const navigate = useNavigate(); // 라우터
+  const handleNavAddr = () => {
+    navigate('/addr');
+  };
 
   return (
       <MainWrapper>
@@ -28,7 +31,7 @@ const Main = () => {
                   <img src={Sample} alt="첫번째 샌드위치 이미지" />
                   <h3>{item.menuName}</h3>
                   <p>{item.kcal}kcal</p>
-                  <button type="button" onClick={() => navigate('/addr')}>
+                  <button type="button" onClick={handleNavAddr}>
                     <img src={OrderIcon} alt="주문하기 버튼" />
                   </button>
                 </div>

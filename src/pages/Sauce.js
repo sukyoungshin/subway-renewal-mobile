@@ -1,11 +1,10 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OrderIconButton, OptionLists, OptionList, RadioButton, RadioButtonLabel } from '../common/Styled';
+import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OrderIconButton, OptionLists, RadioButton, RadioButtonLabel } from '../common/Styled';
 import { AiOutlinePlus } from "react-icons/ai";
 import FloatButton from '../components/FloatButton';
 import { BASEURL, sauces, sauceOptionLists } from '../common/Datas';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 
 const Sauce = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -13,44 +12,37 @@ const Sauce = () => {
   const navigate = useNavigate(); // 라우터 
 
   /* 아이템선택 관련 */
+  // 옵션선택 radio버튼 체크상태 flag (Array)
+  const [ isChecked, setIsChecked ] = useState(false);
+  // 메뉴 선택관련
   const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화여부
   const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장
-  const handleOrderMenu = useCallback((id) => (
+  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화여부
+  const handleOrderMenu = useCallback(({ id, nameKor, description, imgSrc, defaultChecked }) => (
     () => {
-      setMenuId(id);
+      const currentOrderMenuObj = { id, nameKor, description, imgSrc, defaultChecked };
+      
+      setMenuId(currentOrderMenuObj.id); // 선택한 리스트 indexing 저장
       setIsBtnActivated(true); // 하나라도 선택된 항목이 있으면 하단 CTA버튼 활성화
     }
   ), []);
 
-  // radio버튼 기본값
-  const [ isChecked, setIsChecked ] = useState();
-
-  // useEffect(() => {
-  //   if ( menuId === 14 ) {
-  //   }
-
-  // }, []);
-  
-  //eslint-disable-next-line
-  const selectedRadio = useCallback((id) => (
-    () => {
-
-      // radio 버튼을 클릭 시, 
-      if (id === 1) {
-        // 선택 안함을 누르면, 메뉴아이디 14번으로 셋팅
-        setMenuId(14); 
-      } else {
-        // 선택을 누르면, 메뉴아이디 0번으로 셋팅
-        setMenuId(0); 
-      }
-
-    }
-  ));
-
-  // 최종적으로 선택한 메뉴 저장
   useEffect(() => {
-    setCurrentMenu(sauces[menuId]); 
+    console.log('isChecked', toString.call(isChecked));
+  }, [isChecked]);
+
+  // ????
+  // 옵션선택 버튼에 따라, 선택한 아이템 수정
+  const selectedRadio = useCallback((id) => 
+  (e) => {
+    const currentTargetRadio = e.target.checked;
+    console.log(currentTargetRadio);    
+    
+  }, []);
+
+  // 클릭한 index에 맞추어 radio flag 변경
+  useEffect(() => {
+    setCurrentMenu(sauces[menuId]); // 최종적으로 선택한 메뉴 저장
   }, [menuId]);
 
   /* CTA 버튼 관련 */
@@ -86,12 +78,12 @@ const Sauce = () => {
                     <RadioButton 
                       type="radio" 
                       id={list.id} 
-                      name={list.nameEng} 
+                      name={list.radioGroup} 
                       defaultChecked={isChecked}
-                      onChange={selectedRadio(list.id)}
+                      onChange={selectedRadio(list.id)} 
                     />
                     <RadioButtonLabel 
-                      htmlFor={list.id}
+                      htmlFor={list.radioGroup}
                     >
                       {list.name}
                     </RadioButtonLabel>
@@ -113,7 +105,13 @@ const Sauce = () => {
               >
                 <OrderIconButton
                   isMenuSelected={menuId === sauce.id} 
-                  onClick={handleOrderMenu(sauce.id)}
+                  onClick={handleOrderMenu({
+                    id : sauce.id,
+                    nameKor: sauce.nameKor,
+                    description : sauce.description,
+                    imgSrc: sauce.imgSrc,
+                    defaultChecked : sauce.defaultChecked,
+                  })}
                 >
                   <AiOutlinePlus />
                 </OrderIconButton>

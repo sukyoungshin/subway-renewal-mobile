@@ -20,12 +20,13 @@ const Veggie = () => {
       return result;
     }, {})
   ); 
-  // 야채 전부 다 10이상이면, 전체선택 체크박스가 체크된다.
+  // 야채 전부 다 10이상일 때,
   useEffect(() => {
     const vegAmounts = Object.values(step); 
     const condition = vegAmounts.every((v) => v >= 10);
     if (condition) {
-      setIsChecked(true);
+      setIsChecked(true); // 전체선택 체크박스가 체크
+      setIsBtnActivated(true); // CTA버튼 활성화
     };
   }, [step]);
 
@@ -65,7 +66,8 @@ const Veggie = () => {
           return result;
         }, {})
       );
-    }
+      setIsBtnActivated(false); // CTA버튼 활성화
+    };
   };
 
   /* 수량조절 버튼 핸들러 */
