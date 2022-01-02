@@ -32,9 +32,9 @@ const Bread = () => {
   }, [menuId]);
 
   // 선택된 빵 옵션 저장
-  const selectedRadio = useCallback(({ id, name, bool, price }) => (
+  const selectedRadio = useCallback(({ id, nameKor, name, bool, price }) => (
     () => {
-      const newBreadOptions = { id, name,  bool, price }; // 새로 선택된 빵 옵션
+      const newBreadOptions = { id, name, nameKor, bool, price }; // 새로 선택된 빵 옵션
       setBreadOptions(breadOptions, newBreadOptions); // 선택한 빵 옵션 저장 
     }
   ), [breadOptions]);
@@ -74,6 +74,7 @@ const Bread = () => {
                       onChange={selectedRadio({
                         id : list.id,
                         name : list.nameEng, 
+                        nameKor : list.name,
                         bool : list.option['option1'].default,
                         price : list.option['option1'].price,
                       })}
@@ -92,6 +93,7 @@ const Bread = () => {
                       defaultChecked={list.option['option2'].default}
                       onChange={selectedRadio({
                         id : list.id,
+                        nameKor : list.name,
                         name : list.nameEng, 
                         bool : list.option['option2'].default,
                         price : list.option['option2'].price,

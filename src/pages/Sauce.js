@@ -39,16 +39,24 @@ const Sauce = () => {
     }
   ), []);
 
+  // 옵션 '선택안함'을 클릭하면 메뉴리스트를 선택안함으로 변경
   useEffect(() => {
-    console.log('isChecked', isChecked);
+    if (isChecked === 1) {
+      setMenuId(0);
+    } 
+
   }, [isChecked]);
 
-  // ????
   // 옵션선택 버튼에 따라, 선택한 아이템 수정
   const selectedRadio = useCallback((id) => 
-  (e) => {
-    setIsChecked(id);    
-  }, []);
+    (e) => {
+      // 옵션 === 리스트 (선택안함)
+      if (id !== menuId ) {
+        setIsChecked(id);
+      }
+
+    }, []
+  );
 
   // 클릭한 index에 맞추어 radio flag 변경
   useEffect(() => {
@@ -63,9 +71,8 @@ const Sauce = () => {
       type: 'cart/sauce',
       payload : currentMenu,
     }); 
-    // navigate('/extra'); 
+    navigate('/order'); // 장바구니 (주문내역서)로 이동 
   });
-
 
   return (
     <MenuWrapper>

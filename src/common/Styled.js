@@ -876,6 +876,112 @@ export const MenuSection = styled.section`
   }
 `;
 
+export const MenuCard = styled.section`
+  padding: 8px;
+  width: 100%;
+  height: 112px;
+  background-color: #F6F5F5;
+
+  display: inline-flex;
+  flex-direction: row;
+  grid-gap: 16px;
+  gap: 16px;
+
+  .card-img {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 96px;
+    height: 100%;
+
+    img {
+      min-width: 96px;
+      height: 96px;
+      object-fit: cover;
+      font-size: var(--font-size-12);
+    }
+  }
+  .card-content {
+    flex: 1;
+
+    display: inline-flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    gap: 8px;
+
+    overflow: hidden;
+
+    h2 {
+      font-size: var(--font-size-14);
+      span {
+        float: right;
+      }
+    }
+    p {
+      font-size: var(--font-size-12);
+      max-height: 32px;
+      overflow: hidden;
+      position: relative;
+
+      &::after {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+
+  }
+`;
+
+export const OrderButtonWrapper = styled.div`
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .button-wrapper {
+    width: 100%;
+    max-width: 112px;
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 0;
+
+    span {
+      font-size: var(--font-size-10);
+      font-weight: var(--font-weight-bold);
+    }
+    button {
+      width: 24px;
+      height: 24px;
+      background-color: #C4C4C4;
+      border-radius: 50%;
+
+      font-size: var(--font-size-10);
+    }
+    .menu-delete {
+      font-size: var(--font-size-14);
+    }
+  }
+
+  .menu-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-direction: column;
+    font-size: 0;
+
+    svg {
+      font-size: var(--font-size-24);
+    }
+  }
+`;
 
 export const OptionLists = styled.li`
   display: inline-flex;

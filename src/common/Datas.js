@@ -740,24 +740,28 @@ export const breadOptionLists = [
 export const breadOptionsDefault = [
   {
     id : 0,
+    nameKor : ' 빵 사이즈',
     name : 'size',
     bool : true,
     price : 0,
   },
   {
     id : 1,
+    nameKor : ' 토스팅',
     name : 'toasting',
     bool : true,
     price : null,
   },
   {
     id : 2,
+    nameKor : ' 속파기',
     name : 'digOut',
     bool : false,
     price : null,
   },
   {
     id : 3,
+    nameKor : ' 컷팅',
     name : 'cutting',
     bool : false,
     price : null,

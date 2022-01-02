@@ -1,48 +1,88 @@
 // 모듈의 초기 상태 
-const initialState = [
-  {
-    id: 0,
-    // 유저의 주소지 및 써브웨이 매장 정보 (order)
-    subwayInfo : {
-      id: 0,
-      name : null,
-      distance : 0,
-      address : null, 
-      phone : null, 
-      url : null,
+const initialState = {
+    "subwayInfo": {
+        "id": 1,
+        "name": "써브웨이 인천계산역점",
+        "distance": "1381",
+        "address": "인천 계양구 경명대로 1055",
+        "phone": "032-547-5550",
+        "url": "http://place.map.kakao.com/2051270680"
     },
-    // 선택된 메뉴 카테고리 정보 (menu)
-    category : {
-      id : 0,
-      nameKor : null,
-      nameEng : null,
-      kcal : 0,
-      imgSrc : null,
-      description: null,
-      price: 0,
+    "category": {
+        "id": 0,
+        "nameKor": "에그마요",
+        "nameEng": "Egg Mayo",
+        "imgSrc": "/sandwich/eggmayo.png",
+        "kcal": 480,
+        "description": "부드러운 달걀과 고소한 마요네즈가 만나 더 부드러운 스테디셀러",
+        "price": 4300
     },
-    // 빵 및 옵션 정보 (bread)
-    bread : {
-      id : 0,
-      nameKor : null,
-      nameEng : null,
-      imgSrc : null,
-      description: null,
-      price: 0,
+    "bread": {
+        "currentMenu": {
+            "id": 0,
+            "nameKor": "허니오트",
+            "nameEng": "Honey Oat",
+            "description": "고소한 위트빵에 오트밀 가루를 묻혀 고소함과 식감이 두배로",
+            "imgSrc": "/bread/honeyoat.png",
+            "price": null
+        },
+        "breadOptions": [
+            {
+                "id": 0,
+                "nameKor": " 빵 사이즈",
+                "name": "size",
+                "bool": true,
+                "price": 0
+            },
+            {
+                "id": 1,
+                "nameKor": " 토스팅",
+                "name": "toasting",
+                "bool": true,
+                "price": null
+            },
+            {
+                "id": 2,
+                "nameKor": " 속파기",
+                "name": "digOut",
+                "bool": false,
+                "price": null
+            },
+            {
+                "id": 3,
+                "nameKor": " 컷팅",
+                "name": "cutting",
+                "bool": false,
+                "price": null
+            }
+        ]
     },
-    breadOptions : {
-      size : {
-        length: 15,
-        price: 0,
-      },
-      toasting : true,
-      digOut : true,
-      cutting: false,
+    "cheese": {
+      "id": 0,
+      "nameKor": "아메리칸 치즈",
+      "nameEng": "American Cheese",
+      "description": "",
+      "imgSrc": "/cheese/american.jpg"
     },
-
-    // 내용추가 필요
-  }
-];
+    "veggie": {
+      "0": 50,
+      "1": 50,
+      "2": 50,
+      "3": 50,
+      "4": 50,
+      "5": 50,
+      "6": 50,
+      "7": 50,
+      "8": 50
+    },
+    "sauce": {
+      "id": 0,
+      "nameKor": "선택안함",
+      "description": "",
+      "imgSrc": "",
+      "defaultChecked": true
+    }
+  };
 
 // 리듀서 함수
 function cart (state = initialState, action) {
@@ -55,23 +95,35 @@ function cart (state = initialState, action) {
   
   switch (action.type) {
     case SUBWAYINFO:
-      console.log('SUBWAYINFO', SUBWAYINFO, action.payload);
-      return action.payload;
+      return {
+        ...state, 
+        subwayInfo : action.payload
+      };
     case CATEGORY:
-      console.log('CATEGORY', CATEGORY, action.payload);
-      return action.payload;
+      return {
+        ...state,
+        category : action.payload
+      };
     case BREAD:
-      console.log('BREAD', BREAD, action.payload); // breadOptions [{}, {}, {}, {}], currentMenu [{},{},{},{]}]
-      return action.payload;
+      return {
+        ...state,
+        bread : action.payload
+      }; 
     case CHEESE:
-      console.log('CHEESE', CHEESE, action.payload); // {}
-      return action.payload;
+      return {
+        ...state,
+        cheese : action.payload
+      };
     case VEGGIE:
-      console.log('VEGGIE', VEGGIE, action.payload); // 0~8까지 야채순서대로 수량 전달
-      return action.payload;
+      return {
+        ...state,
+        veggie : action.payload
+      };
     case SAUCE:
-      console.log('SAUCE', SAUCE, action.payload); // 0~8까지 야채순서대로 수량 전달
-      return action.payload;
+      return {
+        ...state,
+        sauce : action.payload
+      };
           
     default:
       return state;

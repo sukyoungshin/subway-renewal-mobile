@@ -4,7 +4,6 @@ const initialState = {
   userInfo : {
     id: null,
     userName: null,
-    imageURL: null,
     email: null, 
   },  
   // 유저의 로그인여부
@@ -24,7 +23,6 @@ function auth(state = initialState, action) {
           id: action.userInfo.id,
           userName: action.userInfo.userName,
           imageURL: action.userInfo.imageURL,
-          email: action.userInfo.email, 
         }, 
         isLoggedIn : true,
       };
@@ -34,7 +32,6 @@ function auth(state = initialState, action) {
         userInfo : {
           id: null,
           userName: null,
-          imageURL: null,
           email: null,
         },  
         isLoggedIn : false,
