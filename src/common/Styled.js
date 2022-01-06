@@ -846,9 +846,24 @@ export const MenuSection = styled.section`
     font-size: var(--font-size-14);
     font-weight: var(--font-weight-bold);
   }
-
   .description {
     font-size: var(--font-size-12);
+  }
+
+  p {
+    color: var(--color-black);
+
+    span {
+      float: right;
+    }
+  }
+  p:not(total-price) {
+    font-size: var(--font-size-12);
+  }
+  p.total-price {
+    margin-top: 16px;
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-bold);
   }
 
   ul {
@@ -902,6 +917,7 @@ export const MenuCard = styled.section`
     }
   }
   .card-content {
+    padding-top: 8px;
     flex: 1;
 
     display: inline-flex;
@@ -936,6 +952,9 @@ export const MenuCard = styled.section`
 `;
 
 export const OrderButtonWrapper = styled.div`
+  margin-top: auto;
+  justify-self: end;
+
   display: inline-flex;
   flex-direction: row;
   justify-content: space-between;
@@ -969,12 +988,8 @@ export const OrderButtonWrapper = styled.div`
   }
 
   .menu-delete {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    flex-direction: column;
+    margin-left: auto;
+    justify-self: end;
     font-size: 0;
 
     svg {
@@ -1266,6 +1281,45 @@ export const RangeButton = styled.input`
   accent-color: var(--color-green);
 `;
 
+export const FloatBtnWrapper = styled.div`
+  margin-top: 16px;
+  width: 100%;
+  height: 48px;
+
+  display: inline-flex;
+  flex-direction: row;
+  grid-gap: 8px;
+  gap: 8px;
+
+  position: sticky; /* 부모요소에 overflow 요소가 있으면 작동안함 */
+  bottom: 16px;
+  left: 0;
+  z-index: 100;
+
+  transition: all 0.3s;
+  `;
+
+export const HalfSizeBtn = styled.button`
+  width: 100%;
+  height: 100%;
+
+  color: var(--color-grey);
+  font-weight: var(--font-weight-normal);
+  background-color: var(--color-transparent);
+  border: 1px solid var(--color-light-grey);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+
+  transition: all 0.3s;
+
+  &:focus,
+  &:active {
+    color: var(--color-white);
+    font-weight: var(--font-weight-bold);
+    border: 1px solid var(--color-green);
+    background-color: var(--color-green);
+  }
+`;
 
 export const FloatBtn = styled.button`
   display: block;

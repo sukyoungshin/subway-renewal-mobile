@@ -54,7 +54,7 @@ const Sauce = () => {
       if (id !== menuId ) {
         setIsChecked(id);
       }
-
+      // eslint-disable-next-line
     }, []
   );
 

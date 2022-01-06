@@ -16,7 +16,8 @@ import Bread from './pages/Bread';
 import Cheese from './pages/Cheese';
 import Veggie from './pages/Veggie';
 import Sauce from './pages/Sauce';
-import OrderTemplate from './pages/OrderTemplate';
+import OrderPageLayout from './pages/OrderPageLayout';
+import OrderCart from './pages/OrderCart';
 import OrderInfo from './pages/OrderInfo';
 import OrderMenu from './pages/OrderMenu';
 import NoMatch from './pages/NoMatch';
@@ -24,7 +25,6 @@ import NoMatch from './pages/NoMatch';
 import { GlobalStyle } from './common/Styled';
 
 const App = () => {
-  
   // Splash Screen
   const [ isLoading, setIsLoading ] = useState(true);
   useEffect(() => {
@@ -52,11 +52,15 @@ const App = () => {
             <Route path="cheese" element={<Cheese />} />
             <Route path="veggie" element={<Veggie />} />
             <Route path="sauce" element={<Sauce />} />
-            {/*<Route path="extra" element={<ExtraMenu />} />*/}
+            {/*
+            <Route path="extra" element={<ExtraMenu />} />
+            <Route path="combo" element={<ComboMenu />} />
+            */}
 
-            <Route path="order" element={<OrderTemplate /> }>
-              <Route index element={<OrderMenu />} />
-              <Route path="info" element={<OrderInfo />} />
+            <Route element={<OrderPageLayout /> }>
+              <Route path="/order" element={<OrderMenu />} />
+              <Route path="/cart" element={<OrderCart />} />
+              <Route path="/info" element={<OrderInfo />} />
             </Route> 
 
             <Route path="signin" element={<Signin />} />

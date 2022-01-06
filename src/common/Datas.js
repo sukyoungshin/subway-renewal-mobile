@@ -117,6 +117,7 @@ export const Default = [
     kcal : 11111,
     description : '추천꿀조합으로 셋팅된 메뉴1 바로 주문하기',
     price : '',
+    amount : 1,
   },
   {
     id: 1,
@@ -126,6 +127,7 @@ export const Default = [
     kcal : 11111,
     description : '추천꿀조합으로 셋팅된 메뉴1 바로 주문하기',
     price : '',
+    amount : 1,
   },
   {
     id: 2,
@@ -135,6 +137,7 @@ export const Default = [
     kcal : 11111,
     description : '추천꿀조합으로 셋팅된 메뉴1 바로 주문하기',
     price : '',
+    amount : 1,
   },
   {
     id: 3,
@@ -144,6 +147,7 @@ export const Default = [
     kcal : 11111,
     description : '추천꿀조합으로 셋팅된 메뉴1 바로 주문하기',
     price : '',
+    amount : 1,
   },
   {
     id: 4,
@@ -153,6 +157,7 @@ export const Default = [
     kcal : 11111,
     description : '추천꿀조합으로 셋팅된 메뉴1 바로 주문하기',
     price : '',
+    amount : 1,
   },
 ];
 // 샌드위치리스트
@@ -165,6 +170,7 @@ export const Sandwiches = [
     kcal : 480,
     description : '부드러운 달걀과 고소한 마요네즈가 만나 더 부드러운 스테디셀러',
     price : 4300,
+    amount : 1,
   },
   {
     id: 1,
@@ -174,6 +180,7 @@ export const Sandwiches = [
     kcal : 410,
     description : '페퍼로니, 살라미 그리고 햄이 만들어내는 최상의 조화! 전세계가 사랑하는 써브웨이의 베스트셀러! Biggest Meatiest Tastiest, its’ B.M.T!',
     price : 5400,
+    amount : 1,
   },
   {
     id: 2,
@@ -183,6 +190,7 @@ export const Sandwiches = [
     kcal : 300,
     description : '오리지널 아메리칸 스타일 베이컨의 풍미와 바삭함 그대로~',
     price : 5400,
+    amount : 1,
   },
   {
     id: 3,
@@ -192,6 +200,7 @@ export const Sandwiches = [
     kcal : 480,
     description : '이탈리안 스타일 비프 미트볼에 써브웨이만의 풍부한 토마토 향이 살아있는 마리나라소스를 듬뿍',
     price : 5300,
+    amount : 1,
   },
   {
     id: 4,
@@ -201,6 +210,7 @@ export const Sandwiches = [
     kcal : 290,
     description : '기본 중에 기본! 풍부한 햄이 만들어내는 입 안 가득 넘치는 맛의 향연',
     price : 4800,
+    amount : 1,
   },
   {
     id: 5,
@@ -210,6 +220,7 @@ export const Sandwiches = [
     kcal : 480,
     description : '남녀노소 누구나 좋아하는 담백한 참치와 고소한 마요네즈의 완벽한 조화',
     price : 4800,
+    amount : 1,
   },
   
   {
@@ -220,6 +231,7 @@ export const Sandwiches = [
     kcal : 320,
     description : '오븐에 구워 담백한 저칼로리 닭가슴살의 건강한 풍미',
     price : 6100,
+    amount : 1,
   },
   {
     id: 7,
@@ -229,6 +241,7 @@ export const Sandwiches = [
     kcal : 350,
     description : '촉촉한 바비큐 치킨의 풍미가득. 손으로 찢어 더욱 부드러운 치킨의 혁명',
     price : 6100,
+    amount : 1,
   },
   {
     id: 8,
@@ -238,6 +251,7 @@ export const Sandwiches = [
     kcal : 293,
     description : '명실공히 시그니처 써브! 터키, 햄, 베이컨의 완벽한 앙상블',
     price : 5900,
+    amount : 1,
   },
   {
     id: 9,
@@ -247,6 +261,7 @@ export const Sandwiches = [
     kcal : 280,
     description : '280kcal로 슬림하게 즐기는 오리지날 터키 샌드위치',
     price : 5300,
+    amount : 1,
   },
   {
     id: 10,
@@ -265,6 +280,7 @@ export const Sandwiches = [
     kcal : 229,
     description : '탱글한 식감이 그대로 살아있는 통새우가 5마리 들어가 한 입 베어 먹을 때 마다 진짜 새우의 풍미가 가득',
     price : 5900,
+    amount : 1,
   },
   {
     id: 12,
@@ -274,6 +290,7 @@ export const Sandwiches = [
     kcal : 372,
     description : '써브웨이 최초의 코리안 스타일 샌드위치! 마늘, 간장 그리고 은은한 불맛까지!',
     price : 6100,
+    amount : 1,
   },
   {
     id: 13,
@@ -283,6 +300,7 @@ export const Sandwiches = [
     kcal : 327,
     description : '미국 스타일의 풀드 포크 바비큐가 가득 들어간 샌드위치',
     price : 6000,
+    amount : 1,
   },
   {
     id: 14,
@@ -292,6 +310,7 @@ export const Sandwiches = [
     kcal : 380,
     description : '육즙이 쫙~풍부한 비프 스테이크의 풍미가 입안 한가득',
     price : 6500,
+    amount : 1,
   },
   {
     id: 15,
@@ -301,6 +320,7 @@ export const Sandwiches = [
     kcal : 420,
     description : '담백한 터키와 바삭한 베이컨 환상조합에 부드러운 아보카도는 신의 한수',
     price : 6500,
+    amount : 1,
   },
   {
     id: 16,
@@ -310,6 +330,7 @@ export const Sandwiches = [
     kcal : 480,
     description : '살라미, 페퍼로니가 입안 한가득! 쏘 핫한 이탈리아의 맛',
     price : 5700,
+    amount : 1,
   },
   {
     id: 17,
@@ -319,6 +340,7 @@ export const Sandwiches = [
     kcal : 370,
     description : '담백한 치킨 스트립에 달콤짭쪼름한 써브웨이 특제 데리야끼 소스와의 환상적인 만남',
     price : 5700,
+    amount : 1,
   }
 ];
 
@@ -332,6 +354,7 @@ export const Salads = [
     kcal : 67,
     description : '탱글한 식감이 그대로 살아있는 통새우가 5마리가 샐러드에 쏙 ! Fresh함이 그대로~',
     price : 7600,
+    amount : 1,
   },
   {
     id: 1,
@@ -341,6 +364,7 @@ export const Salads = [
     kcal : 210,
     description : '써브웨이 최초의 코리안 스타일 샐러드! 마늘, 간장 그리고 은은한 불맛까지!',
     price : 7800,
+    amount : 1,
   },
   {
     id: 2,
@@ -350,6 +374,7 @@ export const Salads = [
     kcal : 480,
     description : '촉촉한 바비큐 치킨의 풍미가득. 손으로 찢어 더욱 부드러운 치킨이 샐러드에 쏙',
     price : 7800,
+    amount : 1,
   },
   {
     id: 3,
@@ -359,6 +384,7 @@ export const Salads = [
     kcal : 165,
     description : '훈연한 미국 스타일의 풀드 포크 바비큐가 가득 올라간 풍미 가득한 샐러드',
     price : 7700,
+    amount : 1,
   },
   {
     id: 4,
@@ -368,6 +394,7 @@ export const Salads = [
     kcal : 480,
     description : '페퍼로니, 살라미 그리고 햄이 만들어내는 최상의 조화! 전세계가 사랑하는 써브웨이의 베스트셀러! Biggest Meatiest Tastiest, its’ B.M.T! 샐러드',
     price : 7100,
+    amount : 1,
   },
   {
     id: 5,
@@ -377,6 +404,7 @@ export const Salads = [
     kcal : 153,
     description : '오리지널 아메리칸 스타일 베이컨의 풍미와 바삭함 그대로~',
     price : 7100,
+    amount : 1,
   },
   {
     id: 6,
@@ -386,6 +414,7 @@ export const Salads = [
     kcal : 310,
     description : '부드러운 달걀과 고소한 마요네즈가 만나 더 부드러운 스테디셀러',
     price : 6000,
+    amount : 1,
   },
   {
     id: 7,
@@ -395,6 +424,7 @@ export const Salads = [
     kcal : 150,
     description : '오븐에 구워 담백한 저칼로리 닭가슴살의 건강한 풍미',
     price : 7800,
+    amount : 1,
   },
   {
     id: 8,
@@ -404,6 +434,7 @@ export const Salads = [
     kcal : 138,
     description : '터키, 햄, 베이컨의 완벽한 앙상블과 즐기는 샐러드',
     price : 7600,
+    amount : 1,
   },
   {
     id: 9,
@@ -413,6 +444,7 @@ export const Salads = [
     kcal : 110,
     description : '더 슬림하게 즐기자! 오리지날 터키 샐러드',
     price : 7000,
+    amount : 1,
   },
   {
     id: 10,
@@ -422,6 +454,7 @@ export const Salads = [
     kcal : 60,
     description : '7가지 야채만으로도 깔끔한 조화! 기본에 충실한 베지 샐러드',
     price : 5600,
+    amount : 1,
   },
   {
     id: 11,
@@ -431,6 +464,7 @@ export const Salads = [
     kcal : 210,
     description : '육즙이 쫙~풍부한 비프 스테이크의 풍미 가득 스테이크 & 치즈 샐러드!',
     price : 8200,
+    amount : 1,
   },
   {
     id: 12,
@@ -440,6 +474,7 @@ export const Salads = [
     kcal : 238,
     description : '담백한 터키와 바삭한 베이컨 환상조합에 부드러운 아보카도는 신의 한수',
     price : 8200,
+    amount : 1,
   },
   {
     id: 13,
@@ -449,6 +484,7 @@ export const Salads = [
     kcal : 310,
     description : '살라미, 페퍼로니가 입안 한가득! 진짜 이탈리아의 맛 가득한 샐러드',
     price : 7400,
+    amount : 1,
   },
   {
     id: 14,
@@ -458,6 +494,7 @@ export const Salads = [
     kcal : 230,
     description : '담백한 치킨 스트립에 달콤짭쪼름한 써브웨이 특제 데리야끼 소스 토핑으로 더 풍성한 샐러드',
     price : 7400,
+    amount : 1,
   },
 ];
 
@@ -471,6 +508,7 @@ export const Wraps = [
     kcal : 427,
     description : '더 뜨겁게, 더 맛있게 즐기자! 탱글한 새우와 부드러운 오믈렛의 만남',
     price : 5000,
+    amount : 1,
   },
   {
     id: 1,
@@ -480,6 +518,7 @@ export const Wraps = [
     kcal : 451,
     description : '더 뜨겁게, 더 맛있게 즐기자! 육즙이 쫙~ 비프 스테이크와 아보카도가 만나다!',
     price : 5700,
+    amount : 1,
   },
   {
     id: 2,
@@ -489,6 +528,7 @@ export const Wraps = [
     kcal : 376,
     description : '더 뜨겁게 더 맛있게 즐기자! 담백한 치킨, 바삭한 베이컨 비츠가 쏙',
     price : 2900,
+    amount : 1,
   },
   {
     id: 3,
@@ -498,6 +538,7 @@ export const Wraps = [
     kcal : 405,
     description : '더 뜨겁게 더 맛있게 즐기자! 페퍼로니, 살라미 풍미 넘치는 한입 매콤한 핫칠리로 놓칠 수 없는 맛',
     price : 3400,
+    amount : 1,
   },
   {
     id: 4,
@@ -507,6 +548,7 @@ export const Wraps = [
     kcal : 453,
     description : '바삭한 식감에 치즈는 두배로 써브웨이 베스트 메뉴 스테이크 & 치즈를 파니니로 즐겨보세요!',
     price : '',
+    amount : 1,
   },
   {
     id: 5,
@@ -516,6 +558,7 @@ export const Wraps = [
     kcal : 450,
     description : '바삭한 식감에 치즈는 두배로 풍미 가득한 로티세리 바비큐 치킨을 파니니로 즐겨보세요!',
     price : '',
+    amount : 1,
   },
   {
     id: 6,
@@ -525,6 +568,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 2900,
+    amount : 1,
   },
   {
     id: 7,
@@ -534,6 +578,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 8,
@@ -543,6 +588,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 9,
@@ -552,6 +598,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 10,
@@ -561,6 +608,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 11,
@@ -570,6 +618,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 12,
@@ -579,6 +628,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 13,
@@ -588,6 +638,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 2700,
+    amount : 1,
   },
   {
     id: 14,
@@ -597,6 +648,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 4900,
+    amount : 1,
   },
   {
     id: 15,
@@ -606,6 +658,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 9600,
+    amount : 1,
   },
   {
     id: 16,
@@ -615,6 +668,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 17,
@@ -624,6 +678,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
   {
     id: 18,
@@ -633,6 +688,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
   {
     id: 19,
@@ -642,6 +698,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
   {
     id: 20,
@@ -651,6 +708,7 @@ export const Wraps = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
 ];
 
@@ -1211,6 +1269,7 @@ export const beverages = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
   {
     id: 1,
@@ -1220,6 +1279,7 @@ export const beverages = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
   {
     id: 2,
@@ -1229,6 +1289,7 @@ export const beverages = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
   {
     id: 3,
@@ -1238,6 +1299,7 @@ export const beverages = [
     kcal : 0,
     description : '',
     price : 1800,
+    amount : 1,
   },
 ];
 
@@ -1251,6 +1313,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 1,
@@ -1260,6 +1323,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 2,
@@ -1269,6 +1333,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 3,
@@ -1278,6 +1343,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 4,
@@ -1287,6 +1353,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 5,
@@ -1296,6 +1363,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 1000,
+    amount : 1,
   },
   {
     id: 6,
@@ -1305,6 +1373,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 2700,
+    amount : 1,
   },
   {
     id: 7,
@@ -1314,6 +1383,7 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 4900,
+    amount : 1,
   },
   {
     id: 8,
@@ -1323,5 +1393,6 @@ export const cookies = [
     kcal : 0,
     description : '',
     price : 9600,
+    amount : 1,
   },
 ];

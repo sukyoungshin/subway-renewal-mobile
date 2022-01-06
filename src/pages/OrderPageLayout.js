@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-const OrderTemplate = () => {
+const OrderPageLayout = () => {
   return (
     <>
       <Outlet/>
@@ -9,4 +9,4 @@ const OrderTemplate = () => {
   );
 };
 
-export default OrderTemplate;
+export default OrderPageLayout;

@@ -34,15 +34,15 @@ const Menu = () => {
       setIsBtnActivated(true); // 하나라도 클릭되면 변화가 있으면 하단 메뉴버튼 활성화
     }
   ), []);
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
   const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장한다
-
+  
   // 최종적으로 선택한 메뉴저장
   useEffect(() => {
     setCurrentMenu(currentSelectedMenuItems[menuId]); 
   }, [currentSelectedMenuItems, menuId]);
-
+  
   /* CTA 버튼 관련 */
+  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // 하단 메뉴선택버튼 활성화 여부
   // eslint-disable-next-line
   const handleOrderProcess = useCallback((e) => {
     e.preventDefault();
