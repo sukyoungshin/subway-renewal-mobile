@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
     text-decoration: none;
   }
-  input, button {
+  input, button, textarea {
     border: none;
     outline: none;
     margin: 0;
@@ -844,7 +844,6 @@ export const MenuSection = styled.section`
   h2 {
     color: var(--color-black);
     font-size: var(--font-size-14);
-    font-weight: var(--font-weight-bold);
   }
   .description {
     font-size: var(--font-size-12);
@@ -867,18 +866,19 @@ export const MenuSection = styled.section`
   }
 
   ul {
+    width: 100%;
+    background-color: var(--color-transparent);
+    border-radius: 8px;
+
     font-size: 0; /* removed unexpected space */
   }
-
   ul:not(option-wrapper) {
     display: inline-flex;
     flex-direction: row;
     grid-gap: 20px;
     gap: 20px;
   }
-
   ul.option-wrapper{
-    width: 100%;
     min-height: 104px;
 
     display: inline-flex;
@@ -886,8 +886,82 @@ export const MenuSection = styled.section`
     justify-content: center;
     grid-gap: 8px;
     gap: 8px;
+  }
+`;
 
+export const OrderMenuSection = styled.section`
+  margin-top: 16px;
+  width: 100%;
+  height: auto;
+
+  display: inline-flex;
+  flex-direction: column;
+  grid-gap: 8px;
+  gap: 8px;
+
+  h2 {
+    color: var(--color-black);
+    font-size: var(--font-size-14);
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      display: inline-block;
+      color: var(--color-grey);
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-normal);
+    }
+  }
+  p {
+    line-height: 1.3rem;
+    font-size: var(--font-size-12);
+
+    span {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  ul {
+    padding: 8px;
+    width: 100%;
     background-color: var(--color-transparent);
+    border-radius: 8px;
+    box-sizing: border-box;
+
+    font-size: 0; /* removed unexpected space */
+  }
+  ul.addr-wrapper,
+  ul.deliver-wrapper {
+    min-height: 56px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+
+    li {
+      line-height: 1.3rem;
+      color: var(--color-grey);
+      font-size: var(--font-size-12);
+    }
+  }
+
+  textarea {
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+    min-height: 72px;
+    
+    border-radius: 8px;
+    background-color: var(--color-transparent);
+    
+    color: var(--color-grey);
+    font-size: var(--font-size-12);
+
+    resize: none;
   }
 `;
 
