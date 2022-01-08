@@ -914,6 +914,13 @@ export const OrderMenuSection = styled.section`
       font-size: var(--font-size-12);
       font-weight: var(--font-weight-normal);
     }
+    span.subway-phone{
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      grid-gap: 16px;
+      gap: 16px;
+    }
   }
   p {
     line-height: 1.3rem;
@@ -925,6 +932,17 @@ export const OrderMenuSection = styled.section`
       height: 16px;
     }
   }
+  p.order-agreement {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 8px;
+    gap: 8px;
+
+    input {
+      accent-color: var(--color-green);
+    }
+  }
 
   ul {
     padding: 8px;
@@ -934,6 +952,12 @@ export const OrderMenuSection = styled.section`
     box-sizing: border-box;
 
     font-size: 0; /* removed unexpected space */
+
+    li {
+      line-height: 1.3rem;
+      color: var(--color-grey);
+      font-size: var(--font-size-12);
+    }
   }
   ul.addr-wrapper,
   ul.deliver-wrapper {
@@ -941,11 +965,24 @@ export const OrderMenuSection = styled.section`
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
-
+  }
+  ul.addr-wrapper {
+    li:nth-child(2) {
+      margin-left: auto;
+      justify-self: right;
+    }
+  }
+  ul.deliver-wrapper {
     li {
-      line-height: 1.3rem;
-      color: var(--color-grey);
-      font-size: var(--font-size-12);
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      grid-gap: 8px;
+      gap: 8px;
+    }
+
+    input {
+      accent-color: var(--color-green);
     }
   }
 

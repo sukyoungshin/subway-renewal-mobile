@@ -2,18 +2,19 @@ import { initialState } from './index.js';
 
 // 리듀서 함수 (장바구니 정보 업데이트)
 function cartReducer (state = initialState(), action) {
-  const SUBWAYINFO = 'cart/subwayInfo';
+  const GENERALINFO = 'cart/generalInfo';
   const CATEGORY = 'cart/category';
   const BREAD = 'cart/bread';
   const CHEESE = 'cart/cheese';
   const VEGGIE = 'cart/veggie';
   const SAUCE = 'cart/sauce';
+  const ADDITIONAL_REQUEST = 'cart/additionalRequest';
   
   switch (action.type) {
-    case SUBWAYINFO:
+    case GENERALINFO:
       return {
         ...state, 
-        subwayInfo : action.payload
+        generalInfo : action.payload
       };
     case CATEGORY:
       return {
@@ -40,7 +41,11 @@ function cartReducer (state = initialState(), action) {
         ...state,
         sauce : action.payload
       };
-          
+    case ADDITIONAL_REQUEST:
+      return {
+        ...state,
+        request : action.payload
+      };      
     default:
       return state;
   };

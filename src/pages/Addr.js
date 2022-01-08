@@ -187,12 +187,15 @@ const Addr = () => {
       return window.alert('배달받으실 주소를 입력하세요.');
     };
     dispatch({
-      type : 'cart/subwayInfo',
-      payload : isSelectedSubway,
+      type : 'cart/generalInfo',
+      payload : {
+        customerInfo : addrValue,
+        subwayInfo : isSelectedSubway
+      },
     }); 
     navigate('/menu'); 
     // eslint-disable-next-line
-  }, [isBtnSelected, isSelectedSubway, navigate]); 
+  }, [isBtnSelected, addrValue, isSelectedSubway, navigate]); 
 
   return (
     <main>
