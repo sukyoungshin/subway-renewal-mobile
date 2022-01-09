@@ -41,7 +41,7 @@ const Veggie = () => {
     }
   );
 
-  /* 아이템선택 관련 */
+  /* CTA버튼 관련 */
   const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화 여부
 
   const selectedCheckBox = (e) => {

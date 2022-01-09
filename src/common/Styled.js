@@ -1139,7 +1139,6 @@ export const OptionList = styled.li`
 // 라디오버튼 커스터마이징
 export const RadioButton = styled.input`
   accent-color: var(--color-green);
-  /* display: none; */
 `;
 export const RadioButtonLabel = styled.label`
   font-size: var(--font-size-12);
@@ -1198,6 +1197,29 @@ export const CategoryBtn = styled.button`
       filter : drop-shadow(0px 2px 2px var(--color-black));
     }
   `}
+`;
+
+export const OrderSection = styled.section`
+  margin: 48px 0 16px 0;
+  width: 100%;
+
+  h2 {
+    font-size: var(--font-size-20);
+  }
+  p {
+    font-size: var(--font-size-14);
+  }
+  li {
+    font-size: var(--font-size-14);
+  }
+  
+  ul {
+    display: inline-flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    gap: 8px;
+  }
+
 `;
 
 // 각 재료 선택 (야채제외)
@@ -1388,10 +1410,11 @@ export const VegContentWrapper = styled.div`
   }
 `;
 
+// button
+
 export const RangeButton = styled.input`
   accent-color: var(--color-green);
 `;
-
 export const FloatBtnWrapper = styled.div`
   margin-top: 16px;
   width: 100%;
@@ -1408,8 +1431,7 @@ export const FloatBtnWrapper = styled.div`
   z-index: 100;
 
   transition: all 0.3s;
-  `;
-
+`;
 export const HalfSizeBtn = styled.button`
   width: 100%;
   height: 100%;
@@ -1431,7 +1453,6 @@ export const HalfSizeBtn = styled.button`
     background-color: var(--color-green);
   }
 `;
-
 export const FloatBtn = styled.button`
   display: block;
   margin: auto;

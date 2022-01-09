@@ -20,6 +20,7 @@ import OrderPageLayout from './pages/OrderPageLayout';
 import OrderCart from './pages/OrderCart';
 import OrderInfo from './pages/OrderInfo';
 import OrderMenu from './pages/OrderMenu';
+import OrderConfirmLayout from './pages/OrderConfirmLayout';
 import NoMatch from './pages/NoMatch';
 // STYLE
 import { GlobalStyle } from './common/Styled';
@@ -61,6 +62,7 @@ const App = () => {
               <Route path="/order" element={<OrderMenu />} />
               <Route path="/cart" element={<OrderCart />} />
               <Route path="/info" element={<OrderInfo />} />
+              <Route path="/confirm" element={<OrderConfirmLayout />} />
             </Route> 
 
             <Route path="signin" element={<Signin />} />

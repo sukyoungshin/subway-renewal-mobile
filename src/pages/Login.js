@@ -12,11 +12,11 @@ import FacebookLogin from '../components/FacebookLogin';
 const Login = ({ getLoggedIn }) => {
   /* 라우터 셋팅 */
   const navigate = useNavigate();
-  const goBack = () => navigate(-1); // 뒤로가기
+  const goToMain = () => navigate('/'); // 메인페이지로 이동
 
   return (
     <ModalWrapper>
-      <CloseBtnContainer onClick={goBack}>
+      <CloseBtnContainer onClick={goToMain}>
         <HiOutlineChevronLeft />
       </CloseBtnContainer>
       <LogoContainer>

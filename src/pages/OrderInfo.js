@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { orderSelector } from '../reducers';
@@ -6,41 +6,33 @@ import { MenuWrapper, OrderMenuSection, FloatBtnWrapper, HalfSizeBtn } from '../
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
 
 const OrderInfo = () => {
-  /* 리덕스 및 라우터 */
+  /* 리덕스 */
   const order = useSelector(orderSelector); // 주문내역 전체
   const dispatch = useDispatch(); 
+
+  /* 라우터 */
   const navigate = useNavigate();
 
-  /* 라디오 버튼 */
+  /* 라디오 버튼 관련 */
   const [ isRadioChecked, setIsRadioChecked ] = useState('deliver');
 
   const handleRadioStatus = (id) => {
     setIsRadioChecked(id);
   };
 
-  useEffect(() => {
-
-    if (isRadioChecked === 'deliver') {
-      console.log('딜리버')
-    } else {
-      console.log('픽업')
-    };
-
-  }, [isRadioChecked]);
-
-  /* 고객 요청사항 (textarea) */
+  /* 고객 요청사항 (textarea) 관련 */
   const [ customerOrderRequest, setCustomerOrderRequest ] = useState('');
   const handleOrderRequest = (e) => {
     setCustomerOrderRequest(e.target.value);
   };
   
-  /* 체크박스 */
+  /* 체크박스 관련 */
   const [ isCheckboxChecked, setIsCheckboxChecked ] = useState(false);
   const handleCheckboxStatus = (e) => {
     setIsCheckboxChecked(e.target.checked);
   };
 
-  /* CTA 버튼 */
+  /* CTA 버튼 관련 */
   const goToPrevPage = () => {
     console.log('이전페이지로'); // currentMenu가 없어서 에러남
   };
@@ -50,21 +42,12 @@ const OrderInfo = () => {
       type: 'cart/additionalRequest',
       payload : {
         customerRequest : customerOrderRequest,
-        isCheckboxChecked,
       },
     });
 
+    if (!isCheckboxChecked) return;
+    navigate('/confirm', { state : isRadioChecked });
   };
-  
-  useEffect(() => {
-    
-    if (isCheckboxChecked){
-      console.log('true', isCheckboxChecked)
-    } else {
-      console.log('false', isCheckboxChecked)
-    };
-
-  }, [isCheckboxChecked]);
 
   return (
     <MenuWrapper>
@@ -93,7 +76,7 @@ const OrderInfo = () => {
                 value="deliver" 
                 name="del-or-pickup"
                 checked={isRadioChecked === 'deliver'}
-                onClick={(e) => handleRadioStatus(e.target.id)}
+                onChange={(e) => handleRadioStatus(e.target.id)}
               />
               <label htmlFor="deliver">
                 고객님의 주소지로 배달
@@ -106,7 +89,7 @@ const OrderInfo = () => {
                 value="pickup" 
                 name="del-or-pickup" 
                 checked={isRadioChecked === 'pickup'}
-                onClick={(e) => handleRadioStatus(e.target.id)}
+                onChange={(e) => handleRadioStatus(e.target.id)}
               />
               <label htmlFor="pickup">
                 매장에 직접 방문하여 수령
