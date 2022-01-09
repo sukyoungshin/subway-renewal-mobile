@@ -390,7 +390,7 @@ export const HeaderWrapper = styled.header`
 export const SideNavWrapper = styled.aside`
   padding: 16px;
   width: calc(100vw / 4 * 3); 
-  height: 100vh;
+  height: 100%;
   background-color: #ebebeb; // todo : 색상변경
   
   display: inline-flex;

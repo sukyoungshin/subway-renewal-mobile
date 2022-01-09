@@ -28,8 +28,6 @@ const KakaoLogin = () => {
       redirectUri: 'https://subway-renewal-mobile.netlify.app', // 인가 코드를 받을 URI
       scope: 'profile_nickname, profile_image', // 추가 항목 동의 받기
     });    
-
-    console.log('signin 함수 실행');
   };
 
   /* 유저 정보 불러오기 */
