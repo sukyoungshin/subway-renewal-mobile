@@ -25,7 +25,7 @@ const KakaoLogin = () => {
   /* 카카오 로그인 */
   const onSignIn = () => {
     Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:3000/login', // 인가 코드를 받을 URI
+      redirectUri: 'https://subway-renewal-mobile.netlify.app/login', // 인가 코드를 받을 URI
       scope: 'profile_nickname, profile_image', // 추가 항목 동의 받기
     });    
 
