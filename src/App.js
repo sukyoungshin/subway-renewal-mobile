@@ -21,6 +21,7 @@ import OrderCart from './pages/OrderCart';
 import OrderInfo from './pages/OrderInfo';
 import OrderMenu from './pages/OrderMenu';
 import OrderConfirmLayout from './pages/OrderConfirmLayout';
+import Auth from './pages/Auth';
 import NoMatch from './pages/NoMatch';
 // STYLE
 import { GlobalStyle } from './common/Styled';
@@ -45,7 +46,6 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
             <Route path="main" element={<Main />} />
-            <Route path="login" element={<Login />} />
             <Route path="addr" element={<Addr />} />
             <Route path="search" element={<PostSearch />} />
             <Route path="menu" element={<Menu />} />
@@ -56,7 +56,11 @@ const App = () => {
             {/*
             <Route path="extra" element={<ExtraMenu />} />
             <Route path="combo" element={<ComboMenu />} />
-            */}
+          */}
+            <Route path="login" element={<Login />} />
+            <Route path="oauth" element={<Auth />} />
+            <Route path="signin" element={<Signin />} />
+            <Route path="signup" element={<Signup />} />
 
             <Route element={<OrderPageLayout /> }>
               <Route path="/order" element={<OrderMenu />} />
@@ -65,8 +69,6 @@ const App = () => {
               <Route path="/confirm" element={<OrderConfirmLayout />} />
             </Route> 
 
-            <Route path="signin" element={<Signin />} />
-            <Route path="signup" element={<Signup />} />
             <Route path="*" element={<NoMatch />} />
           </Route>          
           )

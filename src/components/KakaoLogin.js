@@ -10,6 +10,15 @@ const KakaoLogin = () => {
   /* 리덕스 */
   const dispatch = useDispatch();
 
+  /* 카카오 로그인 */
+  const REDIRECT_URI = `${window.location.origin}/oauth`; // 인가 코드를 받을 URI
+  const onSignIn = () => {
+    Kakao.Auth.authorize({
+      redirectUri: REDIRECT_URI, 
+      scope: 'profile_nickname, profile_image', // 추가 항목 동의 받기
+    });    
+  };  
+
   /* 카카오로그인 script 생성 */
   useEffect(() => {
     const script = document.createElement('script');
@@ -21,34 +30,6 @@ const KakaoLogin = () => {
     document.head.append(script);
     window.KakaoLogin = KakaoLogin;
   }, []);
-
-  /* 카카오 로그인 */
-  const onSignIn = () => {
-    Kakao.Auth.authorize({
-      redirectUri: 'https://subway-renewal-mobile.netlify.app', // 인가 코드를 받을 URI
-      scope: 'profile_nickname, profile_image', // 추가 항목 동의 받기
-    });    
-  };
-
-  /* 유저 정보 불러오기 */
-  const LoginInfo = () => {
-    Kakao.API.request({
-      url: '/v2/user/me',
-      data: {
-        property_keys: [
-          "kakao_account.profile_nickname",
-          "kakao_account.profile_image"
-        ]
-      },
-      success: function(response) {
-        console.log('@@카카오로그인', response);
-      },
-      fail: function(error) {
-        console.log('@@카카오로그인', error);
-      }
-    });
-  };
-  
 
   return (
     <Button 

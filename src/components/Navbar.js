@@ -67,14 +67,13 @@ const Navbar = ({ handleNavbar }) => {
         isLoggedIn 
         ? (
           <>
-          
-            <SideMain>
-              <h1>안녕하세요, {userName}님</h1>
-              <div>
-                <p>멤버십포인트 : 000원</p>
-                <p>주문내역 : 0건</p>
-              </div>
-            </SideMain>
+          <SideMain>
+            <h1>안녕하세요, {userName}님</h1>
+            <div>
+              <p>멤버십포인트 : 000원</p>
+              <p>주문내역 : 0건</p>
+            </div>
+          </SideMain>
           </>
           ) 
         : (
