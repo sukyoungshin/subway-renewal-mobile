@@ -291,7 +291,7 @@ export const CompleteButton = styled(Button)`
   `};
 `;
 
-export const GoogleLogoutButton = styled(Button)`
+export const GoogleLogoutButtonStyled = styled(Button)`
   padding: 4px;
   width: 100%;
   height: 100%;
@@ -305,7 +305,7 @@ export const GoogleLogoutButton = styled(Button)`
     color: var(--color-black);
   }
 `;
-export const GoogleLoginButton = styled.div`
+export const GoogleLoginButtonStyled = styled.div`
   border-radius: 8px;
 
   /* css override - 구글기본스타일을 override하기 위해 어쩔 수 없이 important 사용*/
@@ -480,6 +480,18 @@ export const SideMain = styled.main`
   
   h1{
     font-size: 18px;
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 8px;
+    gap: 8px;
+  }
+  img {
+    width: 24px;
+    height: 24px;
+
+    border-radius: 8px;
   }
   div {
     font-size: var(--font-size-14);

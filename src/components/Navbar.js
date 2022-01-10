@@ -9,26 +9,44 @@ import { NavCategories } from '../common/Datas';
 import { SideNavWrapper, SideHeader, SideNav, SideMain, SideFooter } from '../common/Styled';
 // React-redux
 import { useSelector, useDispatch } from 'react-redux';
+import { loginFlagSelector, userInfoSelector } from '../reducers';
 
 const Navbar = ({ handleNavbar }) => {
-  // 리덕스 스토어의 상태를 조회
+    /* 리덕스 */
   // eslint-disable-next-line
-  const { userInfo, isLoggedIn } = useSelector((state) => state.auth); 
-  const userName = userInfo.userName; // Objects are not valid as a React child 
-  
   const dispatch = useDispatch();
+  const loginFlag = useSelector(loginFlagSelector);
+  const userInfo = useSelector(userInfoSelector);
+  const { userName, imageURL } = userInfo;
+  
+  console.log(userInfo);
+
   const signOut = () => {
-    dispatch({ 
-      type : 'LOGOUT',  // 액션타입
-      isLoggedIn : false, // 로그인여부
+    dispatch({
+      type : 'auth/logout',
       userInfo : {
-        id: null,
+        id : null,
         userName: null,
-        imageURL: null,
         email: null, 
-      }, // 로그인 된 유저의 정보저장
+      },
+      isLoggedIn: false,
     });
+    console.log('로그아웃');
   };
+
+  // const dispatch = useDispatch();
+  // const signOut = () => {
+  //   dispatch({ 
+  //     type : 'auth/logout',  
+  //     isLoggedIn : false, 
+  //     userInfo : {
+  //       id: null,
+  //       userName: null,
+  //       imageURL: null,
+  //       email: null, 
+  //     }, 
+  //   });
+  // };
 
   return (
     <SideNavWrapper>
@@ -64,28 +82,31 @@ const Navbar = ({ handleNavbar }) => {
       </SideNav>
       {/* 로그인 되었을 때만 나타냄 */}
       {
-        isLoggedIn 
+        loginFlag 
         ? (
-          <>
           <SideMain>
-            <h1>안녕하세요, {userName}님</h1>
+            <h1>
+              안녕하세요, {userName}님
+              <img src={imageURL} alt={userName} />  
+            </h1>
             <div>
               <p>멤버십포인트 : 000원</p>
               <p>주문내역 : 0건</p>
             </div>
           </SideMain>
-          </>
           ) 
         : (
           <Link 
             to="/login" 
             className="loginlink"
-          >로그인</Link>
+          >
+            로그인
+          </Link>
         )
       }
       <SideFooter>
         {
-          isLoggedIn 
+          loginFlag 
           ? (
             <>
             <div>

@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect } from 'react';
-import { GoogleLoginButton, GoogleLogoutButton } from '../common/Styled';
+import { GoogleLoginButtonStyled, GoogleLogoutButtonStyled } from '../common/Styled';
 import { RiGoogleLine } from "react-icons/ri";
 import { useNavigate } from 'react-router';
 // React-redux
 import { useDispatch, useSelector } from 'react-redux';
+import { loginFlagSelector } from '../reducers';
 
 const GoogleLogin = () => {
   /* 리덕스 */
   // eslint-disable-next-line
-  const { userInfo, isLoggedIn } = useSelector((state) => state.auth); 
+  const loginFlag = useSelector(loginFlagSelector);
   const dispatch = useDispatch();
 
   /* 라우터 */
@@ -31,20 +32,20 @@ const GoogleLogin = () => {
   }, []);
 
   /* 구글 OAuth 로그아웃 */
-  const signOut = () => {
+  const onSignOut = () => {
     // eslint-disable-next-line
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
     dispatch({ 
-      type : 'auth/logout',  // 액션타입
-      isLoggedIn : false, // 로그인여부
+      type : 'auth/logout', 
+      isLoggedIn : false, 
       userInfo : {
         id: null,
         userName: null,
         imageURL: null,
-      }, // 로그인 된 유저의 정보저장
+      }, 
     });
     navigate('/'); // 로그아웃버튼 클릭 시, 메인페이지로 리디렉션
   };
@@ -63,11 +64,25 @@ const GoogleLogin = () => {
   return (
     <>
     {
-      isLoggedIn
-      ? <GoogleLogoutButton type="button" onClick={signOut}><RiGoogleLine /> 구글logout</GoogleLogoutButton>
-      : <GoogleLoginButton className="g-signin2" data-height="48" data-onsuccess="onSignIn"/>
+      loginFlag
+      ? <GoogleLogoutButton onSignOut={onSignOut} />
+      : <GoogleLoginButton />
     }
     </>
+  );
+};
+
+const GoogleLoginButton = () => {
+  return (
+    <GoogleLoginButtonStyled className="g-signin2" data-height="48" data-onsuccess="onSignIn"/>
+  );
+};
+
+const GoogleLogoutButton = ({ onSignOut }) => {
+  return (
+    <GoogleLogoutButtonStyled type="button" onClick={onSignOut}>
+      <RiGoogleLine /> 구글logout
+    </GoogleLogoutButtonStyled>
   );
 };
 

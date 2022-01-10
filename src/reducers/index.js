@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from 'redux';
-import auth from './auth';
+import authReducer from './auth';
 import cartReducer from './cartReducer';
 import amountReducer from './amountReducer';
 
@@ -98,7 +98,7 @@ export const initialState = () => ({
 
 // 루트 리듀서
 const rootReducer = combineReducers({
-  auth,
+  authReducer,
   cartReducer,
   amountReducer,
 });
@@ -110,5 +110,7 @@ console.log('@App store', store.getState()); // 스토어의 상태 확인
 // 데이터 selector
 export const orderSelector = (state) => state.cartReducer; 
 export const amountSelector = (state) => state.amountReducer.category.amount; 
+export const userInfoSelector = (state) => state.authReducer.userInfo;
+export const loginFlagSelector = (state) => state.authReducer.isLoggedIn;
 
 export default rootReducer;

@@ -11,7 +11,7 @@ const initialState = {
 };
 
 // 리듀서
-function auth(state = initialState, action) {
+function authReducer(state = initialState, action) {
   const LOGIN = 'auth/login';
   const LOGOUT = 'auth/logout';
 
@@ -32,7 +32,7 @@ function auth(state = initialState, action) {
         userInfo : {
           id: null,
           userName: null,
-          email: null,
+          imageURL: null,
         },  
         isLoggedIn : false,
       };
@@ -41,4 +41,4 @@ function auth(state = initialState, action) {
   };
 }
 
-export default auth;
+export default authReducer;
