@@ -14,14 +14,16 @@
 - 배포 : [써브웨이 리뉴얼 앱웹](https://subway-renewal-mobile.netlify.app/)
 
 ### Features
-- 기존 써브웨이 앱웹의 UI/UX 개선작업
+- 기존 써브웨이 앱웹의 UI 및 UX 개선작업
+- 구글 및 카카오 OAuth2.0 로그인 구현
 - 지도API를 활용하여, 입력받은 주소지 좌표값에 마커와 인포윈도우 기능구현
+- React-redux를 활용한 전역상태관리 (장바구니 및 로그인 상태관리)
 - 적응형 웹앱 (현재 모바일앱 페이지만 작업 진행중)
 
 ### Doc
 - yarn install <br/>
 - node -v : 17.1.0
-- tool : `react` `styled-components` `react-router` `react-daum-postcode`<br/>
+- tool : `react` `react-redux` `react-router` `react-daum-postcode` `styled-components` `react-icons`<br/>
 ```
 "dependencies": {
   "@testing-library/jest-dom": "^5.11.4",
@@ -31,6 +33,7 @@
   "react-daum-postcode": "^3.0.1",
   "react-dom": "^17.0.2",
   "react-icons": "^4.3.1",
+  "react-redux": "^7.2.6",
   "react-router-dom": "^6.0.2",
   "react-scripts": "4.0.3",
   "styled-components": "^5.3.3",
