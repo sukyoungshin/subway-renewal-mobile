@@ -1,26 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// ICONS
 import LogoSmall from "../assets/small-logo.png";
 import { HiX, HiLogout, HiUser } from "react-icons/hi";
-// DATA
 import { NavCategories } from '../common/Datas';
-// STYLE
 import { SideNavWrapper, SideHeader, SideNav, SideMain, SideFooter } from '../common/Styled';
-// React-redux
 import { useSelector, useDispatch } from 'react-redux';
 import { loginFlagSelector, userInfoSelector } from '../reducers';
 
 const Navbar = ({ handleNavbar }) => {
-    /* 리덕스 */
+  /* 리덕스 */
   // eslint-disable-next-line
   const dispatch = useDispatch();
   const loginFlag = useSelector(loginFlagSelector);
   const userInfo = useSelector(userInfoSelector);
   const { userName, imageURL } = userInfo;
   
-  console.log(userInfo);
-
   const signOut = () => {
     dispatch({
       type : 'auth/logout',
@@ -33,20 +27,6 @@ const Navbar = ({ handleNavbar }) => {
     });
     console.log('로그아웃');
   };
-
-  // const dispatch = useDispatch();
-  // const signOut = () => {
-  //   dispatch({ 
-  //     type : 'auth/logout',  
-  //     isLoggedIn : false, 
-  //     userInfo : {
-  //       id: null,
-  //       userName: null,
-  //       imageURL: null,
-  //       email: null, 
-  //     }, 
-  //   });
-  // };
 
   return (
     <SideNavWrapper>

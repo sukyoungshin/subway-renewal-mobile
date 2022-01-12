@@ -23,7 +23,7 @@ import OrderMenu from './pages/OrderMenu';
 import OrderConfirmLayout from './pages/OrderConfirmLayout';
 import Auth from './pages/Auth';
 import NoMatch from './pages/NoMatch';
-// STYLE
+import URL from './constants/router';
 import { GlobalStyle } from './common/Styled';
 
 const App = () => {
@@ -41,35 +41,35 @@ const App = () => {
       <Routes>
       { 
         isLoading
-        ? <Route path="/" element={<SplashScreen />} />
+        ? <Route path={URL.ROOT} element={<SplashScreen />} />
         : (
-          <Route path="/" element={<Layout />}>
+          <Route path={URL.ROOT} element={<Layout />}>
             <Route index element={<Main />} />
-            <Route path="main" element={<Main />} />
-            <Route path="addr" element={<Addr />} />
-            <Route path="search" element={<PostSearch />} />
-            <Route path="menu" element={<Menu />} />
-            <Route path="bread" element={<Bread />} />
-            <Route path="cheese" element={<Cheese />} />
-            <Route path="veggie" element={<Veggie />} />
-            <Route path="sauce" element={<Sauce />} />
+            <Route path={URL.MAIN} element={<Main />} />
+            <Route path={URL.ADDR} element={<Addr />} />
+            <Route path={URL.SEARCH} element={<PostSearch />} />
+            <Route path={URL.MENU} element={<Menu />} />
+            <Route path={URL.BREAD} element={<Bread />} />
+            <Route path={URL.CHEESE} element={<Cheese />} />
+            <Route path={URL.VEGGIE} element={<Veggie />} />
+            <Route path={URL.SAUCE} element={<Sauce />} />
             {/*
             <Route path="extra" element={<ExtraMenu />} />
             <Route path="combo" element={<ComboMenu />} />
           */}
-            <Route path="login" element={<Login />} />
-            <Route path="oauth" element={<Auth />} />
-            <Route path="signin" element={<Signin />} />
-            <Route path="signup" element={<Signup />} />
+            <Route path={URL.LOGIN} element={<Login />} />
+            <Route path={URL.OAUTH} element={<Auth />} />
+            <Route path={URL.SIGNIN} element={<Signin />} />
+            <Route path={URL.SIGNUP} element={<Signup />} />
 
             <Route element={<OrderPageLayout /> }>
-              <Route path="/order" element={<OrderMenu />} />
-              <Route path="/cart" element={<OrderCart />} />
-              <Route path="/info" element={<OrderInfo />} />
-              <Route path="/confirm" element={<OrderConfirmLayout />} />
+              <Route path={URL.ORDER} element={<OrderMenu />} />
+              <Route path={URL.CART} element={<OrderCart />} />
+              <Route path={URL.INFO} element={<OrderInfo />} />
+              <Route path={URL.CONFIRM} element={<OrderConfirmLayout />} />
             </Route> 
-
-            <Route path="*" element={<NoMatch />} />
+            {/* <Route path="/track" element={<CartTrack />} /> */}
+            <Route path={URL.NOMATCH} element={<NoMatch />} />
           </Route>          
           )
       }

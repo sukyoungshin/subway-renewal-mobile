@@ -1,36 +1,44 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { amountSelector, orderSelector } from '../reducers';
+import { itemAmountSelector, orderSelector, itemCountSelector } from '../reducers';
 import { BASEURL } from '../common/Datas';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MenuWrapper, MenuSection, MenuCard, OrderButtonWrapper, FloatBtnWrapper, HalfSizeBtn } from '../common/Styled';
 
 const OrderMenu = () => {
-  /* 리덕스 및 라우터 */
-  const amount = useSelector(amountSelector); // 수량
+  /* 리덕스 */
   const order = useSelector(orderSelector); // 주문내역 전체
+  const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
+  const itemAmount = useSelector(itemAmountSelector); // 수량
   const dispatch = useDispatch(); 
+  /* 라우터 */
   const navigate = useNavigate(); // 라우터
 
   /* 수량조절 버튼 */
   const handleIncrement = () => {
     dispatch({
       type : 'cart/increment',
-      payload : amount,
+      payload : itemAmount,
     });
   };
   const handleDecrement = () => {
     dispatch({
       type : 'cart/decrement',
-      payload : amount,
+      payload : itemAmount,
     });
   };
 
+
   /* CTA 버튼 */
   // eslint-disable-next-line
-  const gpToCartPage = () => {
-    navigate('/cart');
+  const goToCartPage = () => {
+    dispatch({
+      type : 'cart/itemCount',
+      payload : itemCount + 1,
+    });
+    // const confirm = window.confirm('장바구니 페이지로 이동하시겠습니까?');
+    // if (confirm) return navigate('/cart');
   };
   // eslint-disable-next-line
   const goToOrderPage = () => {
@@ -81,7 +89,7 @@ const OrderMenu = () => {
                 </button>
               
                 <span>
-                  {amount}
+                  {itemAmount}
                 </span>  
               
                 <button 
@@ -130,7 +138,7 @@ const OrderMenu = () => {
       <FloatBtnWrapper>
         <HalfSizeBtn 
           type="button"
-          onClick={gpToCartPage}          
+          onClick={goToCartPage}          
         >
           장바구니 담기
         </HalfSizeBtn>

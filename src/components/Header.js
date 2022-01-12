@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// COMPONENTS
 import HeaderNav from './HeaderNav';
 import Navbar from './Navbar.js';
 

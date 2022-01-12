@@ -15,6 +15,7 @@ const OrderConfirmLayout = () => {
     subwayName : order.generalInfo.subwayInfo.name,
     subwayAddr : order.generalInfo.subwayInfo.address,
     subwayPhone : order.generalInfo.subwayInfo.phone,
+    customerRequest : order.request.customerRequest,
   };
 
   /* 라우터 */
@@ -31,7 +32,7 @@ const OrderConfirmLayout = () => {
 
 // Presentational Components
 const OrderDeliver = ({ orderDetail }) => {
-  const { orderMenu, customerAddr, subwayName, subwayPhone } = orderDetail;
+  const { orderMenu, customerAddr, subwayName, subwayPhone, customerRequest } = orderDetail;
 
   return(
     <MenuWrapper>
@@ -53,6 +54,9 @@ const OrderDeliver = ({ orderDetail }) => {
             주문하신 메뉴 : {orderMenu}
           </li>
           <li>
+            추가 요청사항 : {customerRequest}
+          </li>
+          <li>
             배달받으실 주소 : {customerAddr}
           </li>
           <li>
@@ -68,7 +72,7 @@ const OrderDeliver = ({ orderDetail }) => {
 };
 
 const OrderPickUp = ({ orderDetail }) => {
-  const { orderMenu, subwayName, subwayPhone, subwayAddr } = orderDetail;
+  const { orderMenu, subwayName, subwayPhone, subwayAddr, customerRequest } = orderDetail;
 
   return(
     <MenuWrapper>
@@ -88,6 +92,9 @@ const OrderPickUp = ({ orderDetail }) => {
           </li>
           <li>
             주문하신 메뉴 : {orderMenu}
+          </li>
+          <li>
+            추가 요청사항 : {customerRequest}
           </li>
           <li>
             방문하실 매장명 : {subwayName} 

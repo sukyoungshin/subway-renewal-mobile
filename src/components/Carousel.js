@@ -1,9 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 import { CarouselWrapper, AdPagination, AdPaginationList, AdWrapper, AdTitleWrapper, AdEventWrapper, AdButtonWrapper } from '../common/Styled';
-// DATA
 import { AdContents } from '../common/Datas';
-
 
 const Carousel = () => {
   const navigate = useNavigate();

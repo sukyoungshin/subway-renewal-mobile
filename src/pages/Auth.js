@@ -81,6 +81,7 @@ const Auth = () => {
   
   useEffect(() => {
     getToken();
+  // eslint-disable-next-line
   }, []);
 
   /* 카카오로그인 script 생성 */

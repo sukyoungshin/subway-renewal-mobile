@@ -9,6 +9,9 @@ function cartReducer (state = initialState(), action) {
   const VEGGIE = 'cart/veggie';
   const SAUCE = 'cart/sauce';
   const ADDITIONAL_REQUEST = 'cart/additionalRequest';
+  const ITEM_COUNT = 'cart/itemCount';
+
+  console.log('state~', state);
   
   switch (action.type) {
     case GENERALINFO:
@@ -46,6 +49,12 @@ function cartReducer (state = initialState(), action) {
         ...state,
         request : action.payload
       };      
+    case ITEM_COUNT:
+      console.log('내놓아라..제발', action.payload);
+      return {
+        ...state,
+        itemCount: action.payload,
+      };
     default:
       return state;
   };
