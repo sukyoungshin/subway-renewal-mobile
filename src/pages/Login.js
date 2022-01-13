@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
-// ICONS
 import { HiOutlineChevronLeft } from "react-icons/hi";
 import LogoSmall from "../assets/small-logo.png";
-// STYLE
 import { BtnContainer, Button, CloseBtnContainer, InputContainer, ItemBlock, LogoContainer, ModalWrapper } from '../common/Styled';
 import GoogleLogin from '../components/GoogleLogin';
 import KakaoLogin from '../components/KakaoLogin';
 import FacebookLogin from '../components/FacebookLogin';
+import LINK from '../constants/link';
 
 const Login = ({ getLoggedIn }) => {
   /* 라우터 */
@@ -20,7 +19,7 @@ const Login = ({ getLoggedIn }) => {
         <HiOutlineChevronLeft />
       </CloseBtnContainer>
       <LogoContainer>
-        <Link to="/">
+        <Link to={LINK.ROOT}>
           <img src={LogoSmall} alt="로고" />
         </Link>
       </LogoContainer>
@@ -41,7 +40,7 @@ const Login = ({ getLoggedIn }) => {
       <ItemBlock className="signup-wrapper">
         <p>
           아직 회원이 아니시라면, 
-          <Link to="/singup">회원가입</Link>
+          <Link to={LINK.SIGNUP}>회원가입</Link>
         </p>
       </ItemBlock>
       <ItemBlock className="signin-title">

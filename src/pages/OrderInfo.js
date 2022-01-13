@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { orderSelector } from '../reducers';
 import { MenuWrapper, OrderMenuSection, FloatBtnWrapper, HalfSizeBtn } from '../common/Styled';
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
+import LINK from '../constants/link';
 
 const OrderInfo = () => {
   /* 리덕스 */
@@ -13,8 +14,12 @@ const OrderInfo = () => {
   /* 라우터 */
   const navigate = useNavigate();
 
+  /* 텍스트 상수처리 */
+  const DELIVER = 'deliver';
+  const PICKUP = 'pickup';
+
   /* 라디오 버튼 관련 */
-  const [ isRadioChecked, setIsRadioChecked ] = useState('deliver');
+  const [ isRadioChecked, setIsRadioChecked ] = useState(DELIVER);
 
   const handleRadioStatus = (id) => {
     setIsRadioChecked(id);
@@ -46,7 +51,7 @@ const OrderInfo = () => {
     });
 
     if (!isCheckboxChecked) return;
-    navigate('/confirm', { state : isRadioChecked });
+    navigate(`${LINK.CONFIRM}`, { state : isRadioChecked });
   };
 
   return (
@@ -75,7 +80,7 @@ const OrderInfo = () => {
                 id="deliver" 
                 value="deliver" 
                 name="del-or-pickup"
-                checked={isRadioChecked === 'deliver'}
+                checked={isRadioChecked === DELIVER}
                 onChange={(e) => handleRadioStatus(e.target.id)}
               />
               <label htmlFor="deliver">
@@ -88,7 +93,7 @@ const OrderInfo = () => {
                 id="pickup" 
                 value="pickup" 
                 name="del-or-pickup" 
-                checked={isRadioChecked === 'pickup'}
+                checked={isRadioChecked === PICKUP}
                 onChange={(e) => handleRadioStatus(e.target.id)}
               />
               <label htmlFor="pickup">
@@ -148,10 +153,13 @@ const OrderInfo = () => {
         <p className="order-agreement">
           <input 
             type="checkbox" 
+            id="agreement"
             value={isCheckboxChecked}
             onChange={handleCheckboxStatus}
           />
-          주문 후 제조가 시작되면 주문을 취소할 수 없습니다.
+          <label htmlFor="agreement">
+            주문 후 제조가 시작되면 주문을 취소할 수 없습니다.
+          </label>
         </p>
       </OrderMenuSection>
 

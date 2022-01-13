@@ -1,3 +1,5 @@
+import LINK from '../constants/link';
+
 /**************************** 
   각 페이지별 카테고리리스트 &
   상품데이터 저장한 파일 
@@ -6,21 +8,21 @@
 // Navbar 메뉴 카테고리
 export const NavCategories = [
   {
-    pathName : 'main',
+    pathName : LINK.MAIN,
     categoryName: '메인화면',
   },
   {
-    pathName : 'addr',
+    pathName : LINK.ADDR,
     categoryName: '주문하기',
   },
   {
-    pathName : 'cart',
+    pathName : LINK.CART,
     categoryName: '장바구니',
   },
-  {
-    pathName : 'track',
-    categoryName: '배송조회',
-  },
+  // {
+  //   pathName : LINK.TRACK,
+  //   categoryName: '배송조회',
+  // },
 ];
 
 // MAIN 추천메뉴 데이터리스트

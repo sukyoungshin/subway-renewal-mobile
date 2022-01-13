@@ -1,7 +1,6 @@
 import React from 'react';
 import { FloatBtn } from '../common/Styled';
 
-
 const FloatButton = ({ isBtnActivated, handleOrderProcess, children }) => {
   return (
     <FloatBtn 

@@ -5,6 +5,8 @@ import { BASEURL, breads, breadOptionLists, breadOptionsDefault } from '../commo
 import { AiOutlinePlus } from "react-icons/ai";
 import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OptionLists, OptionList, RadioButton, RadioButtonLabel, OrderIconButton } from '../common/Styled';
 import FloatButton from '../components/FloatButton';
+import LINK from '../constants/link';
+
 
 const Bread = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -49,7 +51,7 @@ const Bread = () => {
         breadOptions, // 선택한 빵옵션
       },
     }); 
-    navigate('/cheese');
+    navigate(`${LINK.CHEESE}`);
   });
 
   return (

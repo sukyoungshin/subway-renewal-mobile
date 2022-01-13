@@ -8,7 +8,6 @@ import { HeaderWrapper } from '../common/Styled';
 import { itemCountSelector } from '../reducers';
 
 const HeaderNav = ({ handleNavbar }) => {
-  
   return (
     <HeaderWrapper>
       <ul className="header-nav-wrapper">
@@ -55,7 +54,6 @@ const HeaderLogo = () => {
 const HeaderCartIcon = () => {
   /* 리덕스 */
   const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
-  console.log('내놓아라', itemCount);
 
   return (
     <Link to="/cart" className="cart-btn" >

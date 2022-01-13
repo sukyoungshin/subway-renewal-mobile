@@ -5,6 +5,7 @@ import FloatButton from '../components/FloatButton';
 import { BASEURL, sauces, sauceOptionLists } from '../common/Datas';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import LINK from '../constants/link';
 
 const OPTION_NOT_SELECTED = 1;
 const OPTION_SELECTED = 0;
@@ -44,7 +45,6 @@ const Sauce = () => {
     if (isChecked === 1) {
       setMenuId(0);
     } 
-
   }, [isChecked]);
 
   // 옵션선택 버튼에 따라, 선택한 아이템 수정
@@ -71,7 +71,7 @@ const Sauce = () => {
       type: 'cart/sauce',
       payload : currentMenu,
     }); 
-    navigate('/order'); // 장바구니 (주문내역서)로 이동 
+    navigate(`${LINK.ORDER}`);
   });
 
   return (

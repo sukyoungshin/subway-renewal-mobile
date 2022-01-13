@@ -5,6 +5,7 @@ import { itemAmountSelector, orderSelector, itemCountSelector } from '../reducer
 import { BASEURL } from '../common/Datas';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MenuWrapper, MenuSection, MenuCard, OrderButtonWrapper, FloatBtnWrapper, HalfSizeBtn } from '../common/Styled';
+import LINK from '../constants/link';
 
 const OrderMenu = () => {
   /* 리덕스 */
@@ -37,12 +38,10 @@ const OrderMenu = () => {
       type : 'cart/itemCount',
       payload : itemCount + 1,
     });
-    // const confirm = window.confirm('장바구니 페이지로 이동하시겠습니까?');
-    // if (confirm) return navigate('/cart');
   };
   // eslint-disable-next-line
   const goToOrderPage = () => {
-    navigate('/info');
+    navigate(`${LINK.INFO}`);
   };
 
   return (

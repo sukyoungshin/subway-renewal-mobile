@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { MenuWrapper, MenuSection, VegListGrid, VegArticle, VegArticleHeader, VegAmountButton, VegContentWrapper, RangeButton, OptionLists, CheckBoxButton, CheckBoxButtonLabel } from '../common/Styled';
 import FloatButton from '../components/FloatButton';
 import { BASEURL, vegetables } from '../common/Datas';
+import LINK from '../constants/link';
 
 const Veggie = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -112,7 +113,7 @@ const Veggie = () => {
       type: 'cart/veggie',
       payload : step, 
     }); 
-    navigate('/sauce'); 
+    navigate(`${LINK.SAUCE}`); 
   });
 
   return (

@@ -5,6 +5,7 @@ import { MenuCategories, TabContents, BASEURL } from '../common/Datas';
 import { BsCart2 } from "react-icons/bs";
 import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle } from '../common/Styled';
 import FloatButton from '../components/FloatButton';
+import LINK from '../constants/link';
 
 const Menu = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -50,7 +51,7 @@ const Menu = () => {
       type : 'cart/category',
       payload : currentMenu,
     }); 
-    navigate('/bread'); 
+    navigate(`${LINK.BREAD}`); 
   });
 
   return (

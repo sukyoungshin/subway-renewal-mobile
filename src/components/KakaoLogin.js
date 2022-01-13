@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../common/Styled';
 import { loginFlagSelector } from '../reducers';
+import LINK from '../constants/link';
 
 const KakaoLogin = () => {
 
@@ -41,7 +42,7 @@ const KakaoLogin = () => {
       },
       isLoggedIn: false,
     });
-    navigate('/'); // 로그아웃버튼 클릭 시, 메인페이지로 리디렉션
+    navigate(`${LINK.ROOT}`); 
   };
 
   /* 카카오로그인 script 생성 */

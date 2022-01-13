@@ -5,6 +5,7 @@ import { BASEURL, cheeses } from '../common/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
 import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OrderIconButton } from '../common/Styled';
 import FloatButton from '../components/FloatButton';
+import LINK from '../constants/link';
 
 const Cheese = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -35,7 +36,7 @@ const Cheese = () => {
       type: 'cart/cheese',
       payload : currentMenu,
     }); 
-    navigate('/veggie'); 
+    navigate(`${LINK.VEGGIE}`); 
   });
 
   return (
@@ -43,9 +44,7 @@ const Cheese = () => {
       <MenuSection style={{ marginTop: '32px' }}>
       <h2>옵션선택</h2>
         <article>
-          <ul className="option-wrapper">
-            {/* 빈 공간 */}
-          </ul>
+          <ul className="option-wrapper">{/* 빈 공간 */}</ul>
         </article>
       </MenuSection>
       <MenuSection style={{ marginTop: '16px' }}>

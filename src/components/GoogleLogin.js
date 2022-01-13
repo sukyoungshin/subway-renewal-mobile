@@ -2,9 +2,9 @@ import React, { useCallback, useEffect } from 'react';
 import { GoogleLoginButtonStyled, GoogleLogoutButtonStyled } from '../common/Styled';
 import { RiGoogleLine } from "react-icons/ri";
 import { useNavigate } from 'react-router';
-// React-redux
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFlagSelector } from '../reducers';
+import LINK from '../constants/link';
 
 const GoogleLogin = () => {
   /* 리덕스 */
@@ -28,6 +28,7 @@ const GoogleLogin = () => {
       }, 
       isLoggedIn : true,
     });
+    navigate(`${LINK.ROOT}`); 
   // eslint-disable-next-line
   }, []);
 
@@ -40,23 +41,21 @@ const GoogleLogin = () => {
     });
     dispatch({ 
       type : 'auth/logout', 
-      isLoggedIn : false, 
       userInfo : {
         id: null,
         userName: null,
         imageURL: null,
       }, 
+      isLoggedIn : false, 
     });
-    navigate('/'); // 로그아웃버튼 클릭 시, 메인페이지로 리디렉션
+    navigate(`${LINK.ROOT}`); 
   };
 
-  /* 구글 OAuth 관련 스크립트 생성 및 함수실행 */
+  /* 구글 OAuth 관련 스크립트 동적 스크립트 생성 */
   useEffect(() => {
-    // 동적 script 생성하여 head에 추가
     const script = document.createElement('script');
     script.setAttribute('src', 'https://apis.google.com/js/platform.js');
-    document.head.append(script);
-    // window 전역객체 사용하여 로그인함수 실행
+    document.head.append(script); 
     window.onSignIn = onSignIn; 
   // eslint-disable-next-line
   }, [onSignIn]);

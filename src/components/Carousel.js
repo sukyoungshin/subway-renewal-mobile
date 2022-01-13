@@ -2,18 +2,19 @@ import React, { useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 import { CarouselWrapper, AdPagination, AdPaginationList, AdWrapper, AdTitleWrapper, AdEventWrapper, AdButtonWrapper } from '../common/Styled';
 import { AdContents } from '../common/Datas';
+import LINK from '../constants/link';
 
 const Carousel = () => {
   const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState(0); // 선택한 페이지네이션 및 캐러셀 index#
-    // eslint-disable-next-line
+  // eslint-disable-next-line
   const [isSelected, setIsSelected] = useState(false); // 페이지네이션 및 캐러셀 스위치
   const handleClick = useCallback((id) => 
-  // 커링 : 함수를 실행해서 새로만든 함수를 리턴
     () => {
       setSelectedId(id); // 페이지네이션 인덱스 설정
       setIsSelected((prev) => !prev); // 페이지네이션 스위치
     }, []); 
+  const goToOrderPage = () => navigate(`${LINK.ADDR}`);
 
   return (
     <>
@@ -45,7 +46,7 @@ const Carousel = () => {
             <p>{content.eventDate}</p>
           </AdEventWrapper>
           <AdButtonWrapper>
-            <button type="button" onClick={() => navigate('/addr')}>
+            <button type="button" onClick={goToOrderPage}>
               ORDER NOW
             </button>
           </AdButtonWrapper>

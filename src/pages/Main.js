@@ -1,20 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import OrderIcon from "../assets/icons/order.svg";
-// ICONS
 import Sample from "../assets/sample.png";
-// COMPONENTS
 import Carousel from '../components/Carousel';
-// STYLE
 import { MainArticle, MainSection, MainWrapper } from '../common/Styled';
-// DATA
 import { MenuRecommended } from '../common/Datas';
-
+import LINK from '../constants/link';
 
 const Main = () => {
   const navigate = useNavigate(); // 라우터
   const handleNavAddr = () => {
-    navigate('/addr');
+    navigate(`${LINK.ADDR}`);
   };
 
   return (

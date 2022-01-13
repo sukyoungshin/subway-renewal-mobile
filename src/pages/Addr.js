@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { OrderFormWrapper, FormFieldset, MapViewer, Map, AddressInput, CompleteButton, InputAddress } from '../common/Styled';
+import LINK from '../constants/link';
 
 const Addr = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -183,9 +184,7 @@ const Addr = () => {
   const [ isBtnSelected, setIsBtnSelected ] = useState(false); // CTA버튼 활성화여부
   const HandleOrderStart = useCallback((e) => {
     e.preventDefault();
-    if (!isBtnSelected) {
-      return window.alert('배달받으실 주소를 입력하세요.');
-    };
+    if (!isBtnSelected) return window.alert('배달받으실 주소를 입력하세요.');
     dispatch({
       type : 'cart/generalInfo',
       payload : {
@@ -193,7 +192,7 @@ const Addr = () => {
         subwayInfo : isSelectedSubway
       },
     }); 
-    navigate('/menu'); 
+    navigate(LINK.MENU); 
     // eslint-disable-next-line
   }, [isBtnSelected, addrValue, isSelectedSubway, navigate]); 
 
@@ -211,7 +210,7 @@ const Addr = () => {
             value={addrValue} 
             onClick={HandlePopUp}
             readOnly
-            />
+          />
         </FormFieldset>
 
         {/* 지도 출력하는 영역 */}

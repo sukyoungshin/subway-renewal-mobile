@@ -351,6 +351,7 @@ export const HeaderWrapper = styled.header`
   width: 100vw;
   height: 56px;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+  position: relative;
 
   ul.header-nav-wrapper {
     height: 100%;

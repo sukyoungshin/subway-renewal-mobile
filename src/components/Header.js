@@ -6,14 +6,9 @@ const Header = () => {
   const [ navModalOpened, setNavModalOpened ] = useState(false); // navbar 클릭
   const handleNavbar = () => setNavModalOpened((prev) => !prev); // navbar 스위치
 
-  // eslint-disable-next-line
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false); // 로그인 완료여부
   const [ loginModalOpened, setLoginModalOpened ] = useState(false); // 로그인팝업창
   const getLoginModal = () => setLoginModalOpened(loginModalOpened => !loginModalOpened); // 로그인 팝업창
-  const getLoggedIn = () => {
-    // setIsLoggedIn(isLoggedIn => true); // 로그인완료된 상태로 변경
-    getLoginModal(); // 로그인팝업창 닫기
-  }; 
+  const getLoggedIn = () => getLoginModal(); // 로그인팝업창 닫기
 
   return (
     <>
@@ -22,10 +17,9 @@ const Header = () => {
       navModalOpened
       ? (
         <Navbar 
-          isLoggedIn={isLoggedIn} 
-          loginModalOpened={loginModalOpened}
-          getLoginModal={getLoginModal}
+          navModalOpened={navModalOpened} 
           handleNavbar={handleNavbar} 
+          getLoginModal={getLoginModal}
           getLoggedIn={getLoggedIn}
         />
         ) 

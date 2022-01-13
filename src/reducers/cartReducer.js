@@ -11,8 +11,6 @@ function cartReducer (state = initialState(), action) {
   const ADDITIONAL_REQUEST = 'cart/additionalRequest';
   const ITEM_COUNT = 'cart/itemCount';
 
-  console.log('state~', state);
-  
   switch (action.type) {
     case GENERALINFO:
       return {
@@ -50,7 +48,6 @@ function cartReducer (state = initialState(), action) {
         request : action.payload
       };      
     case ITEM_COUNT:
-      console.log('내놓아라..제발', action.payload);
       return {
         ...state,
         itemCount: action.payload,

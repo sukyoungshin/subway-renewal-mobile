@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoSmall from "../assets/small-logo.png";
 import { HiX, HiLogout, HiUser } from "react-icons/hi";
 import { NavCategories } from '../common/Datas';
 import { SideNavWrapper, SideHeader, SideNav, SideMain, SideFooter } from '../common/Styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginFlagSelector, userInfoSelector } from '../reducers';
+import LINK from '../constants/link';
 
 const Navbar = ({ handleNavbar }) => {
   /* 리덕스 */
@@ -28,17 +29,23 @@ const Navbar = ({ handleNavbar }) => {
     console.log('로그아웃');
   };
 
+  /* NavLink style */
+  const style = ({ isActive }) => ({
+    color : isActive ? 'var(--color-green)' : 'var(--color-black)'
+  });
+
+
   return (
     <SideNavWrapper>
       <SideHeader>
         <div>
-          <Link to="/" onClick={handleNavbar}>
+          <NavLink to={LINK.ROOT} style={style} onClick={handleNavbar}>
             <img
               src={LogoSmall}
               alt="로고"
               style={{ width: "128px", height: "32px" }}
             />
-          </Link>
+          </NavLink>
         </div>
         <div onClick={handleNavbar}>
           <HiX />
@@ -49,12 +56,13 @@ const Navbar = ({ handleNavbar }) => {
           {
             NavCategories.map(category => (
               <li key={category.pathName}>
-                <Link 
-                  to={`/${category.pathName}`} 
+                <NavLink 
+                  to={category.pathName} 
+                  style={style}
                   onClick={handleNavbar}
                 >
                   {category.categoryName}
-                </Link>
+                </NavLink>
               </li>
             ))
           }
@@ -76,12 +84,12 @@ const Navbar = ({ handleNavbar }) => {
           </SideMain>
           ) 
         : (
-          <Link 
-            to="/login" 
+          <NavLink 
+            to={LINK.LOGIN} 
             className="loginlink"
           >
             로그인
-          </Link>
+          </NavLink>
         )
       }
       <SideFooter>
@@ -93,9 +101,7 @@ const Navbar = ({ handleNavbar }) => {
               <HiUser />
             </div>
             <div>
-              <HiLogout 
-                onClick={signOut} 
-              /> 
+              <HiLogout onClick={signOut} /> 
             </div>
             </>
             ) 
