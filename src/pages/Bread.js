@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { BASEURL, breads, breadOptionLists, breadOptionsDefault } from '../common/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
 import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OptionLists, OptionList, RadioButton, RadioButtonLabel, OrderIconButton } from '../common/Styled';
-import FloatButton from '../components/FloatButton';
+import { FloatButton } from '../components';
 import LINK from '../constants/link';
 
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import OrderIcon from "../assets/icons/order.svg";
 import Sample from "../assets/sample.png";
-import Carousel from '../components/Carousel';
+import { Carousel } from '../components';
 import { MainArticle, MainSection, MainWrapper } from '../common/Styled';
 import { MenuRecommended } from '../common/Datas';
 import LINK from '../constants/link';

@@ -10,11 +10,11 @@ const LINK = {
   VEGGIE : `/${RouterPath.VEGGIE}`,
   SAUCE : `/${RouterPath.SAUCE}`,
   ORDER : `/${RouterPath.ORDER}`,
-  INFO : '/order/info',
-  CONFIRM : '/order/confirm',  
+  INFO : `/order/${RouterPath.INFO}`,
+  CONFIRM : `/order/${RouterPath.CONFIRM}`,  
+  CART: `/order/${RouterPath.CART}`,
   SIGNUP : `/${RouterPath.SIGNUP}`,
   LOGIN : `/${RouterPath.LOGIN}`,
-  CART: `/${RouterPath.CART}`,
 };
 
 export default LINK;

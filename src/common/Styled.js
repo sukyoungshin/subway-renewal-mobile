@@ -1,124 +1,4 @@
-import styled, { createGlobalStyle, css } from 'styled-components';
-
-/**************
-  GLOBAL-STYLE
-***************/
-export const GlobalStyle = createGlobalStyle`
-  // CSS Reset
-  *, 
-  *::before, 
-  *::after {
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-  }
-  #root {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5, h6, p, ul {
-    margin: 0;
-    padding: 0;
-  }
-  ul {
-    list-style-type: none;
-  }
-  a, button, input {
-    cursor: pointer;
-  }
-  a {
-    display: inline-block;
-    font-size: 0;
-    color: inherit;
-    text-align: center;
-    text-decoration: none;
-  }
-  input, button, textarea {
-    border: none;
-    outline: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  // CSS VARIABLES
-  // COLOR, FONT-SIZE, FONT-WEIGHT
-  html {
-    --color-yellow: #FFCB08;
-    --color-green: #009743;
-    --color-green-dark: #007936;
-    --color-red: #FF0000;
-    --color-white: #FFFFFF;
-    --color-grey: #8C8C8C;
-    --color-light-grey: #DFDFDF;
-    --color-black: #292F28;
-    --color-transparent: rgba(233,233,233,0.4);
-    --color-kakao: #FFE812;
-    --color-facebook: #3C5997;
-    --color-google: rgb(66, 133, 244);
-
-    --font-size-24: 24px;
-    --font-size-20: 20px;
-    --font-size-18: 18px;
-    --font-size-16: 16px;
-    --font-size-14: 14px;
-    --font-size-12: 12px;
-    --font-size-10: 10px;
-
-    --font-weight-normal: 300;
-    --font-weight-bold: 600;
-  }
-  // MOUSE DRAG EFFECT
-  ::selection{ 
-    color: var(--color-white);
-    background-color: var(--color-yellow);
-  }
-  ::-moz-selection{
-    color: var(--color-white);
-    background-color: var(--color-yellow);
-  }
-`;
-
-/******************
-  STYLED-COMPONENTS
-********************/
-// SplashScreen
-export const SplashWrapper = styled.main`
-  padding: 8px 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--color-green-dark);
-
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 999;
-`;
-export const SplashLogoWrapper = styled.section`
-  flex: 1;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: calc(50%);
-  }
-`;
-export const SplashFooterWrapper = styled.footer`
-  color: var(--color-white);
-  font-size: var(--font-size-10);
-`;
+import styled, { css } from 'styled-components';
 
 // LoginModal
 export const ModalWrapper = styled.div`
@@ -196,7 +76,7 @@ export const ItemBlock = styled.div`
     }
   }
 `;
-export const LogoContainer = styled(ItemBlock)`
+export const LogoContainerStyled = styled(ItemBlock)`
   height: 104px;
 
   img {
@@ -206,7 +86,7 @@ export const LogoContainer = styled(ItemBlock)`
     height: 48px;
   }
 `;
-export const InputContainer = styled(ItemBlock)`
+export const InputContainerStyled = styled(ItemBlock)`
   height: 48px;
   position: relative;
 
@@ -244,7 +124,7 @@ export const AddressInput = styled.input`
     font-size: var(--font-size-12);
   }
 `;
-export const CloseBtnContainer = styled.span`
+export const CloseBtnContainerStyled = styled.span`
   width: 24px;
   height: 24px;
   font-size: var(--font-size-24);
@@ -253,7 +133,7 @@ export const CloseBtnContainer = styled.span`
   top: 16px;
   left: 16px;
 `;
-export const BtnContainer = styled(ItemBlock)`
+export const BtnContainerStyled = styled(ItemBlock)`
   height: 48px;
 `;
 export const Button = styled.button`
@@ -291,231 +171,6 @@ export const CompleteButton = styled(Button)`
   `};
 `;
 
-export const GoogleLogoutButtonStyled = styled(Button)`
-  padding: 4px;
-  width: 100%;
-  height: 100%;
-  color: var(--color-white);
-  font-size: var(--font-size-14);
-  background-color: var(--color-google);
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: var(--color-black);
-  }
-`;
-export const GoogleLoginButtonStyled = styled.div`
-  border-radius: 8px;
-
-  /* css override - 구글기본스타일을 override하기 위해 어쩔 수 없이 important 사용*/
-  div.abcRioButton.abcRioButtonLightBlue{
-    width: 100% !important;
-    border-radius: 8px !important;
-    box-shadow: none !important;
-    color: var(--color-white) !important;
-    background-color: var(--color-google) !important;
-    
-    .abcRioButtonContentWrapper {
-      display: inline-flex !important;
-      flex-direction: row !important;
-      justify-content: center !important;
-      align-items: center !important;
-      
-      .abcRioButtonContents{
-        margin-left: 8px !important;
-        line-height: 0 !important;
-        font-size: var(--font-size-14) !important;
-      }
-    }
-    .abcRioButtonIcon {
-      padding: 0 !important;
-
-      div {
-        width: 14px !important;
-        height: 14px !important;
-        
-        svg {
-          width: 14px !important;
-          height: 14px !important;
-          filter: drop-shadow(0 0 1px white) !important;
-        }
-      }
-    }
-
-  }
-`;
-
-// HeaderNav
-export const HeaderWrapper = styled.header`
-  width: 100vw;
-  height: 56px;
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
-  position: relative;
-
-  ul.header-nav-wrapper {
-    height: 100%;
-    list-style-type: none;
-
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-  };
-  ul.header-nav-wrapper li {
-    padding: 10px;
-    height: 56px;
-  };
-  ul.header-nav-wrapper button[type="button"] {
-    background-color: transparent;
-    font-size: 0;
-  };
-  a.cart-btn {
-    position: relative;
-  };
-  a.cart-btn span {
-    padding: 2px 6px;
-    color: var(--color-white);
-    font-size: var(--font-size-10);
-    font-weight: var(--font-weight-bold);
-    background-color: var(--color-yellow);
-    border-radius: 50%;
-
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateX(-30%);
-  };
-`;
-
-// Navbar
-export const SideNavWrapper = styled.aside`
-  padding: 16px;
-  width: calc(100vw / 4 * 3); 
-  height: 100%;
-  background-color: #ebebeb; // todo : 색상변경
-  
-  display: inline-flex;
-  flex-direction: column;
-
-  position: fixed;
-  top:0;
-  left:0;
-  z-index: 999;
-
-  .loginlink {
-    height: 40px;
-    line-height: 40px;
-
-    color: var(--color-white);
-    font-size: var(--font-size-14);
-    font-weight: var(--font-weight-normal);
-    background-color: var(--color-black);
-    border-radius: 8px;
-  }
-`;
-export const SideHeader = styled.header`
-  width: 100%;
-
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  grid-gap: 8px;
-  gap: 8px;
-
-  font-size: 0;
-
-  div:first-child {
-    flex: 1;
-  }
-  div:not(:first-child) {
-    svg {
-      font-size: var(--font-size-12);
-      font-size: var(--font-size-24);
-    }
-  }
-  svg {
-    cursor: pointer; /* HiOutlineChevronLeft 때문에 추가. 나중에 수정 */
-  }
-`;
-export const SideNav = styled.nav`
-  flex: 1;
-
-  ul {
-    margin: 40px 0 0 0;
-    
-    width: 100%;
-    display: inline-flex;
-    flex-direction: column;
-    grid-gap: 16px;
-    gap: 16px;
-  }
-
-  li {
-    background-color: transparent;
-    transition: all 0.4s;
-
-    &:focus,
-    &:active,
-    &:hover {
-      background-color: rgba(0,0,0,0.1); /* modify later */
-    }
-  }
-
-  a:link,
-  a:visited {
-    color: var(--color-black);
-    font-size: var( --font-size-14);
-  }
-`;
-export const SideMain = styled.main`
-  padding: 32px 0 0 0;
-  height: 210px;
-
-  display: inline-flex;
-  flex-direction: column;
-  grid-gap: 32px;
-  gap: 32px;
-
-  border-top: 1px solid var(--color-transparent);
-  
-  h1{
-    font-size: 18px;
-
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    grid-gap: 8px;
-    gap: 8px;
-  }
-  img {
-    width: 24px;
-    height: 24px;
-
-    border-radius: 8px;
-  }
-  div {
-    font-size: var(--font-size-14);
-
-    display: inline-flex;
-    flex-direction: column;
-    grid-gap: 8px;
-    gap: 8px;
-  }
-`;
-export const SideFooter = styled.footer`
-  font-size: 0;
-
-  display: inline-flex;
-  flex-direction: row;
-  grid-gap: 16px;
-  gap: 16px;
-
-  svg {
-    width: 24px;
-    height: 24px;
-  }
-`;
 
 // Main
 export const MainWrapper = styled.main`
@@ -623,103 +278,6 @@ export const MapSection = styled.section`
     font-size: var(--font-size-12);
     border: 1px solid var(--color-light-grey);
     border-radius: 8px;
-  }
-`;
-
-// Carousel
-export const CarouselWrapper = styled.section`
-  width: 100vw;
-  height: 232px;
-  overflow: hidden;
-  position: relative;
-`;
-export const AdPagination = styled.ul`
-  width: 100%;
-  height: 32px;
-
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  grid-gap: 16px; /* cross-browsing */
-  gap: 16px;
-
-  list-style: none;
-
-  position: absolute;
-  left: 50%;
-  bottom: 0.4rem;
-  transform: translateX(-50%);
-  z-index: 50;
-`;
-export const AdPaginationList = styled.li`
-  width: 12px;
-  height: 12px;
-  font-size: var(--font-size-14);
-
-  border-radius: 12px;
-  border: 1px solid var(--color-white);
-  background-color: transparent;
-  transition: background-color 0.4s;
-
-  ${(props) => props.isSelected && css`
-    background-color: var(--color-white);
-    border: none;
-  `}
-`;
-export const AdWrapper = styled.section`
-  padding: 16px;
-  width: 100vw;
-  height: 232px;
-  overflow: hidden;
-  position: relative;
-  background-color: var(--color-green);
-
-  display: inline-flex;
-  flex-direction: column;
-  grid-gap: 16px;
-  gap: 16px;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: ${(props) => props.isSelected ? 5 : null};
-`;
-export const AdTitleWrapper = styled.article`
-  h2:first-child {
-    color: var(--color-yellow);
-    font-size: var(--font-size-20);
-  }
-  h2:last-child {
-    color: var(--color-white);
-    font-size: var(--font-size-20);
-  }
-`;
-export const AdEventWrapper = styled.article`
-  color: var(--color-white);
-  font-size: var(--font-size-14);
-
-  p {
-    line-height: 1.3rem;
-  }
-`;
-export const AdButtonWrapper = styled.article`
-  button[type="button"] {
-    padding: 8px 16px;
-    border-radius: 8px;
-    background-color: transparent;
-    border: 1px solid var(--color-white);
-    
-    color: var(--color-white);
-    font-size: var(--font-size-10);
-
-    transition: background-color 0.4s;
-
-    &:focus,
-    &:active,
-    &:hover {
-      background-color: var(--color-transparent);
-    }
   }
 `;
 
@@ -1464,54 +1022,5 @@ export const HalfSizeBtn = styled.button`
     font-weight: var(--font-weight-bold);
     border: 1px solid var(--color-green);
     background-color: var(--color-green);
-  }
-`;
-export const FloatBtn = styled.button`
-  display: block;
-  margin: auto;
-  width: 100%;
-  height: 48px;
-
-  color: var(--color-grey);
-  font-weight: var(--font-weight-normal);
-  background-color: var(--color-transparent);
-  border: 1px solid var(--color-light-grey);
-  backdrop-filter: blur(4px);
-  border-radius: 8px;
-
-  position: sticky; /* 부모요소에 overflow 요소가 있으면 작동안함 */
-  bottom: 16px;
-  left: 0;
-  z-index: 100;
-
-  transition: all 0.3s;
-  
-  ${props => props.isBtnActivated && css`
-    color: var(--color-white);
-    font-weight: var(--font-weight-bold);
-    border: 1px solid var(--color-green);
-    background-color: var(--color-green);
-  `};
-`;
-
-
-// Footer
-export const MainFooter = styled.footer`
-    padding: 0 16px;
-    width: 100vw;
-    height: 80px;
-
-    color: var(--color-grey);
-    font-size: var(--font-size-10);
-    background-color: var(--color-black);
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-  address {
-    width: 100%;
-    word-break: break-all;
   }
 `;

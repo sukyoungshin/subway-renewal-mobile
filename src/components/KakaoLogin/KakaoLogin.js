@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../common/Styled';
-import { loginFlagSelector } from '../reducers';
-import LINK from '../constants/link';
+import { loginFlagSelector } from '../../reducers';
+import LINK from '../../constants/link';
+import { KakaoButtonStyled } from './KakaoLogin.style';
+import { OAuthButtonTemplate } from '../index';
 
 const KakaoLogin = () => {
-
   /* 리덕스 */
   // eslint-disable-next-line
   const loginFlag = useSelector(loginFlagSelector);
@@ -58,39 +58,35 @@ const KakaoLogin = () => {
   }, []);
 
   return (
-    <>
+    <OAuthButtonTemplate>
     {
       loginFlag
       ? <KakaoLogoutButton onSignOut={onSignOut} />
       : <KakaoLoginButton onSignIn={onSignIn} />
     }
-    </>
+    </OAuthButtonTemplate>
   );
 };
 
 const KakaoLoginButton = ({ onSignIn }) => {
   return(
-    <Button 
+    <KakaoButtonStyled 
       type="button" 
-      bgColor={'kakao'} 
-      color={'black'}
       onClick={onSignIn}
     >
       <RiKakaoTalkFill /> 카카오로 시작
-    </Button>
+    </KakaoButtonStyled>
   );
 };
 
 const KakaoLogoutButton = ({ onSignOut }) => {
   return(
-    <Button 
+    <KakaoButtonStyled 
       type="button" 
-      bgColor={'kakao'} 
-      color={'black'}
       onClick={onSignOut}
     >
       LogOut
-    </Button>
+    </KakaoButtonStyled>
   );
 };
 

@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
-import { GoogleLoginButtonStyled, GoogleLogoutButtonStyled } from '../common/Styled';
 import { RiGoogleLine } from "react-icons/ri";
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFlagSelector } from '../reducers';
-import LINK from '../constants/link';
+import { loginFlagSelector } from '../../reducers';
+import { GoogleLoginButtonStyled, GoogleLogoutButtonStyled } from './GoogleLogin.style';
+import LINK from '../../constants/link';
+import { OAuthButtonTemplate } from '../index';
 
 const GoogleLogin = () => {
   /* 리덕스 */
@@ -61,25 +62,32 @@ const GoogleLogin = () => {
   }, [onSignIn]);
 
   return (
-    <>
+    <OAuthButtonTemplate>
     {
       loginFlag
       ? <GoogleLogoutButton onSignOut={onSignOut} />
       : <GoogleLoginButton />
     }
-    </>
+    </OAuthButtonTemplate>
   );
 };
 
 const GoogleLoginButton = () => {
   return (
-    <GoogleLoginButtonStyled className="g-signin2" data-height="48" data-onsuccess="onSignIn"/>
+    <GoogleLoginButtonStyled 
+      className="g-signin2" 
+      data-height="48" 
+      data-onsuccess="onSignIn"
+    />
   );
 };
 
 const GoogleLogoutButton = ({ onSignOut }) => {
   return (
-    <GoogleLogoutButtonStyled type="button" onClick={onSignOut}>
+    <GoogleLogoutButtonStyled 
+      type="button" 
+      onClick={onSignOut}
+    >
       <RiGoogleLine /> 구글logout
     </GoogleLogoutButtonStyled>
   );

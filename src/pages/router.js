@@ -1,20 +1,99 @@
-export { default as SplashScreen} from './SplashScreen';
-export { default as Layout} from './Layout';
-export { default as Main} from "./Main";
-export { default as Login} from "./Login";
-export { default as Signin} from "./Signin";
-export { default as Signup} from "./Signup";
-export { default as Addr} from './Addr';
-export { default as PostSearch} from './PostSearch';
-export { default as Menu} from './Menu';
-export { default as Bread} from './Bread';
-export { default as Cheese} from './Cheese';
-export { default as Veggie} from './Veggie';
-export { default as Sauce} from './Sauce';
-export { default as OrderPageLayout} from './OrderPageLayout';
-export { default as OrderCart} from './OrderCart';
-export { default as OrderInfo} from './OrderInfo';
-export { default as OrderMenu} from './OrderMenu';
-export { default as OrderConfirmLayout} from './OrderConfirmLayout';
-export { default as Auth} from './Auth';
-export { default as NoMatch} from './NoMatch';
+import { useRoutes } from "react-router-dom";
+import { Layout, Main, Login, Signin, Signup, Addr, PostSearch, Menu, Bread, Cheese, Veggie, Sauce, OrderPageLayout, OrderCart, OrderInfo, OrderMenu, OrderConfirmLayout, Auth, NoMatch } from 'pages';
+import RouterPath from 'constants/routerPath';
+
+const Elements = () => {
+  let element = useRoutes([
+    {
+      path : RouterPath.ROOT,
+      element : <Layout/>,
+      children : [
+        {
+          index: true,
+          element : <Main />,
+        },
+        {
+          path : RouterPath.MAIN,
+          element : <Main />,
+        },
+        {
+          path : RouterPath.ADDR,
+          element : <Addr />,
+        },
+        {
+          path : RouterPath.SEARCH,
+          element: <PostSearch />,
+        },
+        {
+          path : RouterPath.MENU,
+          element: <Menu />,
+        },
+        {
+          path : RouterPath.BREAD,
+          element: <Bread />,
+        },
+        {
+          path : RouterPath.CHEESE,
+          element: <Cheese />,
+        },
+        {
+          path : RouterPath.VEGGIE,
+          element: <Veggie />,
+        },
+        {
+          path : RouterPath.SAUCE,
+          element: <Sauce />,
+        },
+        {
+          path : RouterPath.LOGIN,
+          element: <Login />,
+        },
+        {
+          path : RouterPath.OAUTH,
+          element: <Auth />,
+        },
+        {
+          path : RouterPath.SIGNIN,
+          element: <Signin />,
+        },
+        {
+          path : RouterPath.SIGNUP,
+          element: <Signup />,
+        },
+        {
+          path : RouterPath.NOMATCH,
+          element : <NoMatch />,
+        }
+      ]
+    },
+    {
+      path : RouterPath.ORDER,
+      element: <OrderPageLayout />,
+      children : [
+        {
+          index : true,
+          element: <OrderMenu />,
+        },
+        {
+          path : RouterPath.ORDER,
+          element: <OrderMenu />,
+        },
+        {
+          path : RouterPath.INFO,
+          element: <OrderInfo />,
+        },
+        {
+          path : RouterPath.CONFIRM,
+          element: <OrderConfirmLayout />,
+        },
+        {
+          path : RouterPath.CART,
+          element: <OrderCart />,
+        },
+      ]
+    }
+  ]);
+  return element;
+};
+
+export default Elements;

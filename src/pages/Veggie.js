@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { MenuWrapper, MenuSection, VegListGrid, VegArticle, VegArticleHeader, VegAmountButton, VegContentWrapper, RangeButton, OptionLists, CheckBoxButton, CheckBoxButtonLabel } from '../common/Styled';
-import FloatButton from '../components/FloatButton';
+import { FloatButton } from '../components';
 import { BASEURL, vegetables } from '../common/Datas';
 import LINK from '../constants/link';
 

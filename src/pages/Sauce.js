@@ -1,10 +1,10 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OrderIconButton, OptionLists, RadioButton, RadioButtonLabel } from '../common/Styled';
 import { AiOutlinePlus } from "react-icons/ai";
-import FloatButton from '../components/FloatButton';
 import { BASEURL, sauces, sauceOptionLists } from '../common/Datas';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FloatButton } from '../components';
 import LINK from '../constants/link';
 
 const OPTION_NOT_SELECTED = 1;

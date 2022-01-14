@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { MenuCategories, TabContents, BASEURL } from '../common/Datas';
 import { BsCart2 } from "react-icons/bs";
 import { MenuWrapper, MenuSection, OrderIconButton, CategoryBtn, MenuListGrid, MenuArticle } from '../common/Styled';
-import FloatButton from '../components/FloatButton';
+import { FloatButton } from '../components';
 import LINK from '../constants/link';
 
 const Menu = () => {

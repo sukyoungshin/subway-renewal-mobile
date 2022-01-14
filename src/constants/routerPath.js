@@ -17,6 +17,7 @@ const RouterPath = {
   CONFIRM : "confirm",
   CART : "cart",
   TRACK : "track",
+  NOMATCH : "*",
 };
 
 export default RouterPath;

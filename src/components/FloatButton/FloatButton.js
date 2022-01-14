@@ -1,16 +1,16 @@
 import React from 'react';
-import { FloatBtn } from '../common/Styled';
+import { FloatButtonStyled } from './FloatButton.style';
 
 const FloatButton = ({ isBtnActivated, handleOrderProcess, children }) => {
   return (
-    <FloatBtn 
+    <FloatButtonStyled 
       type="button" 
       isBtnActivated={isBtnActivated}
       disabled={isBtnActivated ? false : true}
       onClick={handleOrderProcess}
     >
       {children}
-    </FloatBtn>
+    </FloatButtonStyled>
   );
 };
 

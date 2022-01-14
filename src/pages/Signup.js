@@ -1,10 +1,11 @@
 import React from 'react';
+import { MainWrapper } from '../common/Styled';
 
 const Signup = () => {
   return (
-    <div>
+    <MainWrapper>
       Signup
-    </div>
+    </MainWrapper>
   );
 };
 

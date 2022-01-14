@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BASEURL, cheeses } from '../common/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
 import { MenuWrapper, MenuSection, MenuListGrid, MenuArticle, OrderIconButton } from '../common/Styled';
-import FloatButton from '../components/FloatButton';
+import { FloatButton } from '../components';
 import LINK from '../constants/link';
 
 const Cheese = () => {
