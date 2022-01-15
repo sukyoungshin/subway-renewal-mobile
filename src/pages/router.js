@@ -1,12 +1,14 @@
 import { useRoutes } from "react-router-dom";
-import { Layout, Main, Login, Signin, Signup, Addr, PostSearch, Menu, Bread, Cheese, Veggie, Sauce, OrderPageLayout, OrderCart, OrderInfo, OrderMenu, OrderConfirmLayout, Auth, NoMatch } from 'pages';
+import { Main, Login, Signup, Addr, PostSearch, Menu, Bread, Cheese, Veggie, Sauce, OrderCart, OrderDetail, OrderMenu, OrderConfirm, Auth, NoMatch } from 'pages';
+import AppLayout from 'components/AppLayout/Layout';
 import RouterPath from 'constants/routerPath';
+import OrderPageLayout from 'components/OrderPageLayout/OrderPageLayout';
 
 const Elements = () => {
   let element = useRoutes([
     {
       path : RouterPath.ROOT,
-      element : <Layout/>,
+      element : <AppLayout/>,
       children : [
         {
           index: true,
@@ -19,10 +21,6 @@ const Elements = () => {
         {
           path : RouterPath.ADDR,
           element : <Addr />,
-        },
-        {
-          path : RouterPath.SEARCH,
-          element: <PostSearch />,
         },
         {
           path : RouterPath.MENU,
@@ -45,20 +43,16 @@ const Elements = () => {
           element: <Sauce />,
         },
         {
-          path : RouterPath.LOGIN,
-          element: <Login />,
+          path : RouterPath.SIGNUP,
+          element: <Signup />,
+        },
+        {
+          path : RouterPath.SEARCH,
+          element: <PostSearch />,
         },
         {
           path : RouterPath.OAUTH,
           element: <Auth />,
-        },
-        {
-          path : RouterPath.SIGNIN,
-          element: <Signin />,
-        },
-        {
-          path : RouterPath.SIGNUP,
-          element: <Signup />,
         },
         {
           path : RouterPath.NOMATCH,
@@ -80,18 +74,24 @@ const Elements = () => {
         },
         {
           path : RouterPath.INFO,
-          element: <OrderInfo />,
+          element: <OrderDetail />,
         },
         {
           path : RouterPath.CONFIRM,
-          element: <OrderConfirmLayout />,
+          element: <OrderConfirm />,
         },
         {
           path : RouterPath.CART,
           element: <OrderCart />,
         },
       ]
-    }
+    },
+    {
+      path : RouterPath.LOGIN,
+      element: <Login />,
+    },
+
+
   ]);
   return element;
 };

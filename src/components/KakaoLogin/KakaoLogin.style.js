@@ -11,8 +11,7 @@ export const KakaoButtonStyled = styled.button`
   gap: 8px;
 
   font-size: var(--font-size-14);
-  color: var(--color-props.color);
-  font-weight: var(--font-weight-bold);
-  background-color: var(--color-bgColor);
+  color: var(--color-black);
+  background-color: var(--color-kakao);
   border-radius: 8px;
 `;

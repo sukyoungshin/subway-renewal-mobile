@@ -12,6 +12,7 @@ export const FacebookLoginStyled = styled.button`
 
   font-size: var(--font-size-14);
   color: var(--color-white);
+  font-weight: var(--font-weight-normal);
   background-color: var(--color-facebook);
   border-radius: 8px;
 `;

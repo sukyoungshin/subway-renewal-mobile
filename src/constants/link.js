@@ -1,7 +1,7 @@
 import RouterPath from './routerPath';
 
 const LINK = {
-  ROOT : `/${RouterPath.ROOT}`,
+  ROOT : `${RouterPath.ROOT}`,
   MAIN : `/${RouterPath.MAIN}`,
   ADDR : `/${RouterPath.ADDR}`,
   MENU : `/${RouterPath.MENU}`,
