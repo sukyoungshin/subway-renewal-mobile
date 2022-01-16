@@ -1,4 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
+import FONT from './font';
+import SIZE from './fontsize';
+import WEIGHT from './fontweight';
+import PALETTE from './palette';
 
 export const GlobalStyle = createGlobalStyle`
   // CSS Reset
@@ -44,33 +48,35 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  // CSS VARIABLES
-  // COLOR, FONT-SIZE, FONT-WEIGHT
+  // CSS VARIABLEs
   html {
-    --color-yellow: #FFCB08;
-    --color-green: #009743;
-    --color-green-dark: #007936;
-    --color-red: #FF0000;
-    --color-white: #FFFFFF;
-    --color-grey: #8C8C8C;
-    --color-light-grey: #DFDFDF;
-    --color-black: #292F28;
-    --color-transparent: rgba(233,233,233,0.4);
-    --color-kakao: #FFE812;
-    --color-facebook: #3C5997;
-    --color-google: rgb(66, 133, 244);
+    font-family: ${FONT.EN} ${FONT.DEFAULT};
 
-    --font-size-24: 24px;
-    --font-size-20: 20px;
-    --font-size-18: 18px;
-    --font-size-16: 16px;
-    --font-size-14: 14px;
-    --font-size-12: 12px;
-    --font-size-10: 10px;
+    --color-white: ${PALETTE.WHITE};
+    --color-black: ${PALETTE.BLACK};
+    --color-yellow: ${PALETTE.YELLOW};
+    --color-green: ${PALETTE.GREEN};
+    --color-green-dark: ${PALETTE.GREEN_DARK};
+    --color-red: ${PALETTE.RED};
+    --color-grey: ${PALETTE.GREY};
+    --color-light-grey: ${PALETTE.GREY_LIGHT};
+    --color-kakao: ${PALETTE.KAKAO};
+    --color-facebook: ${PALETTE.FACEBOOK};
+    --color-google: ${PALETTE.GOOGLE};
+    --color-transparent: ${PALETTE.TRANSPARENT};
+    
+    --font-size-24: ${SIZE.LARGE_24};
+    --font-size-20: ${SIZE.LARGE_20};
+    --font-size-18: ${SIZE.LARGE_18};
+    --font-size-16: ${SIZE.MIDDLE_16};
+    --font-size-14: ${SIZE.MIDDLE_14};
+    --font-size-12: ${SIZE.SMALL_12};
+    --font-size-10: ${SIZE.SMALL_10};
 
-    --font-weight-normal: 300;
-    --font-weight-bold: 600;
+    --font-weight-normal: ${WEIGHT.NORMAL};
+    --font-weight-bold: ${WEIGHT.BOLD};
   }
+
   // MOUSE DRAG EFFECT
   ::selection{ 
     color: var(--color-white);
@@ -80,4 +86,5 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--color-white);
     background-color: var(--color-yellow);
   }
+  
 `;
