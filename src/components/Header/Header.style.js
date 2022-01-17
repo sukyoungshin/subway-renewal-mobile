@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderWrapperStyled = styled.header`
-  width: 100vw;
+  width: 100%;
   height: 56px;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
   position: relative;

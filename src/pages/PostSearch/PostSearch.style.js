@@ -64,6 +64,7 @@ export const CTAButtonStyled = styled.button`
   font-weight: var(--font-weight-normal);
   background-color: var(--transparent);
   border: 1px solid var(--color-light-grey);
+  border-radius: 8px;
   
   transition: all 0.3s;
   

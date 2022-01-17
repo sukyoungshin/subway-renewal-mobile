@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const CarouselWrapperStyled = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 232px;
   overflow: hidden;
   position: relative;

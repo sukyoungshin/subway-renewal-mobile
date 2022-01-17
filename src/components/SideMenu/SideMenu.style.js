@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 export const NavbarWrapperStyled = styled.aside`
   padding: 16px;
-  width: calc(100vw / 4 * 3); 
+  width: 100%;
+  max-width: 440px; 
   height: 100%;
   background-color: #ebebeb; // todo : 색상변경
   
   display: inline-flex;
   flex-direction: column;
 
-  position: fixed;
+  position: absolute;
   top:0;
-  left:0;
   z-index: 999;
 
   .loginlink {

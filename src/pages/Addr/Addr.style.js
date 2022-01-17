@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const FormStyled = styled.form`
   padding: 16px;
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 136px); 
 
   display: flex;
@@ -145,6 +145,7 @@ export const CTAButtonStyled = styled.button`
   font-weight: var(--font-weight-normal);
   background-color: var(--transparent);
   border: 1px solid var(--color-light-grey);
+  border-radius: 8px;
   
   transition: all 0.3s;
   

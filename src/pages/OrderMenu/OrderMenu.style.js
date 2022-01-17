@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainStyled = styled.main`
   padding: 16px;
-  width: 100vw;
+  width: 100%;
   min-height: calc(100% - 136px);
   position: relative;
 `;
@@ -118,8 +118,6 @@ export const MenuCardStyled = styled.section`
         bottom: 0;
       }
     }
-
-
   }
 `;
 

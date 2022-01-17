@@ -5,6 +5,8 @@ import WEIGHT from './fontweight';
 import PALETTE from './palette';
 
 export const GlobalStyle = createGlobalStyle`
+
+  
   // CSS Reset
   *, 
   *::before, 
@@ -18,10 +20,16 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+  body {
+    background-color: var(--color-transparent);
+  }
   #root {
-    width: 100%;
+    margin: 0 auto;
+    max-width: 440px;
     height: 100%;
     overflow-x: hidden;
+    position: relative;
+    background-color: var(--color-white);
   }
 
   h1, h2, h3, h4, h5, h6, p, ul {
@@ -50,7 +58,7 @@ export const GlobalStyle = createGlobalStyle`
 
   // CSS VARIABLEs
   html {
-    font-family: ${FONT.EN} ${FONT.DEFAULT};
+    font-family: ${FONT.EN}, ${FONT.DEFAULT};
 
     --color-white: ${PALETTE.WHITE};
     --color-black: ${PALETTE.BLACK};

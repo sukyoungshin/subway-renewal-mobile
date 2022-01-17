@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const MainStyled = styled.main`
-  width: 100vw;
+  width: 100%;
   min-height: calc(100% - 136px);
+  max-height: calc(100% - 232px);
+  overflow: auto;
 `;
 
 export const SectionStyled = styled.section`

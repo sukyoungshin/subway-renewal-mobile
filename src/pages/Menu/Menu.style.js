@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 
 export const MainStyled = styled.main`
   padding: 16px;
-  width: 100vw;
+  width: 440px;
+  max-width: 440px;
   min-height: calc(100% - 136px);
   position: relative;
 `;

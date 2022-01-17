@@ -7,7 +7,6 @@ function amountReducer (state = initialState(), action) {
   
   switch (action.type) {
     case INCREMENT:
-      console.log ( '추가', state.category.amount );
       return {
         ...state,
         category: {
@@ -17,8 +16,6 @@ function amountReducer (state = initialState(), action) {
       };
 
       case DECREMENT:
-        console.log ( '감소', state.category.amount );
-        
         return {
           ...state,
           category: {
