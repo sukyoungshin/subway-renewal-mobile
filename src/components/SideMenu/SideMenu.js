@@ -1,69 +1,36 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import LogoSmall from "../../assets/small-logo.png";
+import LogoSmall from "assets/small-logo.png";
 import { HiX, HiLogout, HiUser } from "react-icons/hi";
-import { NavCategories } from '../../common/Datas';
-import { useSelector, useDispatch } from 'react-redux';
-import { loginFlagSelector, userInfoSelector } from '../../reducers';
-import LINK from '../../constants/link';
-import { NavbarWrapperStyled, NavbarHeaderStyled, NavbarNavStyled, NavbarFooterStyled, NavbarMainStyled } from './SideMenu.style';
+import { NavCategories } from 'common/Datas';
+import { useSelector } from 'react-redux';
+import { loginFlagSelector, userInfoSelector } from 'reducers';
+import LINK from 'constants/link';
+import { NavbarWrapperStyled, NavbarHeaderStyled, NavbarNavStyled, NavbarFooterStyled, NavbarMainStyled, NavLinkStyled } from './SideMenu.style';
 
 const Navbar = ({ handleNavbar }) => {
   /* 리덕스 */
-  const dispatch = useDispatch();
   const loginFlag = useSelector(loginFlagSelector);
   const userInfo = useSelector(userInfoSelector);
 
-  /* 로그아웃 함수 (구글OAuth 제대로 작동안함 - 수정필요) */
-  const signOut = () => {
-    dispatch({
-      type : 'auth/logout',
-      userInfo : {
-        id : null,
-        userName: null,
-        email: null, 
-      },
-      isLoggedIn: false,
-    });
-    console.log('로그아웃');
-  };
-
-  /* NavLink style */
-  const style = ({ isActive }) => ({
-    color : isActive ? 'var(--color-green)' : 'var(--color-black)'
-  });
-
   return (
     <NavbarWrapperStyled>
-      <NavbarHeader 
-        style={style} 
-        handleNavbar={handleNavbar}
-      />
-      <NavbarNav 
-        style={style} 
-        handleNavbar={handleNavbar}
-      />
-      {
-        loginFlag 
-        ? <NavbarMain userInfo={userInfo} />
-        : <NavbarLoginButton handleNavbar={handleNavbar} />
-      }
-      <NavbarFooter 
-        loginFlag={loginFlag} 
-        signOut={signOut} 
-      />
+      <NavbarHeader handleNavbar={handleNavbar}/>
+      <NavbarNav handleNavbar={handleNavbar}/>
+      { loginFlag === false && <NavbarLoginButton /> }
+      { loginFlag && <NavbarMain userInfo={userInfo} /> }
+      <NavbarFooter loginFlag={loginFlag} />
     </NavbarWrapperStyled>
   );
 };
 
-const NavbarHeader = ({ style, handleNavbar }) => {
+const NavbarHeader = ({ handleNavbar }) => {
 
   return (
     <NavbarHeaderStyled>
       <div>
-        <NavLink 
+        <NavLinkStyled 
           to={LINK.ROOT} 
-          style={style} 
           onClick={handleNavbar}
         >
           <img
@@ -71,7 +38,7 @@ const NavbarHeader = ({ style, handleNavbar }) => {
             alt="로고"
             style={{ width: "128px", height: "32px" }}
           />
-        </NavLink>
+        </NavLinkStyled>
       </div>
       <div onClick={handleNavbar}>
         <HiX />
@@ -80,7 +47,7 @@ const NavbarHeader = ({ style, handleNavbar }) => {
   );
 };
 
-const NavbarNav = ({ style, handleNavbar }) => {
+const NavbarNav = ({ handleNavbar }) => {
   return (
     <NavbarNavStyled>
       <ul>
@@ -89,7 +56,6 @@ const NavbarNav = ({ style, handleNavbar }) => {
             <li key={category.pathName}>
               <NavLink 
                 to={category.pathName} 
-                style={style}
                 onClick={handleNavbar}
               >
                 {category.categoryName}
@@ -119,7 +85,7 @@ const NavbarMain = ({ userInfo }) => {
   );
 };
 
-const NavbarLoginButton = () => {
+const NavbarLoginButton = ({ loginFlag }) => {
   return (
     <NavLink 
       to={LINK.LOGIN} 
@@ -130,23 +96,25 @@ const NavbarLoginButton = () => {
   );
 };
 
-const NavbarFooter = ({ loginFlag, signOut }) => {
+const NavbarFooter = ({ loginFlag }) => {
   return (
     <NavbarFooterStyled>
       {
-        loginFlag 
-        ? (
+        loginFlag && (
           <>
           <div>
             <HiUser />
           </div>
           <div>
-            <HiLogout onClick={signOut} /> 
+            <NavLink 
+              to={LINK.LOGIN} 
+            >
+              <HiLogout />
+            </NavLink>
           </div>
           </>
           ) 
-        : null
-      }
+        }
     </NavbarFooterStyled>
   );
 };

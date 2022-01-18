@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavbarWrapperStyled = styled.aside`
@@ -50,6 +51,10 @@ export const NavbarHeaderStyled = styled.header`
   svg {
     cursor: pointer; /* HiOutlineChevronLeft 때문에 추가. 나중에 수정 */
   }
+`;
+
+export const NavLinkStyled = styled(NavLink)`
+  color: ${props => props.isActive ? 'var(--color-green)' : 'var(--color-black)'};
 `;
 
 export const NavbarNavStyled = styled.nav`
@@ -124,6 +129,7 @@ export const NavbarFooterStyled = styled.footer`
 
   display: inline-flex;
   flex-direction: row;
+  align-items: center;
   grid-gap: 16px;
   gap: 16px;
 
