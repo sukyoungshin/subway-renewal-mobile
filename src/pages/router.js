@@ -5,7 +5,7 @@ import RouterPath from 'constants/routerPath';
 import OrderPageLayout from 'components/OrderPageLayout/OrderPageLayout';
 
 const Elements = () => {
-  let element = useRoutes([
+  const element = useRoutes([
     {
       path : RouterPath.ROOT,
       element : <AppLayout/>,

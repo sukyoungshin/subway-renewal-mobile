@@ -9,7 +9,7 @@ export const initialState = () => ({
   category : {
     amount : 0,
   },
-  itemCount : 0,
+  itemCount : 1,
 });
 
 // 루트 리듀서

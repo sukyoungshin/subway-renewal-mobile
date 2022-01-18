@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const MainStyled = styled.main`
   padding: 16px;
-  width: 440px;
+  width: 100%;
   max-width: 440px;
   min-height: calc(100% - 136px);
   position: relative;
@@ -107,6 +107,7 @@ export const CategoryButtonStyled = styled.button`
 // 각 재료 선택 (야채제외)
 export const MenuListGrid = styled.div`
   margin-bottom: 16px;
+  max-width: 440px;
   width: 100%;
 
   display: grid;

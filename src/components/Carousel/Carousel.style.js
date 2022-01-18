@@ -45,7 +45,7 @@ export const AdPaginationListStyled = styled.li`
 
 export const AdWrapperStyled = styled.section`
   padding: 16px;
-  width: 100vw;
+  width: 100%;
   height: 232px;
   overflow: hidden;
   position: relative;
