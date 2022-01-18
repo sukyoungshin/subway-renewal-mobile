@@ -7,9 +7,9 @@ import amountReducer from './amountReducer';
 export const initialState = () => ({
 
   category : {
-    amount : 0,
+    amount : 1,
   },
-  itemCount : 1,
+  itemCount : 0,
 });
 
 // 루트 리듀서
