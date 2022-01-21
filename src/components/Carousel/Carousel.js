@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 import { CarouselWrapperStyled, AdPaginationStyled, AdPaginationListStyled, AdWrapperStyled, AdTitleWrapperStyled, AdEventWrapperStyled, AdButtonWrapperStyled } from './Carousel.style';
-import { AdContents } from '../../common/Datas';
-import LINK from '../../constants/link';
+import { AdContents } from 'common/Datas';
+import LINK from 'constants/link';
 
 const Carousel = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Carousel = () => {
       setSelectedId(id); // 페이지네이션 인덱스 설정
       setIsSelected((prev) => !prev); // 페이지네이션 스위치
     }, []); 
-  const goToOrderPage = () => navigate(`${LINK.ADDR}`);
+  const goToOrderPage = () => navigate(LINK.ADDR);
 
   return (
     <CarouselWrapperStyled>
@@ -33,7 +33,7 @@ const Carousel = () => {
 
 const Pagination = ({ selectedId, handleClick }) => {
   return (
-    <AdPaginationStyled className="ad_pagination">
+    <AdPaginationStyled>
       {
         AdContents.map((content) => (
           <AdPaginationListStyled

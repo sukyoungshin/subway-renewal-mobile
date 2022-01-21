@@ -2,9 +2,9 @@ import React, { useCallback, useEffect } from 'react';
 import { RiGoogleLine } from "react-icons/ri";
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFlagSelector } from '../../reducers';
+import { loginFlagSelector } from 'reducers';
 import { GoogleLoginButtonStyled, GoogleLogoutButtonStyled } from './GoogleLogin.style';
-import LINK from '../../constants/link';
+import LINK from 'constants/link';
 import { OAuthButtonTemplate } from '../index';
 
 const GoogleLogin = () => {
@@ -29,7 +29,7 @@ const GoogleLogin = () => {
       }, 
       isLoggedIn : true,
     });
-    navigate(`${LINK.ROOT}`); 
+    navigate(LINK.ROOT); 
   // eslint-disable-next-line
   }, []);
 
@@ -49,7 +49,7 @@ const GoogleLogin = () => {
       }, 
       isLoggedIn : false, 
     });
-    navigate(`${LINK.ROOT}`); 
+    navigate(LINK.ROOT); 
   };
 
   /* 구글 OAuth 관련 스크립트 동적 스크립트 생성 */
@@ -64,7 +64,7 @@ const GoogleLogin = () => {
   return (
     <OAuthButtonTemplate>
     {
-      loginFlag
+      loginFlag.id
       ? <GoogleLogoutButton onSignOut={onSignOut} />
       : <GoogleLoginButton />
     }

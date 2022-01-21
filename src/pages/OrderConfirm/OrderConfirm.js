@@ -21,17 +21,24 @@ const OrderConfirm = () => {
   /* 라우터 */
   const location = useLocation(); 
   const locationState = location.state; 
+  const DELIVER = 'deliver';
+  
+  /* 시간 */
+  const today = new Date(); // 오늘 날짜
+  const timeString = today.toLocaleString('ko-KR', {
+    timeZome : 'Asia/Seoul'
+  });
 
   // 라우터 상태값에 따라 맞는 component 렌더링
-  if (locationState === 'deliver') {
-    return <OrderDeliver orderDetail={orderDetail} />
+  if (locationState === DELIVER) {
+    return <OrderDeliver orderDetail={orderDetail} timeString={timeString} />
   } else {
-    return <OrderPickUp orderDetail={orderDetail} />
+    return <OrderPickUp orderDetail={orderDetail} timeString={timeString} />
   }
 };
 
 // Presentational Components
-const OrderDeliver = ({ orderDetail }) => {
+const OrderDeliver = ({ orderDetail, timeString }) => {
   const { orderMenu, customerAddr, subwayName, subwayPhone, customerRequest } = orderDetail;
 
   return(
@@ -45,7 +52,7 @@ const OrderDeliver = ({ orderDetail }) => {
       <SectionStyled>
         <ul>
           <li>
-            주문일시 : 00월00일 오후 00시 00분
+            주문일시 : {timeString}
           </li>
           <li>
             주문번호 : B0XK01HG6R
@@ -71,7 +78,7 @@ const OrderDeliver = ({ orderDetail }) => {
   )
 };
 
-const OrderPickUp = ({ orderDetail }) => {
+const OrderPickUp = ({ orderDetail, timeString }) => {
   const { orderMenu, subwayName, subwayPhone, subwayAddr, customerRequest } = orderDetail;
 
   return(
@@ -85,7 +92,7 @@ const OrderPickUp = ({ orderDetail }) => {
       <SectionStyled>
         <ul>
           <li>
-            주문일시 : 00월00일 오후 00시 00분
+            주문일시 : {timeString}
           </li>
           <li>
             주문번호 : B0XK01HG6R

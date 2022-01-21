@@ -14,17 +14,6 @@ export const NavbarWrapperStyled = styled.aside`
   position: absolute;
   top:0;
   z-index: 999;
-
-  .loginlink {
-    height: 40px;
-    line-height: 40px;
-
-    color: var(--color-white);
-    font-size: var(--font-size-14);
-    font-weight: var(--font-weight-normal);
-    background-color: var(--color-black);
-    border-radius: 8px;
-  }
 `;
 
 export const NavbarHeaderStyled = styled.header`
@@ -55,6 +44,22 @@ export const NavbarHeaderStyled = styled.header`
 
 export const NavLinkStyled = styled(NavLink)`
   color: ${props => props.isActive ? 'var(--color-green)' : 'var(--color-black)'};
+
+  img {
+    width: 128px;
+    height: 32px;
+  }
+`;
+
+export const ButtonStyled = styled.button`
+  height: 40px;
+  line-height: 40px;
+
+  color: var(--color-white);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-normal);
+  background-color: var(--color-black);
+  border-radius: 8px;
 `;
 
 export const NavbarNavStyled = styled.nav`

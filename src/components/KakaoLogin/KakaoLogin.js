@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginFlagSelector } from '../../reducers';
-import LINK from '../../constants/link';
+import { loginFlagSelector } from 'reducers';
+import LINK from 'constants/link';
 import { KakaoButtonStyled } from './KakaoLogin.style';
 import { OAuthButtonTemplate } from '../index';
 

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const FloatButtonStyled = styled.button`
   display: block;
-  margin: auto;
+  margin: 0 auto;
   width: 100%;
   height: 48px;
 

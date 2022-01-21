@@ -1,23 +1,27 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LogoSmall from "assets/small-logo.png";
 import { HiX, HiLogout, HiUser } from "react-icons/hi";
 import { NavCategories } from 'common/Datas';
 import { useSelector } from 'react-redux';
 import { loginFlagSelector, userInfoSelector } from 'reducers';
 import LINK from 'constants/link';
-import { NavbarWrapperStyled, NavbarHeaderStyled, NavbarNavStyled, NavbarFooterStyled, NavbarMainStyled, NavLinkStyled } from './SideMenu.style';
+import { NavbarWrapperStyled, NavbarHeaderStyled, NavbarNavStyled, NavbarFooterStyled, NavbarMainStyled, NavLinkStyled, ButtonStyled } from './SideMenu.style';
 
 const Navbar = ({ handleNavbar }) => {
   /* 리덕스 */
   const loginFlag = useSelector(loginFlagSelector);
   const userInfo = useSelector(userInfoSelector);
 
+  /* 라우터 */
+  const navigate = useNavigate();
+  const goToLoginPage = () => navigate(LINK.LOGIN);
+
   return (
     <NavbarWrapperStyled>
       <NavbarHeader handleNavbar={handleNavbar}/>
       <NavbarNav handleNavbar={handleNavbar}/>
-      { loginFlag === false && <NavbarLoginButton /> }
+      { loginFlag === false && <NavbarLoginButton goToLoginPage={goToLoginPage} /> }
       { loginFlag && <NavbarMain userInfo={userInfo} /> }
       <NavbarFooter loginFlag={loginFlag} />
     </NavbarWrapperStyled>
@@ -33,15 +37,16 @@ const NavbarHeader = ({ handleNavbar }) => {
           to={LINK.ROOT} 
           onClick={handleNavbar}
         >
-          <img
-            src={LogoSmall}
-            alt="로고"
-            style={{ width: "128px", height: "32px" }}
-          />
+          <img src={LogoSmall} alt="로고" />
         </NavLinkStyled>
       </div>
-      <div onClick={handleNavbar}>
-        <HiX />
+      <div>
+        <NavLinkStyled 
+          to={LINK.ROOT} 
+          onClick={handleNavbar}
+        >
+          <HiX />
+        </NavLinkStyled>
       </div>
     </NavbarHeaderStyled>
   );
@@ -54,12 +59,12 @@ const NavbarNav = ({ handleNavbar }) => {
         {
           NavCategories.map(category => (
             <li key={category.pathName}>
-              <NavLink 
+              <NavLinkStyled 
                 to={category.pathName} 
                 onClick={handleNavbar}
               >
                 {category.categoryName}
-              </NavLink>
+              </NavLinkStyled>
             </li>
           ))
         }
@@ -85,14 +90,11 @@ const NavbarMain = ({ userInfo }) => {
   );
 };
 
-const NavbarLoginButton = ({ loginFlag }) => {
+const NavbarLoginButton = ({ goToLoginPage }) => {
   return (
-    <NavLink 
-      to={LINK.LOGIN} 
-      className="loginlink"
-    >
+    <ButtonStyled type="button" onClick={goToLoginPage} >
       로그인
-    </NavLink>
+    </ButtonStyled>
   );
 };
 
@@ -106,15 +108,13 @@ const NavbarFooter = ({ loginFlag }) => {
             <HiUser />
           </div>
           <div>
-            <NavLink 
-              to={LINK.LOGIN} 
-            >
+            <NavLink to={LINK.LOGIN} >
               <HiLogout />
             </NavLink>
           </div>
           </>
-          ) 
-        }
+        ) 
+      }
     </NavbarFooterStyled>
   );
 };

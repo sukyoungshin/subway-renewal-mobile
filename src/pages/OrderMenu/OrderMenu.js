@@ -43,6 +43,8 @@ const OrderMenu = () => {
     navigate(`${LINK.INFO}`);
   };
 
+  console.log(order);
+
   return (
     <MainStyled>
       <SectionStyled style={{ marginTop: '32px' }}>

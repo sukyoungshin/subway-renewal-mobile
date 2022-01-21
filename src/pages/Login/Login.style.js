@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const MainStyled = styled.main`
@@ -23,6 +24,11 @@ export const CloseBtnContainerStyled = styled.span`
   left: 16px;
 `;
 
+export const LinkStyled = styled(Link)`
+  color: inherit;
+  font-size: inherit;
+`;
+
 export const ItemBlock = styled.div`
   width: 100%;
   height: fit-content;
@@ -36,7 +42,7 @@ export const ItemBlock = styled.div`
   }
   &.signup-wrapper,
   &.signin-title {
-    font-size: 12px;
+    font-size: var(--font-size-12);
     color: var(--color-grey);
   }
   &.signup-wrapper {

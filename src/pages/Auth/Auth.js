@@ -1,4 +1,5 @@
 /* global Kakao */
+import LINK from 'constants/link';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -67,7 +68,7 @@ const Auth = () => {
             },
             isLoggedIn: true,
           });
-          navigate('/');
+          navigate(LINK.ROOT);
         },
         fail: function(error) {
           console.log('카카오요청 실패', error);
@@ -96,7 +97,7 @@ const Auth = () => {
 
   return (
     <MainStyled>
-      카카오 로그인 정보를 받아오는 중입니다...
+      Loading...
     </MainStyled>
   );
 };

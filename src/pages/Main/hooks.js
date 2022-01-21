@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export const useSplashScreen = () => {
 
-  const LOADING = 'loading'
+  const LOADING = 'loading';
   const [ isLoading, setIsLoading ] = useState(
     JSON.parse(sessionStorage.getItem(LOADING))
   );

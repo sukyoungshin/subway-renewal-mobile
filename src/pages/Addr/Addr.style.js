@@ -28,6 +28,8 @@ export const FieldsetStyled = styled.fieldset`
   flex-direction: column;
   grid-gap: 8px;
   gap: 8px;
+
+  flex : ${(props) => props.flex && 1};
 `;
 
 export const AddressInputStyled = styled.input`

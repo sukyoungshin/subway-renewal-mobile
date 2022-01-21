@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import Cart from "../../assets/icons/cart.svg";
-import Logo from "../../assets/splash-logo.png";
+import Cart from "assets/icons/cart.svg";
+import Logo from "assets/splash-logo.png";
 import { HiMenuAlt1 } from "react-icons/hi";
-import { itemCountSelector } from '../../reducers';
-import { HeaderWrapperStyled } from './Header.style';
-import LINK from '../../constants/link';
+import { itemCountSelector } from 'reducers';
+import { ButtonStyled, HeaderWrapperStyled, LinkStyled, MainLinkStyled } from './Header.style';
+import LINK from 'constants/link';
 
 const Header = ({ handleNavbar }) => {
+  /* 리덕스 */
+  const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
+
   return (
     <HeaderWrapperStyled>
       <ul className="header-nav-wrapper">
@@ -19,7 +21,7 @@ const Header = ({ handleNavbar }) => {
           <HeaderLogo />
         </li>
         <li>
-          <HeaderCartIcon />
+          <HeaderCartIcon itemCount={itemCount} />
         </li>
       </ul>
     </HeaderWrapperStyled>
@@ -28,44 +30,28 @@ const Header = ({ handleNavbar }) => {
 
 const HeaderHamburgerIcon = ({ handleNavbar }) => {
   return (
-    <button type="button" onClick={handleNavbar}>
-      <HiMenuAlt1
-        style={{
-          color: "var(--color-green)",
-          width: "32px",
-          height: "32px",
-        }}
-      />
-    </button>
+    <ButtonStyled type="button" onClick={handleNavbar}>
+      <HiMenuAlt1 />
+    </ButtonStyled>
   );
 };
 
 const HeaderLogo = () => {
   return (
-    <Link to={LINK.MAIN} title="메인페이지로 이동">
-      <img
-        src={Logo}
-        alt="logo"
-        style={{ 
-          width: "calc(50%)", 
-          height: "calc(50%)",
-        }}
-      />
-    </Link>
+    <MainLinkStyled to={LINK.ROOT} title="메인페이지로 이동">
+      <img src={Logo} alt="써브웨이 로고" />
+    </MainLinkStyled>
   );
 };
 
-const HeaderCartIcon = () => {
-  /* 리덕스 */
-  const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
-
+const HeaderCartIcon = ({ itemCount }) => {
   return (
-    <Link to={LINK.CART} className="cart-btn" >
+    <LinkStyled to={LINK.CART} >
       <img src={Cart} alt="장바구니 아이콘" />
       <span>
         {itemCount}
       </span>
-    </Link>
+    </LinkStyled>
   );
 };
 

@@ -214,9 +214,8 @@ const Addr = () => {
         </FieldsetStyled>
 
         {/* 지도 출력하는 영역 */}
-        <FieldsetStyled style={{ flex: 1 }}>
+        <FieldsetStyled flex>
           <p>주문가능매장</p>
-          {/* 입력받은 주소값이 있으면 지도 보여주고, 없으면 글귀 보여줌 */}
           {
             addrValue.length !== 0
             ? (
@@ -233,9 +232,7 @@ const Addr = () => {
                           onClick={setMarkerLocation(place)}
                           readOnly 
                         />
-                        <span>
-                          선택
-                        </span>
+                        <span>선택</span>
                       </li>
                     ))
                   }
@@ -253,14 +250,13 @@ const Addr = () => {
         </FieldsetStyled>
 
         {/* 버튼 */}
-        <FieldsetStyled>
-          <CTAButtonStyled 
-            type="submit" 
-            isBtnSelected={isBtnSelected}
-          >
-            주문하기
-          </CTAButtonStyled>
-        </FieldsetStyled>
+        <CTAButtonStyled 
+          type="submit" 
+          isBtnSelected={isBtnSelected}
+        >
+          주문하기
+        </CTAButtonStyled>
+
       </FormStyled>
     </main>
   );

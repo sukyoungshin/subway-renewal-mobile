@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { BASEURL, cheeses } from '../../common/Datas';
+import { BASEURL, cheeses } from 'common/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
-import { MainStyled, SectionStyled, MenuGridStyled, ArticleStyled, OrderButtonStyled } from './Cheese.style';
-import { FloatButton } from '../../components';
-import LINK from '../../constants/link';
+import { MainStyled, SectionStyled, MenuGridStyled, ArticleStyled, OrderButtonStyled, MenuImgSectionStyled, MenuNameSectionStyled } from './Cheese.style';
+import { FloatButton } from 'components';
+import LINK from 'constants/link';
 
 const Cheese = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -36,7 +36,7 @@ const Cheese = () => {
       type: 'cart/cheese',
       payload : currentMenu,
     }); 
-    navigate(`${LINK.VEGGIE}`); 
+    navigate(LINK.VEGGIE); 
   });
 
   return (
@@ -62,24 +62,19 @@ const Cheese = () => {
                 >
                   <AiOutlinePlus />
                 </OrderButtonStyled>
-                <div className="menu-name-wrapper">
-                  <h3 className="menu-name-kor">
-                    {cheese.nameKor}
-                  </h3>
-                  <p className='menu-name-eng'>
-                    {cheese.nameEng}
-                  </p>
-                </div>
-                <div className="menu-img-wrapper">
+                <MenuNameSectionStyled>
+                  <h3>{cheese.nameKor}</h3>
+                  <p>{cheese.nameEng}</p>
+                </MenuNameSectionStyled>
+                <MenuImgSectionStyled 
+                  isMenuSelected={menuId === cheese.id}
+                >
                   <img 
                     src={`${BASEURL}${cheese.imgSrc}`} 
                     alt={cheese.nameKor} 
-                    className="menu-img" 
                   />
-                  <span className="menu-description">
-                    {cheese.description}
-                  </span>
-                </div>
+                  <span>{cheese.description}</span>
+                </MenuImgSectionStyled>
                 <p className="menu-price">
                   {cheese.price ? `${cheese.price}KRW` : null} 
                 </p>

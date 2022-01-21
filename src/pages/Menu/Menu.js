@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { MenuCategories, TabContents, BASEURL } from 'common/Datas';
 import { BsCart2 } from "react-icons/bs";
-import { MainStyled, SectionStyled, OrderButtonStyled, CategoryButtonStyled, MenuListGrid, ArticleStyled } from './Menu.style';
+import { MainStyled, SectionStyled, OrderButtonStyled, CategoryButtonStyled, MenuListGrid, ArticleStyled, MenuNameSectionStyled, MenuImgSectionStyled } from './Menu.style';
 import { FloatButton } from 'components';
 import LINK from 'constants/link';
 
@@ -51,7 +51,7 @@ const Menu = () => {
       type : 'cart/category',
       payload : currentMenu,
     }); 
-    navigate(`${LINK.BREAD}`); 
+    navigate(LINK.BREAD); 
   });
 
   return (
@@ -97,20 +97,19 @@ const Menu = () => {
                 >
                   <BsCart2 />
                 </OrderButtonStyled>
-                <div className="menu-name-wrapper">
-                  <h3 className="menu-name-kor">{menu.nameKor}</h3>
-                  <p className='menu-name-eng'>{menu.nameEng}</p>
-                </div>
-                <div className="menu-img-wrapper">
+                <MenuNameSectionStyled>
+                  <h3>{menu.nameKor}</h3>
+                  <p>{menu.nameEng}</p>
+                </MenuNameSectionStyled>
+                <MenuImgSectionStyled 
+                  isMenuSelected={menuId === menu.id}
+                >
                   <img 
                     src={`${BASEURL}${menu.imgSrc}`} 
-                    alt={`${menu.nameKor}`} 
-                    className="menu-img" 
+                    alt={menu.nameKor} 
                   />
-                  <span className="menu-description">
-                    {menu.description}
-                  </span>
-                </div>
+                  <span>{menu.description}</span>
+                </MenuImgSectionStyled>
                 <p className="menu-price">{menu.price} KRW</p>
               </ArticleStyled>
             ))

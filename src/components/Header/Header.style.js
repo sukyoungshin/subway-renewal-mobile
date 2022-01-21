@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderWrapperStyled = styled.header`
@@ -18,14 +19,30 @@ export const HeaderWrapperStyled = styled.header`
     padding: 10px;
     height: 56px;
   };
-  ul.header-nav-wrapper button[type="button"] {
-    background-color: transparent;
-    font-size: 0;
-  };
-  a.cart-btn {
-    position: relative;
-  };
-  a.cart-btn span {
+`;
+
+export const ButtonStyled = styled.button`
+  background-color: transparent;
+  font-size: 0;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: var(--color-green);
+  }
+`;
+
+export const MainLinkStyled = styled(Link)`
+  img {
+    width: calc(50%);
+    height: calc(50%);
+  }
+`;
+
+export const LinkStyled = styled(Link)`
+  position: relative;
+
+  span {
     padding: 2px 6px;
     color: var(--color-white);
     font-size: var(--font-size-10);
@@ -37,5 +54,5 @@ export const HeaderWrapperStyled = styled.header`
     top: 50%;
     left: 0;
     transform: translateX(-30%);
-  };
+  }
 `;

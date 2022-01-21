@@ -69,6 +69,11 @@ export const SectionStyled = styled.section`
     border-radius: 8px;
     box-sizing: border-box;
 
+    min-height: 56px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+
     font-size: 0; /* removed unexpected space */
 
     li {
@@ -77,13 +82,7 @@ export const SectionStyled = styled.section`
       font-size: var(--font-size-12);
     }
   }
-  ul.addr-wrapper,
-  ul.deliver-wrapper {
-    min-height: 56px;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+
   ul.addr-wrapper {
     li:nth-child(2) {
       margin-left: auto;
@@ -103,21 +102,21 @@ export const SectionStyled = styled.section`
       accent-color: var(--color-green);
     }
   }
+`;
 
-  textarea {
-    padding: 8px;
-    width: 100%;
-    height: 100%;
-    min-height: 72px;
-    
-    border-radius: 8px;
-    background-color: var(--color-transparent);
-    
-    color: var(--color-grey);
-    font-size: var(--font-size-12);
+export const TextAreaStyled = styled.textarea`
+  padding: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 72px;
+  
+  border-radius: 8px;
+  background-color: var(--color-transparent);
+  
+  color: var(--color-grey);
+  font-size: var(--font-size-12);
 
-    resize: none;
-  }
+  resize: none;
 `;
 
 export const FloatButtonWrapperStyled = styled.div`

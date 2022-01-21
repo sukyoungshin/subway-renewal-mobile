@@ -6,7 +6,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 import { FloatButton } from 'components';
 import LINK from 'constants/link';
-import { ArticleStyled, InputRadioStyled, LabelRadioStyled, MainStyled, MenuGridStyled, OptionListStyled, OptionListWrapperStyled, OrderButtonStyled, SectionStyled } from './Bread.style';
+import { ArticleStyled, InputRadioStyled, LabelRadioStyled, MainStyled, MenuGridStyled, MenuImgSectionStyled, MenuNameSectionStyled, OptionListStyled, OptionListWrapperStyled, OrderButtonStyled, SectionStyled } from './Bread.style';
 
 const Bread = () => {
   /* 리덕스 및 라우터 셋팅 */
@@ -51,7 +51,7 @@ const Bread = () => {
         breadOptions, // 선택한 빵옵션
       },
     }); 
-    navigate(`${LINK.CHEESE}`);
+    navigate(LINK.CHEESE);
   });
 
   return (
@@ -81,9 +81,7 @@ const Bread = () => {
                         price : list.option['option1'].price,
                       })}
                     />
-                    <LabelRadioStyled 
-                      htmlFor={list.option['option1'].text}
-                    >
+                    <LabelRadioStyled htmlFor={list.option['option1'].text}>
                       {list.option['option1'].text}
                     </LabelRadioStyled>
                   </OptionListStyled>
@@ -101,9 +99,7 @@ const Bread = () => {
                         price : list.option['option2'].price,
                       })}
                     />
-                    <LabelRadioStyled 
-                      htmlFor={list.option['option2'].text}
-                    >
+                    <LabelRadioStyled htmlFor={list.option['option2'].text}>
                       {list.option['option2'].text}
                       {' '}
                       {list.option['option2'].price ? `(${list.option['option2'].price})` : null}
@@ -131,24 +127,19 @@ const Bread = () => {
                 >
                   <AiOutlinePlus />
                 </OrderButtonStyled>
-                <div className="menu-name-wrapper">
-                  <h3 className="menu-name-kor">
-                    {bread.nameKor}
-                  </h3>
-                  <p className='menu-name-eng'>
-                    {bread.nameEng}
-                  </p>
-                </div>
-                <div className="menu-img-wrapper">
+                <MenuNameSectionStyled>
+                  <h3>{bread.nameKor}</h3>
+                  <p>{bread.nameEng}</p>
+                </MenuNameSectionStyled>
+                <MenuImgSectionStyled 
+                  isMenuSelected={menuId === bread.id} 
+                >
                   <img 
                     src={`${BASEURL}${bread.imgSrc}`} 
                     alt={bread.nameKor} 
-                    className="menu-img" 
                   />
-                  <span className="menu-description">
-                    {bread.description}
-                  </span>
-                </div>
+                  <span>{bread.description}</span>
+                </MenuImgSectionStyled>
                 <p className="menu-price">
                   {bread.price ? `${bread.price}KRW` : null} 
                 </p>

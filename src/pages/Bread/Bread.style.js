@@ -77,64 +77,6 @@ export const ArticleStyled = styled.article`
   border-radius: 8px;
 
   position: relative;
-
-  .menu-name-wrapper {
-    max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
-    max-height: 30px; 
-
-    .menu-name-kor {
-      font-size: var(--font-size-12);  
-      
-      text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
-      white-space: nowrap;
-      overflow: hidden;
-    }
-    .menu-name-eng {
-      font-size: var(--font-size-10);  
-      
-      text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
-      white-space: nowrap;
-      overflow: hidden;
-    }
-  }
-
-  .menu-img-wrapper{
-    width: 100%;
-    max-height: 84px;
-    flex: 1;
-    font-size: 0; 
-
-    position: relative;
-    
-    .menu-img {
-      width: 100%;
-      position: relative;
-      font-size: var(--font-size-10);
-
-      opacity: 1;
-      transition: opacity 0.3s;
-    }
-    .menu-description {
-      width: 100%;
-      font-size: var(--font-size-10);
-      
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    ${(props) => props.isMenuSelected && css`
-      .menu-img {
-        opacity: 0.3;
-      }
-      .menu-description {
-        opacity: 1;
-      }
-    `}
   }
 
   .menu-price {
@@ -145,6 +87,70 @@ export const ArticleStyled = styled.article`
     border: 2px solid var(--color-green);
   `}
 `;
+
+export const MenuNameSectionStyled = styled.section`
+  max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
+  max-height: 30px; 
+
+  h3 {
+    font-size: var(--font-size-12);  
+    
+    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  p {
+    font-size: var(--font-size-10);  
+    
+    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    white-space: nowrap;
+    overflow: hidden;
+  }
+`;
+
+export const MenuImgSectionStyled = styled.section`
+  width: 100%;
+  max-height: 84px;
+  flex: 1;
+  font-size: 0; 
+
+  position: relative;
+  
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    font-size: var(--font-size-10);
+
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  span {
+    width: 100%;
+    font-size: var(--font-size-10);
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  ${(props) => props.isMenuSelected && css`
+    img {
+      opacity: 0.3;
+    }
+    span {
+      opacity: 1;
+    }
+  `}
+
+`;
+
 
 // 각 재료 선택 (야채제외)
 export const MenuGridStyled = styled.div`

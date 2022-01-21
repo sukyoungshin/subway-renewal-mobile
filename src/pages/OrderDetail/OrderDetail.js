@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LINK from 'constants/link';
 import { orderSelector } from 'reducers';
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
-import { MainStyled, SectionStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled } from './OrderDetail.style';
+import { MainStyled, SectionStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, TextAreaStyled } from './OrderDetail.style';
 
 const OrderDetail = () => {
   /* 리덕스 */
@@ -51,7 +51,7 @@ const OrderDetail = () => {
     });
 
     if (!isCheckboxChecked) return;
-    navigate(`${LINK.CONFIRM}`, { state : isRadioChecked });
+    navigate(LINK.CONFIRM, { state : isRadioChecked });
   };
 
   return (
@@ -139,7 +139,7 @@ const OrderDetail = () => {
 
       <SectionStyled>
         <h2>주문 요청사항</h2>
-        <textarea 
+        <TextAreaStyled 
           placeholder="매장에 요청사항이 있으시면 여기에 입력해주세요"
           value={customerOrderRequest}
           onChange={handleOrderRequest}
