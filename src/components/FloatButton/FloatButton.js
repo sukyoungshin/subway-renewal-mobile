@@ -1,10 +1,17 @@
 import React from 'react';
 import { FloatButtonStyled } from './FloatButton.style';
 
-const FloatButton = ({ isBtnActivated, handleOrderProcess, children }) => {
+const FloatButton = ({ 
+  type = 'button',
+  form, 
+  isBtnActivated, 
+  handleOrderProcess, 
+  children }) => {
+
   return (
     <FloatButtonStyled 
-      type="button" 
+      type={type || "submit"} 
+      form={form}
       isBtnActivated={isBtnActivated}
       disabled={isBtnActivated ? false : true}
       onClick={handleOrderProcess}

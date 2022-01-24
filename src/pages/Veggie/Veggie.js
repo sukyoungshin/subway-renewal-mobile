@@ -113,7 +113,7 @@ const Veggie = () => {
       type: 'cart/veggie',
       payload : step, 
     }); 
-    navigate(`${LINK.SAUCE}`); 
+    navigate(LINK.SAUCE); 
   });
 
   return (

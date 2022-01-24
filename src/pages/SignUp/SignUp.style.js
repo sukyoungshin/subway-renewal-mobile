@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MainWrapperStyled = styled.main`
+  padding: 0 16px;
   width: 100%;
   height: auto;
   min-height: calc(100% - 184px);
@@ -9,7 +10,6 @@ export const MainWrapperStyled = styled.main`
 
 export const FormWrapperStyled = styled.form`
   margin: 48px 0 0 0;
-  padding: 0 16px;
   width: 100%;
   height: calc(100% - 48px);
 
@@ -37,28 +37,21 @@ export const FormWrapperStyled = styled.form`
   fieldset:nth-child(2) {
     position: relative;
   }
-  input + svg {
-    color: var(--color-light-grey);
-    font-size: var(--font-size-24);
-
-    position: absolute;
-    right: 16px;
-    bottom: 12px;
-
-    cursor: pointer;
-  }
 
   label {
     color: var(--color-black);
+    font-size: var(--font-size-14);
+  }
+  input.checkbox + label {
+    font-size: var(--font-size-12);
   }
   input,
   input::placeholder {
     color: var(--color-grey);
   }
-  label,
   input,
   input::placeholder {
-    font-size: var(--font-size-14);
+    font-size: var(--font-size-12);
   }
   input:not([type="checkbox"]) {
     padding-left: 16px;
@@ -72,13 +65,22 @@ export const FormWrapperStyled = styled.form`
   }
 `;
 
-export const ButtonWrapperStyled = styled.div`
-  margin: 0 auto;
-  width: calc(100% - 32px);
+export const HideButtonStyled = styled.button`
+  font-size: 0;
+  background-color: transparent;
+  
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  
+  svg {
+    color: var(--color-grey);
+    font-size: var(--font-size-24);
+  }
 `;
 
 export const FooterStyled = styled.footer`
+  margin: 24px 0 8px 0;
   height: 12px;
   font-size: var(--font-size-10);
-
 `;

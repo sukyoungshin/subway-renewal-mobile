@@ -60,6 +60,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     font-family: ${FONT.EN}, ${FONT.DEFAULT};
 
+    --color-light-white: ${PALETTE.LIGHT_WHITE};
     --color-white: ${PALETTE.WHITE};
     --color-black: ${PALETTE.BLACK};
     --color-yellow: ${PALETTE.YELLOW};
