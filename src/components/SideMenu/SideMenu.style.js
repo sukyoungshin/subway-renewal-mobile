@@ -1,12 +1,12 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const NavbarWrapperStyled = styled.aside`
   padding: 16px;
   width: 100%;
   max-width: 440px; 
   height: 100%;
-  background-color: #ebebeb; // todo : 색상변경
+  background-color: var(--color-light-white);
   
   display: inline-flex;
   flex-direction: column;
@@ -33,7 +33,6 @@ export const NavbarHeaderStyled = styled.header`
   }
   div:not(:first-child) {
     svg {
-      font-size: var(--font-size-12);
       font-size: var(--font-size-24);
     }
   }
@@ -43,11 +42,15 @@ export const NavbarHeaderStyled = styled.header`
 `;
 
 export const NavLinkStyled = styled(NavLink)`
+  font-size: var(--font-size-14);
   color: ${props => props.isActive ? 'var(--color-green)' : 'var(--color-black)'};
 
   img {
     width: 128px;
     height: 32px;
+  }
+  svg {
+    color: var(--color-green);
   }
 `;
 
@@ -58,7 +61,7 @@ export const ButtonStyled = styled.button`
   color: var(--color-white);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-normal);
-  background-color: var(--color-black);
+  background-color: var(--color-green);
   border-radius: 8px;
 `;
 
@@ -79,10 +82,11 @@ export const NavbarNavStyled = styled.nav`
     background-color: transparent;
     transition: all 0.4s;
 
-    &:focus,
+    /* modify later */
+    /* &:focus,
     &:active,
     &:hover {
-      background-color: rgba(0,0,0,0.1); /* modify later */
+      background-color: rgba(0,0,0,0.1); 
     }
   }
 
@@ -90,7 +94,7 @@ export const NavbarNavStyled = styled.nav`
   a:visited {
     color: var(--color-black);
     font-size: var( --font-size-14);
-  }
+  } */
 `;
 
 export const NavbarMainStyled = styled.main`

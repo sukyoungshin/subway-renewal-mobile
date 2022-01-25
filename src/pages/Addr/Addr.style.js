@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const FormStyled = styled.form`
   padding: 16px;
   width: 100%;
-  height: calc(100vh - 136px); 
+  height: calc(100% - 136px); 
 
   display: flex;
   flex-direction: column;
@@ -131,30 +131,5 @@ export const MapWrapperStyled = styled.div`
 
 export const MapViewerStyled = styled.div`
   height: 100%;
-`;
-
-export const CTAButtonStyled = styled.button`
-  width: 100%;
-  height: 48px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  grid-gap: 8px; 
-  gap: 8px;
-
-  color: var(--color-grey);
-  font-weight: var(--font-weight-normal);
-  background-color: var(--transparent);
-  border: 1px solid var(--color-light-grey);
-  border-radius: 8px;
-  
-  transition: all 0.3s;
-  
-  ${props => props.isBtnSelected && css`
-    color: var(--color-white);
-    font-weight: var(--font-weight-bold);
-    border: 1px solid var(--color-green);
-    background-color: var(--color-green);
-  `};
+  display: ${props => props.isHidden ? 'none' : 'block'};
 `;

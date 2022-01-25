@@ -1,22 +1,23 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LINK from 'constants/link';
 import { FloatButton } from 'components';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { MainWrapperStyled, FormWrapperStyled, FooterStyled, HideButtonStyled } from './SignUp.style';
+import LINK from 'constants/link';
+import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from 'react-icons/ai';
+import { MainWrapperStyled, FormWrapperStyled, FooterStyled, ButtonStyled } from './SignUp.style';
 
 const Signup = () => {
 
-  /* 유저 정보 관련 */
+  /* 입력받은 폼 데이터 관련 */
   const [ userInfo, setUserInfo ] = useState({
     username : '',
     userpassword : '',
     userphone: '',
     useraddr : '',
+    useraddrDetail: '',
     agreement: false,
   });
 
-  const handleUserInput = (e) => {
+  const handleInputData = (e) => {
     if (e.target.type === 'checkbox') {
       setUserInfo({
         ...userInfo,
@@ -34,12 +35,38 @@ const Signup = () => {
   /* 비밀번호 숨김 버튼 */
   const inputRef = useRef();
   const [ isVisible, setIsVisible ] = useState(false);
-  const handleVisibleButton = () => {
-    setIsVisible(prev => !prev);
-  };
+  const handleVisibleButton = () => setIsVisible(prev => !prev);
   useEffect(() => {
     isVisible ? inputRef.current.type = 'text' : inputRef.current.type = 'password';
   },[isVisible]);
+
+  /* 검색 버튼 관련 이벤트 */
+  const [ tempAddr, setTempAddr ] = useState('');
+  // postMessage 
+  const HandlePopUp = () => {
+    window.open('search', 'addressSearch', "width=380 height=500 left=726 top=306").postMessage('message');
+  };
+
+  // Dispatch Event
+  useEffect(() => {
+    const receiveMessage = (e) => {
+      if (e.origin !== window.location.origin) return;
+      if (e.source.name !== 'addressSearch') return;
+      setTempAddr(e.data);
+    };
+
+    window.addEventListener("message", receiveMessage, false);
+    // eslint-disable-next-line
+  }, []);
+
+  // 주소지 업데이트
+  useEffect(() => {
+    setUserInfo({
+      ...userInfo,
+      useraddr: tempAddr,
+    });
+  // eslint-disable-next-line
+  }, [tempAddr]);
 
   /* CTA 버튼 */
   const navigate = useNavigate();
@@ -51,6 +78,7 @@ const Signup = () => {
     차후 firebase 이용하여 userInfo Object db연동하여,
     로그인 및 회원가입 기능구현 완료
     */
+    window.alert(`환영합니다, ${userInfo.username}님! \n메인페이지로 이동합니다.`);
     navigate(LINK.ROOT);
   };
 
@@ -64,7 +92,7 @@ const Signup = () => {
             id="username"
             placeholder="아이디를 입력해주세요."
             value={userInfo.id}
-            onChange={handleUserInput}
+            onChange={handleInputData}
             required
           />
         </fieldset>
@@ -75,7 +103,7 @@ const Signup = () => {
             id="userpassword"
             placeholder="비밀번호를 입력해주세요"
             value={userInfo.id}
-            onChange={handleUserInput}
+            onChange={handleInputData}
             ref={inputRef}
             required
           />
@@ -83,7 +111,6 @@ const Signup = () => {
             isVisible={isVisible} 
             handleVisibleButton={handleVisibleButton}
           />
-          {/* */}
         </fieldset>
         <fieldset>
           <label htmlFor="userphone">휴대폰번호</label>
@@ -92,7 +119,7 @@ const Signup = () => {
             id="userphone"
             placeholder="ex) 000 - 000 - 0000"
             value={userInfo.id}
-            onChange={handleUserInput}
+            onChange={handleInputData}
             required
           />
         </fieldset>
@@ -101,16 +128,24 @@ const Signup = () => {
           <input 
             type="text"
             id="useraddr"
-            placeholder="배송받을 주소지를 입력하세요."
-            value={userInfo.id}
-            onChange={handleUserInput}
+            placeholder="배송받을 주소지를 직접 입력하세요."
+            value={userInfo.useraddr} 
+            onChange={handleInputData}
             required
           />
           <input 
             type="text"
+            id="useraddrDetail"
             placeholder="세부 주소를 입력하세요."
-            readOnly
+            value={userInfo.useraddrDetail}
+            onChange={handleInputData}
           />
+          <ButtonStyled 
+            type="button" 
+            onClick={HandlePopUp}
+          >
+            <AiOutlineSearch />
+          </ButtonStyled>
         </fieldset>
         <fieldset>
           <input 
@@ -118,7 +153,7 @@ const Signup = () => {
             id="agreement" 
             className='checkbox' 
             checked={userInfo.id}
-            onChange={handleUserInput}
+            onChange={handleInputData}
             required
           />
           <label htmlFor="agreement">본인은 만 14세 이상입니다. (필수)</label>
@@ -134,25 +169,25 @@ const Signup = () => {
         회원가입
       </FloatButton>
 
-      <Footer />
+      <FooterMessage />
     </MainWrapperStyled>
   );
 };
 
 const HideButton = ({ isVisible, handleVisibleButton }) => {
   return (
-    <HideButtonStyled 
+    <ButtonStyled 
       type="button" 
       value={isVisible}
       onClick={handleVisibleButton} 
       className='passwordhidden'
     >
       { isVisible ? <AiFillEye /> : <AiFillEyeInvisible /> }
-    </HideButtonStyled>
+    </ButtonStyled>
   );
 };
 
-const Footer = () => {
+const FooterMessage = () => {
   return (
     <FooterStyled>
     <p>

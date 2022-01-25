@@ -22,6 +22,8 @@ export const FormWrapperStyled = styled.form`
     display: inline-flex;
     grid-gap: 8px;
     gap: 8px;
+
+    position: relative;
   }
   fieldset:first-child {
     margin: 0 0 0 0;
@@ -65,13 +67,16 @@ export const FormWrapperStyled = styled.form`
   }
 `;
 
-export const HideButtonStyled = styled.button`
-  font-size: 0;
+export const ButtonStyled = styled.button`
+  width: 24px;
+  height: 24px;
+
   background-color: transparent;
+  font-size: 0;
   
   position: absolute;
-  right: 16px;
   bottom: 12px;
+  right: 16px;
   
   svg {
     color: var(--color-grey);
