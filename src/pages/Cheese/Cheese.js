@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { BASEURL, cheeses } from 'common/Datas';
+import { BASEURL, cheeses } from 'mock/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
 import { MainStyled, SectionStyled, MenuGridStyled, ArticleStyled, OrderButtonStyled, MenuImgSectionStyled, MenuNameSectionStyled } from './Cheese.style';
 import { FloatButton } from 'components';

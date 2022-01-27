@@ -67,7 +67,8 @@ export const MenuCardStyled = styled.section`
   padding: 8px;
   width: 100%;
   height: 112px;
-  background-color: #F6F5F5;
+  background-color: var(--color-light-grey);
+  border-radius: 8px;
 
   display: inline-flex;
   flex-direction: row;
@@ -144,29 +145,27 @@ export const AmountButtonWrapperStyled = styled.div`
       font-size: var(--font-size-10);
       font-weight: var(--font-weight-bold);
     }
-    button {
-      width: 24px;
-      height: 24px;
-      background-color: #C4C4C4;
-      border-radius: 50%;
-
-      font-size: var(--font-size-10);
-    }
-    .menu-delete {
-      font-size: var(--font-size-14);
-    }
-  }
-
-  .menu-delete {
-    margin-left: auto;
-    justify-self: end;
-    font-size: 0;
-
-    svg {
-      font-size: var(--font-size-24);
-    }
   }
 `;
+
+export const ButtonStyled = styled.button`
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-light-white);
+  border-radius: 50%;
+
+  font-size: var(--font-size-10);
+`;
+
+export const DeleteButtonStyled = styled(ButtonStyled)`
+  margin-left: auto;
+  justify-self: end;
+
+  svg {
+    font-size: var(--font-size-24);
+  }
+`;
+
 
 export const FloatButtonWrapperStyled = styled.div`
   margin-top: 16px;

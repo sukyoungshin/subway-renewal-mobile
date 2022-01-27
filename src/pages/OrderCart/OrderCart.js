@@ -1,39 +1,43 @@
 import React from 'react';
-import { MainStyled, MenuCardStyled, SectionStyled } from './OrderCart.style';
-import { FloatButton } from 'components';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import LINK from 'constants/link';
+import { BASEURL } from 'mock/Datas';
+import { FloatButton } from 'components';
 import { categorySelector, itemCountSelector } from 'reducers';
-import { BASEURL } from 'common/Datas';
+import { MainStyled, MenuCardStyled, SectionStyled } from './OrderCart.style';
 
 const OrderCart = () => {
   /* 리덕스 */
   const itemCount = useSelector(itemCountSelector); // 장바구니 갯수
   const AddedCartItem = useSelector(categorySelector); // 사용자가 주문한 아이템
 
+  /* 라우터 */
+  const navigate = useNavigate();
+  const handleOrderProcess = () => navigate(LINK.ROOT);
+
   return (
     <MainStyled>
     {
       AddedCartItem.id !== undefined
       ? <Full AddedCartItem={AddedCartItem} itemCount={itemCount} />
-      : <Empty />
+      : <Empty handleOrderProcess={handleOrderProcess} />
     }
     </MainStyled>
   );
 };
 
-const Empty = () => {
+const Empty = ({ handleOrderProcess }) => {
 
   return (
     <>
-    <SectionStyled 
-      style={{
-        justifyContent : 'center',
-        alignItems: 'center'
-      }}
-    >
+    <SectionStyled empty>
       <h2>장바구니가 비어있어요</h2>
     </SectionStyled>
-    <FloatButton>
+    <FloatButton
+      isBtnActivated={true}
+      handleOrderProcess={handleOrderProcess}
+    >
       주문하러 가기 :)
     </FloatButton>
     </>
@@ -62,9 +66,7 @@ const Full = ({ AddedCartItem, itemCount }) => {
                 {nameKor}
                 <span>{price} krw</span>
               </h3>
-              <p>
-                {description}
-              </p>
+              <p>{description}</p>
             </article>
           </MenuCardStyled>
         ))

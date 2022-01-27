@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel } from 'components';
-import { MenuRecommended } from 'common/Datas';
+import { MenuRecommended } from 'mock/Datas';
 import OrderIcon from "assets/icons/order.svg";
 import Sample from "assets/sample.png";
 import { MainStyled, SectionStyled, ArticleStyled } from './MainScreen.style';

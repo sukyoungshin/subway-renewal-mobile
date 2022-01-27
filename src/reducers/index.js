@@ -24,6 +24,7 @@ export const store = createStore(rootReducer);
 console.log('@App store', store.getState()); // 스토어의 상태 확인
 
 // 데이터 selector
+export const addrSelector = (state) => state.cartReducer.generalInfo;
 export const orderSelector = (state) => state.cartReducer; 
 export const categorySelector = (state) => state.cartReducer.category; 
 export const itemCountSelector = (state) => state.cartReducer.itemCount;

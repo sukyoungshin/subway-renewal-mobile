@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import LogoSmall from "assets/small-logo.png";
 import { HiX, HiLogout, HiUser } from "react-icons/hi";
-import { NavCategories } from 'common/Datas';
+import { NavCategories } from 'mock/Datas';
 import { useSelector } from 'react-redux';
 import { loginFlagSelector, userInfoSelector } from 'reducers';
 import LINK from 'constants/link';

@@ -2,12 +2,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { itemAmountSelector, orderSelector, itemCountSelector } from 'reducers';
-import { BASEURL } from 'common/Datas';
+import { BASEURL } from 'mock/Datas';
 import LINK from 'constants/link';
 import { RiDeleteBinLine } from "react-icons/ri";
-import { MainStyled, SectionStyled, MenuCardStyled, AmountButtonWrapperStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled } from './OrderMenu.style';
+import { MainStyled, SectionStyled, MenuCardStyled, AmountButtonWrapperStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, ButtonStyled, DeleteButtonStyled } from './OrderMenu.style';
 
-const OrderMenu = () => {
+const OrderMenu = () => {  
   /* 리덕스 */
   const order = useSelector(orderSelector); // 주문내역 전체
   const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
@@ -38,12 +38,7 @@ const OrderMenu = () => {
       payload : itemCount + 1,
     });
   };
-  // eslint-disable-next-line
-  const goToOrderPage = () => {
-    navigate(LINK.INFO);
-  };
-
-  console.log(order);
+  const goToOrderPage = () => navigate(LINK.INFO);
 
   return (
     <MainStyled>
@@ -76,29 +71,27 @@ const OrderMenu = () => {
             <AmountButtonWrapperStyled>
               <div className="button-wrapper">
               
-                <button 
+                <ButtonStyled 
                   type="button"
                   onClick={handleDecrement}
                 >
                   -
-                </button>
-              
+                </ButtonStyled>
                 <span>{itemAmount}</span>  
-              
-                <button 
+                <ButtonStyled 
                   type="button"
                   onClick={handleIncrement}
                 >
                   +
-                </button>
+                </ButtonStyled>
               </div>
 
-              <button 
+              <DeleteButtonStyled 
                 type="button"
-                className='menu-delete'
+
               >
                 <RiDeleteBinLine />
-              </button>
+              </DeleteButtonStyled>
 
             </AmountButtonWrapperStyled>
           </article>
@@ -120,22 +113,30 @@ const OrderMenu = () => {
         </p>
       </SectionStyled>
 
-      <FloatButtonWrapperStyled>
-        <HalfSizeCTAButtonStyled 
-          type="button"
-          onClick={goToCartPage}          
-        >
-          장바구니 담기
-        </HalfSizeCTAButtonStyled>
-        <HalfSizeCTAButtonStyled 
-          type="button"
-          onClick={goToOrderPage}          
-        >
-          주문정보 (1 / 2)
-        </HalfSizeCTAButtonStyled>
-      </FloatButtonWrapperStyled>
-
+      <CTAButtons
+        goToCartPage={goToCartPage} 
+        goToOrderPage={goToOrderPage} 
+      />
     </MainStyled>
+  );
+};
+
+const CTAButtons = ({ goToCartPage, goToOrderPage }) => {
+  return (
+    <FloatButtonWrapperStyled>
+      <HalfSizeCTAButtonStyled 
+        type="button"
+        onClick={goToCartPage}          
+      >
+        장바구니 담기
+      </HalfSizeCTAButtonStyled>
+      <HalfSizeCTAButtonStyled 
+        type="button"
+        onClick={goToOrderPage}          
+      >
+        주문정보 (1 / 2)
+      </HalfSizeCTAButtonStyled>
+    </FloatButtonWrapperStyled>
   );
 };
 

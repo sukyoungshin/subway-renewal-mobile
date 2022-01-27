@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { MainStyled, SectionStyled, VegListGridStyled, VegArticleStyled, VegArticleHeaderStyled, AmountButtonStyled, ContentWrapperStyled, AmountRangeStyled, OptionListStyled, CheckBoxButtonStyled, CheckBoxLabelStyled } from './Veggie.style';
 import { FloatButton } from 'components';
-import { BASEURL, vegetables } from 'common/Datas';
+import { BASEURL, vegetables } from 'mock/Datas';
 import LINK from 'constants/link';
 
 const Veggie = () => {

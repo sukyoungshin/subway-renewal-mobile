@@ -9,15 +9,16 @@ import useKakaoMap from './hooks';
 
 const Addr = () => {
 
-  /* 리덕스 및 라우터 셋팅 */
-  const dispatch = useDispatch(); // 리덕스
-  const navigate = useNavigate(); // 라우터
+  /* 리덕스 */
+  const dispatch = useDispatch(); 
+  /* 라우터 */
+  const navigate = useNavigate(); 
 
   /* 커스텀 훅 */
   // 카카오맵
   const [ addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue ] = useKakaoMap();
-  // 지도 팝업창 관련
 
+  /* 지도 팝업창 관련 */
   // postMessage 
   const HandlePopUp = () => {
     window.open('search', 'addressSearch', "width=380 height=500 left=726 top=306").postMessage('message');

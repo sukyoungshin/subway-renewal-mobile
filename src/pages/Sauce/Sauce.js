@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { AiOutlinePlus } from "react-icons/ai";
-import { BASEURL, sauces, sauceOptionLists } from 'common/Datas';
+import { BASEURL, sauces, sauceOptionLists } from 'mock/Datas';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FloatButton } from 'components';

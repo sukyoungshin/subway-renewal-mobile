@@ -130,18 +130,18 @@ export const useKakaoMap = () => {
 
   }, [position]);
 
-// KakaoMap 최초 생성
-useEffect(() => {
-  const container = document.getElementById('map');
-  const options = {
-    center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488), // 지도의 중심좌표
-    draggable: true, // 지도 이동 및 확대/축소 가능
-    level: 5 // 지도의 확대레벨
-  };
-  
-  const map = new kakao.maps.Map(container, options); // 지도 생성
-  kakaoMap.current = map; // 카카오맵을 ref로 지정
-}, []);
+  // KakaoMap 최초 생성
+  useEffect(() => {
+    const container = document.getElementById('map');
+    const options = {
+      center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488), // 지도의 중심좌표
+      draggable: true, // 지도 이동 및 확대/축소 가능
+      level: 5 // 지도의 확대레벨
+    };
+    
+    const map = new kakao.maps.Map(container, options); // 지도 생성
+    kakaoMap.current = map; // 카카오맵을 ref로 지정
+  }, []);
 
   return [addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue ];
 };

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 import { CarouselWrapperStyled, AdPaginationStyled, AdPaginationListStyled, AdWrapperStyled, AdTitleWrapperStyled, AdEventWrapperStyled, AdButtonWrapperStyled } from './Carousel.style';
-import { AdContents } from 'common/Datas';
+import { AdContents } from 'mock/Datas';
 import LINK from 'constants/link';
 
 const Carousel = () => {

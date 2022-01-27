@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { MenuCategories, TabContents, BASEURL } from 'common/Datas';
+import { MenuCategories, TabContents, BASEURL } from 'mock/Datas';
 import { BsCart2 } from "react-icons/bs";
 import { MainStyled, SectionStyled, OrderButtonStyled, CategoryButtonStyled, MenuListGrid, ArticleStyled, MenuNameSectionStyled, MenuImgSectionStyled } from './Menu.style';
 import { FloatButton } from 'components';

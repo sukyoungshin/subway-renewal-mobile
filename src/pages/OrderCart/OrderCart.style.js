@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -24,6 +24,15 @@ export const SectionStyled = styled.section`
     color: var(--color-black);
     font-size: var(--font-size-14);
   }
+
+  ${props => props.empty && css`
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-weight: var(--font-weight-normal);
+    }
+  `}
 `;
 
 export const MenuCardStyled = styled.section`
