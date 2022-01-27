@@ -6,43 +6,37 @@ import { orderSelector } from 'reducers';
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
 import { MainStyled, SectionStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, TextAreaStyled } from './OrderDetail.style';
 
+/* 텍스트 상수처리 */
+const DELIVER = 'deliver';
+const PICKUP = 'pickup';
+
 const OrderDetail = () => {
-  /* 리덕스 */
+  /* 리덕스 및 라우터 */
   const order = useSelector(orderSelector); // 주문내역 전체
   const dispatch = useDispatch(); 
-
-  /* 라우터 */
   const navigate = useNavigate();
-
-  /* 텍스트 상수처리 */
-  const DELIVER = 'deliver';
-  const PICKUP = 'pickup';
 
   /* 라디오 버튼 관련 */
   const [ isRadioChecked, setIsRadioChecked ] = useState(DELIVER);
-
-  const handleRadioStatus = (id) => {
-    setIsRadioChecked(id);
-  };
+  const handleRadioStatus = (id) => setIsRadioChecked(id);
 
   /* 고객 요청사항 (textarea) 관련 */
   const [ customerOrderRequest, setCustomerOrderRequest ] = useState('');
-  const handleOrderRequest = (e) => {
-    setCustomerOrderRequest(e.target.value);
-  };
+  const handleOrderRequest = (e) => setCustomerOrderRequest(e.target.value);
   
   /* 체크박스 관련 */
   const [ isCheckboxChecked, setIsCheckboxChecked ] = useState(false);
   const handleCheckboxStatus = (e) => {
     setIsCheckboxChecked(e.target.checked);
+    setIsActive(prev => !prev);
   };
 
   /* CTA 버튼 관련 */
+  const [ isActive, setIsActive ] = useState(false);
   const goToPrevPage = () => {
     console.log('이전페이지로'); // currentMenu가 없어서 에러남
   };
   const goToPaymentPage = () => {
-    console.log('결제페이지로', isCheckboxChecked);
     dispatch({
       type: 'cart/additionalRequest',
       payload : {
@@ -70,7 +64,7 @@ const OrderDetail = () => {
         </article>
       </SectionStyled>
 
-      <SectionStyled style={{ marginTop: '16px' }}>
+      <SectionStyled>
         <h2>배송방법</h2>
         <article>
           <ul className="deliver-wrapper">
@@ -146,7 +140,7 @@ const OrderDetail = () => {
         />
       </SectionStyled>
 
-      <SectionStyled style={{ marginTop: '16px' }}>
+      <SectionStyled>
         <h2 style={{ display: 'none' }}>
           주문동의
         </h2>
@@ -163,22 +157,33 @@ const OrderDetail = () => {
         </p>
       </SectionStyled>
 
-      <FloatButtonWrapperStyled>
-        <HalfSizeCTAButtonStyled 
-          type="button"
-          onClick={goToPrevPage}          
-        >
-          이전페이지
-        </HalfSizeCTAButtonStyled>
-        <HalfSizeCTAButtonStyled 
-          type="button"
-          onClick={goToPaymentPage}          
-        >
-          결제하기
-        </HalfSizeCTAButtonStyled>
-      </FloatButtonWrapperStyled>
+      <FloatButton 
+        isActive={isActive} 
+        goToPrevPage={goToPrevPage}
+        goToPaymentPage={goToPaymentPage}
+      />
 
     </MainStyled>
+  );
+};
+
+const FloatButton = ({ isActive, goToPrevPage, goToPaymentPage }) => {
+  return (
+    <FloatButtonWrapperStyled>
+      <HalfSizeCTAButtonStyled 
+        type="button"
+        onClick={goToPrevPage}          
+      >
+        이전페이지
+      </HalfSizeCTAButtonStyled>
+      <HalfSizeCTAButtonStyled 
+        type="button"
+        isActive={isActive}
+        onClick={goToPaymentPage}          
+      >
+        결제하기
+      </HalfSizeCTAButtonStyled>
+    </FloatButtonWrapperStyled>
   );
 };
 

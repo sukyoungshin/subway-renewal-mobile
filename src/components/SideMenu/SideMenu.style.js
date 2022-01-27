@@ -43,7 +43,6 @@ export const NavbarHeaderStyled = styled.header`
 
 export const NavLinkStyled = styled(NavLink)`
   font-size: var(--font-size-14);
-  color: ${props => props.isActive ? 'var(--color-green)' : 'var(--color-black)'};
 
   img {
     width: 128px;
@@ -81,20 +80,7 @@ export const NavbarNavStyled = styled.nav`
   li {
     background-color: transparent;
     transition: all 0.4s;
-
-    /* modify later */
-    /* &:focus,
-    &:active,
-    &:hover {
-      background-color: rgba(0,0,0,0.1); 
-    }
   }
-
-  a:link,
-  a:visited {
-    color: var(--color-black);
-    font-size: var( --font-size-14);
-  } */
 `;
 
 export const NavbarMainStyled = styled.main`
@@ -120,8 +106,8 @@ export const NavbarMainStyled = styled.main`
   img {
     width: 24px;
     height: 24px;
-
     border-radius: 8px;
+    font-size: var(--font-size-10); 
   }
   div {
     font-size: var(--font-size-14);

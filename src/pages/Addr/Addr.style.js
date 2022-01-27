@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
+export const MainStyled = styled.main`
+  width: 100%;
+  min-height: calc(100% - 138px);
+`;
+
 export const FormStyled = styled.form`
   padding: 16px;
   width: 100%;
-  height: calc(100% - 136px); 
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -89,11 +94,11 @@ export const ResultInputStyled = styled.input`
   }
 `;
 
-
 export const MapWrapperStyled = styled.div`
   padding: ${(props) => props.padding? '12px' : '0px' };
   width: 100%;
-  height: calc(100%);
+  height: 100%;
+  min-height: 300px;
 
   border-radius: 8px;
   border: 1px solid var(--color-light-grey);
@@ -131,5 +136,6 @@ export const MapWrapperStyled = styled.div`
 
 export const MapViewerStyled = styled.div`
   height: 100%;
+  min-height: 300px;
   display: ${props => props.isHidden ? 'none' : 'block'};
 `;

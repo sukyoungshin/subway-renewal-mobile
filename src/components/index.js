@@ -6,6 +6,7 @@ export { default as OAuthButtonTemplate } from './OAuthButtonTemplate/OAuthButto
 export { default as KakaoLogin } from './KakaoLogin/KakaoLogin';
 export { default as GoogleLogin } from './GoogleLogin/GoogleLogin';
 export { default as FacebookLogin } from './FacebookLogin/FacebookLogin';
+export { default as SubwayLogin } from './SubwayLogin/SubwayLogin';
 export { default as FloatButton } from './FloatButton/FloatButton';
 export { default as SideMenu } from './SideMenu/SideMenu';
 export { default as SplashScreen } from './SplashScreen/SplashScreen';

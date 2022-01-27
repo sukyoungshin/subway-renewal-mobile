@@ -39,6 +39,9 @@ export const SectionStyled = styled.section`
     border: 1px solid var(--color-light-grey);
     border-radius: 8px;
   }
+  input[type="text"]::placeholder {
+    color: var(--color-light-grey);
+  }
 `;
 
 export const ButtonWrapperStyled = styled.div`

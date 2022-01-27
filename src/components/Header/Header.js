@@ -48,9 +48,7 @@ const HeaderCartIcon = ({ itemCount }) => {
   return (
     <LinkStyled to={LINK.CART} >
       <img src={Cart} alt="장바구니 아이콘" />
-      <span>
-        {itemCount}
-      </span>
+      <span>{itemCount}</span>
     </LinkStyled>
   );
 };

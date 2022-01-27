@@ -11,7 +11,7 @@ const OPTION_NOT_SELECTED = 1;
 const OPTION_SELECTED = 0;
 
 const Sauce = () => {
-  /* 리덕스 및 라우터 셋팅 */
+  /* 리덕스 및 라우터 */
   const dispatch = useDispatch(); // 리덕스 
   const navigate = useNavigate(); // 라우터 
 
@@ -35,6 +35,7 @@ const Sauce = () => {
       } else {
         setIsChecked(OPTION_SELECTED);
       };
+
       setMenuId(currentOrderMenuObj.id); // 선택한 리스트 indexing 저장
       setIsBtnActivated(true); // 하나라도 선택된 항목이 있으면 하단 CTA버튼 활성화
     }
@@ -71,7 +72,7 @@ const Sauce = () => {
       type: 'cart/sauce',
       payload : currentMenu,
     }); 
-    navigate(`${LINK.ORDER}`);
+    navigate(LINK.ORDER);
   });
 
   return (
@@ -82,16 +83,7 @@ const Sauce = () => {
           <ul className="option-wrapper">
               {
                 sauceOptionLists.map((list) => (
-                  <OptionListStyled 
-                    key={list.id} 
-                    style={{ 
-                      marginLeft : '8px',
-                      justifyContent: 'flex-start', 
-                      alignItems: 'center',
-                      gridGap : '8px',
-                      gap: '8px',
-                    }}
-                  >
+                  <OptionListStyled key={list.id}>
                     <InputRadioStyled 
                       type="radio" 
                       id={list.id} 
@@ -111,7 +103,7 @@ const Sauce = () => {
         </article>
       </SectionStyled>
 
-      <SectionStyled style={{ marginTop: '16px' }}>
+      <SectionStyled>
         <h2>소즈/시즈닝 선택</h2>
         <MenuListGridStyled>
           {

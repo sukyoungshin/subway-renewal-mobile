@@ -10,10 +10,8 @@ import { OAuthButtonTemplate } from '../index';
 
 const KakaoLogin = () => {
   /* 리덕스 */
-  // eslint-disable-next-line
   const loginFlag = useSelector(loginFlagSelector);
   const dispatch = useDispatch();
-
   /* 라우터 */
   const navigate = useNavigate();
 
@@ -42,7 +40,7 @@ const KakaoLogin = () => {
       },
       isLoggedIn: false,
     });
-    navigate(`${LINK.ROOT}`); 
+    navigate(LINK.ROOT); 
   };
 
   /* 카카오로그인 script 생성 */
@@ -60,9 +58,9 @@ const KakaoLogin = () => {
   return (
     <OAuthButtonTemplate>
     {
-      loginFlag
-      ? <KakaoLogoutButton onSignOut={onSignOut} />
-      : <KakaoLoginButton onSignIn={onSignIn} />
+      !loginFlag
+      ? <KakaoLoginButton onSignIn={onSignIn} />
+      : <KakaoLogoutButton onSignOut={onSignOut} />
     }
     </OAuthButtonTemplate>
   );

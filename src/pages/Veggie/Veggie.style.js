@@ -8,6 +8,7 @@ export const MainStyled = styled.main`
 `;
 
 export const SectionStyled = styled.section`
+  margin: 16px 0 0 0;
   width: 100%;
 
   display: inline-flex;
@@ -64,8 +65,9 @@ export const SectionStyled = styled.section`
 `;
 
 export const OptionListStyled = styled.li`
+  padding: 8px;
   display: inline-flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   grid-gap: 16px;
   gap: 16px;

@@ -7,7 +7,7 @@ import { BASEURL, vegetables } from 'common/Datas';
 import LINK from 'constants/link';
 
 const Veggie = () => {
-  /* 리덕스 및 라우터 셋팅 */
+  /* 리덕스 및 라우터 */
   const dispatch = useDispatch(); // 리덕스
   const navigate = useNavigate(); // 라우터
 
@@ -44,30 +44,26 @@ const Veggie = () => {
 
   /* CTA버튼 관련 */
   const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화 여부
-
   const selectedCheckBox = (e) => {
-    const newStateChecked = e.target.checked;
-    setIsChecked(newStateChecked); // 현재 체크된 상태로 업데이트
-    
-    if (newStateChecked) {
-      // 전체선택 버튼이 클릭되었을 때, 슬라이더 조정
+    setIsChecked(e.target.checked); // 현재 체크된 상태로 업데이트
+
+    if (e.target.checked) {
       setStep(
         vegetables.reduce((result, veg) => {
           result[veg.id] = 50;
           return result;
         }, {})
       );
-      setIsBtnActivated(true); // CTA버튼 활성화
+      setIsBtnActivated(true); 
   
     } else {
-      // 전체선택 버튼이 클릭되지 않았을 때,슬라이더 조정
       setStep(
         vegetables.reduce((result, veg) => {
           result[veg.id] = 0;
           return result;
         }, {})
       );
-      setIsBtnActivated(false); // CTA버튼 활성화
+      setIsBtnActivated(false);
     };
   };
 
@@ -123,12 +119,7 @@ const Veggie = () => {
         <p className="description">원하시는 야채를 선택하세요.</p>
         <article>
           <ul className="option-wrapper">
-            <OptionListStyled 
-              style={{ 
-                justifyContent: 'flex-start' ,
-                padding: '8px'
-              }}
-            >
+            <OptionListStyled>
               <CheckBoxButtonStyled 
                 type="checkbox" 
                 id='checkall'
@@ -143,7 +134,7 @@ const Veggie = () => {
           </ul>
         </article>
       </SectionStyled>
-      <SectionStyled style={{ marginTop: '16px' }}>
+      <SectionStyled>
         <h2>야채선택</h2>
         <VegListGridStyled>
           {
@@ -185,6 +176,7 @@ const Veggie = () => {
           }
           </VegListGridStyled>
         </SectionStyled>
+        
       <FloatButton
         isBtnActivated={isBtnActivated}
         handleOrderProcess={handleOrderProcess}

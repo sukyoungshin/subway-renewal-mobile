@@ -62,6 +62,7 @@ const NavbarNav = ({ handleNavbar }) => {
               <NavLinkStyled 
                 to={category.pathName} 
                 onClick={handleNavbar}
+                className={({isActive}) => isActive ? 'var(--color-green)' : 'var(--color-black)'}
               >
                 {category.categoryName}
               </NavLinkStyled>

@@ -40,7 +40,7 @@ const OrderMenu = () => {
   };
   // eslint-disable-next-line
   const goToOrderPage = () => {
-    navigate(`${LINK.INFO}`);
+    navigate(LINK.INFO);
   };
 
   console.log(order);
@@ -63,17 +63,13 @@ const OrderMenu = () => {
               <span>{order.category.price} krw</span>
             </h2>
             <p>
-              {/* 빵 이름 */}
-              {order.bread.currentMenu.nameKor}, 
-              {/* 빵 사이즈 */}
+              {order.bread.currentMenu.nameKor}, {' '}
               {
                 order.bread.breadOptions.map((opt) => (
                   opt.nameKor + (opt.bool)
                 ))
-              }
-              {/* 치즈 */}
-              {order.cheese.nameKor}
-              {/* 소스 */}
+              }, {' '}
+              {order.cheese.nameKor}, {' '}
               {order.sauce.nameKor}
             </p>
 
@@ -87,9 +83,7 @@ const OrderMenu = () => {
                   -
                 </button>
               
-                <span>
-                  {itemAmount}
-                </span>  
+                <span>{itemAmount}</span>  
               
                 <button 
                   type="button"
@@ -113,21 +107,13 @@ const OrderMenu = () => {
 
       <SectionStyled style={{ marginTop: '24px'}}>
         <h2>결제정보</h2>
-        <p>
-          할인쿠폰
-        </p>
-        <p>
-          결제수단
-
-        </p>
+        <p>할인쿠폰</p>
+        <p>결제수단</p>
         <p>
           총 금액
           <span>{order.category.price} krw</span>
         </p>
-        <p>
-          할인금액
-
-        </p>
+        <p>할인금액</p>
         <p className="total-price">
           총 주문 금액
           <span>{order.category.price} krw</span>

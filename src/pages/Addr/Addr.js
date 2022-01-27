@@ -4,7 +4,7 @@ import { FloatButton } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LINK from 'constants/link';
-import { FormStyled, FieldsetStyled, MapWrapperStyled, AddressInputStyled, ResultInputStyled, MapViewerStyled } from './Addr.style';
+import { FormStyled, FieldsetStyled, MapWrapperStyled, AddressInputStyled, ResultInputStyled, MapViewerStyled, MainStyled } from './Addr.style';
 import useKakaoMap from './hooks';
 
 const Addr = () => {
@@ -13,10 +13,11 @@ const Addr = () => {
   const dispatch = useDispatch(); // 리덕스
   const navigate = useNavigate(); // 라우터
 
-  /* 커스텀 훅 (카카오맵) */
+  /* 커스텀 훅 */
+  // 카카오맵
   const [ addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue ] = useKakaoMap();
+  // 지도 팝업창 관련
 
-  /* 지도 팝업창 관련 */
   // postMessage 
   const HandlePopUp = () => {
     window.open('search', 'addressSearch', "width=380 height=500 left=726 top=306").postMessage('message');
@@ -64,7 +65,7 @@ const Addr = () => {
   }, [isBtnActivated, addrValue, isSelectedSubway]); 
 
   return (
-    <main>
+    <MainStyled>
       <FormStyled id="addrsearch-form" onSubmit={HandleOrderStart} >
         <FieldsetStyled>
           <label htmlFor="addrSearch">배송지</label>
@@ -97,7 +98,7 @@ const Addr = () => {
         </FloatButton>
 
       </FormStyled>
-    </main>
+    </MainStyled>
   );
 };
 

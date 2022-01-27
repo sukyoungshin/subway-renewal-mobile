@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -150,11 +150,10 @@ export const HalfSizeCTAButtonStyled = styled.button`
 
   transition: all 0.3s;
 
-  &:focus,
-  &:active {
+  ${props => props.isActive && css`
     color: var(--color-white);
     font-weight: var(--font-weight-bold);
-    border: 1px solid var(--color-green);
     background-color: var(--color-green);
-  }
+    border: 1px solid var(--color-green);
+  `}
 `;

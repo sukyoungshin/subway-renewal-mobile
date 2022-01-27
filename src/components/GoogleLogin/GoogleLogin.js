@@ -64,9 +64,9 @@ const GoogleLogin = () => {
   return (
     <OAuthButtonTemplate>
     {
-      loginFlag.id
-      ? <GoogleLogoutButton onSignOut={onSignOut} />
-      : <GoogleLoginButton />
+      !loginFlag.id
+      ? <GoogleLoginButton />
+      : <GoogleLogoutButton onSignOut={onSignOut} />
     }
     </OAuthButtonTemplate>
   );

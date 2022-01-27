@@ -5,6 +5,10 @@ import LINK from 'constants/link';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from 'react-icons/ai';
 import { MainWrapperStyled, FormWrapperStyled, FooterStyled, ButtonStyled } from './SignUp.style';
 
+const CHECKBOX = 'checkbox';
+const TEXT = 'text';
+const PASSWORD = 'password';
+
 const Signup = () => {
 
   /* 입력받은 폼 데이터 관련 */
@@ -18,16 +22,18 @@ const Signup = () => {
   });
 
   const handleInputData = (e) => {
-    if (e.target.type === 'checkbox') {
+    const { type, id, checked, value } = e.target;
+
+    if (type === CHECKBOX) {
       setUserInfo({
         ...userInfo,
-        [e.target.id] : e.target.checked,
+        [id] : checked,
       });
-      setIsBtnActivated(e.target.checked);
+      setIsBtnActivated(checked);
     } else {
       setUserInfo({
         ...userInfo,
-        [e.target.id] : e.target.value,
+        [id] : value,
       });
     }
   };
@@ -37,7 +43,7 @@ const Signup = () => {
   const [ isVisible, setIsVisible ] = useState(false);
   const handleVisibleButton = () => setIsVisible(prev => !prev);
   useEffect(() => {
-    isVisible ? inputRef.current.type = 'text' : inputRef.current.type = 'password';
+    isVisible ? inputRef.current.type = TEXT : inputRef.current.type = PASSWORD;
   },[isVisible]);
 
   /* 검색 버튼 관련 이벤트 */
@@ -73,11 +79,6 @@ const Signup = () => {
   const [ isBtnActivated, setIsBtnActivated ] = useState(false);
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    /* 
-    todo : 
-    차후 firebase 이용하여 userInfo Object db연동하여,
-    로그인 및 회원가입 기능구현 완료
-    */
     window.alert(`환영합니다, ${userInfo.username}님! \n메인페이지로 이동합니다.`);
     navigate(LINK.ROOT);
   };

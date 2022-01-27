@@ -9,6 +9,7 @@ export const MainStyled = styled.main`
 
 
 export const SectionStyled = styled.section`
+  margin-top: 16px;
   width: 100%;
 
   display: inline-flex;
@@ -184,11 +185,14 @@ export const OrderButtonStyled = styled.button`
 `;
 
 export const OptionListStyled = styled.li`
+  margin: 0 0 0 8px;
+
   display: inline-flex;
-  justify-content: space-between;
   flex-direction: row;
-  grid-gap: 16px;
-  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  grid-gap: 8px;
+  gap: 8px;
 
   font-size: var(--font-size-12);
 

@@ -78,23 +78,34 @@ const PostSearch = (data) => {
         </SectionStyled>
       </section>
 
-      <ButtonWrapperStyled>
-        <CTAButtonStyled 
-          type="button" 
-          isBtnSelected={isBtnSelected}
-          onClick={handleComplete}
-        >
-          입력완료
-        </CTAButtonStyled>
-        
-        <CTAButtonStyled 
-          type="button" 
-          onClick={handleClose}
-        >
-          다시입력 / 이전 페이지로 이동
-        </CTAButtonStyled>
-      </ButtonWrapperStyled>
+      <CTAButton 
+        isBtnSelected={isBtnSelected}
+        handleComplete={handleComplete}
+        handleClose={handleClose}
+      />
     </MainStyled>
+  );
+};
+
+const CTAButton = ({ isBtnSelected, handleComplete, handleClose }) => {
+
+  return(
+    <ButtonWrapperStyled>
+      <CTAButtonStyled 
+        type="button" 
+        isBtnSelected={isBtnSelected}
+        onClick={handleComplete}
+      >
+        입력완료
+      </CTAButtonStyled>
+      
+      <CTAButtonStyled 
+        type="button" 
+        onClick={handleClose}
+      >
+        다시입력 / 이전 페이지로 이동
+      </CTAButtonStyled>
+    </ButtonWrapperStyled>
   );
 };
 
