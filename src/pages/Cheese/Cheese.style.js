@@ -8,6 +8,7 @@ export const MainStyled = styled.main`
 `;
 
 export const SectionStyled = styled.section`
+  margin: 16px 0 0 0;
   width: 100%;
 
   display: inline-flex;

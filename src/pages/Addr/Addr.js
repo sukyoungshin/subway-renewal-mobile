@@ -9,13 +9,11 @@ import useKakaoMap from './hooks';
 
 const Addr = () => {
 
-  /* 리덕스 */
+  /* 리덕스 및 라우터*/
   const dispatch = useDispatch(); 
-  /* 라우터 */
   const navigate = useNavigate(); 
 
-  /* 커스텀 훅 */
-  // 카카오맵
+  /* 커스텀 훅 (카카오맵) */
   const [ addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue ] = useKakaoMap();
 
   /* 지도 팝업창 관련 */

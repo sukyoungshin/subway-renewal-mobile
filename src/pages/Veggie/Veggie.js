@@ -1,87 +1,42 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { MainStyled, SectionStyled, VegListGridStyled, VegArticleStyled, VegArticleHeaderStyled, AmountButtonStyled, ContentWrapperStyled, AmountRangeStyled, OptionListStyled, CheckBoxButtonStyled, CheckBoxLabelStyled } from './Veggie.style';
 import { FloatButton } from 'components';
-import { BASEURL, vegetables } from 'mock/Datas';
 import LINK from 'constants/link';
+import { BASEURL, vegetables } from 'mock/Datas';
+import { useInputRangeAndCTAbutton } from './hooks';
+
+// 버튼방향
+const NEXT = 'next';
+const PREV = 'prev';
 
 const Veggie = () => {
   /* 리덕스 및 라우터 */
   const dispatch = useDispatch(); // 리덕스
   const navigate = useNavigate(); // 라우터
 
-  /* 옵션선택 관련 */
-  const [ isChecked, setIsChecked ] = useState(false); // 체크박스 관리
-  /* range 관련 */
-  const [ step, setStep ] = useState(
-    // vegetables 배열의 갯수만큼 step생성 (기본값 50)
-    vegetables.reduce((result, veg) => {
-      result[veg.id] = 50;
-      return result;
-    }, {})
-  ); 
-  // 야채 전부 다 10이상일 때,
-  useEffect(() => {
-    const vegAmounts = Object.values(step); 
-    const condition = vegAmounts.every((v) => v >= 10);
-    if (condition) {
-      setIsChecked(true); // 전체선택 체크박스가 체크
-      setIsBtnActivated(true); // CTA버튼 활성화
-    };
-  }, [step]);
-
-  // eslint-disable-next-line
-  const handleStepChange = useCallback((id) => 
-    (e) => {
-      const range = e.target.valueAsNumber; // 숫자로 바꿔줌
-      setStep({
-        ...step,
-        [id] : range,  
-      });
-    }
-  );
-
-  /* CTA버튼 관련 */
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화 여부
-  const selectedCheckBox = (e) => {
-    setIsChecked(e.target.checked); // 현재 체크된 상태로 업데이트
-
-    if (e.target.checked) {
-      setStep(
-        vegetables.reduce((result, veg) => {
-          result[veg.id] = 50;
-          return result;
-        }, {})
-      );
-      setIsBtnActivated(true); 
-  
-    } else {
-      setStep(
-        vegetables.reduce((result, veg) => {
-          result[veg.id] = 0;
-          return result;
-        }, {})
-      );
-      setIsBtnActivated(false);
-    };
-  };
+  /* 커스텀훅 (Input Range 및 CTA버튼) */
+  const [ step, setStep, isChecked, setIsChecked, handleStepChange, isBtnActivated, selectedCheckBox ] = useInputRangeAndCTAbutton();
 
   /* 수량조절 버튼 핸들러 */
+  const conditionZeroToTen = (step, id) => {
+    return step[id] > 0 && step[id] <= 10;
+  };
+  const conditionLessThanZero = (step, id) => {
+    return step[id] <= 0;
+  };
+  const conditionMoreThanAHundred = (step, id) => {
+    return step[id] >= 100;
+  };
   //eslint-disable-next-line
   const handleAmountVeg = useCallback((id, direction) => 
     () => {
-      // 버튼방향
-      const NEXT = 'next';
-      const PREV = 'prev';
-
       // PREV 및 NEXT 버튼을 클릭 시, range step을 이동
       switch (direction) {
         case PREV:
-          if ( step[id] > 0 && step[id] <= 10 ) {
-            setIsChecked(false);
-          };
-          if ( step[id] <= 0 ) return 0;
+          if (conditionLessThanZero(step, id)) return 0;
+          if (conditionZeroToTen(step, id)) { setIsChecked(false) };
           setStep({
             ...step,
             [id] : step[id] - 10,
@@ -89,7 +44,7 @@ const Veggie = () => {
           break;
 
         case NEXT:          
-          if ( step[id] >= 100 ) return 100;
+          if (conditionMoreThanAHundred(step, id)) return 100;
           setStep({
             ...step,
             [id] : step[id] + 10,
@@ -98,8 +53,9 @@ const Veggie = () => {
 
         default:
           console.log('NaN');
-    };
-  });
+      };
+    }
+  );
 
   /* CTA버튼 관련 */
   // eslint-disable-next-line

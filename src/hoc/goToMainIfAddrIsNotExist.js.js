@@ -14,7 +14,9 @@ const goToMainIfAddrIsNotExistHOC = (Component) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      if (addr === undefined) navigate(LINK.ROOT);
+      if (addr === undefined) {
+        setTimeout(() => navigate(LINK.ROOT), 1000)
+      }
     // eslint-disable-next-line
     }, []);
     if (addr === undefined) return <NoMatch />;

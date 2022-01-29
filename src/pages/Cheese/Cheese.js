@@ -47,7 +47,7 @@ const Cheese = () => {
           <ul className="option-wrapper">{/* 빈 공간 */}</ul>
         </article>
       </SectionStyled>
-      <SectionStyled style={{ marginTop: '16px' }}>
+      <SectionStyled>
         <h2>치즈선택</h2>
         <MenuGridStyled>
           {
@@ -63,8 +63,12 @@ const Cheese = () => {
                   <AiOutlinePlus />
                 </OrderButtonStyled>
                 <MenuNameSectionStyled>
-                  <h3>{cheese.nameKor}</h3>
-                  <p>{cheese.nameEng}</p>
+                  <h3>
+                    {cheese.nameKor}
+                  </h3>
+                  <p>
+                    {cheese.nameEng}
+                  </p>
                 </MenuNameSectionStyled>
                 <MenuImgSectionStyled 
                   isMenuSelected={menuId === cheese.id}
@@ -73,7 +77,9 @@ const Cheese = () => {
                     src={`${BASEURL}${cheese.imgSrc}`} 
                     alt={cheese.nameKor} 
                   />
-                  <span>{cheese.description}</span>
+                  <span>
+                    {cheese.description}
+                  </span>
                 </MenuImgSectionStyled>
                 <p className="menu-price">
                   {cheese.price ? `${cheese.price}KRW` : null} 
