@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LINK from 'constants/link';
 import { FormStyled, FieldsetStyled, MapWrapperStyled, AddressInputStyled, ResultInputStyled, MapViewerStyled, MainStyled } from './Addr.style';
-import useKakaoMap from './hooks';
+import { useKakaoMap } from './hooks';
 
 const Addr = () => {
 
@@ -14,7 +14,7 @@ const Addr = () => {
   const navigate = useNavigate(); 
 
   /* 커스텀 훅 (카카오맵) */
-  const [ addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue ] = useKakaoMap();
+  const { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue } = useKakaoMap();
 
   /* 지도 팝업창 관련 */
   // postMessage 

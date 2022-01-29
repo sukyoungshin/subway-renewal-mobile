@@ -143,7 +143,5 @@ export const useKakaoMap = () => {
     kakaoMap.current = map; // 카카오맵을 ref로 지정
   }, []);
 
-  return [addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue ];
+  return { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue };
 };
-
-export default useKakaoMap;
