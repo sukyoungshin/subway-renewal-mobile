@@ -3,7 +3,7 @@ import { Main, Login, Signup, Addr, PostSearch, Menu, Bread, Cheese, Veggie, Sau
 import AppLayout from 'components/AppLayout/Layout';
 import RouterPath from 'constants/routerPath';
 import OrderPageLayout from 'components/OrderPageLayout/OrderPageLayout';
-import goToMainIfAddrIsNotExistHOC from 'hoc/goToMainIfAddrIsNotExist.js';
+import goToMainIfAddrIsNotExistHOC from 'hoc/goToMainIfAddrIsNotExist';
 
 const render = (C) => <C/>;
 const elementLists = [

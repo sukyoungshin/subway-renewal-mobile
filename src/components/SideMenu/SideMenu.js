@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import LogoSmall from "assets/small-logo.png";
+import LogoSmall from "assets/small-logo.webp";
 import { HiX, HiLogout, HiUser } from "react-icons/hi";
 import { NavCategories } from 'mock/Datas';
 import { useSelector } from 'react-redux';

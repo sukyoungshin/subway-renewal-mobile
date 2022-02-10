@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { HiOutlineChevronLeft } from "react-icons/hi";
-import LogoSmall from "assets/small-logo.png";
+import LogoSmall from "assets/small-logo.webp";
 import LINK from 'constants/link';
 import { SubwayLogin, GoogleLogin, KakaoLogin, FacebookLogin } from 'components';
 import { CloseBtnContainerStyled, ItemBlock, LinkStyled, LogoContainerStyled, MainStyled } from './Login.style';

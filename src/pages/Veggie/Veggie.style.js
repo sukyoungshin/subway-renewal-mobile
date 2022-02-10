@@ -98,6 +98,7 @@ export const CheckBoxLabelStyled = styled.label`
 export const VegListGridStyled = styled.div`
   margin-bottom: 16px;
   width: 100%;
+  contain: layout;
 
   display: grid;
   grid-template-columns: repeat(1fr);

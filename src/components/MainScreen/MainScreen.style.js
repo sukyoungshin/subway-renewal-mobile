@@ -68,5 +68,10 @@ export const ArticleStyled = styled.article`
     left: 50%; 
     bottom: 0; 
     transform: translate(-50%, 50%); 
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
 `;

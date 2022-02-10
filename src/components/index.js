@@ -11,4 +11,4 @@ export { default as FloatButton } from './FloatButton/FloatButton';
 export { default as SideMenu } from './SideMenu/SideMenu';
 export { default as SplashScreen } from './SplashScreen/SplashScreen';
 export { default as MainScreen } from './MainScreen/MainScreen';
-
+export { default as Spinner } from './Spinner/Spinner';

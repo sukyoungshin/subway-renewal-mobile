@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Cart from "assets/icons/cart.svg";
-import Logo from "assets/splash-logo.png";
+import Logo from "assets/splash-logo.webp";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { itemCountSelector } from 'reducers';
 import { ButtonStyled, HeaderWrapperStyled, LinkStyled, MainLinkStyled } from './Header.style';

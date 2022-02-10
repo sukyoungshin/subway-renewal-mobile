@@ -156,6 +156,7 @@ export const MenuImgSectionStyled = styled.section`
 export const MenuGridStyled = styled.div`
   margin-bottom: 16px;
   width: 100%;
+  contain: layout;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);

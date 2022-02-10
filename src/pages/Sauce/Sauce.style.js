@@ -7,7 +7,6 @@ export const MainStyled = styled.main`
   position: relative;
 `;
 
-
 export const SectionStyled = styled.section`
   margin-top: 16px;
   width: 100%;
@@ -68,6 +67,7 @@ export const SectionStyled = styled.section`
 export const MenuListGridStyled = styled.div`
   margin-bottom: 16px;
   width: 100%;
+  contain: layout;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);

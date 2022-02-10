@@ -109,6 +109,7 @@ export const MenuListGrid = styled.div`
   margin-bottom: 16px;
   max-width: 440px;
   width: 100%;
+  contain: layout;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);

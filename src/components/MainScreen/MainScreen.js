@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel } from 'components';
 import { MenuRecommended } from 'mock/Datas';
 import OrderIcon from "assets/icons/order.svg";
-import Sample from "assets/sample.png";
+import Sample from "assets/sample.webp";
 import { MainStyled, SectionStyled, ArticleStyled } from './MainScreen.style';
 
 const MainScreen = ({ handleNavAddr }) => {

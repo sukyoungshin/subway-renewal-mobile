@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from 'assets/splash-logo.png';
+import Logo from 'assets/splash-logo.webp';
 import { FooterWrapperStyled, LogoWrapperStyled, WrapperStyled } from './SplashScreen.style';
 
 const SplashScreen = () => {
