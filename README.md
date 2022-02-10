@@ -18,7 +18,8 @@
 ### Doc
 - yarn install <br/>
 - node -v : 17.1.0
-- tool : `react` `react-redux` `react-router` `react-daum-postcode` `styled-components` `react-icons`<br/>
+- deploy: Netlify
+- used tools : `react` `react-redux` `react-router` `react-daum-postcode` `styled-components` `react-icons`<br/>
 ```
 "dependencies": {
   "@testing-library/jest-dom": "^5.11.4",
