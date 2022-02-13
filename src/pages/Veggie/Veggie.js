@@ -1,11 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { MainStyled, SectionStyled, VegListGridStyled, VegArticleStyled, VegArticleHeaderStyled, AmountButtonStyled, ContentWrapperStyled, AmountRangeStyled, OptionListStyled, CheckBoxButtonStyled, CheckBoxLabelStyled } from './Veggie.style';
 import { FloatButton, ImgSpinner } from 'components';
 import LINK from 'constants/link';
 import { BASEURL, vegetables } from 'mock/Datas';
-import { useInputRangeAndCTAbutton } from './hooks';
 
 // 버튼방향
 const NEXT = 'next';
@@ -15,9 +14,6 @@ const Veggie = () => {
   /* 리덕스 및 라우터 */
   const dispatch = useDispatch(); // 리덕스
   const navigate = useNavigate(); // 라우터
-
-  /* 커스텀훅 (Input Range 및 CTA버튼) */
-  const [ step, setStep, isChecked, setIsChecked, handleStepChange, isBtnActivated, selectedCheckBox ] = useInputRangeAndCTAbutton();
 
   /* 수량조절 버튼 핸들러 */
   const conditionZeroToTen = (step, id) => {
@@ -56,6 +52,71 @@ const Veggie = () => {
       };
     }
   );
+
+  /* 체크박스 및 Input Range 관련 */
+  const [ isChecked, setIsChecked ] = useState(false);;
+  const [ step, setStep ] = useState(
+    vegetables.reduce((result, veg) => {
+      result[veg.id] = 50;
+      return result;
+    }, {})
+  ); 
+  
+  const selectedCheckBox = (e) => {
+    setIsChecked(e.target.checked);
+    
+    if (e.target.checked) {
+      setStep(
+        vegetables.reduce((result, veg) => {
+          result[veg.id] = 50;
+          return result;
+        }, {})
+      );
+  
+    } else {
+      setStep(
+        vegetables.reduce((result, veg) => {
+          result[veg.id] = 0;
+          return result;
+        }, {})
+      );
+    };
+  };
+  
+  // eslint-disable-next-line
+  const handleStepChange = useCallback((id) => 
+    (e) => {
+      const range = e.target.valueAsNumber; // 숫자로 바꿔줌
+      setStep({
+        ...step,
+        [id] : range,  
+      });
+    }
+  );
+
+  // 야채 전부 다 10이상일 때, 전체선택 체크박스가 체크선텍
+  useEffect(() => {
+    const vegAmounts = Object.values(step); 
+    const condition = vegAmounts.every((v) => v >= 10);
+    if (condition) setIsChecked(true); 
+    // eslint-disable-next-line
+  }, [step]);
+
+  // 야채 step 중 하나라도 0일 때, 전체선택 체크박스가 체크해제
+  useEffect(() => {
+    const vegAmounts = Object.values(step);
+    const condition = vegAmounts.some((v) => v === 0);
+    if (condition) setIsChecked(false);
+    // eslint-disabled-next-line
+  }, [step]);
+
+  // 야채 전부 다 0일 때, 전체선택 체크박스가 체크해제
+  useEffect(() => {
+    const vegAmounts = Object.values(step); 
+    const condition = vegAmounts.every((v) => v === 0);
+    if (condition) setIsChecked(false); 
+    // eslint-disable-next-line
+  }, [step]);
 
   /* CTA버튼 관련 */
   // eslint-disable-next-line
@@ -134,7 +195,7 @@ const Veggie = () => {
         </SectionStyled>
         
       <FloatButton
-        isBtnActivated={isBtnActivated}
+        isBtnActivated={true}
         handleOrderProcess={handleOrderProcess}
       >
         야채 선택 (4 / 7)
