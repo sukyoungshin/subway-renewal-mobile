@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { MenuCategories, TabContents, BASEURL } from 'mock/Datas';
 import { BsCart2 } from "react-icons/bs";
 import { MainStyled, SectionStyled, OrderButtonStyled, CategoryButtonStyled, MenuListGrid, ArticleStyled, MenuNameSectionStyled, MenuImgSectionStyled } from './Menu.style';
-import { FloatButton } from 'components';
+import { FloatButton, ImgSpinner } from 'components';
 import LINK from 'constants/link';
 
 const Menu = () => {
@@ -104,7 +104,7 @@ const Menu = () => {
                 <MenuImgSectionStyled 
                   isMenuSelected={menuId === menu.id}
                 >
-                  <img 
+                  <ImgSpinner 
                     src={`${BASEURL}${menu.imgSrc}`} 
                     alt={menu.nameKor} 
                   />

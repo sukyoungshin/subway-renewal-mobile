@@ -3,7 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BASEURL, sauces, sauceOptionLists } from 'mock/Datas';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { FloatButton } from 'components';
+import { FloatButton, ImgSpinner } from 'components';
 import LINK from 'constants/link';
 import { MainStyled, SectionStyled, MenuListGridStyled, MenuArticleStyled, OrderButtonStyled, OptionListStyled, InputRadioStyled, LabelRadioStyled } from './Sauce.style';
 
@@ -133,10 +133,9 @@ const Sauce = () => {
                   </p>
                 </div>
                 <div className="menu-img-wrapper">
-                  <img 
+                  <ImgSpinner 
                     src={`${BASEURL}${sauce.imgSrc}`} 
                     alt={sauce.nameKor} 
-                    className="menu-img" 
                   />
                   <span className="menu-description">
                     {sauce.description}

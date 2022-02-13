@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { MainStyled, SectionStyled, VegListGridStyled, VegArticleStyled, VegArticleHeaderStyled, AmountButtonStyled, ContentWrapperStyled, AmountRangeStyled, OptionListStyled, CheckBoxButtonStyled, CheckBoxLabelStyled } from './Veggie.style';
-import { FloatButton } from 'components';
+import { FloatButton, ImgSpinner } from 'components';
 import LINK from 'constants/link';
 import { BASEURL, vegetables } from 'mock/Datas';
 import { useInputRangeAndCTAbutton } from './hooks';
@@ -111,7 +111,7 @@ const Veggie = () => {
                   </AmountButtonStyled>
                 </VegArticleHeaderStyled>
                 <ContentWrapperStyled>
-                  <img 
+                  <ImgSpinner 
                     src={`${BASEURL}${veg.imgSrc}`} 
                     alt={veg.nameKor} 
                   />

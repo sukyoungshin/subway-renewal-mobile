@@ -55,7 +55,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-
+  
   // CSS VARIABLEs
   html {
     font-family: ${FONT.EN}, ${FONT.DEFAULT};

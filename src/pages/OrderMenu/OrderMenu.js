@@ -6,6 +6,7 @@ import { BASEURL } from 'mock/Datas';
 import LINK from 'constants/link';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MainStyled, SectionStyled, MenuCardStyled, AmountButtonWrapperStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, ButtonStyled, DeleteButtonStyled } from './OrderMenu.style';
+import { ImgSpinner } from 'components';
 
 const OrderMenu = () => {  
   /* 리덕스 */
@@ -47,7 +48,7 @@ const OrderMenu = () => {
 
         <MenuCardStyled>
           <article className="card-img">
-            <img 
+            <ImgSpinner 
               src={`${BASEURL}${order.category.imgSrc}`} 
               alt={order.category.nameKor}
             />

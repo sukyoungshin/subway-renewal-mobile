@@ -120,7 +120,6 @@ export const MenuImgSectionStyled = styled.section`
     display: inline-block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     position: relative;
     font-size: var(--font-size-10);
 

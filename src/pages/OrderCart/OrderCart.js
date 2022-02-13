@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LINK from 'constants/link';
 import { BASEURL } from 'mock/Datas';
-import { FloatButton } from 'components';
+import { FloatButton, ImgSpinner } from 'components';
 import { categorySelector, itemCountSelector } from 'reducers';
 import { MainStyled, MenuCardStyled, SectionStyled } from './OrderCart.style';
 
@@ -56,7 +56,7 @@ const Full = ({ AddedCartItem, itemCount }) => {
         ItemArray.map((item, index) => (
           <MenuCardStyled key={index}>
             <article className="card-img">
-              <img 
+              <ImgSpinner 
                 src={`${BASEURL}${imgSrc}`} 
                 alt={`${nameKor}, ${nameEng}`}
               />

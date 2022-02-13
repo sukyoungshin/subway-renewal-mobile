@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BASEURL, cheeses } from 'mock/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
 import { MainStyled, SectionStyled, MenuGridStyled, ArticleStyled, OrderButtonStyled, MenuImgSectionStyled, MenuNameSectionStyled } from './Cheese.style';
-import { FloatButton } from 'components';
+import { FloatButton, ImgSpinner } from 'components';
 import LINK from 'constants/link';
 
 const Cheese = () => {
@@ -73,7 +73,7 @@ const Cheese = () => {
                 <MenuImgSectionStyled 
                   isMenuSelected={menuId === cheese.id}
                 >
-                  <img 
+                  <ImgSpinner 
                     src={`${BASEURL}${cheese.imgSrc}`} 
                     alt={cheese.nameKor} 
                   />

@@ -119,8 +119,9 @@ export const MenuArticleStyled = styled.article`
 
     position: relative;
     
-    .menu-img {
+    img {
       width: 100%;
+      height: 100%;
       position: relative;
       font-size: var(--font-size-10);
 
