@@ -85,9 +85,11 @@ export const ResultInputStyled = styled.input`
     }
   }
 
-  &:active,
-  &:focus,
-  &:active + span,
+  &:is(:active, :focus) {
+    color: var(--color-white);
+    background-color: var(--color-green);
+  }
+  &:active + span, 
   &:focus + span {
     color: var(--color-white);
     background-color: var(--color-green);

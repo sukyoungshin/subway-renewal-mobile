@@ -92,20 +92,20 @@ export const MenuArticleStyled = styled.article`
   position: relative;
 
   .menu-name-wrapper {
-    max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
+    max-width: 112px;
     max-height: 30px; 
 
     .menu-name-kor {
       font-size: var(--font-size-12);  
       
-      text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+      text-overflow: ellipsis; 
       white-space: nowrap;
       overflow: hidden;
     }
     .menu-name-eng {
       font-size: var(--font-size-10);  
       
-      text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+      text-overflow: ellipsis; 
       white-space: nowrap;
       overflow: hidden;
     }

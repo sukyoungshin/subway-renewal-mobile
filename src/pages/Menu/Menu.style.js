@@ -104,7 +104,6 @@ export const CategoryButtonStyled = styled.button`
   `}
 `;
 
-// 각 재료 선택 (야채제외)
 export const MenuListGrid = styled.div`
   margin-bottom: 16px;
   max-width: 440px;
@@ -116,6 +115,7 @@ export const MenuListGrid = styled.div`
   grid-auto-rows: minmax(156px, auto);
   grid-gap: 20px;
 `;
+
 export const ArticleStyled = styled.article`
   padding: 8px;
   width: 100%;
@@ -141,20 +141,20 @@ export const ArticleStyled = styled.article`
 `;
 
 export const MenuNameSectionStyled = styled.section`
-  max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
+  max-width: 112px; 
   max-height: 30px; 
 
   h3 {
     font-size: var(--font-size-12);  
     
-    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    text-overflow: ellipsis; 
     white-space: nowrap;
     overflow: hidden;
   }
   p {
     font-size: var(--font-size-10);  
     
-    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    text-overflow: ellipsis; 
     white-space: nowrap;
     overflow: hidden;
   }

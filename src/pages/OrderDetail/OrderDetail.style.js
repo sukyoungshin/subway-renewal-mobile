@@ -74,7 +74,7 @@ export const SectionStyled = styled.section`
     flex-direction: column;
     justify-content: center;
 
-    font-size: 0; /* removed unexpected space */
+    font-size: 0; 
 
     li {
       line-height: 1.3rem;

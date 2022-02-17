@@ -44,7 +44,7 @@ export const SectionStyled = styled.section`
     background-color: var(--color-transparent);
     border-radius: 8px;
 
-    font-size: 0; /* removed unexpected space */
+    font-size: 0; 
   }
   ul:not(option-wrapper) {
     display: inline-flex;
@@ -177,7 +177,7 @@ export const FloatButtonWrapperStyled = styled.div`
   grid-gap: 8px;
   gap: 8px;
 
-  position: sticky; /* 부모요소에 overflow 요소가 있으면 작동안함 */
+  position: sticky;
   bottom: 16px;
   left: 0;
   z-index: 100;
@@ -198,8 +198,7 @@ export const HalfSizeCTAButtonStyled = styled.button`
 
   transition: all 0.3s;
 
-  &:focus,
-  &:active {
+  &:is(:focus, :active) {
     color: var(--color-white);
     font-weight: var(--font-weight-bold);
     border: 1px solid var(--color-green);

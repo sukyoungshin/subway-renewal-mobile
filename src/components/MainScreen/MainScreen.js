@@ -3,7 +3,7 @@ import { Carousel, ImgSpinner } from 'components';
 import { MenuRecommended } from 'mock/Datas';
 import OrderIcon from "assets/icons/order.svg";
 import Sample from "assets/sample.webp";
-import { MainStyled, SectionStyled, ArticleStyled } from './MainScreen.style';
+import { MainStyled, SectionStyled, ArticleStyled, ButtonStyled, DivStyled } from './MainScreen.style';
 
 const MainScreen = ({ handleNavAddr }) => {
 
@@ -15,14 +15,23 @@ const MainScreen = ({ handleNavAddr }) => {
         <ArticleStyled>
           {
             MenuRecommended.map((item) => (
-              <div key={item.id}>
-                <ImgSpinner src={Sample} alt="첫번째 샌드위치 이미지" />
+              <DivStyled key={item.id}>
+                <ImgSpinner 
+                  src={Sample} 
+                  alt="첫번째 샌드위치 이미지" 
+                />
                 <h3>{item.menuName}</h3>
                 <p>{item.kcal}kcal</p>
-                <button type="button" onClick={handleNavAddr}>
-                  <img src={OrderIcon} alt="주문하기 버튼" />
-                </button>
-              </div>
+                <ButtonStyled 
+                  type="button" 
+                  onClick={handleNavAddr}
+                >
+                  <img 
+                    src={OrderIcon} 
+                    alt="주문하기 버튼" 
+                  />
+                </ButtonStyled>
+              </DivStyled>
             ))
           }
         </ArticleStyled>

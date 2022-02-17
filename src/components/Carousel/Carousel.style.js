@@ -82,22 +82,18 @@ export const AdEventWrapperStyled = styled.article`
   }
 `;
 
-export const AdButtonWrapperStyled = styled.article`
-  button[type="button"] {
-    padding: 8px 16px;
-    border-radius: 8px;
-    background-color: transparent;
-    border: 1px solid var(--color-white);
-    
-    color: var(--color-white);
-    font-size: var(--font-size-10);
+export const ButtonStyled = styled.button`
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  
+  color: var(--color-white);
+  font-size: var(--font-size-10);
 
-    transition: background-color 0.4s;
+  transition: background-color 0.4s;
 
-    &:focus,
-    &:active,
-    &:hover {
-      background-color: var(--color-transparent);
-    }
+  &:is(:focus, :active, :hover) {
+    background-color: var(--color-transparent);
   }
 `;

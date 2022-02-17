@@ -45,7 +45,7 @@ export const SectionStyled = styled.section`
     background-color: var(--color-transparent);
     border-radius: 8px;
 
-    font-size: 0; /* removed unexpected space */
+    font-size: 0; 
   }
   ul:not(option-wrapper) {
     display: inline-flex;
@@ -89,20 +89,20 @@ export const ArticleStyled = styled.article`
 `;
 
 export const MenuNameSectionStyled = styled.section`
-  max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
+  max-width: 112px; 
   max-height: 30px; 
 
   h3 {
     font-size: var(--font-size-12);  
     
-    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    text-overflow: ellipsis; 
     white-space: nowrap;
     overflow: hidden;
   }
   p {
     font-size: var(--font-size-10);  
     
-    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    text-overflow: ellipsis; 
     white-space: nowrap;
     overflow: hidden;
   }

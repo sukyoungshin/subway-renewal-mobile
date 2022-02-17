@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
-import { CarouselWrapperStyled, AdPaginationStyled, AdPaginationListStyled, AdWrapperStyled, AdTitleWrapperStyled, AdEventWrapperStyled, AdButtonWrapperStyled } from './Carousel.style';
+import { CarouselWrapperStyled, AdPaginationStyled, AdPaginationListStyled, AdWrapperStyled, AdTitleWrapperStyled, AdEventWrapperStyled, ButtonStyled } from './Carousel.style';
 import { AdContents } from 'mock/Datas';
 import LINK from 'constants/link';
 
@@ -65,11 +65,14 @@ const Content = ({ selectedId, handleClick, goToOrderPage }) => {
             <p>{content.eventName}</p>
             <p>{content.eventDate}</p>
           </AdEventWrapperStyled>
-          <AdButtonWrapperStyled>
-            <button type="button" onClick={goToOrderPage}>
+          <article>
+            <ButtonStyled 
+              type="button" 
+              onClick={goToOrderPage}
+            >
               ORDER NOW
-            </button>
-          </AdButtonWrapperStyled>
+            </ButtonStyled>
+          </article>
         </AdWrapperStyled>
       ))
     }

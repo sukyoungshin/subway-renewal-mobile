@@ -57,9 +57,7 @@ export const GoogleLogoutButtonStyled = styled.button`
   background-color: var(--color-google);
   border-radius: 8px;
 
-  &:active,
-  &:focus,
-  &:hover {
+  &:is(:active, :focus, :hover) {
     color: var(--color-black);
   }
 `;

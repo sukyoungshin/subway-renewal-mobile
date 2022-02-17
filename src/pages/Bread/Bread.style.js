@@ -89,20 +89,20 @@ export const ArticleStyled = styled.article`
 `;
 
 export const MenuNameSectionStyled = styled.section`
-  max-width: 112px; /* 패딩, 아이콘너비 제외한 최대너비값 */
+  max-width: 112px; 
   max-height: 30px; 
 
   h3 {
     font-size: var(--font-size-12);  
     
-    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    text-overflow: ellipsis; 
     white-space: nowrap;
     overflow: hidden;
   }
   p {
     font-size: var(--font-size-10);  
     
-    text-overflow: ellipsis; // 네이밍이 길어지면 ... 처리
+    text-overflow: ellipsis; 
     white-space: nowrap;
     overflow: hidden;
   }
@@ -147,11 +147,8 @@ export const MenuImgSectionStyled = styled.section`
       opacity: 1;
     }
   `}
-
 `;
 
-
-// 각 재료 선택 (야채제외)
 export const MenuGridStyled = styled.div`
   margin-bottom: 16px;
   width: 100%;
@@ -162,7 +159,6 @@ export const MenuGridStyled = styled.div`
   grid-auto-rows: minmax(156px, auto);
   grid-gap: 20px;
 `;
-
 
 export const OptionListStyled = styled.li`
   display: inline-flex;
@@ -195,6 +191,7 @@ export const OptionListWrapperStyled = styled.li`
 export const InputRadioStyled = styled.input`
   accent-color: var(--color-green);
 `;
+
 export const LabelRadioStyled = styled.label`
   font-size: var(--font-size-12);
 `;
@@ -204,8 +201,8 @@ export const OrderButtonStyled = styled.button`
   width: 32px;
   height: 32px;
   
-  color: var(--color-light-grey);
   font-size: 0;
+  color: var(--color-light-grey);
   background-color: var(--color-transparent);
   border-radius: 0 8px 0 8px;
 

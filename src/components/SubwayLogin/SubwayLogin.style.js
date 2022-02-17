@@ -6,8 +6,7 @@ export const InputContainerStyled = styled.div`
   text-align: center;
   position: relative;
 
-  input[type="text"],
-  input[type="password"] {
+  input:is([type="text"], [type="password"]) {
     padding: 12px;
     width: 100%;
     height: 100%;

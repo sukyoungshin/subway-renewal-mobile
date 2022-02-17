@@ -45,7 +45,7 @@ export const SectionStyled = styled.section`
     background-color: var(--color-transparent);
     border-radius: 8px;
 
-    font-size: 0; /* removed unexpected space */
+    font-size: 0;
   }
   ul:not(option-wrapper) {
     display: inline-flex;
@@ -89,12 +89,11 @@ export const OptionListStyled = styled.li`
 export const CheckBoxButtonStyled = styled.input`
   accent-color: var(--color-green);
 `;
+
 export const CheckBoxLabelStyled = styled.label`
   font-size: var(--font-size-12);
 `;
 
-
-// 야채 선택
 export const VegListGridStyled = styled.div`
   margin-bottom: 16px;
   width: 100%;
@@ -156,7 +155,7 @@ export const AmountButtonStyled = styled.button`
 
 export const ContentWrapperStyled = styled.div`
   width: 100%;
-  font-size: 0; /* remove space */
+  font-size: 0;
 
   img {
     width: 100%;

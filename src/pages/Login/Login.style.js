@@ -40,8 +40,7 @@ export const ItemBlock = styled.div`
     grid-gap: 8px;
     gap: 8px;
   }
-  &.signup-wrapper,
-  &.signin-title {
+  &:is(.signup-wrapper, .signin-title) {
     font-size: var(--font-size-12);
     color: var(--color-grey);
   }

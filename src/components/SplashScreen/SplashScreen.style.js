@@ -15,6 +15,7 @@ export const WrapperStyled = styled.main`
   left: 0;
   z-index: 999;
 `;
+
 export const LogoWrapperStyled = styled.section`
   flex: 1;
 
@@ -26,6 +27,7 @@ export const LogoWrapperStyled = styled.section`
     width: calc(50%);
   }
 `;
+
 export const FooterWrapperStyled = styled.footer`
   color: var(--color-white);
   font-size: var(--font-size-10);

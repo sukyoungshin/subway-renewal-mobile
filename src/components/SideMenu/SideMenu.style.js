@@ -36,9 +36,6 @@ export const NavbarHeaderStyled = styled.header`
       font-size: var(--font-size-24);
     }
   }
-  svg {
-    cursor: pointer; /* HiOutlineChevronLeft 때문에 추가. 나중에 수정 */
-  }
 `;
 
 export const NavLinkStyled = styled(NavLink)`
