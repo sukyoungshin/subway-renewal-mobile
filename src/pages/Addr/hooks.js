@@ -1,5 +1,8 @@
 /* global kakao */
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import LINK from 'constants/link';
 
 export const useKakaoMap = () => {
 
@@ -144,4 +147,35 @@ export const useKakaoMap = () => {
   }, []);
 
   return { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue };
+};
+
+export const useMarkerLocation = () => {
+  const [ isSelectedSubway, setIsSelectedSubway ] = useState(null);// 주문을 위해 선택된 써브웨이 매장정보
+  const setMarkerLocation = (currentPlace) => setIsSelectedSubway(currentPlace); // 선택된 써브웨이매장 정보를 저장
+
+  return { isSelectedSubway, setMarkerLocation };
+};
+
+export const useCTAButton = ({ addrValue, isSelectedSubway }) => {
+  /* 리덕스 및 라우터*/
+  const dispatch = useDispatch(); 
+  const navigate = useNavigate(); 
+  
+  /* 하단 CTA 버튼 활성화 */
+  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화여부
+  const HandleOrderStart = useCallback((e) => {
+    e.preventDefault();
+    if (!isBtnActivated) return window.alert('배달받으실 주소를 입력하세요.');
+    dispatch({
+      type : 'cart/generalInfo',
+      payload : {
+        customerInfo : addrValue,
+        subwayInfo : isSelectedSubway
+      },
+    }); 
+    navigate(LINK.MENU); 
+    // eslint-disable-next-line
+  }, [isBtnActivated, addrValue, isSelectedSubway]); 
+
+  return {isBtnActivated, setIsBtnActivated, HandleOrderStart};
 };

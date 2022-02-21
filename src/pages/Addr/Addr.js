@@ -1,20 +1,20 @@
-
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { FloatButton } from 'components';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import LINK from 'constants/link';
 import { FormStyled, FieldsetStyled, MapWrapperStyled, AddressInputStyled, ResultInputStyled, MapViewerStyled, MainStyled } from './Addr.style';
-import { useKakaoMap } from './hooks';
+import { useMarkerLocation, useCTAButton, useKakaoMap } from './hooks';
 
 const Addr = () => {
 
-  /* 리덕스 및 라우터*/
-  const dispatch = useDispatch(); 
-  const navigate = useNavigate(); 
-
-  /* 커스텀 훅 (카카오맵) */
-  const { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue } = useKakaoMap();
+  const { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue } = useKakaoMap(); 
+  const { isSelectedSubway, setMarkerLocation } = useMarkerLocation();
+  const { isBtnActivated, setIsBtnActivated, HandleOrderStart } = useCTAButton({ addrValue, isSelectedSubway }); 
+  // eslint-disable-next-line
+  const handleMarkerAndButton = useCallback((place) => 
+    () => {
+      setMarkerLocation(place);
+      setIsBtnActivated(true);
+    }
+  );  
 
   /* 지도 팝업창 관련 */
   // postMessage 
@@ -37,32 +37,6 @@ const Addr = () => {
     // eslint-disable-next-line
   }, []);
 
-  /* 써브웨이 리스트 관련 */
-  const [ isSelectedSubway, setIsSelectedSubway ] = useState(null);// 주문을 위해 선택된 써브웨이 매장정보
-  const setMarkerLocation = useCallback((currentPlace) => 
-  // 선택된 써브웨이 매장 정보를 저장 및 업데이트
-    () => {
-      setIsSelectedSubway(currentPlace); // 선택된 써브웨이매장 정보를 저장
-      setIsBtnActivated(true); // CTA버튼 활성화
-    }, []
-  );
-
-  /* CTA 버튼 관련 */
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화여부
-  const HandleOrderStart = useCallback((e) => {
-    e.preventDefault();
-    if (!isBtnActivated) return window.alert('배달받으실 주소를 입력하세요.');
-    dispatch({
-      type : 'cart/generalInfo',
-      payload : {
-        customerInfo : addrValue,
-        subwayInfo : isSelectedSubway
-      },
-    }); 
-    navigate(LINK.MENU); 
-    // eslint-disable-next-line
-  }, [isBtnActivated, addrValue, isSelectedSubway]); 
-
   return (
     <MainStyled>
       <FormStyled id="addrsearch-form" onSubmit={HandleOrderStart} >
@@ -84,7 +58,7 @@ const Addr = () => {
           <MapViewer 
             addrValue={addrValue} 
             subwayPlaces={subwayPlaces} 
-            setMarkerLocation={setMarkerLocation} 
+            handleMarkerAndButton={handleMarkerAndButton} 
           />
         </FieldsetStyled>
 
@@ -101,7 +75,7 @@ const Addr = () => {
   );
 };
 
-const MapViewer = ({ addrValue, subwayPlaces, setMarkerLocation }) => {
+const MapViewer = ({ addrValue, subwayPlaces, handleMarkerAndButton }) => {
   return (
     <MapWrapperStyled padding={addrValue.length === 0 ? true : false}>
       <MapViewerStyled 
@@ -120,7 +94,7 @@ const MapViewer = ({ addrValue, subwayPlaces, setMarkerLocation }) => {
                   type="text" 
                   name="placelists" 
                   value={place.name} 
-                  onClick={setMarkerLocation(place)}
+                  onClick={handleMarkerAndButton(place)}
                   readOnly 
                 />
                 <span>선택</span>

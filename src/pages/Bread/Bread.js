@@ -1,57 +1,21 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { BASEURL, breads, breadOptionLists, breadOptionsDefault } from 'mock/Datas';
+import React from 'react';
+import { BASEURL, breads, breadOptionLists } from 'mock/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
 import { FloatButton, ImgSpinner } from 'components';
-import LINK from 'constants/link';
 import { ArticleStyled, InputRadioStyled, LabelRadioStyled, MainStyled, MenuGridStyled, MenuImgSectionStyled, MenuNameSectionStyled, OptionListStyled, OptionListWrapperStyled, OrderButtonStyled, SectionStyled } from './Bread.style';
+import { useCTAButton, useSelectBread, useSelectBreadOption } from './hooks';
 
 const Bread = () => {
-  /* 리덕스 및 라우터 셋팅 */
-  const dispatch = useDispatch(); // 리덕스 
-  const navigate = useNavigate(); // 라우터
-
-  /* 아이템선택 관련 */
-  const [ menuId, setMenuId ] = useState(0); // 선택된 메뉴 버튼의 인덱싱#
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화 여부
-  const handleOrderMenu = useCallback((id) => (
+  
+  const { breadOptions, selectedRadio } = useSelectBreadOption(); // 빵 옵션선택 로직
+  const { menuId, currentMenu, handleOrderMenu } = useSelectBread(); // 빵 선택 로직
+  const { isBtnActivated, setIsBtnActivated, handleOrderProcess } = useCTAButton({ currentMenu, breadOptions }); // CTA버튼
+  const handleSelectBread = (id) => (
     () => {
-      setMenuId(id);
-      setIsBtnActivated(true); // 하나라도 클릭되면 변화가 있으면 하단 메뉴버튼 활성화
+      handleOrderMenu(id);
+      setIsBtnActivated(true);
     }
-  ), []);
-
-  /* CTA버튼 관련 */
-  // 선택한 빵 및 빵옵션 저장
-  const [ currentMenu, setCurrentMenu ] = useState(null); // 선택한 빵을 저장
-  const [ breadOptions, setBreadOptions ] = useState(breadOptionsDefault); // 선택한 빵 옵션을 저장
-
-  // 최종적으로 선택한 메뉴
-  useEffect(() => {
-    setCurrentMenu(breads[menuId]);
-  }, [menuId]);
-
-  // 선택된 빵 옵션 저장
-  const selectedRadio = useCallback(({ id, nameKor, name, bool, price }) => (
-    () => {
-      const newBreadOptions = { id, name, nameKor, bool, price }; // 새로 선택된 빵 옵션
-      setBreadOptions(breadOptions, newBreadOptions); // 선택한 빵 옵션 저장 
-    }
-  ), [breadOptions]);
-
-  // eslint-disable-next-line
-  const handleOrderProcess = useCallback((e) => {
-    e.preventDefault();
-    dispatch({
-      type: 'cart/bread',
-      payload : {
-        currentMenu, // 선택한 빵
-        breadOptions, // 선택한 빵옵션
-      },
-    }); 
-    navigate(LINK.CHEESE);
-  });
+  );
 
   return (
     <MainStyled>
@@ -122,7 +86,7 @@ const Bread = () => {
               >
                 <OrderButtonStyled
                   isMenuSelected={menuId === bread.id} 
-                  onClick={handleOrderMenu(bread.id)}
+                  onClick={handleSelectBread(bread.id)}
                 >
                   <AiOutlinePlus />
                 </OrderButtonStyled>

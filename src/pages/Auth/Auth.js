@@ -7,9 +7,8 @@ import { MainStyled } from './Auth.style';
 
 const Auth = () => {
 
-  /* 리덕스 */
+  /* 리덕스 & 라우터 */
   const dispatch = useDispatch();
-  /* 라우터 */
   const navigate = useNavigate();
 
   /* 카카오 로그인 */
