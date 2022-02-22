@@ -1,69 +1,24 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { FloatButton } from 'components';
-import LINK from 'constants/link';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from 'react-icons/ai';
 import { MainWrapperStyled, FormWrapperStyled, FooterStyled, ButtonStyled } from './SignUp.style';
+import { useAddrSearchButton, useCTAButton, useFormDataHadling, usePasswordHideAndShow } from './hooks';
 
 const CHECKBOX = 'checkbox';
-const TEXT = 'text';
-const PASSWORD = 'password';
-
 const Signup = () => {
 
-  /* 입력받은 폼 데이터 관련 */
-  const [ userInfo, setUserInfo ] = useState({
-    username : '',
-    userpassword : '',
-    userphone: '',
-    useraddr : '',
-    useraddrDetail: '',
-    agreement: false,
-  });
-
-  const handleInputData = (e) => {
-    const { type, id, checked, value } = e.target;
-
+  /* 비즈니스 로직 */
+  const { userInfo, setUserInfo, handleInputData } = useFormDataHadling();
+  const { inputRef, isVisible, handleVisibleButton } = usePasswordHideAndShow();
+  const { isBtnActivated, setIsBtnActivated, handleSubmitForm } = useCTAButton({ userInfo });
+  const { tempAddr, HandlePopUp } = useAddrSearchButton();
+  const handleAgreementAndCTAbuttonActivate = (e) => {
+    const { type, checked } = e.target;
+    handleInputData(e);
     if (type === CHECKBOX) {
-      setUserInfo({
-        ...userInfo,
-        [id] : checked,
-      });
       setIsBtnActivated(checked);
-    } else {
-      setUserInfo({
-        ...userInfo,
-        [id] : value,
-      });
     }
   };
-
-  /* 비밀번호 숨김 버튼 */
-  const inputRef = useRef();
-  const [ isVisible, setIsVisible ] = useState(false);
-  const handleVisibleButton = () => setIsVisible(prev => !prev);
-  useEffect(() => {
-    isVisible ? inputRef.current.type = TEXT : inputRef.current.type = PASSWORD;
-  },[isVisible]);
-
-  /* 검색 버튼 관련 이벤트 */
-  const [ tempAddr, setTempAddr ] = useState('');
-  // postMessage 
-  const HandlePopUp = () => {
-    window.open('search', 'addressSearch', "width=380 height=500 left=726 top=306").postMessage('message');
-  };
-
-  // Dispatch Event
-  useEffect(() => {
-    const receiveMessage = (e) => {
-      if (e.origin !== window.location.origin) return;
-      if (e.source.name !== 'addressSearch') return;
-      setTempAddr(e.data);
-    };
-
-    window.addEventListener("message", receiveMessage, false);
-    // eslint-disable-next-line
-  }, []);
 
   // 주소지 업데이트
   useEffect(() => {
@@ -73,15 +28,6 @@ const Signup = () => {
     });
   // eslint-disable-next-line
   }, [tempAddr]);
-
-  /* CTA 버튼 */
-  const navigate = useNavigate();
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false);
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    window.alert(`환영합니다, ${userInfo.username}님! \n메인페이지로 이동합니다.`);
-    navigate(LINK.ROOT);
-  };
 
   return (
     <MainWrapperStyled>
@@ -93,7 +39,7 @@ const Signup = () => {
             id="username"
             placeholder="아이디를 입력해주세요."
             value={userInfo.id}
-            onChange={handleInputData}
+            onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
         </fieldset>
@@ -104,7 +50,7 @@ const Signup = () => {
             id="userpassword"
             placeholder="비밀번호를 입력해주세요"
             value={userInfo.id}
-            onChange={handleInputData}
+            onChange={handleAgreementAndCTAbuttonActivate}
             ref={inputRef}
             required
           />
@@ -120,7 +66,7 @@ const Signup = () => {
             id="userphone"
             placeholder="ex) 000 - 000 - 0000"
             value={userInfo.id}
-            onChange={handleInputData}
+            onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
         </fieldset>
@@ -131,7 +77,7 @@ const Signup = () => {
             id="useraddr"
             placeholder="배송받을 주소지를 직접 입력하세요."
             value={userInfo.useraddr} 
-            onChange={handleInputData}
+            onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
           <input 
@@ -139,7 +85,7 @@ const Signup = () => {
             id="useraddrDetail"
             placeholder="세부 주소를 입력하세요."
             value={userInfo.useraddrDetail}
-            onChange={handleInputData}
+            onChange={handleAgreementAndCTAbuttonActivate}
           />
           <ButtonStyled 
             type="button" 
@@ -154,7 +100,7 @@ const Signup = () => {
             id="agreement" 
             className='checkbox' 
             checked={userInfo.id}
-            onChange={handleInputData}
+            onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
           <label htmlFor="agreement">본인은 만 14세 이상입니다. (필수)</label>
