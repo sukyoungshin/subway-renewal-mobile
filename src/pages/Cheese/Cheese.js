@@ -1,43 +1,21 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useCallback } from 'react';
 import { BASEURL, cheeses } from 'mock/Datas';
 import { AiOutlinePlus } from "react-icons/ai";
 import { MainStyled, SectionStyled, MenuGridStyled, ArticleStyled, OrderButtonStyled, MenuImgSectionStyled, MenuNameSectionStyled } from './Cheese.style';
 import { FloatButton, ImgSpinner } from 'components';
-import LINK from 'constants/link';
+import { useSelectCheese, useCTAbutton } from './hooks';
 
 const Cheese = () => {
-  /* 리덕스 및 라우터 셋팅 */
-  const dispatch = useDispatch(); // 리덕스 
-  const navigate = useNavigate(); // 라우터 
 
-  /* 아이템선택 관련 */
-  const [ menuId, setMenuId ] = useState(0); //선택된 메뉴 버튼의 인덱싱#
-  const [ isBtnActivated, setIsBtnActivated ] = useState(false); // CTA버튼 활성화여부
-  const [ currentMenu, setCurrentMenu ] = useState(null); // 현재 선택완료된 메뉴를 저장
-  const handleOrderMenu = useCallback((id) => (
-    () => {
-      setMenuId(id);
-      setIsBtnActivated(true); // 하나라도 선택된 항목이 있으면 하단 CTA버튼 활성화
-    }
-  ), []);
-  
-  // 최종적으로 선택한 메뉴 저장
-  useEffect(() => {
-    setCurrentMenu(cheeses[menuId]); 
-  }, [menuId]);
-
-  /* CTA 버튼 관련 */
+  const { menuId, currentMenu, handleOrderMenu } = useSelectCheese({ cheeses });
+  const { isBtnActivated, setIsBtnActivated, handleOrderProcess } = useCTAbutton({ currentMenu }); 
   // eslint-disable-next-line
-  const handleOrderProcess = useCallback((e) => {
-    e.preventDefault();
-    dispatch({
-      type: 'cart/cheese',
-      payload : currentMenu,
-    }); 
-    navigate(LINK.VEGGIE); 
-  });
+  const handleOrderSelect = useCallback((id) => 
+    () => {
+      handleOrderMenu(id);
+      setIsBtnActivated(true);
+    }
+  );
 
   return (
     <MainStyled>
@@ -58,7 +36,7 @@ const Cheese = () => {
               >
                 <OrderButtonStyled
                   isMenuSelected={menuId === cheese.id} 
-                  onClick={handleOrderMenu(cheese.id)}
+                  onClick={handleOrderSelect(cheese.id)}
                 >
                   <AiOutlinePlus />
                 </OrderButtonStyled>

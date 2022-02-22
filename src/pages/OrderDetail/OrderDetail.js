@@ -1,51 +1,29 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import LINK from 'constants/link';
+import React from 'react';
 import { orderSelector } from 'reducers';
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
 import { MainStyled, SectionStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, TextAreaStyled } from './OrderDetail.style';
+import { useSelector } from 'react-redux';
+import { useConditionAgreement, useCTAButtons, useCustomerRequest, useSelectDeliverOrPickUp } from './hooks';
 
-/* 텍스트 상수처리 */
 const DELIVER = 'deliver';
 const PICKUP = 'pickup';
 
 const OrderDetail = () => {
-  /* 리덕스 및 라우터 */
+  /* 리덕스 */
   const order = useSelector(orderSelector); // 주문내역 전체
-  const dispatch = useDispatch(); 
-  const navigate = useNavigate();
 
-  /* 라디오 버튼 관련 */
-  const [ isRadioChecked, setIsRadioChecked ] = useState(DELIVER);
-  const handleRadioStatus = (id) => setIsRadioChecked(id);
+  /* 커스텀훅 (비즈니스 로직) */
+  const { isRadioChecked, handleRadioStatus } = useSelectDeliverOrPickUp();
+  const { customerOrderRequest, handleOrderRequest } = useCustomerRequest();
+  const { isCheckboxChecked, handleCheckboxStatus } = useConditionAgreement();
+  const { isActive, setIsActive, goToPrevPage, goToPaymentPage } = useCTAButtons({ isRadioChecked, isCheckboxChecked, customerOrderRequest });
 
-  /* 고객 요청사항 (textarea) 관련 */
-  const [ customerOrderRequest, setCustomerOrderRequest ] = useState('');
-  const handleOrderRequest = (e) => setCustomerOrderRequest(e.target.value);
-  
-  /* 체크박스 관련 */
-  const [ isCheckboxChecked, setIsCheckboxChecked ] = useState(false);
-  const handleCheckboxStatus = (e) => {
-    setIsCheckboxChecked(e.target.checked);
+  /* 커스텀훅 사용한 func */
+  const handleDelieverOrPickUp = (e) => handleRadioStatus(e.target.id);
+  // eslint-disable-next-line
+  const handleAgreementAndBtnActivate = (e) => {
+    handleCheckboxStatus(e);
     setIsActive(prev => !prev);
-  };
-
-  /* CTA 버튼 관련 */
-  const [ isActive, setIsActive ] = useState(false);
-  const goToPrevPage = () => {
-    console.log('이전페이지로'); // currentMenu가 없어서 에러남
-  };
-  const goToPaymentPage = () => {
-    dispatch({
-      type: 'cart/additionalRequest',
-      payload : {
-        customerRequest : customerOrderRequest,
-      },
-    });
-
-    if (!isCheckboxChecked) return;
-    navigate(LINK.CONFIRM, { state : isRadioChecked });
   };
 
   return (
@@ -75,7 +53,7 @@ const OrderDetail = () => {
                 value="deliver" 
                 name="del-or-pickup"
                 checked={isRadioChecked === DELIVER}
-                onChange={(e) => handleRadioStatus(e.target.id)}
+                onChange={handleDelieverOrPickUp}
               />
               <label htmlFor="deliver">
                 고객님의 주소지로 배달
@@ -88,7 +66,7 @@ const OrderDetail = () => {
                 value="pickup" 
                 name="del-or-pickup" 
                 checked={isRadioChecked === PICKUP}
-                onChange={(e) => handleRadioStatus(e.target.id)}
+                onChange={handleDelieverOrPickUp}
               />
               <label htmlFor="pickup">
                 매장에 직접 방문하여 수령
@@ -149,7 +127,7 @@ const OrderDetail = () => {
             type="checkbox" 
             id="agreement"
             value={isCheckboxChecked}
-            onChange={handleCheckboxStatus}
+            onChange={handleAgreementAndBtnActivate}
           />
           <label htmlFor="agreement">
             주문 후 제조가 시작되면 주문을 취소할 수 없습니다.

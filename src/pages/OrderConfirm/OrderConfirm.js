@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { MainStyled, SectionStyled } from './OrderConfirm.style';
 import { orderSelector } from 'reducers';
 
+const DELIVER = 'deliver';
 // Container Component
 const OrderConfirm = () => {
 
@@ -21,7 +22,6 @@ const OrderConfirm = () => {
   /* 라우터 */
   const location = useLocation(); 
   const locationState = location.state; 
-  const DELIVER = 'deliver';
   
   /* 시간 */
   const today = new Date(); // 오늘 날짜

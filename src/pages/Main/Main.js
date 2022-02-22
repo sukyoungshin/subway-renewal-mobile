@@ -5,7 +5,6 @@ import { useSplashScreen } from './hooks';
 import LINK from 'constants/link';
 
 const Main = () => {
-
   /* 라우터 */
   const navigate = useNavigate(); 
   const handleNavAddr = () => navigate(LINK.ADDR);

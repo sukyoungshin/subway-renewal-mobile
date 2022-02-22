@@ -1,45 +1,20 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { itemAmountSelector, orderSelector, itemCountSelector } from 'reducers';
+import { useSelector } from 'react-redux';
+import { itemAmountSelector, orderSelector } from 'reducers';
 import { BASEURL } from 'mock/Datas';
-import LINK from 'constants/link';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MainStyled, SectionStyled, MenuCardStyled, AmountButtonWrapperStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, ButtonStyled, DeleteButtonStyled } from './OrderMenu.style';
 import { ImgSpinner } from 'components';
+import { useCountAmountOfItems, useCTAButtons } from './hooks';
 
 const OrderMenu = () => {  
   /* 리덕스 */
   const order = useSelector(orderSelector); // 주문내역 전체
-  const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
   const itemAmount = useSelector(itemAmountSelector); // 수량
-  const dispatch = useDispatch(); 
-  /* 라우터 */
-  const navigate = useNavigate(); // 라우터
 
-  /* 수량조절 버튼 */
-  const handleIncrement = () => {
-    dispatch({
-      type : 'cart/increment',
-      payload : itemAmount,
-    });
-  };
-  const handleDecrement = () => {
-    dispatch({
-      type : 'cart/decrement',
-      payload : itemAmount,
-    });
-  };
-
-  /* CTA 버튼 */
-  // eslint-disable-next-line
-  const goToCartPage = () => {
-    dispatch({
-      type : 'cart/itemCount',
-      payload : itemCount + 1,
-    });
-  };
-  const goToOrderPage = () => navigate(LINK.INFO);
+  /* 비즈니스 로직 */
+  const { handleIncrement, handleDecrement } = useCountAmountOfItems();
+  const { goToCartPage, goToOrderPage } = useCTAButtons();
 
   return (
     <MainStyled>
@@ -89,7 +64,6 @@ const OrderMenu = () => {
 
               <DeleteButtonStyled 
                 type="button"
-
               >
                 <RiDeleteBinLine />
               </DeleteButtonStyled>
@@ -110,7 +84,9 @@ const OrderMenu = () => {
         <p>할인금액</p>
         <p className="total-price">
           총 주문 금액
-          <span>{order.category.price} krw</span>
+          <span>
+            {order.category.price} krw
+          </span>
         </p>
       </SectionStyled>
 
