@@ -1,20 +1,11 @@
-import React, { useState, useCallback } from 'react';
-import { useNavigate } from "react-router-dom";
+import React from 'react';
 import { CarouselWrapperStyled, AdPaginationStyled, AdPaginationListStyled, AdWrapperStyled, AdTitleWrapperStyled, AdEventWrapperStyled, ButtonStyled } from './Carousel.style';
 import { AdContents } from 'mock/Datas';
-import LINK from 'constants/link';
+import { useCarouselIndex, usePageMove } from './hooks';
 
 const Carousel = () => {
-  const navigate = useNavigate();
-  const [selectedId, setSelectedId] = useState(0); // 선택한 페이지네이션 및 캐러셀 index#
-  // eslint-disable-next-line
-  const [isSelected, setIsSelected] = useState(false); // 페이지네이션 및 캐러셀 스위치
-  const handleClick = useCallback((id) => 
-    () => {
-      setSelectedId(id); // 페이지네이션 인덱스 설정
-      setIsSelected((prev) => !prev); // 페이지네이션 스위치
-    }, []); 
-  const goToOrderPage = () => navigate(LINK.ADDR);
+  const { selectedId, handleClick } = useCarouselIndex();
+  const goToOrderPage = usePageMove();
 
   return (
     <CarouselWrapperStyled>

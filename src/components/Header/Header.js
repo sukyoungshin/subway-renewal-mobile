@@ -8,7 +8,6 @@ import { ButtonStyled, HeaderWrapperStyled, LinkStyled, MainLinkStyled } from '.
 import LINK from 'constants/link';
 
 const Header = ({ handleNavbar }) => {
-  /* 리덕스 */
   const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
 
   return (

@@ -1,21 +1,16 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoSmall from "assets/small-logo.webp";
 import { HiX, HiLogout, HiUser } from "react-icons/hi";
 import { NavCategories } from 'mock/Datas';
-import { useSelector } from 'react-redux';
-import { loginFlagSelector, userInfoSelector } from 'reducers';
 import LINK from 'constants/link';
 import { NavbarWrapperStyled, NavbarHeaderStyled, NavbarNavStyled, NavbarFooterStyled, NavbarMainStyled, NavLinkStyled, ButtonStyled } from './SideMenu.style';
+import { usePageMove, useReduxSelector } from './hooks';
 
 const Navbar = ({ handleNavbar }) => {
-  /* 리덕스 */
-  const loginFlag = useSelector(loginFlagSelector);
-  const userInfo = useSelector(userInfoSelector);
 
-  /* 라우터 */
-  const navigate = useNavigate();
-  const goToLoginPage = () => navigate(LINK.LOGIN);
+  const { loginFlag, userInfo } = useReduxSelector();
+  const goToLoginPage = usePageMove();
 
   return (
     <NavbarWrapperStyled>
