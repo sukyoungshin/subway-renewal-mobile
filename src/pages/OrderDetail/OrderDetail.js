@@ -9,16 +9,12 @@ const DELIVER = 'deliver';
 const PICKUP = 'pickup';
 
 const OrderDetail = () => {
-  /* 리덕스 */
   const order = useSelector(orderSelector); // 주문내역 전체
-
-  /* 커스텀훅 (비즈니스 로직) */
   const { isRadioChecked, handleRadioStatus } = useSelectDeliverOrPickUp();
   const { customerOrderRequest, handleOrderRequest } = useCustomerRequest();
   const { isCheckboxChecked, handleCheckboxStatus } = useConditionAgreement();
   const { isActive, setIsActive, goToPrevPage, goToPaymentPage } = useCTAButtons({ isRadioChecked, isCheckboxChecked, customerOrderRequest });
-
-  /* 커스텀훅 사용한 func */
+  
   const handleDelieverOrPickUp = (e) => handleRadioStatus(e.target.id);
   // eslint-disable-next-line
   const handleAgreementAndBtnActivate = (e) => {

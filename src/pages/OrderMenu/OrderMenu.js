@@ -1,18 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { itemAmountSelector, orderSelector } from 'reducers';
 import { BASEURL } from 'mock/Datas';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MainStyled, SectionStyled, MenuCardStyled, AmountButtonWrapperStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, ButtonStyled, DeleteButtonStyled } from './OrderMenu.style';
 import { ImgSpinner } from 'components';
-import { useCountAmountOfItems, useCTAButtons } from './hooks';
+import { useCountAmountOfItems, useCTAButtons, useReduxSelector } from './hooks';
 
 const OrderMenu = () => {  
-  /* 리덕스 */
-  const order = useSelector(orderSelector); // 주문내역 전체
-  const itemAmount = useSelector(itemAmountSelector); // 수량
 
-  /* 비즈니스 로직 */
+  const { order, itemAmount } = useReduxSelector();
   const { handleIncrement, handleDecrement } = useCountAmountOfItems();
   const { goToCartPage, goToOrderPage } = useCTAButtons();
 

@@ -5,7 +5,7 @@ import { BASEURL, vegetables } from 'mock/Datas';
 import { useCTAButton, useSelectAmountOfVeg } from './hooks';
 
 const Veggie = () => {
-  /* 비즈니스 로직 */
+  
   const { isChecked, step, selectedCheckBox, handleAmountVeg, handleStepChange } = useSelectAmountOfVeg();
   const handleOrderProcess = useCTAButton({ step });
 

@@ -1,14 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { itemAmountSelector, itemCountSelector } from 'reducers';
+import { itemAmountSelector, itemCountSelector, orderSelector } from 'reducers';
 import { useNavigate } from 'react-router-dom';
 import LINK from 'constants/link';
 
+export const useReduxSelector = () => {
+  const order = useSelector(orderSelector); // 주문내역 전체
+  const itemAmount = useSelector(itemAmountSelector); // 수량
+
+  return { order, itemAmount };
+};
+
 export const useCountAmountOfItems = () => {
-  /* 리덕스 */
   const dispatch = useDispatch(); 
   const itemAmount = useSelector(itemAmountSelector); // 수량
 
-  /* 수량조절 버튼 */
   const handleIncrement = () => {
     dispatch({
       type : 'cart/increment',
@@ -26,7 +31,6 @@ export const useCountAmountOfItems = () => {
 };
 
 export const useCTAButtons = () => {
-  /* 리덕스 및 라우터 */
   const dispatch = useDispatch(); 
   const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
   const navigate = useNavigate(); 

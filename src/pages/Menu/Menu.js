@@ -17,7 +17,6 @@ const Menu = () => {
     }
   );
 
-
   return (
     <MainStyled>
       <SectionStyled style={{ marginTop: '32px' }}>

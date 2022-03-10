@@ -6,7 +6,7 @@ import { MainStyled, SectionStyled, MenuListGridStyled, MenuArticleStyled, Order
 import { useCTAButton, useSelectOptionAndMenu } from './hooks';
 
 const Sauce = () => {
-  /* 비즈니스 로직 */
+
   const { menuId, currentMenu, isChecked, handleOrderMenu, selectedRadio } = useSelectOptionAndMenu();
   const { isBtnActivated, setIsBtnActivated, handleOrderProcess } = useCTAButton({ currentMenu });
   // eslint-disable-next-line

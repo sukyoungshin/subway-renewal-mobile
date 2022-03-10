@@ -1,33 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useReduxSelector, useRouterLocation, useTodayTime } from './hooks';
 import { MainStyled, SectionStyled } from './OrderConfirm.style';
-import { orderSelector } from 'reducers';
 
 const DELIVER = 'deliver';
 // Container Component
 const OrderConfirm = () => {
 
-  /* 리덕스 */  
-  const order = useSelector(orderSelector);
-  const orderDetail = {
-    orderMenu : order.category.nameKor,
-    customerAddr : order.generalInfo.customerInfo,
-    subwayName : order.generalInfo.subwayInfo.name,
-    subwayAddr : order.generalInfo.subwayInfo.address,
-    subwayPhone : order.generalInfo.subwayInfo.phone,
-    customerRequest : order.request.customerRequest,
-  };
-
-  /* 라우터 */
-  const location = useLocation(); 
-  const locationState = location.state; 
-  
-  /* 시간 */
-  const today = new Date(); // 오늘 날짜
-  const timeString = today.toLocaleString('ko-KR', {
-    timeZome : 'Asia/Seoul'
-  });
+  const orderDetail = useReduxSelector();
+  const locationState = useRouterLocation();
+  const timeString = useTodayTime();
 
   // 라우터 상태값에 따라 맞는 component 렌더링
   if (locationState === DELIVER) {

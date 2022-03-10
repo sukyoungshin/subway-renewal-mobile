@@ -1,20 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import LINK from 'constants/link';
 import { BASEURL } from 'mock/Datas';
 import { FloatButton, ImgSpinner } from 'components';
-import { categorySelector, itemCountSelector } from 'reducers';
 import { MainStyled, MenuCardStyled, SectionStyled } from './OrderCart.style';
+import { usePageMove, useReduxSelector } from './hooks';
 
 const OrderCart = () => {
-  /* 리덕스 */
-  const itemCount = useSelector(itemCountSelector); // 장바구니 갯수
-  const AddedCartItem = useSelector(categorySelector); // 사용자가 주문한 아이템
 
-  /* 라우터 */
-  const navigate = useNavigate();
-  const handleOrderProcess = () => navigate(LINK.ROOT);
+  const { itemCount, AddedCartItem } = useReduxSelector();
+  const handleOrderProcess = usePageMove();
 
   return (
     <MainStyled>

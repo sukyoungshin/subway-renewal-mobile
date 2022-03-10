@@ -1,4 +1,13 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import LINK from 'constants/link';
+
+export const usePageMove = () => {
+  const navigate = useNavigate(); 
+  const handleNavAddr = () => navigate(LINK.ADDR);
+
+  return handleNavAddr;
+};
 
 export const useSplashScreen = () => {
 

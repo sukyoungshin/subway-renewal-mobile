@@ -7,7 +7,6 @@ import { useAddrSearchButton, useCTAButton, useFormDataHadling, usePasswordHideA
 const CHECKBOX = 'checkbox';
 const Signup = () => {
 
-  /* 비즈니스 로직 */
   const { userInfo, setUserInfo, handleInputData } = useFormDataHadling();
   const { inputRef, isVisible, handleVisibleButton } = usePasswordHideAndShow();
   const { isBtnActivated, setIsBtnActivated, handleSubmitForm } = useCTAButton({ userInfo });
@@ -20,7 +19,6 @@ const Signup = () => {
     }
   };
 
-  // 주소지 업데이트
   useEffect(() => {
     setUserInfo({
       ...userInfo,
