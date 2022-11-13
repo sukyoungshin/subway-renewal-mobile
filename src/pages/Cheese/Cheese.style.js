@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -45,7 +45,7 @@ export const SectionStyled = styled.section`
     background-color: var(--color-transparent);
     border-radius: 8px;
 
-    font-size: 0; 
+    font-size: 0;
   }
   ul:not(option-wrapper) {
     display: inline-flex;
@@ -53,7 +53,7 @@ export const SectionStyled = styled.section`
     grid-gap: 20px;
     gap: 20px;
   }
-  ul.option-wrapper{
+  ul.option-wrapper {
     min-height: 104px;
 
     display: inline-flex;
@@ -80,29 +80,31 @@ export const ArticleStyled = styled.article`
   position: relative;
 
   .menu-price {
-    font-size: var(--font-size-10);  
+    font-size: var(--font-size-10);
   }
 
-  ${(props) => props.isMenuSelected && css`
-    border: 2px solid var(--color-green);
-  `}
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      border: 2px solid var(--color-green);
+    `}
 `;
 
 export const MenuNameSectionStyled = styled.section`
-  max-width: 112px; 
-  max-height: 30px; 
+  max-width: 112px;
+  max-height: 30px;
 
   h3 {
-    font-size: var(--font-size-12);  
-    
-    text-overflow: ellipsis; 
+    font-size: var(--font-size-12);
+
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
   p {
-    font-size: var(--font-size-10);  
-    
-    text-overflow: ellipsis; 
+    font-size: var(--font-size-10);
+
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
@@ -112,10 +114,10 @@ export const MenuImgSectionStyled = styled.section`
   width: 100%;
   max-height: 84px;
   flex: 1;
-  font-size: 0; 
+  font-size: 0;
 
   position: relative;
-  
+
   img {
     display: inline-block;
     width: 100%;
@@ -129,7 +131,7 @@ export const MenuImgSectionStyled = styled.section`
   span {
     width: 100%;
     font-size: var(--font-size-10);
-    
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -139,14 +141,16 @@ export const MenuImgSectionStyled = styled.section`
     transition: opacity 0.5s;
   }
 
-  ${(props) => props.isMenuSelected && css`
-    img {
-      opacity: 0.3;
-    }
-    span {
-      opacity: 1;
-    }
-  `}
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      img {
+        opacity: 0.3;
+      }
+      span {
+        opacity: 1;
+      }
+    `}
 `;
 
 export const MenuGridStyled = styled.div`
@@ -164,7 +168,7 @@ export const OrderButtonStyled = styled.button`
   padding: 0;
   width: 32px;
   height: 32px;
-  
+
   color: var(--color-light-grey);
   font-size: 0;
   background-color: var(--color-transparent);
@@ -179,7 +183,9 @@ export const OrderButtonStyled = styled.button`
     font-size: var(--font-size-16);
   }
 
-  ${(props) => props.isMenuSelected && css`
-    background-color: var(--color-green);
-  `}
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      background-color: var(--color-green);
+    `}
 `;

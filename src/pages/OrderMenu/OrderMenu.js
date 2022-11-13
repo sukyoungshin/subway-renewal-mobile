@@ -1,25 +1,37 @@
-import React from 'react';
-import { BASEURL } from 'mock/Datas';
+import React from "react";
+import { BASEURL } from "mock/Datas";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { MainStyled, SectionStyled, MenuCardStyled, AmountButtonWrapperStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, ButtonStyled, DeleteButtonStyled } from './OrderMenu.style';
-import { ImgSpinner } from 'components';
-import { useCountAmountOfItems, useCTAButtons, useReduxSelector } from './hooks';
+import {
+  MainStyled,
+  SectionStyled,
+  MenuCardStyled,
+  AmountButtonWrapperStyled,
+  FloatButtonWrapperStyled,
+  HalfSizeCTAButtonStyled,
+  ButtonStyled,
+  DeleteButtonStyled,
+} from "./OrderMenu.style";
+import { ImgSpinner } from "components";
+import {
+  useCountAmountOfItems,
+  useCTAButtons,
+  useReduxSelector,
+} from "./hooks";
 
-const OrderMenu = () => {  
-
+const OrderMenu = () => {
   const { order, itemAmount } = useReduxSelector();
   const { handleIncrement, handleDecrement } = useCountAmountOfItems();
   const { goToCartPage, goToOrderPage } = useCTAButtons();
 
   return (
     <MainStyled>
-      <SectionStyled style={{ marginTop: '32px' }}>
+      <SectionStyled style={{ marginTop: "32px" }}>
         <h2>주문메뉴</h2>
 
         <MenuCardStyled>
           <article className="card-img">
-            <ImgSpinner 
-              src={`${BASEURL}${order.category.imgSrc}`} 
+            <ImgSpinner
+              src={`${BASEURL}${order.category.imgSrc}`}
               alt={order.category.nameKor}
             />
           </article>
@@ -29,46 +41,31 @@ const OrderMenu = () => {
               <span>{order.category.price} krw</span>
             </h2>
             <p>
-              {order.bread.currentMenu.nameKor}, {' '}
-              {
-                order.bread.breadOptions.map((opt) => (
-                  opt.nameKor + (opt.bool)
-                ))
-              }, {' '}
-              {order.cheese.nameKor}, {' '}
-              {order.sauce.nameKor}
+              {order.bread.currentMenu.nameKor},{" "}
+              {order.bread.breadOptions.map((opt) => opt.nameKor + opt.bool)},{" "}
+              {order.cheese.nameKor}, {order.sauce.nameKor}
             </p>
 
             <AmountButtonWrapperStyled>
               <div className="button-wrapper">
-              
-                <ButtonStyled 
-                  type="button"
-                  onClick={handleDecrement}
-                >
+                <ButtonStyled type="button" onClick={handleDecrement}>
                   -
                 </ButtonStyled>
-                <span>{itemAmount}</span>  
-                <ButtonStyled 
-                  type="button"
-                  onClick={handleIncrement}
-                >
+                <span>{itemAmount}</span>
+                <ButtonStyled type="button" onClick={handleIncrement}>
                   +
                 </ButtonStyled>
               </div>
 
-              <DeleteButtonStyled 
-                type="button"
-              >
+              <DeleteButtonStyled type="button">
                 <RiDeleteBinLine />
               </DeleteButtonStyled>
-
             </AmountButtonWrapperStyled>
           </article>
         </MenuCardStyled>
       </SectionStyled>
 
-      <SectionStyled style={{ marginTop: '24px'}}>
+      <SectionStyled style={{ marginTop: "24px" }}>
         <h2>결제정보</h2>
         <p>할인쿠폰</p>
         <p>결제수단</p>
@@ -79,16 +76,11 @@ const OrderMenu = () => {
         <p>할인금액</p>
         <p className="total-price">
           총 주문 금액
-          <span>
-            {order.category.price} krw
-          </span>
+          <span>{order.category.price} krw</span>
         </p>
       </SectionStyled>
 
-      <CTAButtons
-        goToCartPage={goToCartPage} 
-        goToOrderPage={goToOrderPage} 
-      />
+      <CTAButtons goToCartPage={goToCartPage} goToOrderPage={goToOrderPage} />
     </MainStyled>
   );
 };
@@ -96,16 +88,10 @@ const OrderMenu = () => {
 const CTAButtons = ({ goToCartPage, goToOrderPage }) => {
   return (
     <FloatButtonWrapperStyled>
-      <HalfSizeCTAButtonStyled 
-        type="button"
-        onClick={goToCartPage}          
-      >
+      <HalfSizeCTAButtonStyled type="button" onClick={goToCartPage}>
         장바구니 담기
       </HalfSizeCTAButtonStyled>
-      <HalfSizeCTAButtonStyled 
-        type="button"
-        onClick={goToOrderPage}          
-      >
+      <HalfSizeCTAButtonStyled type="button" onClick={goToOrderPage}>
         주문정보 (1 / 2)
       </HalfSizeCTAButtonStyled>
     </FloatButtonWrapperStyled>

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const CarouselWrapperStyled = styled.section`
   width: 100%;
@@ -37,10 +37,12 @@ export const AdPaginationListStyled = styled.li`
   background-color: transparent;
   transition: background-color 0.4s;
 
-  ${(props) => props.isSelected && css`
-    background-color: var(--color-white);
-    border: none;
-  `}
+  ${(props) =>
+    props.isSelected &&
+    css`
+      background-color: var(--color-white);
+      border: none;
+    `}
 `;
 
 export const AdWrapperStyled = styled.section`
@@ -59,7 +61,7 @@ export const AdWrapperStyled = styled.section`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: ${(props) => props.isSelected ? 5 : null};
+  z-index: ${(props) => (props.isSelected ? 5 : null)};
 `;
 
 export const AdTitleWrapperStyled = styled.article`
@@ -87,7 +89,7 @@ export const ButtonStyled = styled.button`
   border-radius: 8px;
   background-color: transparent;
   border: 1px solid var(--color-white);
-  
+
   color: var(--color-white);
   font-size: var(--font-size-10);
 

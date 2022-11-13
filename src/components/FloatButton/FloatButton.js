@@ -1,16 +1,16 @@
-import React from 'react';
-import { FloatButtonStyled } from './FloatButton.style';
+import React from "react";
+import { FloatButtonStyled } from "./FloatButton.style";
 
-const FloatButton = ({ 
-  type = 'button',
-  form, 
-  isBtnActivated, 
-  handleOrderProcess, 
-  children }) => {
-
+const FloatButton = ({
+  type = "button",
+  form,
+  isBtnActivated,
+  handleOrderProcess,
+  children,
+}) => {
   return (
-    <FloatButtonStyled 
-      type={type || "submit"} 
+    <FloatButtonStyled
+      type={type || "submit"}
       form={form}
       isBtnActivated={isBtnActivated}
       disabled={isBtnActivated ? false : true}

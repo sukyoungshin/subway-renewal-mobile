@@ -1,94 +1,111 @@
 import { useRoutes } from "react-router-dom";
-import { Main, Login, Signup, Addr, PostSearch, Menu, Bread, Cheese, Veggie, Sauce, OrderCart, OrderDetail, OrderMenu, OrderConfirm, Auth, NoMatch } from 'pages';
-import AppLayout from 'components/AppLayout/Layout';
-import RouterPath from 'constants/routerPath';
-import OrderPageLayout from 'components/OrderPageLayout/OrderPageLayout';
-import goToMainIfAddrIsNotExistHOC from 'hoc/goToMainIfAddrIsNotExist';
+import {
+  Main,
+  Login,
+  Signup,
+  Addr,
+  PostSearch,
+  Menu,
+  Bread,
+  Cheese,
+  Veggie,
+  Sauce,
+  OrderCart,
+  OrderDetail,
+  OrderMenu,
+  OrderConfirm,
+  Auth,
+  NoMatch,
+} from "pages";
+import AppLayout from "components/AppLayout/Layout";
+import RouterPath from "constants/routerPath";
+import OrderPageLayout from "components/OrderPageLayout/OrderPageLayout";
+import goToMainIfAddrIsNotExistHOC from "hoc/goToMainIfAddrIsNotExist";
 
-const render = (C) => <C/>;
+const render = (C) => <C />;
 const elementLists = [
   {
-    path : RouterPath.ROOT,
-    element : <AppLayout/>,
-    children : [
+    path: RouterPath.ROOT,
+    element: <AppLayout />,
+    children: [
       {
         index: true,
-        element : <Main />,
+        element: <Main />,
       },
       {
-        path : RouterPath.MAIN,
-        element : <Main />,
+        path: RouterPath.MAIN,
+        element: <Main />,
       },
       {
-        path : RouterPath.ADDR,
-        element : <Addr />,
+        path: RouterPath.ADDR,
+        element: <Addr />,
       },
       {
-        path : RouterPath.MENU,
+        path: RouterPath.MENU,
         element: render(goToMainIfAddrIsNotExistHOC(Menu)),
       },
       {
-        path : RouterPath.BREAD,
+        path: RouterPath.BREAD,
         element: render(goToMainIfAddrIsNotExistHOC(Bread)),
       },
       {
-        path : RouterPath.CHEESE,
+        path: RouterPath.CHEESE,
         element: render(goToMainIfAddrIsNotExistHOC(Cheese)),
       },
       {
-        path : RouterPath.VEGGIE,
+        path: RouterPath.VEGGIE,
         element: render(goToMainIfAddrIsNotExistHOC(Veggie)),
       },
       {
-        path : RouterPath.SAUCE,
+        path: RouterPath.SAUCE,
         element: render(goToMainIfAddrIsNotExistHOC(Sauce)),
       },
       {
-        path : RouterPath.SIGNUP,
+        path: RouterPath.SIGNUP,
         element: <Signup />,
       },
       {
-        path : RouterPath.SEARCH,
+        path: RouterPath.SEARCH,
         element: <PostSearch />,
       },
       {
-        path : RouterPath.OAUTH,
+        path: RouterPath.OAUTH,
         element: <Auth />,
       },
       {
-        path : RouterPath.NOMATCH,
-        element : <NoMatch />,
-      }
-    ]
+        path: RouterPath.NOMATCH,
+        element: <NoMatch />,
+      },
+    ],
   },
   {
-    path : RouterPath.ORDER,
+    path: RouterPath.ORDER,
     element: <OrderPageLayout />,
-    children : [
+    children: [
       {
-        index : true,
+        index: true,
         element: render(goToMainIfAddrIsNotExistHOC(OrderMenu)),
       },
       {
-        path : RouterPath.ORDER,
+        path: RouterPath.ORDER,
         element: render(goToMainIfAddrIsNotExistHOC(OrderMenu)),
       },
       {
-        path : RouterPath.INFO,
+        path: RouterPath.INFO,
         element: render(goToMainIfAddrIsNotExistHOC(OrderDetail)),
       },
       {
-        path : RouterPath.CONFIRM,
+        path: RouterPath.CONFIRM,
         element: render(goToMainIfAddrIsNotExistHOC(OrderConfirm)),
       },
       {
-        path : RouterPath.CART,
+        path: RouterPath.CART,
         element: render(goToMainIfAddrIsNotExistHOC(OrderCart)),
       },
-    ]
+    ],
   },
   {
-    path : RouterPath.LOGIN,
+    path: RouterPath.LOGIN,
     element: <Login />,
   },
 ];

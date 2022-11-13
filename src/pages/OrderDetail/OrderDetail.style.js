@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -32,7 +32,7 @@ export const SectionStyled = styled.section`
       font-size: var(--font-size-12);
       font-weight: var(--font-weight-normal);
     }
-    span.subway-phone{
+    span.subway-phone {
       display: inline-flex;
       flex-direction: row;
       align-items: center;
@@ -74,7 +74,7 @@ export const SectionStyled = styled.section`
     flex-direction: column;
     justify-content: center;
 
-    font-size: 0; 
+    font-size: 0;
 
     li {
       line-height: 1.3rem;
@@ -109,10 +109,10 @@ export const TextAreaStyled = styled.textarea`
   width: 100%;
   height: 100%;
   min-height: 72px;
-  
+
   border-radius: 8px;
   background-color: var(--color-transparent);
-  
+
   color: var(--color-grey);
   font-size: var(--font-size-12);
 
@@ -150,10 +150,12 @@ export const HalfSizeCTAButtonStyled = styled.button`
 
   transition: all 0.3s;
 
-  ${props => props.isActive && css`
-    color: var(--color-white);
-    font-weight: var(--font-weight-bold);
-    background-color: var(--color-green);
-    border: 1px solid var(--color-green);
-  `}
+  ${(props) =>
+    props.isActive &&
+    css`
+      color: var(--color-white);
+      font-weight: var(--font-weight-bold);
+      background-color: var(--color-green);
+      border: 1px solid var(--color-green);
+    `}
 `;

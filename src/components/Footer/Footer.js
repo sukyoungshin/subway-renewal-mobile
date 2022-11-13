@@ -1,8 +1,7 @@
 import React from "react";
-import { MainFooter } from './Footer.style';
+import { MainFooter } from "./Footer.style";
 
 const Footer = () => {
-
   return (
     <MainFooter>
       <address>

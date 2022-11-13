@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import LINK from 'constants/link';
-import { useSelector, useDispatch } from 'react-redux';
-import { loginFlagSelector } from 'reducers';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import LINK from "constants/link";
+import { useSelector, useDispatch } from "react-redux";
+import { loginFlagSelector } from "reducers";
 
 export const useSubwayLogin = () => {
   /* 리덕스 */
@@ -13,7 +13,7 @@ export const useSubwayLogin = () => {
   const navigate = useNavigate();
 
   /* 아이디, 비밀번호 */
-  const [ userInfo, setUserInfo ] = useState({});
+  const [userInfo, setUserInfo] = useState({});
   const handleUserInfo = (e) => {
     const { id, value } = e.target;
     setUserInfo({
@@ -28,22 +28,28 @@ export const useSubwayLogin = () => {
     e.preventDefault();
     if (userInfo.userid === undefined && userInfo.userpassword === undefined) {
       return;
-    } else if (userInfo.userid === undefined || userInfo.userpassword === undefined) {
-      console.log('아이디 또는 비밀번호를 확인하세요');
+    } else if (
+      userInfo.userid === undefined ||
+      userInfo.userpassword === undefined
+    ) {
+      console.log("아이디 또는 비밀번호를 확인하세요");
       return;
-    } else if (userInfo.userid.length === 0 || userInfo.userpassword.length === 0) {
-      console.log('아이디 또는 비밀번호를 확인하세요');   
+    } else if (
+      userInfo.userid.length === 0 ||
+      userInfo.userpassword.length === 0
+    ) {
+      console.log("아이디 또는 비밀번호를 확인하세요");
       return;
-    } 
+    }
 
-    dispatch({ 
-      type : 'auth/login', 
-      userInfo : {
-        id : userInfo.userid,
-        userName : userInfo.userid,
-        imageURL : null,
-      }, 
-      isLoggedIn : true,
+    dispatch({
+      type: "auth/login",
+      userInfo: {
+        id: userInfo.userid,
+        userName: userInfo.userid,
+        imageURL: null,
+      },
+      isLoggedIn: true,
     });
 
     window.alert(`${userInfo.userid}님, 로그인 되었습니다!`);
@@ -51,18 +57,18 @@ export const useSubwayLogin = () => {
   };
   // 로그아웃
   const onSignOut = () => {
-    dispatch({ 
-      type : 'auth/logout', 
-      userInfo : {
-        id : null,
-        userName : null,
-        imageURL : null,
-      }, 
-      isLoggedIn : false,
+    dispatch({
+      type: "auth/logout",
+      userInfo: {
+        id: null,
+        userName: null,
+        imageURL: null,
+      },
+      isLoggedIn: false,
     });
-    window.alert('로그아웃 되었습니다.');
+    window.alert("로그아웃 되었습니다.");
     navigate(LINK.ROOT);
   };
-  
+
   return { loginFlag, userInfo, handleUserInfo, onSignIn, onSignOut };
 };

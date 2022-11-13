@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -53,7 +53,7 @@ export const SectionStyled = styled.section`
     grid-gap: 20px;
     gap: 20px;
   }
-  ul.option-wrapper{
+  ul.option-wrapper {
     min-height: 104px;
 
     display: inline-flex;
@@ -118,9 +118,11 @@ export const VegArticleStyled = styled.article`
 
   position: relative;
 
-  ${(props) => props.isMenuSelected && css`
-    border: 2px solid var(--color-green);
-  `}
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      border: 2px solid var(--color-green);
+    `}
 `;
 
 export const VegArticleHeaderStyled = styled.div`
@@ -138,12 +140,12 @@ export const AmountButtonStyled = styled.button`
   padding: 0;
   width: 32px;
   height: 32px;
-  
+
   color: var(--color-grey);
   font-size: var(--font-size-18);
   background-color: var(--color-transparent);
   border-radius: 50%;
-  
+
   &:focus {
     color: var(--color-white);
     background-color: var(--color-green);

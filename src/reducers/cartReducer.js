@@ -1,52 +1,52 @@
-import { initialState } from './index.js';
+import { initialState } from "./index.js";
 
 // 리듀서 함수 (장바구니 정보 업데이트)
-function cartReducer (state = initialState(), action) {
-  const GENERALINFO = 'cart/generalInfo';
-  const CATEGORY = 'cart/category';
-  const BREAD = 'cart/bread';
-  const CHEESE = 'cart/cheese';
-  const VEGGIE = 'cart/veggie';
-  const SAUCE = 'cart/sauce';
-  const ADDITIONAL_REQUEST = 'cart/additionalRequest';
-  const ITEM_COUNT = 'cart/itemCount';
+function cartReducer(state = initialState(), action) {
+  const GENERALINFO = "cart/generalInfo";
+  const CATEGORY = "cart/category";
+  const BREAD = "cart/bread";
+  const CHEESE = "cart/cheese";
+  const VEGGIE = "cart/veggie";
+  const SAUCE = "cart/sauce";
+  const ADDITIONAL_REQUEST = "cart/additionalRequest";
+  const ITEM_COUNT = "cart/itemCount";
 
   switch (action.type) {
     case GENERALINFO:
       return {
-        ...state, 
-        generalInfo : action.payload
+        ...state,
+        generalInfo: action.payload,
       };
     case CATEGORY:
       return {
         ...state,
-        category : action.payload
+        category: action.payload,
       };
     case BREAD:
       return {
         ...state,
-        bread : action.payload
-      }; 
+        bread: action.payload,
+      };
     case CHEESE:
       return {
         ...state,
-        cheese : action.payload
+        cheese: action.payload,
       };
     case VEGGIE:
       return {
         ...state,
-        veggie : action.payload
+        veggie: action.payload,
       };
     case SAUCE:
       return {
         ...state,
-        sauce : action.payload
+        sauce: action.payload,
       };
     case ADDITIONAL_REQUEST:
       return {
         ...state,
-        request : action.payload
-      };      
+        request: action.payload,
+      };
     case ITEM_COUNT:
       return {
         ...state,
@@ -54,12 +54,11 @@ function cartReducer (state = initialState(), action) {
       };
     default:
       return state;
-  };
-};
+  }
+}
 
 export default cartReducer;
 // ✅ 파이프-필터, 데코레이터 패턴 (차후 이렇게 수정)
-
 
 // id: 1,
 // 고객주소지

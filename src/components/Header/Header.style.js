@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const HeaderWrapperStyled = styled.header`
   width: 100%;
@@ -14,11 +14,11 @@ export const HeaderWrapperStyled = styled.header`
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-  };
+  }
   ul.header-nav-wrapper li {
     padding: 10px;
     height: 56px;
-  };
+  }
 `;
 
 export const ButtonStyled = styled.button`

@@ -1,38 +1,36 @@
-import React from 'react';
-import { BASEURL } from 'mock/Datas';
-import { FloatButton, ImgSpinner } from 'components';
-import { MainStyled, MenuCardStyled, SectionStyled } from './OrderCart.style';
-import { usePageMove, useReduxSelector } from './hooks';
+import React from "react";
+import { BASEURL } from "mock/Datas";
+import { FloatButton, ImgSpinner } from "components";
+import { MainStyled, MenuCardStyled, SectionStyled } from "./OrderCart.style";
+import { usePageMove, useReduxSelector } from "./hooks";
 
 const OrderCart = () => {
-
   const { itemCount, AddedCartItem } = useReduxSelector();
   const handleOrderProcess = usePageMove();
 
   return (
     <MainStyled>
-    {
-      AddedCartItem.id !== undefined
-      ? <Full AddedCartItem={AddedCartItem} itemCount={itemCount} />
-      : <Empty handleOrderProcess={handleOrderProcess} />
-    }
+      {AddedCartItem.id !== undefined ? (
+        <Full AddedCartItem={AddedCartItem} itemCount={itemCount} />
+      ) : (
+        <Empty handleOrderProcess={handleOrderProcess} />
+      )}
     </MainStyled>
   );
 };
 
 const Empty = ({ handleOrderProcess }) => {
-
   return (
     <>
-    <SectionStyled empty>
-      <h2>장바구니가 비어있어요</h2>
-    </SectionStyled>
-    <FloatButton
-      isBtnActivated={true}
-      handleOrderProcess={handleOrderProcess}
-    >
-      주문하러 가기 :)
-    </FloatButton>
+      <SectionStyled empty>
+        <h2>장바구니가 비어있어요</h2>
+      </SectionStyled>
+      <FloatButton
+        isBtnActivated={true}
+        handleOrderProcess={handleOrderProcess}
+      >
+        주문하러 가기 :)
+      </FloatButton>
     </>
   );
 };
@@ -43,14 +41,13 @@ const Full = ({ AddedCartItem, itemCount }) => {
 
   return (
     <>
-    <SectionStyled>
-      <h2>장바구니 내역</h2>
-      {
-        ItemArray.map((item, index) => (
+      <SectionStyled>
+        <h2>장바구니 내역</h2>
+        {ItemArray.map((item, index) => (
           <MenuCardStyled key={index}>
             <article className="card-img">
-              <ImgSpinner 
-                src={`${BASEURL}${imgSrc}`} 
+              <ImgSpinner
+                src={`${BASEURL}${imgSrc}`}
                 alt={`${nameKor}, ${nameEng}`}
               />
             </article>
@@ -62,9 +59,8 @@ const Full = ({ AddedCartItem, itemCount }) => {
               <p>{description}</p>
             </article>
           </MenuCardStyled>
-        ))
-      }
-    </SectionStyled>
+        ))}
+      </SectionStyled>
     </>
   );
 };

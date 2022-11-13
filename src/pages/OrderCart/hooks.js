@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { categorySelector, itemCountSelector } from 'reducers';
-import LINK from 'constants/link';
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { categorySelector, itemCountSelector } from "reducers";
+import LINK from "constants/link";
 
 export const useReduxSelector = () => {
   const itemCount = useSelector(itemCountSelector); // 장바구니 갯수

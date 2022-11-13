@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainWrapperStyled = styled.main`
   padding: 0 16px;
@@ -73,11 +73,11 @@ export const ButtonStyled = styled.button`
 
   background-color: transparent;
   font-size: 0;
-  
+
   position: absolute;
   bottom: 12px;
   right: 16px;
-  
+
   svg {
     color: var(--color-grey);
     font-size: var(--font-size-24);

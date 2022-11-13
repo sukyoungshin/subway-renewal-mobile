@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -20,7 +20,7 @@ export const SectionStyled = styled.section`
   li {
     font-size: var(--font-size-14);
   }
-  
+
   ul {
     display: inline-flex;
     flex-direction: column;
@@ -28,4 +28,3 @@ export const SectionStyled = styled.section`
     gap: 8px;
   }
 `;
-

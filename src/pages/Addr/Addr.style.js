@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainStyled = styled.main`
   width: 100%;
@@ -25,7 +25,7 @@ export const FormStyled = styled.form`
 `;
 
 export const FieldsetStyled = styled.fieldset`
-  margin:0;
+  margin: 0;
   padding: 0;
   border: none;
 
@@ -34,7 +34,7 @@ export const FieldsetStyled = styled.fieldset`
   grid-gap: 8px;
   gap: 8px;
 
-  flex : ${(props) => props.flex && 1};
+  flex: ${(props) => props.flex && 1};
 `;
 
 export const AddressInputStyled = styled.input`
@@ -97,7 +97,7 @@ export const ResultInputStyled = styled.input`
 `;
 
 export const MapWrapperStyled = styled.div`
-  padding: ${(props) => props.padding? '12px' : '0px' };
+  padding: ${(props) => (props.padding ? "12px" : "0px")};
   width: 100%;
   height: 100%;
   min-height: 300px;
@@ -114,12 +114,12 @@ export const MapWrapperStyled = styled.div`
   }
 
   ul.placesList {
-    width: 100%; 
+    width: 100%;
     display: block;
 
-    position: absolute; 
-    top: 0px; 
-    right: 0px; 
+    position: absolute;
+    top: 0px;
+    right: 0px;
     z-index: 10;
 
     display: inline-flex;
@@ -139,5 +139,5 @@ export const MapWrapperStyled = styled.div`
 export const MapViewerStyled = styled.div`
   height: 100%;
   min-height: 300px;
-  display: ${props => props.isHidden ? 'none' : 'block'};
+  display: ${(props) => (props.isHidden ? "none" : "block")};
 `;

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -27,7 +27,7 @@ export const SectionStyled = styled.section`
   grid-gap: 8px;
   gap: 8px;
 
-  h2  {
+  h2 {
     color: var(--color-grey);
     font-size: var(--font-size-12);
   }
@@ -60,7 +60,7 @@ export const CTAButtonStyled = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  grid-gap: 8px; 
+  grid-gap: 8px;
   gap: 8px;
 
   color: var(--color-grey);
@@ -68,13 +68,15 @@ export const CTAButtonStyled = styled.button`
   background-color: var(--transparent);
   border: 1px solid var(--color-light-grey);
   border-radius: 8px;
-  
+
   transition: all 0.3s;
-  
-  ${props => props.isBtnSelected && css`
-    color: var(--color-white);
-    font-weight: var(--font-weight-bold);
-    border: 1px solid var(--color-green);
-    background-color: var(--color-green);
-  `};
+
+  ${(props) =>
+    props.isBtnSelected &&
+    css`
+      color: var(--color-white);
+      font-weight: var(--font-weight-bold);
+      border: 1px solid var(--color-green);
+      background-color: var(--color-green);
+    `};
 `;

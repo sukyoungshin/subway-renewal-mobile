@@ -1,39 +1,47 @@
-import React from 'react';
-import { orderSelector } from 'reducers';
+import React from "react";
+import { orderSelector } from "reducers";
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
-import { MainStyled, SectionStyled, FloatButtonWrapperStyled, HalfSizeCTAButtonStyled, TextAreaStyled } from './OrderDetail.style';
-import { useSelector } from 'react-redux';
-import { useConditionAgreement, useCTAButtons, useCustomerRequest, useSelectDeliverOrPickUp } from './hooks';
+import {
+  MainStyled,
+  SectionStyled,
+  FloatButtonWrapperStyled,
+  HalfSizeCTAButtonStyled,
+  TextAreaStyled,
+} from "./OrderDetail.style";
+import { useSelector } from "react-redux";
+import {
+  useConditionAgreement,
+  useCTAButtons,
+  useCustomerRequest,
+  useSelectDeliverOrPickUp,
+} from "./hooks";
 
-const DELIVER = 'deliver';
-const PICKUP = 'pickup';
+const DELIVER = "deliver";
+const PICKUP = "pickup";
 
 const OrderDetail = () => {
   const order = useSelector(orderSelector); // 주문내역 전체
   const { isRadioChecked, handleRadioStatus } = useSelectDeliverOrPickUp();
   const { customerOrderRequest, handleOrderRequest } = useCustomerRequest();
   const { isCheckboxChecked, handleCheckboxStatus } = useConditionAgreement();
-  const { isActive, setIsActive, goToPrevPage, goToPaymentPage } = useCTAButtons({ isRadioChecked, isCheckboxChecked, customerOrderRequest });
-  
+  const { isActive, setIsActive, goToPrevPage, goToPaymentPage } =
+    useCTAButtons({ isRadioChecked, isCheckboxChecked, customerOrderRequest });
+
   const handleDelieverOrPickUp = (e) => handleRadioStatus(e.target.id);
   // eslint-disable-next-line
   const handleAgreementAndBtnActivate = (e) => {
     handleCheckboxStatus(e);
-    setIsActive(prev => !prev);
+    setIsActive((prev) => !prev);
   };
 
   return (
     <MainStyled>
-      <SectionStyled style={{ marginTop: '32px' }}>
+      <SectionStyled style={{ marginTop: "32px" }}>
         <h2>배송받으실 주소지</h2>
         <article>
           <ul className="addr-wrapper">
-            <li>
-              {order.generalInfo.customerInfo}
-            </li>
-            <li>
-              고객 이름, 연락처
-            </li>
+            <li>{order.generalInfo.customerInfo}</li>
+            <li>고객 이름, 연락처</li>
           </ul>
         </article>
       </SectionStyled>
@@ -43,30 +51,26 @@ const OrderDetail = () => {
         <article>
           <ul className="deliver-wrapper">
             <li>
-              <input 
-                type="radio" 
-                id="deliver" 
-                value="deliver" 
+              <input
+                type="radio"
+                id="deliver"
+                value="deliver"
                 name="del-or-pickup"
                 checked={isRadioChecked === DELIVER}
                 onChange={handleDelieverOrPickUp}
               />
-              <label htmlFor="deliver">
-                고객님의 주소지로 배달
-              </label>
+              <label htmlFor="deliver">고객님의 주소지로 배달</label>
             </li>
             <li>
-              <input 
-                type="radio" 
-                id="pickup" 
-                value="pickup" 
-                name="del-or-pickup" 
+              <input
+                type="radio"
+                id="pickup"
+                value="pickup"
+                name="del-or-pickup"
                 checked={isRadioChecked === PICKUP}
                 onChange={handleDelieverOrPickUp}
               />
-              <label htmlFor="pickup">
-                매장에 직접 방문하여 수령
-              </label>
+              <label htmlFor="pickup">매장에 직접 방문하여 수령</label>
             </li>
           </ul>
         </article>
@@ -75,29 +79,26 @@ const OrderDetail = () => {
       <SectionStyled>
         <h2>
           주문하신 매장
-            <span>
-              {order.generalInfo.subwayInfo.name}
-              {' '}
-              <a 
-                href={order.generalInfo.subwayInfo.url} 
-                title={order.generalInfo.subwayInfo.name}
-                target="_blank"
-                rel="noreferrer"
-                style={{ fontSize : '12px'}}
-              >
-                (🔗홈페이지)
-              </a>
-            </span>
+          <span>
+            {order.generalInfo.subwayInfo.name}{" "}
+            <a
+              href={order.generalInfo.subwayInfo.url}
+              title={order.generalInfo.subwayInfo.name}
+              target="_blank"
+              rel="noreferrer"
+              style={{ fontSize: "12px" }}
+            >
+              (🔗홈페이지)
+            </a>
+          </span>
         </h2>
       </SectionStyled>
 
       <SectionStyled>
         <h2>
           매장연락처
-          <span className='subway-phone'>
-            <span>
-              {order.generalInfo.subwayInfo.phone}
-            </span>
+          <span className="subway-phone">
+            <span>{order.generalInfo.subwayInfo.phone}</span>
             <span>
               <BsFillTelephoneForwardFill />
             </span>
@@ -107,7 +108,7 @@ const OrderDetail = () => {
 
       <SectionStyled>
         <h2>주문 요청사항</h2>
-        <TextAreaStyled 
+        <TextAreaStyled
           placeholder="매장에 요청사항이 있으시면 여기에 입력해주세요"
           value={customerOrderRequest}
           onChange={handleOrderRequest}
@@ -115,12 +116,10 @@ const OrderDetail = () => {
       </SectionStyled>
 
       <SectionStyled>
-        <h2 style={{ display: 'none' }}>
-          주문동의
-        </h2>
+        <h2 style={{ display: "none" }}>주문동의</h2>
         <p className="order-agreement">
-          <input 
-            type="checkbox" 
+          <input
+            type="checkbox"
             id="agreement"
             value={isCheckboxChecked}
             onChange={handleAgreementAndBtnActivate}
@@ -131,12 +130,11 @@ const OrderDetail = () => {
         </p>
       </SectionStyled>
 
-      <FloatButton 
-        isActive={isActive} 
+      <FloatButton
+        isActive={isActive}
         goToPrevPage={goToPrevPage}
         goToPaymentPage={goToPaymentPage}
       />
-
     </MainStyled>
   );
 };
@@ -144,16 +142,13 @@ const OrderDetail = () => {
 const FloatButton = ({ isActive, goToPrevPage, goToPaymentPage }) => {
   return (
     <FloatButtonWrapperStyled>
-      <HalfSizeCTAButtonStyled 
-        type="button"
-        onClick={goToPrevPage}          
-      >
+      <HalfSizeCTAButtonStyled type="button" onClick={goToPrevPage}>
         이전페이지
       </HalfSizeCTAButtonStyled>
-      <HalfSizeCTAButtonStyled 
+      <HalfSizeCTAButtonStyled
         type="button"
         isActive={isActive}
-        onClick={goToPaymentPage}          
+        onClick={goToPaymentPage}
       >
         결제하기
       </HalfSizeCTAButtonStyled>

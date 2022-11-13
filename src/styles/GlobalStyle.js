@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
-import FONT from './font';
-import SIZE from './fontsize';
-import WEIGHT from './fontweight';
-import PALETTE from './palette';
+import { createGlobalStyle } from "styled-components";
+import FONT from "./font";
+import SIZE from "./fontsize";
+import WEIGHT from "./fontweight";
+import PALETTE from "./palette";
 
 export const GlobalStyle = createGlobalStyle`
 

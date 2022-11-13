@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const FloatButtonStyled = styled.button`
   display: block;
@@ -19,11 +19,13 @@ export const FloatButtonStyled = styled.button`
   z-index: 100;
 
   transition: all 0.3s;
-  
-  ${props => props.isBtnActivated && css`
-    color: var(--color-white);
-    font-weight: var(--font-weight-bold);
-    border: 1px solid var(--color-green);
-    background-color: var(--color-green);
-  `};
+
+  ${(props) =>
+    props.isBtnActivated &&
+    css`
+      color: var(--color-white);
+      font-weight: var(--font-weight-bold);
+      border: 1px solid var(--color-green);
+      background-color: var(--color-green);
+    `};
 `;

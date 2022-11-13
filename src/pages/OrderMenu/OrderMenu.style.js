@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -44,7 +44,7 @@ export const SectionStyled = styled.section`
     background-color: var(--color-transparent);
     border-radius: 8px;
 
-    font-size: 0; 
+    font-size: 0;
   }
   ul:not(option-wrapper) {
     display: inline-flex;
@@ -52,7 +52,7 @@ export const SectionStyled = styled.section`
     grid-gap: 20px;
     gap: 20px;
   }
-  ul.option-wrapper{
+  ul.option-wrapper {
     min-height: 104px;
 
     display: inline-flex;
@@ -113,7 +113,7 @@ export const MenuCardStyled = styled.section`
       position: relative;
 
       &::after {
-        content: '...';
+        content: "...";
         position: absolute;
         right: 0;
         bottom: 0;
@@ -166,7 +166,6 @@ export const DeleteButtonStyled = styled(ButtonStyled)`
   }
 `;
 
-
 export const FloatButtonWrapperStyled = styled.div`
   margin-top: 16px;
   width: 100%;
@@ -205,4 +204,3 @@ export const HalfSizeCTAButtonStyled = styled.button`
     background-color: var(--color-green);
   }
 `;
-

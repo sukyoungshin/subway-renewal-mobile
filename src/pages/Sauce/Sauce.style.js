@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -53,7 +53,7 @@ export const SectionStyled = styled.section`
     grid-gap: 20px;
     gap: 20px;
   }
-  ul.option-wrapper{
+  ul.option-wrapper {
     min-height: 104px;
 
     display: inline-flex;
@@ -75,7 +75,6 @@ export const MenuListGridStyled = styled.div`
   grid-gap: 20px;
 `;
 
-
 export const MenuArticleStyled = styled.article`
   padding: 8px;
   width: 100%;
@@ -93,32 +92,32 @@ export const MenuArticleStyled = styled.article`
 
   .menu-name-wrapper {
     max-width: 112px;
-    max-height: 30px; 
+    max-height: 30px;
 
     .menu-name-kor {
-      font-size: var(--font-size-12);  
-      
-      text-overflow: ellipsis; 
+      font-size: var(--font-size-12);
+
+      text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
     }
     .menu-name-eng {
-      font-size: var(--font-size-10);  
-      
-      text-overflow: ellipsis; 
+      font-size: var(--font-size-10);
+
+      text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
     }
   }
 
-  .menu-img-wrapper{
+  .menu-img-wrapper {
     width: 100%;
     max-height: 84px;
     flex: 1;
-    font-size: 0; 
+    font-size: 0;
 
     position: relative;
-    
+
     img {
       width: 100%;
       height: 100%;
@@ -131,7 +130,7 @@ export const MenuArticleStyled = styled.article`
     .menu-description {
       width: 100%;
       font-size: var(--font-size-10);
-      
+
       position: absolute;
       top: 50%;
       left: 50%;
@@ -141,31 +140,34 @@ export const MenuArticleStyled = styled.article`
       transition: opacity 0.5s;
     }
 
-    ${(props) => props.isMenuSelected && css`
-      .menu-img {
-        opacity: 0.3;
-      }
-      .menu-description {
-        opacity: 1;
-      }
-    `}
+    ${(props) =>
+      props.isMenuSelected &&
+      css`
+        .menu-img {
+          opacity: 0.3;
+        }
+        .menu-description {
+          opacity: 1;
+        }
+      `}
   }
 
   .menu-price {
-    font-size: var(--font-size-10);  
+    font-size: var(--font-size-10);
   }
 
-  ${(props) => props.isMenuSelected && css`
-    border: 2px solid var(--color-green);
-  `}
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      border: 2px solid var(--color-green);
+    `}
 `;
-
 
 export const OrderButtonStyled = styled.button`
   padding: 0;
   width: 32px;
   height: 32px;
-  
+
   color: var(--color-light-grey);
   font-size: 0;
   background-color: var(--color-transparent);
@@ -180,9 +182,11 @@ export const OrderButtonStyled = styled.button`
     font-size: var(--font-size-16);
   }
 
-  ${(props) => props.isMenuSelected && css`
-    background-color: var(--color-green);
-  `}
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      background-color: var(--color-green);
+    `}
 `;
 
 export const OptionListStyled = styled.li`
@@ -216,4 +220,3 @@ export const InputRadioStyled = styled.input`
 export const LabelRadioStyled = styled.label`
   font-size: var(--font-size-12);
 `;
-

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { RiFacebookCircleFill } from "react-icons/ri";
-import { OAuthButtonTemplate } from '../index';
-import { FacebookLoginStyled } from './Facebook.style';
+import { OAuthButtonTemplate } from "../index";
+import { FacebookLoginStyled } from "./Facebook.style";
 
 const FacebookLogin = () => {
   return (

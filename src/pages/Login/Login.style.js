@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const MainStyled = styled.main`
   width: 100%;
   height: 100%;
   padding: 16px;
-  
+
   background-color: var(--color-white);
 
   display: inline-flex;
@@ -70,14 +70,14 @@ export const ItemBlock = styled.div`
       color: var(--color-grey);
     }
     p::before {
-      content: '';
+      content: "";
       flex-grow: 1;
       margin: 0px 16px;
       background-color: var(--color-light-grey);
       height: 1px; /* cross-browsing issue: chrome은 0.5px -> 1px, fireFox는 0.5px -> 0 */
     }
     p::after {
-      content: '';
+      content: "";
       flex-grow: 1;
       margin: 0px 16px;
       background-color: var(--color-light-grey);

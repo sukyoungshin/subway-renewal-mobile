@@ -1,6 +1,6 @@
-import React from 'react';
-import { Outlet } from 'react-router';
-import { Footer, HeaderLayout } from '../index';
+import React from "react";
+import { Outlet } from "react-router";
+import { Footer, HeaderLayout } from "../index";
 
 const AppLayout = () => {
   return (

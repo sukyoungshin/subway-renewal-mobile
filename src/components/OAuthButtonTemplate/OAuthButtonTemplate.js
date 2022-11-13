@@ -1,11 +1,7 @@
-import { BtnContainerStyled } from './OAuthButtonTemplate.style';
+import { BtnContainerStyled } from "./OAuthButtonTemplate.style";
 
 const OAuthButtonTemplate = ({ children }) => {
-  return (
-    <BtnContainerStyled>
-      {children}
-    </BtnContainerStyled>
-  );
+  return <BtnContainerStyled>{children}</BtnContainerStyled>;
 };
 
 export default OAuthButtonTemplate;

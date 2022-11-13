@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const MainStyled = styled.main`
   padding: 16px;
@@ -25,14 +25,16 @@ export const SectionStyled = styled.section`
     font-size: var(--font-size-14);
   }
 
-  ${props => props.empty && css`
-    justify-content: center;
-    align-items: center;
+  ${(props) =>
+    props.empty &&
+    css`
+      justify-content: center;
+      align-items: center;
 
-    h2 {
-      font-weight: var(--font-weight-normal);
-    }
-  `}
+      h2 {
+        font-weight: var(--font-weight-normal);
+      }
+    `}
 `;
 
 export const MenuCardStyled = styled.section`
@@ -73,7 +75,7 @@ export const MenuCardStyled = styled.section`
     h3 {
       font-size: var(--font-size-14);
       font-weight: var(--font-weight-bold);
-      
+
       span {
         float: right;
         font-size: var(--font-size-12);
@@ -87,4 +89,3 @@ export const MenuCardStyled = styled.section`
     }
   }
 `;
-

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const InputContainerStyled = styled.div`
   width: 100%;
@@ -32,12 +32,12 @@ export const ButtonWrapperStyled = styled.div`
 
 export const LoginButtonStyled = styled.button`
   width: 100%;
-  height: 100%; 
+  height: 100%;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  grid-gap: 8px; 
+  grid-gap: 8px;
   gap: 8px;
 
   color: var(--color-white);

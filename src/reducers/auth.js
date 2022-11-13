@@ -1,44 +1,44 @@
-// 모듈의 초기 상태 
-const initialState = { 
+// 모듈의 초기 상태
+const initialState = {
   // 로그인 된 유저정보
-  userInfo : {
+  userInfo: {
     id: null,
     userName: null,
-    email: null, 
-  },  
+    email: null,
+  },
   // 유저의 로그인여부
-  isLoggedIn : false, 
+  isLoggedIn: false,
 };
 
 // 리듀서
 function authReducer(state = initialState, action) {
-  const LOGIN = 'auth/login';
-  const LOGOUT = 'auth/logout';
+  const LOGIN = "auth/login";
+  const LOGOUT = "auth/logout";
 
   switch (action.type) {
     case LOGIN:
-      return { 
+      return {
         ...state,
-        userInfo : {
+        userInfo: {
           id: action.userInfo.id,
           userName: action.userInfo.userName,
           imageURL: action.userInfo.imageURL,
-        }, 
-        isLoggedIn : true,
+        },
+        isLoggedIn: true,
       };
     case LOGOUT:
-      return { 
+      return {
         ...state,
-        userInfo : {
+        userInfo: {
           id: null,
           userName: null,
           imageURL: null,
-        },  
-        isLoggedIn : false,
+        },
+        isLoggedIn: false,
       };
     default:
       return state;
-  };
+  }
 }
 
 export default authReducer;
