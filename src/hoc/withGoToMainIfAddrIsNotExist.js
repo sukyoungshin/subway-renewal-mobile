@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import LINK from "constants/link";
 import { useEffect } from "react";
 
-const goToMainIfAddrIsNotExistHOC = (Component) => {
+const withGoToMainIfAddrIsNotExistHOC = (Component) => {
   return () => {
     /* 리덕스 및 라우터 */
     const addr = useSelector(addrSelector);
@@ -24,4 +24,4 @@ const goToMainIfAddrIsNotExistHOC = (Component) => {
   };
 };
 
-export default goToMainIfAddrIsNotExistHOC;
+export default withGoToMainIfAddrIsNotExistHOC;

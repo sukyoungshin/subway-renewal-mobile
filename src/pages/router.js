@@ -19,7 +19,7 @@ import {
 } from "pages";
 import { AppLayout, OrderPageLayout } from "components/Layout/index";
 import RouterPath from "constants/routerPath";
-import goToMainIfAddrIsNotExistHOC from "hoc/goToMainIfAddrIsNotExist";
+import withGoToMainIfAddrIsNotExistHOC from "hoc/withGoToMainIfAddrIsNotExist";
 
 const render = (C) => <C />;
 const elementLists = [
@@ -41,23 +41,23 @@ const elementLists = [
       },
       {
         path: RouterPath.MENU,
-        element: render(goToMainIfAddrIsNotExistHOC(Menu))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Menu))
       },
       {
         path: RouterPath.BREAD,
-        element: render(goToMainIfAddrIsNotExistHOC(Bread))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Bread))
       },
       {
         path: RouterPath.CHEESE,
-        element: render(goToMainIfAddrIsNotExistHOC(Cheese))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Cheese))
       },
       {
         path: RouterPath.VEGGIE,
-        element: render(goToMainIfAddrIsNotExistHOC(Veggie))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Veggie))
       },
       {
         path: RouterPath.SAUCE,
-        element: render(goToMainIfAddrIsNotExistHOC(Sauce))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Sauce))
       },
       {
         path: RouterPath.SIGNUP,
@@ -83,23 +83,23 @@ const elementLists = [
     children: [
       {
         index: true,
-        element: render(goToMainIfAddrIsNotExistHOC(OrderMenu))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderMenu))
       },
       {
         path: RouterPath.ORDER,
-        element: render(goToMainIfAddrIsNotExistHOC(OrderMenu))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderMenu))
       },
       {
         path: RouterPath.INFO,
-        element: render(goToMainIfAddrIsNotExistHOC(OrderDetail))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderDetail))
       },
       {
         path: RouterPath.CONFIRM,
-        element: render(goToMainIfAddrIsNotExistHOC(OrderConfirm))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderConfirm))
       },
       {
         path: RouterPath.CART,
-        element: render(goToMainIfAddrIsNotExistHOC(OrderCart))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderCart))
       }
     ]
   },
