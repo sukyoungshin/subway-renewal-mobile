@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const GoogleLoginButtonStyled = styled.div`
+export const LoginButtonStyled = styled.div`
   border-radius: 8px;
 
   /* css override - 구글기본스타일을 override하기 위해 어쩔 수 없이 important 사용*/
@@ -40,7 +40,7 @@ export const GoogleLoginButtonStyled = styled.div`
   }
 `;
 
-export const GoogleLogoutButtonStyled = styled.button`
+export const LogoutButtonStyled = styled.button`
   padding: 4px;
   width: 100%;
   height: 100%;

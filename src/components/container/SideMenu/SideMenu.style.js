@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const NavbarWrapperStyled = styled.aside`
+export const Container = styled.aside`
   padding: 16px;
   width: 100%;
   max-width: 440px;
@@ -16,7 +16,7 @@ export const NavbarWrapperStyled = styled.aside`
   z-index: 999;
 `;
 
-export const NavbarHeaderStyled = styled.header`
+export const HeaderContainer = styled.header`
   width: 100%;
 
   display: inline-flex;
@@ -50,7 +50,7 @@ export const NavLinkStyled = styled(NavLink)`
   }
 `;
 
-export const ButtonStyled = styled.button`
+export const Button = styled.button`
   height: 40px;
   line-height: 40px;
 
@@ -61,26 +61,26 @@ export const ButtonStyled = styled.button`
   border-radius: 8px;
 `;
 
-export const NavbarNavStyled = styled.nav`
+export const NavContainer = styled.nav`
   flex: 1;
-
-  ul {
-    margin: 40px 0 0 0;
-
-    width: 100%;
-    display: inline-flex;
-    flex-direction: column;
-    grid-gap: 16px;
-    gap: 16px;
-  }
-
-  li {
-    background-color: transparent;
-    transition: all 0.4s;
-  }
 `;
 
-export const NavbarMainStyled = styled.main`
+export const NavigationList = styled.ul`
+  margin: 40px 0 0 0;
+
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  grid-gap: 16px;
+  gap: 16px;
+`;
+
+export const Item = styled.li`
+  background-color: transparent;
+  transition: all 0.4s;
+`;
+
+export const MainContainer = styled.main`
   padding: 32px 0 0 0;
   height: 210px;
 
@@ -116,7 +116,7 @@ export const NavbarMainStyled = styled.main`
   }
 `;
 
-export const NavbarFooterStyled = styled.footer`
+export const FooterContainer = styled.footer`
   font-size: 0;
 
   display: inline-flex;

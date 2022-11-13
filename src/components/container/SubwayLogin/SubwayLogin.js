@@ -1,10 +1,7 @@
 import React from "react";
 import { useSubwayLogin } from "./hooks";
-import {
-  ButtonWrapperStyled,
-  InputContainerStyled,
-  LoginButtonStyled,
-} from "./SubwayLogin.style";
+import { InputContainerStyled } from "./SubwayLogin.style";
+import { SubwayButton } from "components/presentational/index";
 
 const SubwayLogin = () => {
   const { loginFlag, userInfo, handleUserInfo, onSignIn, onSignOut } =
@@ -13,56 +10,32 @@ const SubwayLogin = () => {
   return (
     <>
       {!loginFlag ? (
-        <SubwayLoginButton
-          userInfo={userInfo}
-          handleUserInfo={handleUserInfo}
-          onSignIn={onSignIn}
-        />
+        <>
+          <InputContainerStyled>
+            <input
+              type="text"
+              placeholder="아이디를 입력하세요"
+              id="userid"
+              value={userInfo.id}
+              onChange={handleUserInfo}
+            />
+          </InputContainerStyled>
+          <InputContainerStyled>
+            <input
+              type="password"
+              placeholder="비밀번호를 입력하세요"
+              id="userpassword"
+              value={userInfo.id}
+              onChange={handleUserInfo}
+            />
+          </InputContainerStyled>
+
+          <SubwayButton onAction={onSignIn} label="로그인" />
+        </>
       ) : (
-        <SubwayLogoutButtn onSignOut={onSignOut} />
+        <SubwayButton onAction={onSignOut} label="로그아웃" />
       )}
     </>
-  );
-};
-
-const SubwayLoginButton = ({ userInfo, handleUserInfo, onSignIn }) => {
-  return (
-    <>
-      <InputContainerStyled>
-        <input
-          type="text"
-          placeholder="아이디를 입력하세요"
-          id="userid"
-          value={userInfo.id}
-          onChange={handleUserInfo}
-        />
-      </InputContainerStyled>
-      <InputContainerStyled>
-        <input
-          type="password"
-          placeholder="비밀번호를 입력하세요"
-          id="userpassword"
-          value={userInfo.id}
-          onChange={handleUserInfo}
-        />
-      </InputContainerStyled>
-
-      <ButtonWrapperStyled>
-        <LoginButtonStyled type="button" onClick={onSignIn}>
-          로그인
-        </LoginButtonStyled>
-      </ButtonWrapperStyled>
-    </>
-  );
-};
-
-const SubwayLogoutButtn = ({ onSignOut }) => {
-  return (
-    <ButtonWrapperStyled>
-      <LoginButtonStyled type="button" onClick={onSignOut}>
-        로그아웃
-      </LoginButtonStyled>
-    </ButtonWrapperStyled>
   );
 };
 

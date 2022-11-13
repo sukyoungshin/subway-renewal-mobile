@@ -6,14 +6,14 @@ import {
   SectionStyled,
   FloatButtonWrapperStyled,
   HalfSizeCTAButtonStyled,
-  TextAreaStyled,
+  TextAreaStyled
 } from "./OrderDetail.style";
 import { useSelector } from "react-redux";
 import {
   useConditionAgreement,
   useCTAButtons,
   useCustomerRequest,
-  useSelectDeliverOrPickUp,
+  useSelectDeliverOrPickUp
 } from "./hooks";
 
 const DELIVER = "deliver";

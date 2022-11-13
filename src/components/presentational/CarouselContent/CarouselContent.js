@@ -1,39 +1,36 @@
-import {
-  ContentWrapper,
-  TitleWrapper,
-  EventWrapper,
-  Button,
-} from "./CarouselContent.style";
+import { Container, Text, Event, Button } from "./CarouselContent.style";
 
 const CarouselContent = ({
-  AdContents,
+  CarouselContents,
   selectedId,
   handleClick,
-  goToOrderPage,
+  goToOrderPage
 }) => {
   return (
     <>
-      {AdContents.map((content) => (
-        <ContentWrapper
-          key={content.id}
-          isSelected={content.id === selectedId}
-          onClick={handleClick(content.id)}
-        >
-          <TitleWrapper>
-            <h2>{content.eventTitle}</h2>
-            <h2>{content.eventTitle2}</h2>
-          </TitleWrapper>
-          <EventWrapper>
-            <p>{content.eventName}</p>
-            <p>{content.eventDate}</p>
-          </EventWrapper>
-          <article>
-            <Button type="button" onClick={goToOrderPage}>
-              ORDER NOW
-            </Button>
-          </article>
-        </ContentWrapper>
-      ))}
+      {CarouselContents.map(
+        ({ id, eventTitle, eventTitle2, eventDate, eventName }) => (
+          <Container
+            key={id}
+            isSelected={id === selectedId}
+            onClick={handleClick(id)}
+          >
+            <Text>
+              <h2>{eventTitle}</h2>
+              <h2>{eventTitle2}</h2>
+            </Text>
+            <Event>
+              <p>{eventName}</p>
+              <p>{eventDate}</p>
+            </Event>
+            <article>
+              <Button type="button" onClick={goToOrderPage}>
+                ORDER NOW
+              </Button>
+            </article>
+          </Container>
+        )
+      )}
     </>
   );
 };

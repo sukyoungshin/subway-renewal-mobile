@@ -9,13 +9,13 @@ import {
   FloatButtonWrapperStyled,
   HalfSizeCTAButtonStyled,
   ButtonStyled,
-  DeleteButtonStyled,
+  DeleteButtonStyled
 } from "./OrderMenu.style";
-import { ImgSpinner } from "components";
+import { Spinner } from "components";
 import {
   useCountAmountOfItems,
   useCTAButtons,
-  useReduxSelector,
+  useReduxSelector
 } from "./hooks";
 
 const OrderMenu = () => {
@@ -30,7 +30,7 @@ const OrderMenu = () => {
 
         <MenuCardStyled>
           <article className="card-img">
-            <ImgSpinner
+            <Spinner
               src={`${BASEURL}${order.category.imgSrc}`}
               alt={order.category.nameKor}
             />

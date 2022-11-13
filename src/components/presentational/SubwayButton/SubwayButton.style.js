@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const FacebookLoginStyled = styled.button`
+export const Button = styled.button`
   width: 100%;
-  height: 100%;
+  height: 48px;
+  text-align: center;
 
   display: inline-flex;
   align-items: center;
@@ -10,9 +11,9 @@ export const FacebookLoginStyled = styled.button`
   grid-gap: 8px;
   gap: 8px;
 
-  font-size: var(--font-size-14);
   color: var(--color-white);
-  font-weight: var(--font-weight-normal);
-  background-color: var(--color-facebook);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-green);
   border-radius: 8px;
 `;

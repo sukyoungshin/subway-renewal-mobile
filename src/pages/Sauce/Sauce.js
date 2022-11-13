@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { sauces, sauceOptionLists } from "mock/food-data";
 import { BASEURL } from "config";
-import { FloatButton, ImgSpinner } from "components";
+import { CtaButton, Spinner } from "components";
 import {
   MainStyled,
   SectionStyled,
@@ -11,7 +11,7 @@ import {
   OrderButtonStyled,
   OptionListStyled,
   InputRadioStyled,
-  LabelRadioStyled,
+  LabelRadioStyled
 } from "./Sauce.style";
 import { useCTAButton, useSelectOptionAndMenu } from "./hooks";
 
@@ -29,7 +29,7 @@ const Sauce = () => {
           nameKor: nameKor,
           description: description,
           imgSrc: imgSrc,
-          defaultChecked: defaultChecked,
+          defaultChecked: defaultChecked
         });
         setIsBtnActivated(true);
       }
@@ -78,7 +78,7 @@ const Sauce = () => {
                 <p className="menu-name-eng">{sauce.nameEng}</p>
               </div>
               <div className="menu-img-wrapper">
-                <ImgSpinner
+                <Spinner
                   src={`${BASEURL}${sauce.imgSrc}`}
                   alt={sauce.nameKor}
                 />
@@ -92,7 +92,7 @@ const Sauce = () => {
         </MenuListGridStyled>
       </SectionStyled>
 
-      <FloatButton
+      <CtaButton
         isBtnActivated={isBtnActivated}
         handleOrderProcess={handleOrderProcess}
         label="소스 선택 (5 / 7)"

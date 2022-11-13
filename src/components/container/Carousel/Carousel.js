@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "./Carousel.style";
-import { AdContents } from "mock/content-data";
+import { CarouselContents } from "mock/content-data";
 import { useCarouselIndex, usePageMove } from "./hooks";
 import { CarouselPagination, CarouselContent } from "components/index";
 
@@ -11,12 +11,12 @@ const Carousel = () => {
   return (
     <Container>
       <CarouselPagination
-        AdContents={AdContents}
+        CarouselContents={CarouselContents}
         selectedId={selectedId}
         handleClick={handleClick}
       />
       <CarouselContent
-        AdContents={AdContents}
+        CarouselContents={CarouselContents}
         selectedId={selectedId}
         handleClick={handleClick}
         goToOrderPage={goToOrderPage}

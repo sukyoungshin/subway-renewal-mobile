@@ -10,7 +10,7 @@ export const useReduxSelector = () => {
     subwayName: order.generalInfo.subwayInfo.name,
     subwayAddr: order.generalInfo.subwayInfo.address,
     subwayPhone: order.generalInfo.subwayInfo.phone,
-    customerRequest: order.request.customerRequest,
+    customerRequest: order.request.customerRequest
   };
 
   return orderDetail;
@@ -24,10 +24,8 @@ export const useRouterLocation = () => {
 };
 
 export const useTodayTime = () => {
-  const today = new Date(); // 오늘 날짜
-  const timeString = today.toLocaleString("ko-KR", {
-    timeZome: "Asia/Seoul",
-  });
+  const today = new Date();
+  const timeString = new Intl.DateTimeFormat("kr").format(today);
 
   return timeString;
 };

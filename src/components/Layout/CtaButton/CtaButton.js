@@ -1,15 +1,15 @@
 import React from "react";
-import { FloatButtonStyled } from "./FloatButtonLayout.style";
+import { Button } from "./CtaButton.style";
 
-const FloatButton = ({
+const CtaButton = ({
   type = "button",
   form,
   isBtnActivated,
   handleOrderProcess,
-  label,
+  label
 }) => {
   return (
-    <FloatButtonStyled
+    <Button
       type={type || "submit"}
       form={form}
       isBtnActivated={isBtnActivated}
@@ -17,8 +17,8 @@ const FloatButton = ({
       onClick={handleOrderProcess}
     >
       {label}
-    </FloatButtonStyled>
+    </Button>
   );
 };
 
-export default FloatButton;
+export default CtaButton;

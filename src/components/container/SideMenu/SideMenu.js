@@ -5,13 +5,15 @@ import { HiX, HiLogout, HiUser } from "react-icons/hi";
 import { NavCategories } from "mock/tab-data";
 import LINK from "constants/link";
 import {
-  NavbarWrapperStyled,
-  NavbarHeaderStyled,
-  NavbarNavStyled,
-  NavbarFooterStyled,
-  NavbarMainStyled,
+  Container,
+  HeaderContainer,
+  NavContainer,
+  NavigationList,
+  Item,
+  FooterContainer,
+  MainContainer,
   NavLinkStyled,
-  ButtonStyled,
+  Button
 } from "./SideMenu.style";
 import { usePageMove, useReduxSelector } from "./hooks";
 
@@ -20,21 +22,19 @@ const Navbar = ({ handleNavbar }) => {
   const goToLoginPage = usePageMove();
 
   return (
-    <NavbarWrapperStyled>
-      <NavbarHeader handleNavbar={handleNavbar} />
-      <NavbarNav handleNavbar={handleNavbar} />
-      {loginFlag === false && (
-        <NavbarLoginButton goToLoginPage={goToLoginPage} />
-      )}
-      {loginFlag && <NavbarMain userInfo={userInfo} />}
-      <NavbarFooter loginFlag={loginFlag} />
-    </NavbarWrapperStyled>
+    <Container>
+      <Header handleNavbar={handleNavbar} />
+      <Navigation handleNavbar={handleNavbar} />
+      {loginFlag === false && <LoginButton goToLoginPage={goToLoginPage} />}
+      {loginFlag && <Main userInfo={userInfo} />}
+      <Footer loginFlag={loginFlag} />
+    </Container>
   );
 };
 
-const NavbarHeader = ({ handleNavbar }) => {
+const Header = ({ handleNavbar }) => {
   return (
-    <NavbarHeaderStyled>
+    <HeaderContainer>
       <div>
         <NavLinkStyled to={LINK.ROOT} onClick={handleNavbar}>
           <img src={LogoSmall} alt="로고" />
@@ -45,16 +45,16 @@ const NavbarHeader = ({ handleNavbar }) => {
           <HiX />
         </NavLinkStyled>
       </div>
-    </NavbarHeaderStyled>
+    </HeaderContainer>
   );
 };
 
-const NavbarNav = ({ handleNavbar }) => {
+const Navigation = ({ handleNavbar }) => {
   return (
-    <NavbarNavStyled>
-      <ul>
+    <NavContainer>
+      <NavigationList>
         {NavCategories.map((category) => (
-          <li key={category.pathName}>
+          <Item key={category.pathName}>
             <NavLinkStyled
               to={category.pathName}
               onClick={handleNavbar}
@@ -64,18 +64,18 @@ const NavbarNav = ({ handleNavbar }) => {
             >
               {category.categoryName}
             </NavLinkStyled>
-          </li>
+          </Item>
         ))}
-      </ul>
-    </NavbarNavStyled>
+      </NavigationList>
+    </NavContainer>
   );
 };
 
-const NavbarMain = ({ userInfo }) => {
+const Main = ({ userInfo }) => {
   const { userName, imageURL } = userInfo;
 
   return (
-    <NavbarMainStyled>
+    <MainContainer>
       <h1>
         안녕하세요, {userName}님
         <img src={imageURL} alt={userName} />
@@ -84,21 +84,21 @@ const NavbarMain = ({ userInfo }) => {
         <p>멤버십포인트 : 000원</p>
         <p>주문내역 : 0건</p>
       </div>
-    </NavbarMainStyled>
+    </MainContainer>
   );
 };
 
-const NavbarLoginButton = ({ goToLoginPage }) => {
+const LoginButton = ({ goToLoginPage }) => {
   return (
-    <ButtonStyled type="button" onClick={goToLoginPage}>
+    <Button type="button" onClick={goToLoginPage}>
       로그인
-    </ButtonStyled>
+    </Button>
   );
 };
 
-const NavbarFooter = ({ loginFlag }) => {
+const Footer = ({ loginFlag }) => {
   return (
-    <NavbarFooterStyled>
+    <FooterContainer>
       {loginFlag && (
         <>
           <div>
@@ -111,7 +111,7 @@ const NavbarFooter = ({ loginFlag }) => {
           </div>
         </>
       )}
-    </NavbarFooterStyled>
+    </FooterContainer>
   );
 };
 

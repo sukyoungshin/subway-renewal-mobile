@@ -1,9 +1,9 @@
 import { PaginationList, Item } from "./CarouselPagination.style";
 
-const CarouselPagination = ({ AdContents, selectedId, handleClick }) => {
+const CarouselPagination = ({ CarouselContents, selectedId, handleClick }) => {
   return (
     <PaginationList>
-      {AdContents.map((content) => (
+      {CarouselContents.map((content) => (
         <Item
           key={content.id}
           isSelected={content.id === selectedId}

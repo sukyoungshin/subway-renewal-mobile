@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const FloatButtonStyled = styled.button`
+export const Button = styled.button`
   display: block;
   margin: 0 auto;
   width: 100%;

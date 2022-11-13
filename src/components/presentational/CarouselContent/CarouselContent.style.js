@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContentWrapper = styled.section`
+export const Container = styled.section`
   padding: 16px;
   width: 100%;
   height: 232px;
@@ -19,7 +19,7 @@ export const ContentWrapper = styled.section`
   z-index: ${(props) => (props.isSelected ? 5 : null)};
 `;
 
-export const TitleWrapper = styled.article`
+export const Text = styled.article`
   h2:first-child {
     color: var(--color-yellow);
     font-size: var(--font-size-20);
@@ -30,7 +30,7 @@ export const TitleWrapper = styled.article`
   }
 `;
 
-export const EventWrapper = styled.article`
+export const Event = styled.article`
   color: var(--color-white);
   font-size: var(--font-size-14);
 

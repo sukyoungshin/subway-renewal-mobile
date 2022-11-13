@@ -11,7 +11,7 @@ export const Container = styled.article`
   gap: 32px;
 `;
 
-export const MenuWrapper = styled.div`
+export const Menu = styled.div`
   padding: 16px;
   width: 270px;
   height: 260px;

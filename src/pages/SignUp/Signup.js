@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { FloatButton } from "components";
+import { CtaButton } from "components";
 import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from "react-icons/ai";
 import { Container, Form, Footer, Button } from "./SignUp.style";
 import {
   useAddrSearchButton,
   useCTAButton,
   useFormDataHadling,
-  usePasswordHideAndShow,
+  usePasswordHideAndShow
 } from "./hooks";
 
 const CHECKBOX = "checkbox";
@@ -14,7 +14,7 @@ const Signup = () => {
   const { userInfo, setUserInfo, handleInputData } = useFormDataHadling();
   const { inputRef, isVisible, handleVisibleButton } = usePasswordHideAndShow();
   const { isBtnActivated, setIsBtnActivated, handleSubmitForm } = useCTAButton({
-    userInfo,
+    userInfo
   });
   const { tempAddr, HandlePopUp } = useAddrSearchButton();
   const handleAgreementAndCTAbuttonActivate = (e) => {
@@ -28,7 +28,7 @@ const Signup = () => {
   useEffect(() => {
     setUserInfo({
       ...userInfo,
-      useraddr: tempAddr,
+      useraddr: tempAddr
     });
     // eslint-disable-next-line
   }, [tempAddr]);
@@ -108,7 +108,7 @@ const Signup = () => {
         </fieldset>
       </Form>
 
-      <FloatButton
+      <CtaButton
         type="submit"
         form="signup-form"
         isBtnActivated={isBtnActivated}

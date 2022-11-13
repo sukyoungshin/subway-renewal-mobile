@@ -10,9 +10,9 @@ import {
   AmountRangeStyled,
   OptionListStyled,
   CheckBoxButtonStyled,
-  CheckBoxLabelStyled,
+  CheckBoxLabelStyled
 } from "./Veggie.style";
-import { FloatButton, ImgSpinner } from "components";
+import { CtaButton, Spinner } from "components";
 import { vegetables } from "mock/food-data";
 import { BASEURL } from "config";
 import { useCTAButton, useSelectAmountOfVeg } from "./hooks";
@@ -23,7 +23,7 @@ const Veggie = () => {
     step,
     selectedCheckBox,
     handleAmountVeg,
-    handleStepChange,
+    handleStepChange
   } = useSelectAmountOfVeg();
   const handleOrderProcess = useCTAButton({ step });
 
@@ -67,7 +67,7 @@ const Veggie = () => {
                 </AmountButtonStyled>
               </VegArticleHeaderStyled>
               <ContentWrapperStyled>
-                <ImgSpinner src={`${BASEURL}${veg.imgSrc}`} alt={veg.nameKor} />
+                <Spinner src={`${BASEURL}${veg.imgSrc}`} alt={veg.nameKor} />
               </ContentWrapperStyled>
               <ContentWrapperStyled>
                 <AmountRangeStyled
@@ -85,7 +85,7 @@ const Veggie = () => {
         </VegListGridStyled>
       </SectionStyled>
 
-      <FloatButton
+      <CtaButton
         isBtnActivated={true}
         handleOrderProcess={handleOrderProcess}
         label="야채 선택 (4 / 7)"
