@@ -6,7 +6,7 @@ import {
   Title,
   AddressInput,
   Label,
-  Container
+  Container,
 } from "./Addr.style";
 import { useMarkerLocation, useCTAButton, useKakaoMap } from "./hooks";
 
@@ -16,7 +16,7 @@ const Addr = () => {
   const { isSelectedSubway, setMarkerLocation } = useMarkerLocation();
   const { isBtnActivated, setIsBtnActivated, HandleOrderStart } = useCTAButton({
     addrValue,
-    isSelectedSubway
+    isSelectedSubway,
   });
   // eslint-disable-next-line
   const handleMarkerAndButton = useCallback((place) => () => {

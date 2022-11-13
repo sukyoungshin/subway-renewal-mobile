@@ -5,7 +5,7 @@ import {
   MapViewer,
   SubwaysList,
   Subway,
-  Span
+  Span,
 } from "./Map.style";
 
 const Map = ({ addrValue, subwayPlaces, handleMarkerAndButton }) => {
