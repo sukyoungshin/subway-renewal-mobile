@@ -1,5 +1,6 @@
 import React from "react";
-import { BASEURL, breads, breadOptionLists } from "mock/Datas";
+import { BASEURL } from "config";
+import { breads, breadOptionLists } from "mock/food-data";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FloatButton, ImgSpinner } from "components";
 import {
@@ -115,9 +116,8 @@ const Bread = () => {
       <FloatButton
         isBtnActivated={isBtnActivated}
         handleOrderProcess={handleOrderProcess}
-      >
-        빵 선택 (2 / 7)
-      </FloatButton>
+        label="빵 선택 (2 / 7)"
+      />
     </MainStyled>
   );
 };

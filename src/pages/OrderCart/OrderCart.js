@@ -1,5 +1,5 @@
 import React from "react";
-import { BASEURL } from "mock/Datas";
+import { BASEURL } from "config";
 import { FloatButton, ImgSpinner } from "components";
 import { MainStyled, MenuCardStyled, SectionStyled } from "./OrderCart.style";
 import { usePageMove, useReduxSelector } from "./hooks";
@@ -28,9 +28,8 @@ const Empty = ({ handleOrderProcess }) => {
       <FloatButton
         isBtnActivated={true}
         handleOrderProcess={handleOrderProcess}
-      >
-        주문하러 가기 :)
-      </FloatButton>
+        label="주문하러 가기 :)"
+      />
     </>
   );
 };

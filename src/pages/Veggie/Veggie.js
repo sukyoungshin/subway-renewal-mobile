@@ -13,7 +13,8 @@ import {
   CheckBoxLabelStyled,
 } from "./Veggie.style";
 import { FloatButton, ImgSpinner } from "components";
-import { BASEURL, vegetables } from "mock/Datas";
+import { vegetables } from "mock/food-data";
+import { BASEURL } from "config";
 import { useCTAButton, useSelectAmountOfVeg } from "./hooks";
 
 const Veggie = () => {
@@ -87,9 +88,8 @@ const Veggie = () => {
       <FloatButton
         isBtnActivated={true}
         handleOrderProcess={handleOrderProcess}
-      >
-        야채 선택 (4 / 7)
-      </FloatButton>
+        label="야채 선택 (4 / 7)"
+      />
     </MainStyled>
   );
 };

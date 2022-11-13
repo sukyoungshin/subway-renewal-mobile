@@ -77,9 +77,8 @@ const Addr = () => {
           type="submit"
           form="addrsearch-form"
           isBtnActivated={isBtnActivated}
-        >
-          주문하기
-        </FloatButton>
+          label="주문하기"
+        />
       </FormStyled>
     </MainStyled>
   );

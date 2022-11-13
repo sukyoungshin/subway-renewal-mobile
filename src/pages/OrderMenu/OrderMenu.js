@@ -1,5 +1,5 @@
 import React from "react";
-import { BASEURL } from "mock/Datas";
+import { BASEURL } from "config";
 import { RiDeleteBinLine } from "react-icons/ri";
 import {
   MainStyled,

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { MenuCategories, TabContents } from "mock/Datas";
+import { MenuCategories, TabContents } from "mock/tab-data";
 import LINK from "constants/link";
 
 export const useSelectCategoryAndMenu = () => {

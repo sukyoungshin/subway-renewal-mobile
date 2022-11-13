@@ -5,16 +5,16 @@ import { Default, Sandwiches, Salads, Wraps } from "./food-data";
 export const NavCategories = [
   {
     pathName: LINK.MAIN,
-    categoryName: "메인화면"
+    categoryName: "메인화면",
   },
   {
     pathName: LINK.ADDR,
-    categoryName: "주문하기"
+    categoryName: "주문하기",
   },
   {
     pathName: LINK.CART,
-    categoryName: "장바구니"
-  }
+    categoryName: "장바구니",
+  },
   // {
   //   pathName : LINK.TRACK,
   //   categoryName: '배송조회',
@@ -27,26 +27,26 @@ export const MenuCategories = [
     id: 0,
     title: "기본메뉴",
     titleEng: "Default",
-    imgSrc: "/sandwich/italianbmt.webp"
+    imgSrc: "/sandwich/italianbmt.webp",
   },
   {
     id: 1,
     title: "샌드위치",
     titleEng: "Sandwiches",
-    imgSrc: "/sandwich/eggmayo.webp"
+    imgSrc: "/sandwich/eggmayo.webp",
   },
   {
     id: 2,
     title: "샐러드",
     titleEng: "Salads",
-    imgSrc: "/salad/shrimp.webp"
+    imgSrc: "/salad/shrimp.webp",
   },
   {
     id: 3,
     title: "랩기타",
     titleEng: "Wraps",
-    imgSrc: "/wrap/shrimp_egg_grilled_wrap.webp"
-  }
+    imgSrc: "/wrap/shrimp_egg_grilled_wrap.webp",
+  },
 ];
 
 /** Order페이지, 메뉴 카테고리 탭 */
@@ -54,5 +54,5 @@ export const TabContents = {
   [MenuCategories[0].titleEng]: Default,
   [MenuCategories[1].titleEng]: Sandwiches,
   [MenuCategories[2].titleEng]: Salads,
-  [MenuCategories[3].titleEng]: Wraps
+  [MenuCategories[3].titleEng]: Wraps,
 };

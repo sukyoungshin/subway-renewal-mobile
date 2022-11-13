@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { BASEURL, sauces, sauceOptionLists } from "mock/Datas";
+import { sauces, sauceOptionLists } from "mock/food-data";
+import { BASEURL } from "config";
 import { FloatButton, ImgSpinner } from "components";
 import {
   MainStyled,
@@ -94,9 +95,8 @@ const Sauce = () => {
       <FloatButton
         isBtnActivated={isBtnActivated}
         handleOrderProcess={handleOrderProcess}
-      >
-        소스 선택 (5 / 7)
-      </FloatButton>
+        label="소스 선택 (5 / 7)"
+      />
     </MainStyled>
   );
 };

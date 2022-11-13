@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainWrapperStyled = styled.main`
+export const Container = styled.main`
   padding: 0 16px;
   width: 100%;
   height: auto;
@@ -8,7 +8,7 @@ export const MainWrapperStyled = styled.main`
   position: relative;
 `;
 
-export const FormWrapperStyled = styled.form`
+export const Form = styled.form`
   margin: 48px 0 0 0;
   width: 100%;
   height: calc(100% - 48px);
@@ -67,7 +67,7 @@ export const FormWrapperStyled = styled.form`
   }
 `;
 
-export const ButtonStyled = styled.button`
+export const Button = styled.button`
   width: 24px;
   height: 24px;
 
@@ -84,7 +84,7 @@ export const ButtonStyled = styled.button`
   }
 `;
 
-export const FooterStyled = styled.footer`
+export const Footer = styled.footer`
   margin: 24px 0 8px 0;
   height: 12px;
   font-size: var(--font-size-10);

@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { vegetables } from "mock/Datas";
+import { vegetables } from "mock/food-data";
 import LINK from "constants/link";
 
 const NEXT = "next";

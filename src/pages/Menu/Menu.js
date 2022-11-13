@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
-import { MenuCategories, BASEURL } from "mock/Datas";
+import { MenuCategories } from "mock/tab-data";
+import { BASEURL } from "config";
 import { BsCart2 } from "react-icons/bs";
 import {
   MainStyled,
@@ -88,9 +89,8 @@ const Menu = () => {
       <FloatButton
         isBtnActivated={isBtnActivated}
         handleOrderProcess={handleOrderProcess}
-      >
-        메뉴 선택 (1 / 7)
-      </FloatButton>
+        label="메뉴 선택 (1 / 7)"
+      />
     </MainStyled>
   );
 };

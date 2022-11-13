@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
 import { FloatButton } from "components";
 import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from "react-icons/ai";
-import {
-  MainWrapperStyled,
-  FormWrapperStyled,
-  FooterStyled,
-  ButtonStyled,
-} from "./SignUp.style";
+import { Container, Form, Footer, Button } from "./SignUp.style";
 import {
   useAddrSearchButton,
   useCTAButton,
@@ -39,8 +34,8 @@ const Signup = () => {
   }, [tempAddr]);
 
   return (
-    <MainWrapperStyled>
-      <FormWrapperStyled id="signup-form" onSubmit={handleSubmitForm}>
+    <Container>
+      <Form id="signup-form" onSubmit={handleSubmitForm}>
         <fieldset>
           <label htmlFor="username">아이디</label>
           <input
@@ -96,9 +91,9 @@ const Signup = () => {
             value={userInfo.useraddrDetail}
             onChange={handleAgreementAndCTAbuttonActivate}
           />
-          <ButtonStyled type="button" onClick={HandlePopUp}>
+          <Button type="button" onClick={HandlePopUp}>
             <AiOutlineSearch />
-          </ButtonStyled>
+          </Button>
         </fieldset>
         <fieldset>
           <input
@@ -111,42 +106,40 @@ const Signup = () => {
           />
           <label htmlFor="agreement">본인은 만 14세 이상입니다. (필수)</label>
         </fieldset>
-      </FormWrapperStyled>
+      </Form>
 
       <FloatButton
         type="submit"
         form="signup-form"
         isBtnActivated={isBtnActivated}
-      >
-        회원가입
-      </FloatButton>
-
+        label="회원가입"
+      />
       <FooterMessage />
-    </MainWrapperStyled>
+    </Container>
   );
 };
 
 const HideButton = ({ isVisible, handleVisibleButton }) => {
   return (
-    <ButtonStyled
+    <Button
       type="button"
       value={isVisible}
       onClick={handleVisibleButton}
       className="passwordhidden"
     >
       {isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}
-    </ButtonStyled>
+    </Button>
   );
 };
 
 const FooterMessage = () => {
   return (
-    <FooterStyled>
+    <Footer>
       <p>
         회원가입 시 <strong>서비스 이용 약관</strong>과{" "}
         <strong>개인정보보호정책</strong>에 동의하게 됩니다.
       </p>
-    </FooterStyled>
+    </Footer>
   );
 };
 

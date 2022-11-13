@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LINK from "constants/link";
-import { breads, breadOptionsDefault } from "mock/Datas";
+import { breads, breadOptionsDefault } from "mock/food-data";
 
 export const useSelectBreadOption = () => {
   const [breadOptions, setBreadOptions] = useState(breadOptionsDefault); // 선택한 빵 옵션을 저장

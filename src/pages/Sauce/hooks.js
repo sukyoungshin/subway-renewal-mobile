@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { sauceOptionLists, sauces } from "mock/Datas";
+import { sauceOptionLists, sauces } from "mock/food-data";
 import LINK from "constants/link";
 
 const OPTION_NOT_SELECTED = 1;

@@ -16,7 +16,7 @@ export const useSplashScreen = () => {
   );
 
   useEffect(() => {
-    if (isLoading === null) {
+    if (!isLoading) {
       sessionStorage.setItem(LOADING, true);
       setIsLoading(true);
     }

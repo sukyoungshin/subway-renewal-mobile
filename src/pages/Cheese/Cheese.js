@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
-import { BASEURL, cheeses } from "mock/Datas";
+import { BASEURL } from "config";
+import { cheeses } from "mock/food-data";
 import { AiOutlinePlus } from "react-icons/ai";
 import {
   MainStyled,
@@ -67,9 +68,8 @@ const Cheese = () => {
       <FloatButton
         isBtnActivated={isBtnActivated}
         handleOrderProcess={handleOrderProcess}
-      >
-        치즈 선택 (3 / 7)
-      </FloatButton>
+        label="치즈 선택 (3 / 7)"
+      />
     </MainStyled>
   );
 };
