@@ -15,13 +15,17 @@ export const Form = styled.form`
   justify-content: center;
   grid-gap: 16px;
   gap: 16px;
+`;
 
-  p,
-  label {
-    font-size: var(--font-size-14);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-black);
-  }
+export const Title = styled.h2`
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
+`;
+export const Label = styled.label`
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
 `;
 
 export const Fieldset = styled.fieldset`

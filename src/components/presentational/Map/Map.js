@@ -1,9 +1,11 @@
 import {
   MapContainer,
+  Paragraph,
   ResultInput,
   MapViewer,
   SubwaysList,
-  Subway
+  Subway,
+  Span
 } from "./Map.style";
 
 const Map = ({ addrValue, subwayPlaces, handleMarkerAndButton }) => {
@@ -11,7 +13,7 @@ const Map = ({ addrValue, subwayPlaces, handleMarkerAndButton }) => {
     <MapContainer padding={addrValue.length === 0 ? true : false}>
       <MapViewer id="map" isHidden={addrValue.length === 0 ? true : false} />
       {addrValue.length === 0 ? (
-        <p>주문 가능한 주변 매장을 알려드립니다.</p>
+        <Paragraph>주문 가능한 주변 매장을 알려드립니다.</Paragraph>
       ) : (
         <SubwaysList>
           {subwayPlaces.map((place) => (
@@ -23,7 +25,7 @@ const Map = ({ addrValue, subwayPlaces, handleMarkerAndButton }) => {
                 onClick={handleMarkerAndButton(place)}
                 readOnly
               />
-              <span>선택</span>
+              <Span>선택</Span>
             </Subway>
           ))}
         </SubwaysList>

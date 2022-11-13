@@ -10,12 +10,25 @@ export const MapContainer = styled.div`
   border: 1px solid var(--color-light-grey);
 
   position: relative;
+`;
+
+export const MapViewer = styled.div`
+  height: 100%;
+  min-height: 300px;
+  display: ${(props) => (props.isHidden ? "none" : "block")};
 
   p {
     color: var(--color-grey);
     font-size: var(--font-size-12);
     font-weight: var(--font-weight-normal);
+    line-height: 150%;
   }
+`;
+
+export const Paragraph = styled.p`
+  color: var(--color-grey);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-normal);
 `;
 
 export const SubwaysList = styled.ul`
@@ -40,11 +53,6 @@ export const Subway = styled.li`
   position: relative;
 `;
 
-export const MapViewer = styled.div`
-  height: 100%;
-  min-height: 300px;
-  display: ${(props) => (props.isHidden ? "none" : "block")};
-`;
 export const ResultInput = styled.input`
   padding-left: 22px;
   width: 100%; 
@@ -58,22 +66,6 @@ export const ResultInput = styled.input`
   color: var(--color-black);
   font-size: var(--font-size-12);
 
-  & + span {
-    display:inline-block;
-    
-    color: var(--main-text-color);
-    font-size: var(--font-size-12);
-
-    position: absolute; 
-    top: 50%; 
-    right: 5%;
-    transform: translateY(-50%);
-
-    a {
-      font-size: var(--font-size-12);
-    }
-  }
-
   &:is(:active, :focus) {
     color: var(--color-white);
     background-color: var(--color-green);
@@ -82,5 +74,21 @@ export const ResultInput = styled.input`
   &:focus + span {
     color: var(--color-white);
     background-color: var(--color-green);
+  }
+`;
+
+export const Span = styled.span`
+  display: inline-block;
+
+  color: var(--main-text-color);
+  font-size: var(--font-size-12);
+
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+
+  a {
+    font-size: var(--font-size-12);
   }
 `;

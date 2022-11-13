@@ -1,6 +1,13 @@
 import React, { useEffect, useCallback } from "react";
 import { Map, CtaButton } from "components";
-import { Form, Fieldset, AddressInput, Container } from "./Addr.style";
+import {
+  Form,
+  Fieldset,
+  Title,
+  AddressInput,
+  Label,
+  Container
+} from "./Addr.style";
 import { useMarkerLocation, useCTAButton, useKakaoMap } from "./hooks";
 
 const Addr = () => {
@@ -44,7 +51,7 @@ const Addr = () => {
     <Container>
       <Form id="addrsearch-form" onSubmit={HandleOrderStart}>
         <Fieldset>
-          <label htmlFor="addrSearch">배송지</label>
+          <Label htmlFor="addrSearch">배송지</Label>
           <AddressInput
             type="text"
             id="addrSearch"
@@ -57,7 +64,7 @@ const Addr = () => {
         </Fieldset>
 
         <Fieldset flex>
-          <p>주문가능매장</p>
+          <Title>주문가능매장</Title>
           <Map
             addrValue={addrValue}
             subwayPlaces={subwayPlaces}
