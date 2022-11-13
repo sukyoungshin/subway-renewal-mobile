@@ -10,7 +10,7 @@ export const useReduxSelector = () => {
     subwayName: order.generalInfo.subwayInfo.name,
     subwayAddr: order.generalInfo.subwayInfo.address,
     subwayPhone: order.generalInfo.subwayInfo.phone,
-    customerRequest: order.request.customerRequest
+    customerRequest: order.request.customerRequest,
   };
 
   return orderDetail;

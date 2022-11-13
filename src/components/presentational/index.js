@@ -16,3 +16,8 @@ export { default as FacebookLogin } from "./FacebookLogin/FacebookLogin";
 export { default as CartFullContent } from "./CartFullContent/CartFullContent";
 export { default as OrderDeliver } from "./OrderDeliver/OrderDeliver";
 export { default as OrderPickUp } from "./OrderPickUp/OrderPickUp";
+export { default as SauceOption } from "./SauceOption/SauceOption";
+export { default as Sauces } from "./Sauces/Sauces";
+export { default as SelectAll } from "./SelectAll/SelectAll";
+export { default as VeggieRange } from "./VeggieRange/VeggieRange";
+export { default as Map } from "./Map/Map";

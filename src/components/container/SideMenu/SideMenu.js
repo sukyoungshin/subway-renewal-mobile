@@ -13,7 +13,7 @@ import {
   FooterContainer,
   MainContainer,
   NavLinkStyled,
-  Button
+  Button,
 } from "./SideMenu.style";
 import { usePageMove, useReduxSelector } from "./hooks";
 

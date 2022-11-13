@@ -4,7 +4,7 @@ const CarouselContent = ({
   CarouselContents,
   selectedId,
   handleClick,
-  goToOrderPage
+  goToOrderPage,
 }) => {
   return (
     <>

@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
-export const MainStyled = styled.main`
+export const Container = styled.main`
   padding: 16px;
   width: 100%;
   min-height: calc(100% - 136px);
   position: relative;
 `;
 
-export const SectionStyled = styled.section`
+export const Section = styled.section`
   margin-top: 16px;
   width: 100%;
   height: auto;
@@ -17,29 +17,6 @@ export const SectionStyled = styled.section`
   grid-gap: 8px;
   gap: 8px;
 
-  h2 {
-    color: var(--color-black);
-    font-size: var(--font-size-14);
-
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    span {
-      display: inline-block;
-      color: var(--color-grey);
-      font-size: var(--font-size-12);
-      font-weight: var(--font-weight-normal);
-    }
-    span.subway-phone {
-      display: inline-flex;
-      flex-direction: row;
-      align-items: center;
-      grid-gap: 16px;
-      gap: 16px;
-    }
-  }
   p {
     line-height: 1.3rem;
     font-size: var(--font-size-12);
@@ -104,7 +81,31 @@ export const SectionStyled = styled.section`
   }
 `;
 
-export const TextAreaStyled = styled.textarea`
+export const Title = styled.h2`
+  color: var(--color-black);
+  font-size: var(--font-size-14);
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    display: inline-block;
+    color: var(--color-grey);
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-normal);
+  }
+  span.subway-phone {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 16px;
+    gap: 16px;
+  }
+`;
+
+export const TextArea = styled.textarea`
   padding: 8px;
   width: 100%;
   height: 100%;
@@ -119,7 +120,7 @@ export const TextAreaStyled = styled.textarea`
   resize: none;
 `;
 
-export const FloatButtonWrapperStyled = styled.div`
+export const ButtonWrapper = styled.div`
   margin-top: 16px;
   width: 100%;
   height: 48px;
@@ -137,7 +138,7 @@ export const FloatButtonWrapperStyled = styled.div`
   transition: all 0.3s;
 `;
 
-export const HalfSizeCTAButtonStyled = styled.button`
+export const Button = styled.button`
   width: 100%;
   height: 100%;
 

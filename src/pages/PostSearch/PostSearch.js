@@ -1,12 +1,7 @@
 import React from "react";
 import DaumPostcode from "react-daum-postcode";
 import { usePostSearchAndButtons } from "./hooks";
-import {
-  MainStyled,
-  SectionStyled,
-  ButtonWrapperStyled,
-  CTAButtonStyled,
-} from "./PostSearch.style";
+import { Container, Section, ButtonWrapper, Button } from "./PostSearch.style";
 
 const PostSearch = (data) => {
   const {
@@ -20,10 +15,10 @@ const PostSearch = (data) => {
   } = usePostSearchAndButtons(data);
 
   return (
-    <MainStyled>
+    <Container>
       <h1>배달주소 입력</h1>
       <section className="address-wrapper">
-        <SectionStyled>
+        <Section>
           <h2>- 주소 : </h2>
           <DaumPostcode onComplete={handleAddress} />
           {roadAddress !== "" && (
@@ -34,8 +29,8 @@ const PostSearch = (data) => {
               readOnly
             />
           )}
-        </SectionStyled>
-        <SectionStyled>
+        </Section>
+        <Section>
           <h2>- 상세주소 : </h2>
           <input
             type="text"
@@ -43,7 +38,7 @@ const PostSearch = (data) => {
             value={detailAddress}
             onChange={handleDetailAddress}
           />
-        </SectionStyled>
+        </Section>
       </section>
 
       <CTAButton
@@ -51,25 +46,25 @@ const PostSearch = (data) => {
         handleComplete={handleComplete}
         handleClose={handleClose}
       />
-    </MainStyled>
+    </Container>
   );
 };
 
 const CTAButton = ({ isBtnSelected, handleComplete, handleClose }) => {
   return (
-    <ButtonWrapperStyled>
-      <CTAButtonStyled
+    <ButtonWrapper>
+      <Button
         type="button"
         isBtnSelected={isBtnSelected}
         onClick={handleComplete}
       >
         입력완료
-      </CTAButtonStyled>
+      </Button>
 
-      <CTAButtonStyled type="button" onClick={handleClose}>
+      <Button type="button" onClick={handleClose}>
         다시입력 / 이전 페이지로 이동
-      </CTAButtonStyled>
-    </ButtonWrapperStyled>
+      </Button>
+    </ButtonWrapper>
   );
 };
 

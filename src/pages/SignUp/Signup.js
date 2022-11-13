@@ -1,12 +1,22 @@
 import React, { useEffect } from "react";
 import { CtaButton } from "components";
 import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from "react-icons/ai";
-import { Container, Form, Footer, Button } from "./SignUp.style";
+import {
+  Container,
+  Form,
+  Fieldset,
+  Label,
+  Text,
+  Checkbox,
+  Password,
+  Footer,
+  Button,
+} from "./SignUp.style";
 import {
   useAddrSearchButton,
   useCTAButton,
   useFormDataHadling,
-  usePasswordHideAndShow
+  usePasswordHideAndShow,
 } from "./hooks";
 
 const CHECKBOX = "checkbox";
@@ -14,7 +24,7 @@ const Signup = () => {
   const { userInfo, setUserInfo, handleInputData } = useFormDataHadling();
   const { inputRef, isVisible, handleVisibleButton } = usePasswordHideAndShow();
   const { isBtnActivated, setIsBtnActivated, handleSubmitForm } = useCTAButton({
-    userInfo
+    userInfo,
   });
   const { tempAddr, HandlePopUp } = useAddrSearchButton();
   const handleAgreementAndCTAbuttonActivate = (e) => {
@@ -28,7 +38,7 @@ const Signup = () => {
   useEffect(() => {
     setUserInfo({
       ...userInfo,
-      useraddr: tempAddr
+      useraddr: tempAddr,
     });
     // eslint-disable-next-line
   }, [tempAddr]);
@@ -36,9 +46,9 @@ const Signup = () => {
   return (
     <Container>
       <Form id="signup-form" onSubmit={handleSubmitForm}>
-        <fieldset>
-          <label htmlFor="username">아이디</label>
-          <input
+        <Fieldset>
+          <Label htmlFor="username">아이디</Label>
+          <Text
             type="text"
             id="username"
             placeholder="아이디를 입력해주세요."
@@ -46,10 +56,10 @@ const Signup = () => {
             onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="userpassword">비밀번호</label>
-          <input
+        </Fieldset>
+        <Fieldset>
+          <Label htmlFor="userpassword">비밀번호</Label>
+          <Password
             type="password"
             id="userpassword"
             placeholder="비밀번호를 입력해주세요"
@@ -58,14 +68,14 @@ const Signup = () => {
             ref={inputRef}
             required
           />
-          <HideButton
+          <PasswordToggleIcon
             isVisible={isVisible}
             handleVisibleButton={handleVisibleButton}
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="userphone">휴대폰번호</label>
-          <input
+        </Fieldset>
+        <Fieldset>
+          <Label htmlFor="userphone">휴대폰번호</Label>
+          <Text
             type="text"
             id="userphone"
             placeholder="ex) 000 - 000 - 0000"
@@ -73,10 +83,10 @@ const Signup = () => {
             onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="useraddr">주소</label>
-          <input
+        </Fieldset>
+        <Fieldset>
+          <Label htmlFor="useraddr">주소</Label>
+          <Text
             type="text"
             id="useraddr"
             placeholder="배송받을 주소지를 직접 입력하세요."
@@ -84,7 +94,7 @@ const Signup = () => {
             onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
-          <input
+          <Text
             type="text"
             id="useraddrDetail"
             placeholder="세부 주소를 입력하세요."
@@ -94,9 +104,9 @@ const Signup = () => {
           <Button type="button" onClick={HandlePopUp}>
             <AiOutlineSearch />
           </Button>
-        </fieldset>
-        <fieldset>
-          <input
+        </Fieldset>
+        <Fieldset>
+          <Checkbox
             type="checkbox"
             id="agreement"
             className="checkbox"
@@ -104,8 +114,10 @@ const Signup = () => {
             onChange={handleAgreementAndCTAbuttonActivate}
             required
           />
-          <label htmlFor="agreement">본인은 만 14세 이상입니다. (필수)</label>
-        </fieldset>
+          <Label htmlFor="agreement" className="checkbox-label">
+            본인은 만 14세 이상입니다. (필수)
+          </Label>
+        </Fieldset>
       </Form>
 
       <CtaButton
@@ -114,12 +126,12 @@ const Signup = () => {
         isBtnActivated={isBtnActivated}
         label="회원가입"
       />
-      <FooterMessage />
+      <Message />
     </Container>
   );
 };
 
-const HideButton = ({ isVisible, handleVisibleButton }) => {
+const PasswordToggleIcon = ({ isVisible, handleVisibleButton }) => {
   return (
     <Button
       type="button"
@@ -132,7 +144,7 @@ const HideButton = ({ isVisible, handleVisibleButton }) => {
   );
 };
 
-const FooterMessage = () => {
+const Message = () => {
   return (
     <Footer>
       <p>

@@ -18,7 +18,7 @@ export const useSubwayLogin = () => {
     const { id, value } = e.target;
     setUserInfo({
       ...userInfo,
-      [id]: value
+      [id]: value,
     });
   };
 
@@ -47,9 +47,9 @@ export const useSubwayLogin = () => {
       userInfo: {
         id: userInfo.userid,
         userName: userInfo.userid,
-        imageURL: null
+        imageURL: null,
       },
-      isLoggedIn: true
+      isLoggedIn: true,
     });
 
     window.alert(`${userInfo.userid}님, 로그인 되었습니다!`);
@@ -62,9 +62,9 @@ export const useSubwayLogin = () => {
       userInfo: {
         id: null,
         userName: null,
-        imageURL: null
+        imageURL: null,
       },
-      isLoggedIn: false
+      isLoggedIn: false,
     });
     window.alert("로그아웃 되었습니다.");
     navigate(LINK.ROOT);

@@ -1,20 +1,6 @@
 import React from "react";
-import {
-  MainStyled,
-  SectionStyled,
-  VegListGridStyled,
-  VegArticleStyled,
-  VegArticleHeaderStyled,
-  AmountButtonStyled,
-  ContentWrapperStyled,
-  AmountRangeStyled,
-  OptionListStyled,
-  CheckBoxButtonStyled,
-  CheckBoxLabelStyled
-} from "./Veggie.style";
-import { CtaButton, Spinner } from "components";
-import { vegetables } from "mock/food-data";
-import { BASEURL } from "config";
+import { Container, Section, Title, Paragraph } from "./Veggie.style";
+import { CtaButton, SelectAll, VeggieRange } from "components";
 import { useCTAButton, useSelectAmountOfVeg } from "./hooks";
 
 const Veggie = () => {
@@ -23,74 +9,34 @@ const Veggie = () => {
     step,
     selectedCheckBox,
     handleAmountVeg,
-    handleStepChange
+    handleStepChange,
   } = useSelectAmountOfVeg();
   const handleOrderProcess = useCTAButton({ step });
 
   return (
-    <MainStyled>
-      <SectionStyled style={{ marginTop: "32px" }}>
-        <h2>옵션선택</h2>
-        <p className="description">원하시는 야채를 선택하세요.</p>
-        <article>
-          <ul className="option-wrapper">
-            <OptionListStyled>
-              <CheckBoxButtonStyled
-                type="checkbox"
-                id="checkall"
-                name="체크박스"
-                checked={isChecked}
-                onChange={selectedCheckBox}
-              />
-              <CheckBoxLabelStyled htmlFor="checkall">
-                전체선택 ( 수량 : 중간 )
-              </CheckBoxLabelStyled>
-            </OptionListStyled>
-          </ul>
-        </article>
-      </SectionStyled>
-      <SectionStyled>
-        <h2>야채선택</h2>
-        <VegListGridStyled>
-          {vegetables.map((veg) => (
-            <VegArticleStyled
-              key={veg.id}
-              isMenuSelected={!(step[veg.id] < 10)}
-            >
-              <VegArticleHeaderStyled>
-                <AmountButtonStyled onClick={handleAmountVeg(veg.id, "prev")}>
-                  -
-                </AmountButtonStyled>
-                <label htmlFor={veg.id}>{veg.nameKor}</label>
-                <AmountButtonStyled onClick={handleAmountVeg(veg.id, "next")}>
-                  +
-                </AmountButtonStyled>
-              </VegArticleHeaderStyled>
-              <ContentWrapperStyled>
-                <Spinner src={`${BASEURL}${veg.imgSrc}`} alt={veg.nameKor} />
-              </ContentWrapperStyled>
-              <ContentWrapperStyled>
-                <AmountRangeStyled
-                  id={veg.id}
-                  type="range"
-                  min="0"
-                  max="100"
-                  step="10"
-                  value={step[veg.id]}
-                  onChange={handleStepChange(veg.id)}
-                />
-              </ContentWrapperStyled>
-            </VegArticleStyled>
-          ))}
-        </VegListGridStyled>
-      </SectionStyled>
+    <Container>
+      <Section style={{ marginTop: "32px" }}>
+        <Title>옵션선택</Title>
+        <Paragraph className="description">
+          원하시는 야채를 선택하세요.
+        </Paragraph>
+        <SelectAll isChecked={isChecked} selectedCheckBox={selectedCheckBox} />
+      </Section>
+      <Section>
+        <Title>야채선택</Title>
+        <VeggieRange
+          step={step}
+          handleAmountVeg={handleAmountVeg}
+          handleStepChange={handleStepChange}
+        />
+      </Section>
 
       <CtaButton
         isBtnActivated={true}
         handleOrderProcess={handleOrderProcess}
         label="야채 선택 (4 / 7)"
       />
-    </MainStyled>
+    </Container>
   );
 };
 

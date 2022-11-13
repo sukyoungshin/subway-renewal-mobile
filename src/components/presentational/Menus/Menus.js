@@ -7,13 +7,13 @@ import {
   MenuList,
   Button,
   MenuName,
-  MenuImage
+  MenuImage,
 } from "./Menus.style";
 
 const Menus = ({
   menuId,
   handleSelectMenuAndBtnActive,
-  currentSelectedMenuItems
+  currentSelectedMenuItems,
 }) => {
   return (
     <Container>

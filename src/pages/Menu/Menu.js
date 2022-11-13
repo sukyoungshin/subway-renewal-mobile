@@ -11,7 +11,7 @@ const Menu = () => {
     currentMenu,
     currentSelectedMenuItems,
     handleOrderMenu,
-    handleButtonActive
+    handleButtonActive,
   } = useSelectCategoryAndMenu();
   const { isBtnActivated, setIsBtnActivated, handleOrderProcess } =
     useCTAButton({ currentMenu });

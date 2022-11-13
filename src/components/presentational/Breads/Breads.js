@@ -8,7 +8,7 @@ import {
   Button,
   MenuName,
   MenuImage,
-  MenuPrice
+  MenuPrice,
 } from "./Breads.style";
 
 const Breads = ({ menuId, handleSelectBread }) => {

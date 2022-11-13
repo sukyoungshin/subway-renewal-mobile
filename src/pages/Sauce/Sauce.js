@@ -1,18 +1,6 @@
 import React, { useCallback } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
-import { sauces, sauceOptionLists } from "mock/food-data";
-import { BASEURL } from "config";
-import { CtaButton, Spinner } from "components";
-import {
-  MainStyled,
-  SectionStyled,
-  MenuListGridStyled,
-  MenuArticleStyled,
-  OrderButtonStyled,
-  OptionListStyled,
-  InputRadioStyled,
-  LabelRadioStyled
-} from "./Sauce.style";
+import { CtaButton, SauceOption, Sauces } from "components";
+import { Container, Section } from "./Sauce.style";
 import { useCTAButton, useSelectOptionAndMenu } from "./hooks";
 
 const Sauce = () => {
@@ -29,75 +17,30 @@ const Sauce = () => {
           nameKor: nameKor,
           description: description,
           imgSrc: imgSrc,
-          defaultChecked: defaultChecked
+          defaultChecked: defaultChecked,
         });
         setIsBtnActivated(true);
       }
   );
 
   return (
-    <MainStyled>
-      <SectionStyled style={{ marginTop: "32px" }}>
+    <Container>
+      <Section style={{ marginTop: "32px" }}>
         <h2>옵션선택 (다중선택)</h2>
-        <article>
-          <ul className="option-wrapper">
-            {sauceOptionLists.map((list) => (
-              <OptionListStyled key={list.id}>
-                <InputRadioStyled
-                  type="radio"
-                  id={list.id}
-                  name={list.radioGroup}
-                  checked={isChecked === list.id}
-                  onChange={selectedRadio(list.id)}
-                />
-                <LabelRadioStyled htmlFor={list.radioGroup}>
-                  {list.name}
-                </LabelRadioStyled>
-              </OptionListStyled>
-            ))}
-          </ul>
-        </article>
-      </SectionStyled>
+        <SauceOption isChecked={isChecked} selectedRadio={selectedRadio} />
+      </Section>
 
-      <SectionStyled>
+      <Section>
         <h2>소즈/시즈닝 선택</h2>
-        <MenuListGridStyled>
-          {sauces.map((sauce) => (
-            <MenuArticleStyled
-              key={sauce.id}
-              isMenuSelected={menuId === sauce.id}
-            >
-              <OrderButtonStyled
-                isMenuSelected={menuId === sauce.id}
-                onClick={handleSelectSauce(sauce)}
-              >
-                <AiOutlinePlus />
-              </OrderButtonStyled>
-              <div className="menu-name-wrapper">
-                <h3 className="menu-name-kor">{sauce.nameKor}</h3>
-                <p className="menu-name-eng">{sauce.nameEng}</p>
-              </div>
-              <div className="menu-img-wrapper">
-                <Spinner
-                  src={`${BASEURL}${sauce.imgSrc}`}
-                  alt={sauce.nameKor}
-                />
-                <span className="menu-description">{sauce.description}</span>
-              </div>
-              <p className="menu-price">
-                {sauce.price ? `${sauce.price}KRW` : null}
-              </p>
-            </MenuArticleStyled>
-          ))}
-        </MenuListGridStyled>
-      </SectionStyled>
+        <Sauces menuId={menuId} handleSelectSauce={handleSelectSauce} />
+      </Section>
 
       <CtaButton
         isBtnActivated={isBtnActivated}
         handleOrderProcess={handleOrderProcess}
         label="소스 선택 (5 / 7)"
       />
-    </MainStyled>
+    </Container>
   );
 };
 

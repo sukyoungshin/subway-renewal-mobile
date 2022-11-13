@@ -15,7 +15,7 @@ import {
   OrderMenu,
   OrderConfirm,
   Auth,
-  NoMatch
+  NoMatch,
 } from "pages";
 import { AppLayout, OrderPageLayout } from "components/Layout/index";
 import RouterPath from "constants/routerPath";
@@ -29,53 +29,53 @@ const elementLists = [
     children: [
       {
         index: true,
-        element: <Main />
+        element: <Main />,
       },
       {
         path: RouterPath.MAIN,
-        element: <Main />
+        element: <Main />,
       },
       {
         path: RouterPath.ADDR,
-        element: <Addr />
+        element: <Addr />,
       },
       {
         path: RouterPath.MENU,
-        element: render(withGoToMainIfAddrIsNotExistHOC(Menu))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Menu)),
       },
       {
         path: RouterPath.BREAD,
-        element: render(withGoToMainIfAddrIsNotExistHOC(Bread))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Bread)),
       },
       {
         path: RouterPath.CHEESE,
-        element: render(withGoToMainIfAddrIsNotExistHOC(Cheese))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Cheese)),
       },
       {
         path: RouterPath.VEGGIE,
-        element: render(withGoToMainIfAddrIsNotExistHOC(Veggie))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Veggie)),
       },
       {
         path: RouterPath.SAUCE,
-        element: render(withGoToMainIfAddrIsNotExistHOC(Sauce))
+        element: render(withGoToMainIfAddrIsNotExistHOC(Sauce)),
       },
       {
         path: RouterPath.SIGNUP,
-        element: <Signup />
+        element: <Signup />,
       },
       {
         path: RouterPath.SEARCH,
-        element: <PostSearch />
+        element: <PostSearch />,
       },
       {
         path: RouterPath.OAUTH,
-        element: <Auth />
+        element: <Auth />,
       },
       {
         path: RouterPath.NOMATCH,
-        element: <NoMatch />
-      }
-    ]
+        element: <NoMatch />,
+      },
+    ],
   },
   {
     path: RouterPath.ORDER,
@@ -83,30 +83,30 @@ const elementLists = [
     children: [
       {
         index: true,
-        element: render(withGoToMainIfAddrIsNotExistHOC(OrderMenu))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderMenu)),
       },
       {
         path: RouterPath.ORDER,
-        element: render(withGoToMainIfAddrIsNotExistHOC(OrderMenu))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderMenu)),
       },
       {
         path: RouterPath.INFO,
-        element: render(withGoToMainIfAddrIsNotExistHOC(OrderDetail))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderDetail)),
       },
       {
         path: RouterPath.CONFIRM,
-        element: render(withGoToMainIfAddrIsNotExistHOC(OrderConfirm))
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderConfirm)),
       },
       {
         path: RouterPath.CART,
-        element: render(withGoToMainIfAddrIsNotExistHOC(OrderCart))
-      }
-    ]
+        element: render(withGoToMainIfAddrIsNotExistHOC(OrderCart)),
+      },
+    ],
   },
   {
     path: RouterPath.LOGIN,
-    element: <Login />
-  }
+    element: <Login />,
+  },
 ];
 
 const Elements = () => {

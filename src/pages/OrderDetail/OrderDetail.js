@@ -2,18 +2,19 @@ import React from "react";
 import { orderSelector } from "reducers";
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
 import {
-  MainStyled,
-  SectionStyled,
-  FloatButtonWrapperStyled,
-  HalfSizeCTAButtonStyled,
-  TextAreaStyled
+  Container,
+  Section,
+  ButtonWrapper,
+  Button,
+  TextArea,
+  Title,
 } from "./OrderDetail.style";
 import { useSelector } from "react-redux";
 import {
   useConditionAgreement,
   useCTAButtons,
   useCustomerRequest,
-  useSelectDeliverOrPickUp
+  useSelectDeliverOrPickUp,
 } from "./hooks";
 
 const DELIVER = "deliver";
@@ -35,19 +36,19 @@ const OrderDetail = () => {
   };
 
   return (
-    <MainStyled>
-      <SectionStyled style={{ marginTop: "32px" }}>
-        <h2>배송받으실 주소지</h2>
+    <Container>
+      <Section style={{ marginTop: "32px" }}>
+        <Title>배송받으실 주소지</Title>
         <article>
           <ul className="addr-wrapper">
             <li>{order.generalInfo.customerInfo}</li>
             <li>고객 이름, 연락처</li>
           </ul>
         </article>
-      </SectionStyled>
+      </Section>
 
-      <SectionStyled>
-        <h2>배송방법</h2>
+      <Section>
+        <Title>배송방법</Title>
         <article>
           <ul className="deliver-wrapper">
             <li>
@@ -74,10 +75,10 @@ const OrderDetail = () => {
             </li>
           </ul>
         </article>
-      </SectionStyled>
+      </Section>
 
-      <SectionStyled>
-        <h2>
+      <Section>
+        <Title>
           주문하신 매장
           <span>
             {order.generalInfo.subwayInfo.name}{" "}
@@ -91,11 +92,11 @@ const OrderDetail = () => {
               (🔗홈페이지)
             </a>
           </span>
-        </h2>
-      </SectionStyled>
+        </Title>
+      </Section>
 
-      <SectionStyled>
-        <h2>
+      <Section>
+        <Title>
           매장연락처
           <span className="subway-phone">
             <span>{order.generalInfo.subwayInfo.phone}</span>
@@ -103,20 +104,20 @@ const OrderDetail = () => {
               <BsFillTelephoneForwardFill />
             </span>
           </span>
-        </h2>
-      </SectionStyled>
+        </Title>
+      </Section>
 
-      <SectionStyled>
-        <h2>주문 요청사항</h2>
-        <TextAreaStyled
+      <Section>
+        <Title>주문 요청사항</Title>
+        <TextArea
           placeholder="매장에 요청사항이 있으시면 여기에 입력해주세요"
           value={customerOrderRequest}
           onChange={handleOrderRequest}
         />
-      </SectionStyled>
+      </Section>
 
-      <SectionStyled>
-        <h2 style={{ display: "none" }}>주문동의</h2>
+      <Section>
+        <Title style={{ display: "none" }}>주문동의</Title>
         <p className="order-agreement">
           <input
             type="checkbox"
@@ -128,31 +129,27 @@ const OrderDetail = () => {
             주문 후 제조가 시작되면 주문을 취소할 수 없습니다.
           </label>
         </p>
-      </SectionStyled>
+      </Section>
 
       <FloatButton
         isActive={isActive}
         goToPrevPage={goToPrevPage}
         goToPaymentPage={goToPaymentPage}
       />
-    </MainStyled>
+    </Container>
   );
 };
 
 const FloatButton = ({ isActive, goToPrevPage, goToPaymentPage }) => {
   return (
-    <FloatButtonWrapperStyled>
-      <HalfSizeCTAButtonStyled type="button" onClick={goToPrevPage}>
+    <ButtonWrapper>
+      <Button type="button" onClick={goToPrevPage}>
         이전페이지
-      </HalfSizeCTAButtonStyled>
-      <HalfSizeCTAButtonStyled
-        type="button"
-        isActive={isActive}
-        onClick={goToPaymentPage}
-      >
+      </Button>
+      <Button type="button" isActive={isActive} onClick={goToPaymentPage}>
         결제하기
-      </HalfSizeCTAButtonStyled>
-    </FloatButtonWrapperStyled>
+      </Button>
+    </ButtonWrapper>
   );
 };
 

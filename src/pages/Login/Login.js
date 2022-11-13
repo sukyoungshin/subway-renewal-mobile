@@ -10,7 +10,7 @@ import {
   SubwayLogo,
   Container,
   SignUpWrapper,
-  SignInTitle
+  SignInTitle,
 } from "./Login.style";
 
 const Login = () => {

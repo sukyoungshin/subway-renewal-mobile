@@ -2,20 +2,20 @@ import React from "react";
 import { BASEURL } from "config";
 import { RiDeleteBinLine } from "react-icons/ri";
 import {
-  MainStyled,
-  SectionStyled,
+  Container,
+  Section,
   MenuCardStyled,
   AmountButtonWrapperStyled,
-  FloatButtonWrapperStyled,
-  HalfSizeCTAButtonStyled,
+  ButtonWrapper,
+  Button,
   ButtonStyled,
-  DeleteButtonStyled
+  DeleteButtonStyled,
 } from "./OrderMenu.style";
 import { Spinner } from "components";
 import {
   useCountAmountOfItems,
   useCTAButtons,
-  useReduxSelector
+  useReduxSelector,
 } from "./hooks";
 
 const OrderMenu = () => {
@@ -24,8 +24,8 @@ const OrderMenu = () => {
   const { goToCartPage, goToOrderPage } = useCTAButtons();
 
   return (
-    <MainStyled>
-      <SectionStyled style={{ marginTop: "32px" }}>
+    <Container>
+      <Section style={{ marginTop: "32px" }}>
         <h2>주문메뉴</h2>
 
         <MenuCardStyled>
@@ -63,9 +63,9 @@ const OrderMenu = () => {
             </AmountButtonWrapperStyled>
           </article>
         </MenuCardStyled>
-      </SectionStyled>
+      </Section>
 
-      <SectionStyled style={{ marginTop: "24px" }}>
+      <Section style={{ marginTop: "24px" }}>
         <h2>결제정보</h2>
         <p>할인쿠폰</p>
         <p>결제수단</p>
@@ -78,23 +78,23 @@ const OrderMenu = () => {
           총 주문 금액
           <span>{order.category.price} krw</span>
         </p>
-      </SectionStyled>
+      </Section>
 
       <CTAButtons goToCartPage={goToCartPage} goToOrderPage={goToOrderPage} />
-    </MainStyled>
+    </Container>
   );
 };
 
 const CTAButtons = ({ goToCartPage, goToOrderPage }) => {
   return (
-    <FloatButtonWrapperStyled>
-      <HalfSizeCTAButtonStyled type="button" onClick={goToCartPage}>
+    <ButtonWrapper>
+      <Button type="button" onClick={goToCartPage}>
         장바구니 담기
-      </HalfSizeCTAButtonStyled>
-      <HalfSizeCTAButtonStyled type="button" onClick={goToOrderPage}>
+      </Button>
+      <Button type="button" onClick={goToOrderPage}>
         주문정보 (1 / 2)
-      </HalfSizeCTAButtonStyled>
-    </FloatButtonWrapperStyled>
+      </Button>
+    </ButtonWrapper>
   );
 };
 

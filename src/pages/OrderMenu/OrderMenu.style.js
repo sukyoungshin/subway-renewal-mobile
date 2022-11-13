@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const MainStyled = styled.main`
+export const Container = styled.main`
   padding: 16px;
   width: 100%;
   min-height: calc(100% - 136px);
   position: relative;
 `;
 
-export const SectionStyled = styled.section`
+export const Section = styled.section`
   width: 100%;
 
   display: inline-flex;
@@ -166,7 +166,7 @@ export const DeleteButtonStyled = styled(ButtonStyled)`
   }
 `;
 
-export const FloatButtonWrapperStyled = styled.div`
+export const ButtonWrapper = styled.div`
   margin-top: 16px;
   width: 100%;
   height: 48px;
@@ -184,7 +184,7 @@ export const FloatButtonWrapperStyled = styled.div`
   transition: all 0.3s;
 `;
 
-export const HalfSizeCTAButtonStyled = styled.button`
+export const Button = styled.button`
   width: 100%;
   height: 100%;
 

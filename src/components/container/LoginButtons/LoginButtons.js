@@ -2,7 +2,7 @@ import { ButtonsWrapper } from "./LoginButtons.style";
 import {
   GoogleLogin,
   KakaoLogin,
-  FacebookLogin
+  FacebookLogin,
 } from "components/presentational";
 
 const LoginButtons = () => {

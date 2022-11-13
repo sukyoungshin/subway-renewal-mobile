@@ -6,7 +6,7 @@ import {
   OrderButtonStyled,
   MenuIamge,
   MenuName,
-  MenuPrice
+  MenuPrice,
 } from "./Cheeses.style";
 import { Spinner } from "components";
 import { AiOutlinePlus } from "react-icons/ai";

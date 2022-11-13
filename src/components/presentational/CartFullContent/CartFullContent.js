@@ -3,7 +3,7 @@ import { Spinner } from "components/container/index";
 import {
   MenuCardStyled,
   MenuImage,
-  MenuDescription
+  MenuDescription,
 } from "./CartFullContent.style";
 
 const CartFullContent = ({ ItemArray }) => {

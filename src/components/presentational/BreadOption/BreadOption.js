@@ -5,7 +5,7 @@ import {
   OptionTabItem,
   OptionTabList,
   Radio,
-  Label
+  Label,
 } from "./BreadOption.style";
 
 const BreadOption = ({ selectedRadio }) => {
@@ -26,7 +26,7 @@ const BreadOption = ({ selectedRadio }) => {
                   name: nameEng,
                   nameKor: name,
                   bool: option["option1"].default,
-                  price: option["option1"].price
+                  price: option["option1"].price,
                 })}
               />
               <Label htmlFor={option["option1"].text}>
@@ -44,7 +44,7 @@ const BreadOption = ({ selectedRadio }) => {
                   nameKor: name,
                   name: nameEng,
                   bool: option["option2"].default,
-                  price: option["option2"].price
+                  price: option["option2"].price,
                 })}
               />
               <Label htmlFor={option["option2"].text}>

@@ -12,58 +12,75 @@ export const Form = styled.form`
   margin: 48px 0 0 0;
   width: 100%;
   height: calc(100% - 48px);
+`;
 
-  fieldset {
-    margin: 8px 0 0 0;
-    padding: 0;
-    width: 100%;
-    border: none;
+export const Fieldset = styled.fieldset`
+  margin: 8px 0 0 0;
+  padding: 0;
+  width: 100%;
+  border: none;
 
-    display: inline-flex;
-    grid-gap: 8px;
-    gap: 8px;
+  display: inline-flex;
+  grid-gap: 8px;
+  gap: 8px;
 
-    position: relative;
-  }
-  fieldset:first-child {
+  position: relative;
+
+  &:first-child {
     margin: 0 0 0 0;
   }
-  fieldset:last-child {
+  &:last-child {
     margin: 32px 0 16px 0;
     flex-direction: row;
     align-items: center;
   }
-  fieldset:not(:last-child) {
+  &:not(:last-child) {
     flex-direction: column;
   }
-  fieldset:nth-child(2) {
+  &:nth-child(2) {
     position: relative;
   }
+`;
 
-  label {
-    color: var(--color-black);
-    font-size: var(--font-size-14);
-  }
-  input.checkbox + label {
-    font-size: var(--font-size-12);
-  }
-  input,
-  input::placeholder {
+export const Input = styled.input`
+  padding-left: 16px;
+  height: 48px;
+
+  background-color: var(--color-transparent);
+  border-radius: 8px;
+
+  &::placehoder {
     color: var(--color-grey);
-  }
-  input,
-  input::placeholder {
     font-size: var(--font-size-12);
   }
-  input:not([type="checkbox"]) {
-    padding-left: 16px;
-    height: 48px;
+`;
 
-    background-color: var(--color-transparent);
-    border-radius: 8px;
+export const Password = styled(Input)``;
+
+export const Text = styled(Input)`
+  color: var(--color-grey);
+  padding-left: 16px;
+  height: 48px;
+
+  background-color: var(--color-transparent);
+  border-radius: 8px;
+`;
+
+export const Checkbox = styled.input`
+  accent-color: var(--color-green);
+
+  &::placehoder {
+    color: var(--color-grey);
+    font-size: var(--font-size-12);
   }
-  input[type="checkbox"] {
-    accent-color: var(--color-green);
+`;
+
+export const Label = styled.label`
+  color: var(--color-black);
+  font-size: var(--font-size-14);
+
+  &.checkbox-label {
+    font-size: var(--font-size-12);
   }
 `;
 

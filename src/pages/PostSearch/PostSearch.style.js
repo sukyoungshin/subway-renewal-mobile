@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const MainStyled = styled.main`
+export const Container = styled.main`
   padding: 16px;
   width: 100%;
   min-height: calc(100% - 136px);
@@ -20,7 +20,7 @@ export const MainStyled = styled.main`
   }
 `;
 
-export const SectionStyled = styled.section`
+export const Section = styled.section`
   width: 100%;
   display: inline-flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ export const SectionStyled = styled.section`
   }
 `;
 
-export const ButtonWrapperStyled = styled.div`
+export const ButtonWrapper = styled.div`
   width: 100%;
 
   display: inline-flex;
@@ -53,7 +53,7 @@ export const ButtonWrapperStyled = styled.div`
   gap: 16px;
 `;
 
-export const CTAButtonStyled = styled.button`
+export const Button = styled.button`
   width: 100%;
   height: 48px;
 

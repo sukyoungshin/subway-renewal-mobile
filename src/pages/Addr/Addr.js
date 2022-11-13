@@ -1,14 +1,6 @@
 import React, { useEffect, useCallback } from "react";
-import { CtaButton } from "components";
-import {
-  FormStyled,
-  FieldsetStyled,
-  MapWrapperStyled,
-  AddressInputStyled,
-  ResultInputStyled,
-  MapViewerStyled,
-  MainStyled
-} from "./Addr.style";
+import { Map, CtaButton } from "components";
+import { Form, Fieldset, AddressInput, Container } from "./Addr.style";
 import { useMarkerLocation, useCTAButton, useKakaoMap } from "./hooks";
 
 const Addr = () => {
@@ -49,11 +41,11 @@ const Addr = () => {
   }, []);
 
   return (
-    <MainStyled>
-      <FormStyled id="addrsearch-form" onSubmit={HandleOrderStart}>
-        <FieldsetStyled>
+    <Container>
+      <Form id="addrsearch-form" onSubmit={HandleOrderStart}>
+        <Fieldset>
           <label htmlFor="addrSearch">배송지</label>
-          <AddressInputStyled
+          <AddressInput
             type="text"
             id="addrSearch"
             name="addrSearch"
@@ -62,16 +54,16 @@ const Addr = () => {
             onClick={HandlePopUp}
             readOnly
           />
-        </FieldsetStyled>
+        </Fieldset>
 
-        <FieldsetStyled flex>
+        <Fieldset flex>
           <p>주문가능매장</p>
-          <MapViewer
+          <Map
             addrValue={addrValue}
             subwayPlaces={subwayPlaces}
             handleMarkerAndButton={handleMarkerAndButton}
           />
-        </FieldsetStyled>
+        </Fieldset>
 
         <CtaButton
           type="submit"
@@ -79,37 +71,8 @@ const Addr = () => {
           isBtnActivated={isBtnActivated}
           label="주문하기"
         />
-      </FormStyled>
-    </MainStyled>
-  );
-};
-
-const MapViewer = ({ addrValue, subwayPlaces, handleMarkerAndButton }) => {
-  return (
-    <MapWrapperStyled padding={addrValue.length === 0 ? true : false}>
-      <MapViewerStyled
-        id="map"
-        isHidden={addrValue.length === 0 ? true : false}
-      ></MapViewerStyled>
-      {addrValue.length === 0 ? (
-        <p>주문 가능한 주변 매장을 알려드립니다.</p>
-      ) : (
-        <ul className="placesList">
-          {subwayPlaces.map((place) => (
-            <li key={place.id}>
-              <ResultInputStyled
-                type="text"
-                name="placelists"
-                value={place.name}
-                onClick={handleMarkerAndButton(place)}
-                readOnly
-              />
-              <span>선택</span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </MapWrapperStyled>
+      </Form>
+    </Container>
   );
 };
 

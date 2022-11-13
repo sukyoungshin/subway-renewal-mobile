@@ -6,7 +6,7 @@ const CtaButton = ({
   form,
   isBtnActivated,
   handleOrderProcess,
-  label
+  label,
 }) => {
   return (
     <Button
