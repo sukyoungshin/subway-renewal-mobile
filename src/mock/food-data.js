@@ -1,115 +1,4 @@
-import LINK from "constants/link";
-
-/**************************** 
-  각 페이지별 카테고리리스트 &
-  상품데이터 저장한 파일 
-****************************/
-
-// Navbar 메뉴 카테고리
-export const NavCategories = [
-  {
-    pathName: LINK.MAIN,
-    categoryName: "메인화면",
-  },
-  {
-    pathName: LINK.ADDR,
-    categoryName: "주문하기",
-  },
-  {
-    pathName: LINK.CART,
-    categoryName: "장바구니",
-  },
-  // {
-  //   pathName : LINK.TRACK,
-  //   categoryName: '배송조회',
-  // },
-];
-
-// MAIN 추천메뉴 데이터리스트
-export const MenuRecommended = [
-  {
-    id: 1,
-    img: "",
-    imgDecript: "첫번째 이미지",
-    menuName: "다이어터를 위한11",
-    kcal: 245,
-  },
-  {
-    id: 2,
-    img: "",
-    imgDecript: "두번째 이미지",
-    menuName: "다이어터를 위한22",
-    kcal: 245,
-  },
-  {
-    id: 3,
-    img: "",
-    imgDecript: "세번째 이미지",
-    menuName: "다이어터를 위한333",
-    kcal: 245,
-  },
-];
-
-// Carousel 광고데이터
-export const AdContents = [
-  {
-    id: 0,
-    eventTitle: "신선하고 건강한",
-    eventTitle2: "글로벌 NO.1 샌드위치 브랜드",
-    eventName: "모바일앱 첫 주문시, 20% 할인 EVENT",
-    eventDate: "2021.11.21 ~ 2021.12.14",
-  },
-  {
-    id: 1,
-    eventTitle: "신선하고 건강한",
-    eventTitle2: "글로벌 NO.1 샌드위치 브랜드",
-    eventName: "써브웨이 앱으로 주문하면 배달비가 2000원!",
-    eventDate: "2021.11.21 ~",
-  },
-  {
-    id: 2,
-    eventTitle: "신선하고 건강한",
-    eventTitle2: "글로벌 NO.1 샌드위치 브랜드",
-    eventName: "SAMPLE",
-    eventDate: "2021.11.21 ~",
-  },
-];
-
-/************************
-  Order메뉴 카테고리 
-  및 카테고리별 리스트
-*************************/
-// Order 메뉴카테고리 (차후 추가예정)
-export const MenuCategories = [
-  {
-    id: 0,
-    title: "기본메뉴",
-    titleEng: "Default",
-    imgSrc: "/sandwich/italianbmt.webp",
-  },
-  {
-    id: 1,
-    title: "샌드위치",
-    titleEng: "Sandwiches",
-    imgSrc: "/sandwich/eggmayo.webp",
-  },
-  {
-    id: 2,
-    title: "샐러드",
-    titleEng: "Salads",
-    imgSrc: "/salad/shrimp.webp",
-  },
-  {
-    id: 3,
-    title: "랩기타",
-    titleEng: "Wraps",
-    imgSrc: "/wrap/shrimp_egg_grilled_wrap.webp",
-  },
-];
-
-export const BASEURL = `${process.env.PUBLIC_URL}/assets`;
-
-// 기본 셋팅된 메뉴
+/** 기본 셋팅된 메뉴 */
 export const Default = [
   {
     id: 0,
@@ -162,7 +51,8 @@ export const Default = [
     amount: 1,
   },
 ];
-// 샌드위치리스트
+
+/** 샌드위치 */
 export const Sandwiches = [
   {
     id: 0,
@@ -356,7 +246,7 @@ export const Sandwiches = [
   },
 ];
 
-// 샐러드 리스트
+/** 샐러드 */
 export const Salads = [
   {
     id: 0,
@@ -520,7 +410,7 @@ export const Salads = [
   },
 ];
 
-// 랩, 기타
+/** 랩, 기타 */
 export const Wraps = [
   {
     id: 0,
@@ -740,17 +630,7 @@ export const Wraps = [
   },
 ];
 
-// 카테고리 탭 (menu.js)
-export const TabContents = {
-  // 속성 접근자(bracket notation), Routing Design Patterns
-  [MenuCategories[0].titleEng]: Default,
-  [MenuCategories[1].titleEng]: Sandwiches,
-  [MenuCategories[2].titleEng]: Salads,
-  [MenuCategories[3].titleEng]: Wraps,
-};
-
-// 재료 리스트
-// 빵 옵션 (화면에 나타내줄)
+/** 빵 옵션 */
 export const breadOptionLists = [
   {
     id: 0,
@@ -821,7 +701,7 @@ export const breadOptionLists = [
     },
   },
 ];
-// 빵 옵션 기본값
+/** 빵 옵션 기본값 */
 export const breadOptionsDefault = [
   {
     id: 0,
@@ -853,7 +733,7 @@ export const breadOptionsDefault = [
   },
 ];
 
-// 빵 리스트`
+/** 빵 리스트 */
 export const breads = [
   {
     id: 0,
@@ -907,7 +787,7 @@ export const breads = [
   },
 ];
 
-// 치즈 리스트
+/** 치즈 리스트 */
 export const cheeses = [
   {
     id: 0,
@@ -939,7 +819,7 @@ export const cheeses = [
   },
 ];
 
-// 야채 리스트
+/** 야채 리스트 */
 export const vegetables = [
   {
     id: 0,
@@ -997,7 +877,7 @@ export const vegetables = [
   },
 ];
 
-// 소스 옵션
+/** 소스 옵션 */
 export const sauceOptionLists = [
   {
     id: 0,
@@ -1015,7 +895,7 @@ export const sauceOptionLists = [
   },
 ];
 
-// 소스 리스트
+/** 소스 리스트 */
 export const sauces = [
   {
     id: 0,
@@ -1125,7 +1005,7 @@ export const sauces = [
   },
 ];
 
-// 추가 리스트
+/** 추가 리스트 */
 export const extraOptions = [
   {
     id: 0,
@@ -1289,7 +1169,7 @@ export const extraOptions = [
   },
 ];
 
-// 음료 리스트
+/** 음료 리스트 */
 export const beverages = [
   {
     id: 0,
@@ -1333,7 +1213,7 @@ export const beverages = [
   },
 ];
 
-// 쿠키 리스트
+/** 쿠키 리스트 */
 export const cookies = [
   {
     id: 0,
