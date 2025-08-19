@@ -1,4 +1,4 @@
-import RouterPath from "./routerPath";
+import RouterPath from './routerPath';
 
 const LINK = {
   ROOT: `${RouterPath.ROOT}`,
