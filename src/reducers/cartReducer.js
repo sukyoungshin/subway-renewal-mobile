@@ -1,15 +1,15 @@
-import { initialState } from "./index.js";
+import { initialState } from './index.js';
 
 // 리듀서 함수 (장바구니 정보 업데이트)
 function cartReducer(state = initialState(), action) {
-  const GENERALINFO = "cart/generalInfo";
-  const CATEGORY = "cart/category";
-  const BREAD = "cart/bread";
-  const CHEESE = "cart/cheese";
-  const VEGGIE = "cart/veggie";
-  const SAUCE = "cart/sauce";
-  const ADDITIONAL_REQUEST = "cart/additionalRequest";
-  const ITEM_COUNT = "cart/itemCount";
+  const GENERALINFO = 'cart/generalInfo';
+  const CATEGORY = 'cart/category';
+  const BREAD = 'cart/bread';
+  const CHEESE = 'cart/cheese';
+  const VEGGIE = 'cart/veggie';
+  const SAUCE = 'cart/sauce';
+  const ADDITIONAL_REQUEST = 'cart/additionalRequest';
+  const ITEM_COUNT = 'cart/itemCount';
 
   switch (action.type) {
     case GENERALINFO:
