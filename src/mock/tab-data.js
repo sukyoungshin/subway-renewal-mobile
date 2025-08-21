@@ -1,19 +1,19 @@
-import LINK from "constants/link";
-import { Default, Sandwiches, Salads, Wraps } from "./food-data";
+import LINK from '@/constants/link';
+import { Default, Salads, Sandwiches, Wraps } from './food-data';
 
 /** 왼쪽상단 햄버거메뉴, 네비 카테고리 */
 export const NavCategories = [
   {
     pathName: LINK.MAIN,
-    categoryName: "메인화면",
+    categoryName: '메인화면',
   },
   {
     pathName: LINK.ADDR,
-    categoryName: "주문하기",
+    categoryName: '주문하기',
   },
   {
     pathName: LINK.CART,
-    categoryName: "장바구니",
+    categoryName: '장바구니',
   },
   // {
   //   pathName : LINK.TRACK,
@@ -25,27 +25,27 @@ export const NavCategories = [
 export const MenuCategories = [
   {
     id: 0,
-    title: "기본메뉴",
-    titleEng: "Default",
-    imgSrc: "/sandwich/italianbmt.webp",
+    title: '기본메뉴',
+    titleEng: 'Default',
+    imgSrc: '/sandwich/italianbmt.webp',
   },
   {
     id: 1,
-    title: "샌드위치",
-    titleEng: "Sandwiches",
-    imgSrc: "/sandwich/eggmayo.webp",
+    title: '샌드위치',
+    titleEng: 'Sandwiches',
+    imgSrc: '/sandwich/eggmayo.webp',
   },
   {
     id: 2,
-    title: "샐러드",
-    titleEng: "Salads",
-    imgSrc: "/salad/shrimp.webp",
+    title: '샐러드',
+    titleEng: 'Salads',
+    imgSrc: '/salad/shrimp.webp',
   },
   {
     id: 3,
-    title: "랩기타",
-    titleEng: "Wraps",
-    imgSrc: "/wrap/shrimp_egg_grilled_wrap.webp",
+    title: '랩기타',
+    titleEng: 'Wraps',
+    imgSrc: '/wrap/shrimp_egg_grilled_wrap.webp',
   },
 ];
 

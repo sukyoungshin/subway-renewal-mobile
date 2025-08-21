@@ -12,8 +12,8 @@ const initialState = {
 
 // 리듀서
 function authReducer(state = initialState, action) {
-  const LOGIN = "auth/login";
-  const LOGOUT = "auth/logout";
+  const LOGIN = 'auth/login';
+  const LOGOUT = 'auth/logout';
 
   switch (action.type) {
     case LOGIN:
