@@ -4,5 +4,9 @@
   status = 200
   force = false
 
+[build]
+  command = "yarn build"
+  publish = "dist"
+
 [build.environment]
 NODE_VERSION = "22.16.0"
