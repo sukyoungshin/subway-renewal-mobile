@@ -11,7 +11,6 @@ export const useSelectCategoryAndMenu = () => {
   const [menuId, setMenuId] = useState(0); //선택된 메뉴 버튼의 인덱싱#
 
   // 카테고리 클릭 버튼
-  // eslint-disable-next-line
   const handleButtonActive = (id, category) => {
     setCategoryId(id); // 선택된 버튼의 인덱싱값 저장
     setCategoryTitle(category); // 선택된 카테고리 저장
@@ -20,7 +19,6 @@ export const useSelectCategoryAndMenu = () => {
   // 선택된 카테고리 저장
   const [CategoryTitle, setCategoryTitle] = useState(MenuCategories[0].titleEng); // 'Default'
   const currentSelectedMenuItems = TabContents[CategoryTitle]; // 리액트에서는 Object를 child를 사용할 수 없기 때문에, Array로 만들어주었다.
-  // eslint-disable-next-line
   const handleOrderMenu = (id) => setMenuId(id);
 
   useEffect(() => {

@@ -41,6 +41,7 @@ export const usePasswordHideAndShow = () => {
   const [isVisible, setIsVisible] = useState(false);
   const handleVisibleButton = () => setIsVisible((prev) => !prev);
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isVisible ? (inputRef.current.type = TEXT) : (inputRef.current.type = PASSWORD);
   }, [isVisible]);
 
@@ -65,7 +66,6 @@ export const useAddrSearchButton = () => {
     };
 
     window.addEventListener('message', receiveMessage, false);
-    // eslint-disable-next-line
   }, []);
 
   return { tempAddr, HandlePopUp };

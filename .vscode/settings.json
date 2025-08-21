@@ -9,7 +9,7 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-   "search.exclude": {
+  "search.exclude": {
     "**/build": true,
     "**/node_modules": true
   }
