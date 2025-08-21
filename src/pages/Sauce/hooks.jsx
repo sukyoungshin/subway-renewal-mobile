@@ -44,7 +44,7 @@ export const useSelectOptionAndMenu = () => {
 
   // 옵션선택 버튼에 따라, 선택한 아이템 수정
   const selectedRadio = useCallback(
-    (id) => (e) => {
+    (id) => () => {
       // 옵션 === 리스트 (선택안함)
       if (id !== menuId) {
         setIsChecked(id);

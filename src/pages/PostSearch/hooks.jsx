@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const usePostSearchAndButtons = (data) => {
+export const usePostSearchAndButtons = () => {
   const [roadAddress, setRoadAddress] = useState(''); // 도로명주소
   const [detailAddress, setDetailAddress] = useState(''); // 상세주소
   const [fullAddress, setFullAddress] = useState(''); // 전체주소 (도로명 + 상세주소)
