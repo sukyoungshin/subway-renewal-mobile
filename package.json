@@ -24,7 +24,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint .",
-    "prettier": "prettier --write ."
+    "prettier": "prettier ."
   },
   "eslintConfig": {
     "extends": [
