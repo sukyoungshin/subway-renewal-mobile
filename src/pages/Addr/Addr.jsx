@@ -47,6 +47,7 @@ const Addr = () => {
     window.addEventListener('message', receiveMessage, false);
 
     return () => window.removeEventListener('message', receiveMessage, false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

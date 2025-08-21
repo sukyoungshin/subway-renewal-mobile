@@ -65,7 +65,6 @@ export const useAddrSearchButton = () => {
     };
 
     window.addEventListener('message', receiveMessage, false);
-    // eslint-disable-next-line
   }, []);
 
   return { tempAddr, HandlePopUp };

@@ -49,8 +49,8 @@ export const useSelectOptionAndMenu = () => {
       if (id !== menuId) {
         setIsChecked(id);
       }
-      // eslint-disable-next-line
     },
+    // eslint-disable-next-line
     []
   );
 

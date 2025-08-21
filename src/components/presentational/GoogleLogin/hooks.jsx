@@ -53,7 +53,6 @@ export const useGoogleLoginAndOut = () => {
     script.setAttribute('src', 'https://apis.google.com/js/platform.js');
     document.head.append(script);
     window.onSignIn = onSignIn;
-    // eslint-disable-next-line
   }, [onSignIn]);
 
   return { loginFlag, onSignOut };

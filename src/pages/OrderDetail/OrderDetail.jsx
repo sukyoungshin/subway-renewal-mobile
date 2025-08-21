@@ -24,7 +24,6 @@ const OrderDetail = () => {
   });
 
   const handleDelieverOrPickUp = (e) => handleRadioStatus(e.target.id);
-  // eslint-disable-next-line
   const handleAgreementAndBtnActivate = (e) => {
     handleCheckboxStatus(e);
     setIsActive((prev) => !prev);

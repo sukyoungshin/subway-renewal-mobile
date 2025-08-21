@@ -89,7 +89,6 @@ export const useSelectAmountOfVeg = () => {
     const vegAmounts = Object.values(step);
     const condition = vegAmounts.every((v) => v >= 10);
     if (condition) setIsChecked(true);
-    // eslint-disable-next-line
   }, [step]);
 
   // 야채 step 중 하나라도 0일 때, 전체선택 체크박스가 체크해제
@@ -105,7 +104,6 @@ export const useSelectAmountOfVeg = () => {
     const vegAmounts = Object.values(step);
     const condition = vegAmounts.every((v) => v === 0);
     if (condition) setIsChecked(false);
-    // eslint-disable-next-line
   }, [step]);
 
   return {

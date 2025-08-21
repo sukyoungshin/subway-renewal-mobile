@@ -207,8 +207,8 @@ export const useCTAButton = ({ addrValue, isSelectedSubway }) => {
         },
       });
       navigate(LINK.MENU);
-      // eslint-disable-next-line
     },
+    // eslint-disable-next-line
     [isBtnActivated, addrValue, isSelectedSubway]
   );
 
