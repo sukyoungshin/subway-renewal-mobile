@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { GlobalStyle } from '../styles/GlobalStyle.js';
-import PostSearch from './PostSearch/PostSearch.jsx';
+import PostSearch from './pages/PostSearch/PostSearch.jsx';
+import { GlobalStyle } from './styles/GlobalStyle.js';
 
 const rootElement = document.getElementById('wrap');
 
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
+    <>
       <GlobalStyle />
-      <PostSearch />
-    </React.StrictMode>
+      <React.StrictMode>
+        <PostSearch />
+      </React.StrictMode>
+    </>
   );
 }
