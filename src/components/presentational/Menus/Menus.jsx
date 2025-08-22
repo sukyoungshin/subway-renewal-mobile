@@ -1,5 +1,4 @@
 import { Spinner } from '@/components';
-import { BASEURL } from '@/config';
 import { BsCart2 } from 'react-icons/bs';
 import { Button, Container, MenuImage, MenuList, MenuName, MenuPrice } from './Menus.style';
 
@@ -16,7 +15,7 @@ const Menus = ({ menuId, handleSelectMenuAndBtnActive, currentSelectedMenuItems 
             <p>{nameEng}</p>
           </MenuName>
           <MenuImage isMenuSelected={menuId === id}>
-            <Spinner src={`${BASEURL}${imgSrc}`} alt={nameKor} />
+            <Spinner src={imgSrc} alt={nameKor} />
             <span>{description}</span>
           </MenuImage>
           <MenuPrice>{price} KRW</MenuPrice>

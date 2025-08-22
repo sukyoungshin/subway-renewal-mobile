@@ -1,5 +1,4 @@
 import { Spinner } from '@/components/container/index';
-import { BASEURL } from '@/config';
 import { MenuCardStyled, MenuDescription, MenuImage } from './CartFullContent.style';
 
 const CartFullContent = ({ ItemArray }) => {
@@ -8,7 +7,7 @@ const CartFullContent = ({ ItemArray }) => {
       {ItemArray.map(({ imgSrc, nameKor, nameEng, price, description }) => (
         <MenuCardStyled key={imgSrc}>
           <MenuImage>
-            <Spinner src={`${BASEURL}${imgSrc}`} alt={`${nameKor}, ${nameEng}`} />
+            <Spinner src={imgSrc} alt={`${nameKor}, ${nameEng}`} />
           </MenuImage>
           <MenuDescription>
             <h3>

@@ -1,5 +1,4 @@
 import { Spinner } from '@/components';
-import { BASEURL } from '@/config';
 import { vegetables } from '@/mock/food-data';
 import { AmountButton, Container, Content, Header, Range, VeggieList } from './VeggieRange.style';
 
@@ -14,7 +13,7 @@ const Veggies = ({ step, handleAmountVeg, handleStepChange }) => {
             <AmountButton onClick={handleAmountVeg(id, 'next')}>+</AmountButton>
           </Header>
           <Content>
-            <Spinner src={`${BASEURL}${imgSrc}`} alt={nameKor} />
+            <Spinner src={imgSrc} alt={nameKor} />
           </Content>
           <Content>
             <Range

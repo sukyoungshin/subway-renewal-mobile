@@ -1,5 +1,4 @@
 import { Spinner } from '@/components';
-import { BASEURL } from '@/config';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useCountAmountOfItems, useCTAButtons, useReduxSelector } from './hooks';
 import {
@@ -25,7 +24,7 @@ const OrderMenu = () => {
 
         <MenuCardStyled>
           <article className="card-img">
-            <Spinner src={`${BASEURL}${order.category.imgSrc}`} alt={order.category.nameKor} />
+            <Spinner src={order.category.imgSrc} alt={order.category.nameKor} />
           </article>
           <article className="card-content">
             <h2>

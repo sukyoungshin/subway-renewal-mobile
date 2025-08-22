@@ -1,5 +1,4 @@
 import { Spinner } from '@/components';
-import { BASEURL } from '@/config';
 import { cheeses } from '@/mock/food-data';
 import { AiOutlinePlus } from 'react-icons/ai';
 import {
@@ -24,7 +23,7 @@ const Cheeses = ({ menuId, handleOrderSelect }) => {
             <p>{nameEng}</p>
           </MenuName>
           <MenuIamge isMenuSelected={menuId === id}>
-            <Spinner src={`${BASEURL}${imgSrc}`} alt={nameKor} />
+            <Spinner src={imgSrc} alt={nameKor} />
             <span>{description}</span>
           </MenuIamge>
           <MenuPrice>{price ? `${price}KRW` : null}</MenuPrice>

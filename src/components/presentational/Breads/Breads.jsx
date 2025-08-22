@@ -1,5 +1,4 @@
 import { Spinner } from '@/components';
-import { BASEURL } from '@/config';
 import { breads } from '@/mock/food-data';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BreadCard, Button, Container, MenuImage, MenuName, MenuPrice } from './Breads.style';
@@ -17,7 +16,7 @@ const Breads = ({ menuId, handleSelectBread }) => {
             <p>{nameEng}</p>
           </MenuName>
           <MenuImage isMenuSelected={menuId === id}>
-            <Spinner src={`${BASEURL}${imgSrc}`} alt={nameKor} />
+            <Spinner src={imgSrc} alt={nameKor} />
             <span>{description}</span>
           </MenuImage>
           <MenuPrice>{price ? `${price}KRW` : null}</MenuPrice>
