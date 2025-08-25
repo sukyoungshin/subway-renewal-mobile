@@ -7,12 +7,12 @@ import { store } from './reducers';
 import { GlobalStyle } from './styles/GlobalStyle.js';
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <GlobalStyle />
-    <React.StrictMode>
-      <Provider store={store}>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalStyle />
         <Routes />
-      </Provider>
-    </React.StrictMode>
-  </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );

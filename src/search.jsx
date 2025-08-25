@@ -7,11 +7,9 @@ const rootElement = document.getElementById('wrap');
 
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
-    <>
+    <React.StrictMode>
       <GlobalStyle />
-      <React.StrictMode>
-        <PostSearch />
-      </React.StrictMode>
-    </>
+      <PostSearch />
+    </React.StrictMode>
   );
 }
