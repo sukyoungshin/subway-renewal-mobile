@@ -1,5 +1,5 @@
 /* global Kakao */
-import LINK from '@/constants/link';
+import LINK from '@/shared/constants/link';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

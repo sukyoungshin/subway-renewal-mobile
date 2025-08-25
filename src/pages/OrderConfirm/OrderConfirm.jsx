@@ -1,5 +1,6 @@
-import { OrderDeliver, OrderPickUp } from '@/components/presentational/index';
 import { useReduxSelector, useRouterLocation, useTodayTime } from './hooks';
+import OrderDeliver from './ui/OrderDeliver/OrderDeliver';
+import OrderPickUp from './ui/OrderPickUp/OrderPickUp';
 
 const DELIVER = 'deliver';
 const OrderConfirm = () => {

@@ -1,5 +1,6 @@
-import LINK from '@/constants/link';
-import { itemAmountSelector, itemCountSelector, orderSelector } from '@/reducers';
+import { itemAmountSelector } from '@/features/amount/model/selector';
+import { itemCountSelector, orderSelector } from '@/features/cart/model/selector';
+import LINK from '@/shared/constants/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 

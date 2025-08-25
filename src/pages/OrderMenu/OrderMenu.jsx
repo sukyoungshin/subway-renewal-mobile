@@ -1,4 +1,4 @@
-import { Spinner } from '@/components';
+import { Spinner } from '@/shared/ui';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useCountAmountOfItems, useCTAButtons, useReduxSelector } from './hooks';
 import {
@@ -28,13 +28,13 @@ const OrderMenu = () => {
           </article>
           <article className="card-content">
             <h2>
-              {order.category.nameKor}
-              <span>{order.category.price} krw</span>
+              {order.category?.nameKor}
+              <span>{order.category?.price} krw</span>
             </h2>
             <p>
-              {order.bread.currentMenu.nameKor},{' '}
-              {order.bread.breadOptions.map((opt) => opt.nameKor + opt.bool)},{' '}
-              {order.cheese.nameKor}, {order.sauce.nameKor}
+              {order.bread?.currentMenu.nameKor},{' '}
+              {order.bread?.breadOptions.map((opt) => opt.nameKor + opt.bool)},{' '}
+              {order.cheese?.nameKor}, {order.sauce?.nameKor}
             </p>
 
             <AmountButtonWrapperStyled>

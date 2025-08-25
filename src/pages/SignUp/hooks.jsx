@@ -1,4 +1,4 @@
-import LINK from '@/constants/link';
+import LINK from '@/shared/constants/link';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,7 +1,8 @@
-import { CtaButton } from '@/components';
-import { BreadOption, Breads } from '@/components/presentational/index';
+import { CtaButton } from '@/shared/ui';
 import { Container, Section } from './Bread.style';
 import { useCTAButton, useSelectBread, useSelectBreadOption } from './hooks';
+import BreadList from './ui/BreadList/BreadList';
+import BreadOption from './ui/BreadOption/BreadOption';
 
 const Bread = () => {
   const { breadOptions, selectedRadio } = useSelectBreadOption(); // 빵 옵션선택 로직
@@ -25,7 +26,7 @@ const Bread = () => {
       </Section>
       <Section style={{ marginTop: '16px' }}>
         <h2>빵선택</h2>
-        <Breads menuId={menuId} handleSelectBread={handleSelectBread} />
+        <BreadList menuId={menuId} handleSelectBread={handleSelectBread} />
       </Section>
 
       <CtaButton
