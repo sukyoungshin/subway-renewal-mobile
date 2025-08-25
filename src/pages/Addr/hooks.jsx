@@ -1,6 +1,6 @@
 /* global kakao */
-import LINK from '@/constants/link';
-import loadKakaoMap from '@/lib/loadKakaoMap';
+import LINK from '@/shared/constants/link';
+import loadKakaoMap from '@/shared/lib/loadKakaoMap';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

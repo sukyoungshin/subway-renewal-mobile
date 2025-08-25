@@ -1,7 +1,9 @@
-import { CtaButton, SauceOption, Sauces } from '@/components';
+import { CtaButton } from '@/shared/ui';
 import { useCallback } from 'react';
 import { Container, Section } from './Sauce.style';
 import { useCTAButton, useSelectOptionAndMenu } from './hooks';
+import SauceOption from './ui/SauceOption/SauceOption';
+import Sauces from './ui/Sauces/Sauces';
 
 const Sauce = () => {
   const { menuId, currentMenu, isChecked, handleOrderMenu, selectedRadio } =

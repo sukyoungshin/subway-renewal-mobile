@@ -1,5 +1,5 @@
-import LINK from '@/constants/link';
-import { vegetables } from '@/mock/food-data';
+import { vegetables } from '@/shared/api/mock/food-menu.mock.js';
+import LINK from '@/shared/constants/link';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

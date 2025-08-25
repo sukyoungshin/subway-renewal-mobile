@@ -1,8 +1,9 @@
-import { CtaButton } from '@/components';
-import { Categories, Menus } from '@/components/presentational/index';
+import { CtaButton } from '@/shared/ui';
 import { useCallback } from 'react';
 import { useCTAButton, useSelectCategoryAndMenu } from './hooks';
 import { Container, Section } from './Menu.style';
+import Categories from './ui/Categories/Categories';
+import Menus from './ui/Menus/Menus';
 
 const Menu = () => {
   const {

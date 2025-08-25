@@ -1,7 +1,8 @@
-import { CtaButton, Map } from '@/components';
+import { CtaButton } from '@/shared/ui';
 import { useCallback, useEffect } from 'react';
 import { AddressInput, Container, Fieldset, Form, Label, Title } from './Addr.style';
 import { useCTAButton, useKakaoMap, useMarkerLocation } from './hooks';
+import Map from './ui/Map/Map';
 
 const Addr = () => {
   const { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue, errorMessage } =

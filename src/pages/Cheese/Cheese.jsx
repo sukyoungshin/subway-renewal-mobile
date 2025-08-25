@@ -1,8 +1,9 @@
-import { Cheeses, CtaButton } from '@/components';
-import { cheeses } from '@/mock/food-data';
+import { cheeses } from '@/shared/api/mock/food-menu.mock.js';
+import { CtaButton } from '@/shared/ui';
 import { useCallback } from 'react';
 import { Container, Section } from './Cheese.style';
 import { useCTAbutton, useSelectCheese } from './hooks';
+import CheeseList from './ui/CheeseList/CheeseList';
 
 const Cheese = () => {
   const { menuId, currentMenu, handleOrderMenu } = useSelectCheese({ cheeses });
@@ -21,7 +22,7 @@ const Cheese = () => {
       </Section>
       <Section>
         <h2>치즈선택</h2>
-        <Cheeses menuId={menuId} handleOrderSelect={handleOrderSelect} />
+        <CheeseList menuId={menuId} handleOrderSelect={handleOrderSelect} />
       </Section>
 
       <CtaButton

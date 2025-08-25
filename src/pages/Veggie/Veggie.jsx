@@ -1,5 +1,7 @@
-import { CtaButton, SelectAll, VeggieRange } from '@/components';
+import { CtaButton } from '@/shared/ui';
 import { useCTAButton, useSelectAmountOfVeg } from './hooks';
+import SelectAll from './ui/SelectAll/SelectAll';
+import VeggieRange from './ui/VeggieRange/VeggieRange';
 import { Container, Paragraph, Section, Title } from './Veggie.style';
 
 const Veggie = () => {

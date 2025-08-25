@@ -1,5 +1,5 @@
-import LINK from '@/constants/link';
-import { MenuCategories, TabContents } from '@/mock/tab-data';
+import { MenuCategories, TabContents } from '@/shared/api/mock/navigation.mock.js';
+import LINK from '@/shared/constants/link';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

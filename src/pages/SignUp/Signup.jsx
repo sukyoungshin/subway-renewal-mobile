@@ -1,4 +1,4 @@
-import { CtaButton } from '@/components';
+import { CtaButton } from '@/shared/ui';
 import { useEffect } from 'react';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from 'react-icons/ai';
 import {
