@@ -7,7 +7,7 @@ const LINK = {
   MENU: `/${RouterPath.MENU}`,
   BREAD: `/${RouterPath.BREAD}`,
   CHEESE: `/${RouterPath.CHEESE}`,
-  VEGGIE: `/${RouterPath.VEGGIE}`,
+  VEGETABLE: `/${RouterPath.VEGETABLE}`,
   SAUCE: `/${RouterPath.SAUCE}`,
   ORDER: `/${RouterPath.ORDER}`,
   INFO: `/order/${RouterPath.INFO}`,

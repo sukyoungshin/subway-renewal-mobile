@@ -1,3 +1,4 @@
+import { AUTH_ACTION_TYPES } from '@/features/auth/model/actionTypes';
 import { loginFlagSelector } from '@/features/auth/model/selector.js';
 import LINK from '@/shared/constants/link';
 import { useCallback, useEffect } from 'react';
@@ -12,11 +13,12 @@ export const useGoogleLoginAndOut = () => {
   const navigate = useNavigate();
 
   /* 구글 OAuth 로그인 */
-  const onSignIn = useCallback((googleUser) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSignIn = useCallback((googleUser: { getBasicProfile: () => any; }) => {
     const profile = googleUser.getBasicProfile();
 
     dispatch({
-      type: 'auth/login',
+      type: AUTH_ACTION_TYPES.LOGIN,
       userInfo: {
         id: profile.getId(), // Do not send to your backend! Use an ID token instead.
         userName: profile.getName(),
@@ -30,7 +32,6 @@ export const useGoogleLoginAndOut = () => {
 
   /* 구글 OAuth 로그아웃 */
   const onSignOut = () => {
-    // eslint-disable-next-line
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');

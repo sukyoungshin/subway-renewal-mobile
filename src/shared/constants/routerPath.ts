@@ -6,7 +6,7 @@ const RouterPath = {
   MENU: 'menu',
   BREAD: 'bread',
   CHEESE: 'cheese',
-  VEGGIE: 'veggie',
+  VEGETABLE: 'vegetable',
   SAUCE: 'sauce',
   LOGIN: 'login',
   OAUTH: 'oauth',

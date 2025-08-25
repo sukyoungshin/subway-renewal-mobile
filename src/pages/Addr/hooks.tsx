@@ -1,9 +1,6 @@
 /* global kakao */
-import LINK from '@/shared/constants/link';
 import loadKakaoMap from '@/shared/lib/loadKakaoMap';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
 export const useKakaoMap = () => {
   /* 카카오맵, 유저 및 써브웨이 매장정보 관리 */
@@ -102,7 +99,7 @@ export const useKakaoMap = () => {
 
           // 장소 검색이 완료됐을 때 호출되는 콜백함수
           const callback = function (result, status) {
-            let placeNamesArr = []; // 장소이름을 저장할 배열
+            const placeNamesArr = []; // 장소이름을 저장할 배열
 
             if (status === kakao.maps.services.Status.OK) {
               // 정상적으로 검색이 완료됐으면, 검색목록과 마커를 표시한다.
@@ -179,38 +176,4 @@ export const useKakaoMap = () => {
   }, []);
 
   return { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue, errorMessage };
-};
-
-export const useMarkerLocation = () => {
-  const [isSelectedSubway, setIsSelectedSubway] = useState(null); // 주문을 위해 선택된 써브웨이 매장정보
-  const setMarkerLocation = (currentPlace) => setIsSelectedSubway(currentPlace); // 선택된 써브웨이매장 정보를 저장
-
-  return { isSelectedSubway, setMarkerLocation };
-};
-
-export const useCTAButton = ({ addrValue, isSelectedSubway }) => {
-  /* 리덕스 및 라우터*/
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  /* 하단 CTA 버튼 활성화 */
-  const [isBtnActivated, setIsBtnActivated] = useState(false); // CTA버튼 활성화여부
-  const HandleOrderStart = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!isBtnActivated) return window.alert('배달받으실 주소를 입력하세요.');
-      dispatch({
-        type: 'cart/generalInfo',
-        payload: {
-          customerInfo: addrValue,
-          subwayInfo: isSelectedSubway,
-        },
-      });
-      navigate(LINK.MENU);
-    },
-    // eslint-disable-next-line
-    [isBtnActivated, addrValue, isSelectedSubway]
-  );
-
-  return { isBtnActivated, setIsBtnActivated, HandleOrderStart };
 };

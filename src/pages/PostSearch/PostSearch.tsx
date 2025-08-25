@@ -2,7 +2,7 @@ import DaumPostcode from 'react-daum-postcode';
 import { usePostSearchAndButtons } from './hooks';
 import { Button, ButtonWrapper, Container, Section } from './PostSearch.style';
 
-const PostSearch = (data) => {
+const PostSearch = () => {
   const {
     roadAddress,
     detailAddress,
@@ -11,7 +11,7 @@ const PostSearch = (data) => {
     handleDetailAddress,
     handleComplete,
     handleClose,
-  } = usePostSearchAndButtons(data);
+  } = usePostSearchAndButtons();
 
   return (
     <Container>
@@ -44,7 +44,13 @@ const PostSearch = (data) => {
   );
 };
 
-const CTAButton = ({ isBtnSelected, handleComplete, handleClose }) => {
+interface IButtonProps {
+  isBtnSelected: boolean,
+  handleComplete: () => void,
+  handleClose: () => void
+}
+
+const CTAButton = ({ isBtnSelected, handleComplete, handleClose }: IButtonProps) => {
   return (
     <ButtonWrapper>
       <Button type="button" isBtnSelected={isBtnSelected} onClick={handleComplete}>

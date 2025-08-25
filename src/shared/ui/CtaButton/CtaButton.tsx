@@ -1,18 +1,30 @@
-import React from 'react';
-import { Button } from './CtaButton.style';
+import { MouseEventHandler } from "react";
+import { Button as StyledButton } from './CTAButton.style';
 
-const CtaButton = ({ type = 'button', form, isBtnActivated, handleOrderProcess, label }) => {
+interface IButtonProps {
+  disabled: boolean;
+  label: string;
+  handleNextOrder: MouseEventHandler<HTMLButtonElement>;
+  formId?: string;
+}
+
+const CTAButton = ({
+  label,
+  disabled,
+  handleNextOrder,
+  formId,
+}: IButtonProps) => {
+
   return (
-    <Button
-      type={type || 'submit'}
-      form={form}
-      isBtnActivated={isBtnActivated}
-      disabled={isBtnActivated ? false : true}
-      onClick={handleOrderProcess}
+    <StyledButton
+      type={formId ? "submit" : "button"}
+      form={formId}
+      disabled={disabled}
+      onClick={handleNextOrder}
     >
       {label}
-    </Button>
+    </StyledButton>
   );
 };
 
-export default CtaButton;
+export default CTAButton;

@@ -13,4 +13,5 @@ export { default as OrderMenu } from './OrderMenu/OrderMenu';
 export { default as PostSearch } from './PostSearch/PostSearch';
 export { default as Sauce } from './Sauce/Sauce';
 export { default as Signup } from './SignUp/Signup';
-export { default as Veggie } from './Veggie/Veggie';
+export { default as Vegetable } from './Vegetable/Vegetable';
+

@@ -21,7 +21,7 @@ export const Button = styled.button`
   transition: all 0.3s;
 
   ${(props) =>
-    props.isBtnActivated &&
+    !props.disabled &&
     css`
       color: var(--color-white);
       font-weight: var(--font-weight-bold);

@@ -6,7 +6,7 @@ const CHECKBOX = 'checkbox';
 const TEXT = 'text';
 const PASSWORD = 'password';
 
-export const useFormDataHadling = () => {
+export const useFormDataHandling = () => {
   const [userInfo, setUserInfo] = useState({
     username: '',
     userpassword: '',

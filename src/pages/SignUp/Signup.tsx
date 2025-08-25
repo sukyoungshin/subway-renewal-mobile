@@ -1,4 +1,4 @@
-import { CtaButton } from '@/shared/ui';
+import { CTAButton } from '@/shared/ui';
 import { useEffect } from 'react';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineSearch } from 'react-icons/ai';
 import {
@@ -15,13 +15,13 @@ import {
 import {
   useAddrSearchButton,
   useCTAButton,
-  useFormDataHadling,
+  useFormDataHandling,
   usePasswordHideAndShow,
 } from './hooks';
 
 const CHECKBOX = 'checkbox';
 const Signup = () => {
-  const { userInfo, setUserInfo, handleInputData } = useFormDataHadling();
+  const { userInfo, setUserInfo, handleInputData } = useFormDataHandling();
   const { inputRef, isVisible, handleVisibleButton } = usePasswordHideAndShow();
   const { isBtnActivated, setIsBtnActivated, handleSubmitForm } = useCTAButton({
     userInfo,
@@ -117,11 +117,11 @@ const Signup = () => {
         </Fieldset>
       </Form>
 
-      <CtaButton
+      <CTAButton
+        label="회원가입"
+        disabled={isBtnActivated}
         type="submit"
         form="signup-form"
-        isBtnActivated={isBtnActivated}
-        label="회원가입"
       />
       <Message />
     </Container>

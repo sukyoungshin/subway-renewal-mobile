@@ -22,10 +22,3 @@ export const useRouterLocation = () => {
 
   return locationState;
 };
-
-export const useTodayTime = () => {
-  const today = new Date();
-  const timeString = new Intl.DateTimeFormat('kr').format(today);
-
-  return timeString;
-};

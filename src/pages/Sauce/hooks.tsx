@@ -1,82 +1,84 @@
-import { sauceOptionLists, sauces } from '@/shared/api/mock/food-menu.mock.js';
-import LINK from '@/shared/constants/link';
-import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { ISauceList } from "@/shared/api/mock/food-menu.types";
+import { useCallback, useEffect, useState } from "react";
 
-const OPTION_NOT_SELECTED = 1;
-const OPTION_SELECTED = 0;
+interface IOptionList {
+  id: number;
+  nameKor: string;
+  nameEng: string;
+  radioGroup: string;
+  defaultChecked: boolean;
+}
 
-export const useSelectOptionAndMenu = () => {
+const NOT_SELECTED_MENU_ID = 0;
+const MAX_SELECT_NUMBER = 3;
+
+export const useSelectOptionAndMenu = (
+  sauceOptionList: IOptionList[],
+  sauceList: ISauceList[]
+) => {
   // 옵션선택 관련
-  const [isChecked, setIsChecked] = useState(
-    sauceOptionLists.filter((opt) => opt.defaultChecked)[0].id
-  );
+  const initialId = sauceOptionList.filter((opt) => opt.defaultChecked)[0].id;
+  const [selectedOptionId, setSelectedOptionId] = useState<number>(initialId);
 
   // 메뉴 선택관련
-  const [menuId, setMenuId] = useState(0); //선택된 메뉴 버튼의 인덱싱#
-  const [currentMenu, setCurrentMenu] = useState(null); // 현재 선택완료된 메뉴를 저장
+  const [menuIdArray, setMenuIdArray] = useState<number[]>([]); //선택된 메뉴 버튼의 인덱싱#
+  const [currentMenu, setCurrentMenu] = useState<ISauceList[]>(sauceList); // 현재 선택완료된 메뉴를 저장
 
-  const handleOrderMenu = ({ id, nameKor, description, imgSrc, defaultChecked }) => {
-    const currentOrderMenuObj = {
-      id,
-      nameKor,
-      description,
-      imgSrc,
-      defaultChecked,
-    };
+  const handleOrderMenu = ({ id }: { id: number }) => {
+    const array = [...menuIdArray, id];
 
-    if (currentOrderMenuObj.id === 0) {
-      setIsChecked(OPTION_NOT_SELECTED);
+    if (menuIdArray.includes(id)) {
+      const toggleList = array.filter((num) => num !== id);
+      const removeDuplicatedList = Array.from(new Set(toggleList));
+      const result = removeDuplicatedList
+        .filter((menuId) => menuId !== NOT_SELECTED_MENU_ID)
+        .slice(0, MAX_SELECT_NUMBER);
+      setMenuIdArray(result);
     } else {
-      setIsChecked(OPTION_SELECTED);
+      const result = array
+        .filter((menuId) => menuId !== NOT_SELECTED_MENU_ID)
+        .slice(0, MAX_SELECT_NUMBER);
+      setMenuIdArray(result);
     }
 
-    setMenuId(currentOrderMenuObj.id); // 선택한 리스트 indexing 저장
+    if (id === NOT_SELECTED_MENU_ID) {
+      setSelectedOptionId(1);
+    } else {
+      setSelectedOptionId(0);
+    }
   };
 
-  // 옵션 '선택안함'을 클릭하면 메뉴리스트를 선택안함으로 변경
-  useEffect(() => {
-    if (isChecked === 1) {
-      setMenuId(0);
-    }
-  }, [isChecked]);
-
-  // 옵션선택 버튼에 따라, 선택한 아이템 수정
-  const selectedRadio = useCallback(
-    (id) => () => {
-      // 옵션 === 리스트 (선택안함)
-      if (id !== menuId) {
-        setIsChecked(id);
+  // 옵션선택 radio버튼 핸들러
+  const handleSelectedOptionId = useCallback(
+    (id: number) => () => {
+      if (id !== NOT_SELECTED_MENU_ID) {
+        setSelectedOptionId(id);
       }
     },
-    // eslint-disable-next-line
+     
     []
   );
 
-  // 클릭한 index에 맞추어 radio flag 변경
+  // 클릭한 index에 맞추어 radio flag 변경 ( 옵션 '선택안함'을 클릭하면 메뉴리스트를 선택안함으로 변경 )
   useEffect(() => {
-    setCurrentMenu(sauces[menuId]); // 최종적으로 선택한 메뉴 저장
-  }, [menuId]);
+    if (selectedOptionId === 1) {
+      setMenuIdArray([0]);
+    }
+  }, [selectedOptionId]);
 
-  return { menuId, currentMenu, isChecked, handleOrderMenu, selectedRadio };
-};
+  // 최종적으로 선택한 메뉴 저장
+  useEffect(() => {
+    const selectedMenuArray = sauceList.filter(({ id }) =>
+      menuIdArray.includes(id)
+    );
+    setCurrentMenu(selectedMenuArray);
+  }, [menuIdArray, sauceList]);
 
-export const useCTAButton = ({ currentMenu }) => {
-  /* 리덕스 및 라우터 */
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [isBtnActivated, setIsBtnActivated] = useState(false); // CTA버튼 활성화여부
-
-  // eslint-disable-next-line
-  const handleOrderProcess = useCallback((e) => {
-    e.preventDefault();
-    dispatch({
-      type: 'cart/sauce',
-      payload: currentMenu,
-    });
-    navigate(LINK.ORDER);
-  });
-
-  return { isBtnActivated, setIsBtnActivated, handleOrderProcess };
+  return {
+    menuId: menuIdArray,
+    currentMenu,
+    selectedOptionId,
+    handleOrderMenu,
+    handleSelectedOptionId,
+  };
 };

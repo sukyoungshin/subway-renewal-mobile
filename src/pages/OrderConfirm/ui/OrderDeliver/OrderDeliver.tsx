@@ -1,6 +1,7 @@
-import { Container, Text, Section, OrderDetail } from './OrderDeliver.style';
+import { getTodayTime } from '@/shared/utils/common-utils';
+import { Container, OrderDetail, Section, Text } from './OrderDeliver.style';
 
-const OrderDeliver = ({ orderDetail, timeString }) => {
+const OrderDeliver = ({ orderDetail }) => {
   const { orderMenu, customerAddr, subwayName, subwayPhone, customerRequest } = orderDetail;
 
   return (
@@ -11,7 +12,7 @@ const OrderDeliver = ({ orderDetail, timeString }) => {
       </Text>
       <Section>
         <OrderDetail>
-          <li>주문일시 : {timeString}</li>
+          <li>주문일시 : {getTodayTime()}</li>
           <li>주문번호 : B0XK01HG6R</li>
           <li>주문하신 메뉴 : {orderMenu}</li>
           <li>추가 요청사항 : {customerRequest}</li>

@@ -1,12 +1,18 @@
-import { breads } from '@/shared/api/mock/food-menu.mock.js';
+import { IBreadList } from '@/shared/api/mock/food-menu.types';
 import { Spinner } from '@/shared/ui';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { BreadCard, Button, Container, MenuImage, MenuName, MenuPrice } from './BreadList.style';
+import { BreadCard, Button, Container, MenuImage, MenuName } from './BreadList.style';
 
-const BreadList = ({ menuId, handleSelectBread }) => {
+interface IBreadProps {
+  menuId: number;
+  breadList: IBreadList[];
+  handleSelectBread: (id:number) => void;
+}
+
+const BreadList = ({ menuId, breadList, handleSelectBread }: IBreadProps) => {
   return (
     <Container>
-      {breads.map(({ id, nameKor, nameEng, imgSrc, description, price }) => (
+      {breadList.map(({ id, nameKor, nameEng, imgPath, description }) => (
         <BreadCard key={id} isMenuSelected={menuId === id}>
           <Button isMenuSelected={menuId === id} onClick={handleSelectBread(id)}>
             <AiOutlinePlus />
@@ -16,10 +22,9 @@ const BreadList = ({ menuId, handleSelectBread }) => {
             <p>{nameEng}</p>
           </MenuName>
           <MenuImage isMenuSelected={menuId === id}>
-            <Spinner src={imgSrc} alt={nameKor} />
+            <Spinner src={imgPath} alt={nameKor} />
             <span>{description}</span>
           </MenuImage>
-          <MenuPrice>{price ? `${price}KRW` : null}</MenuPrice>
         </BreadCard>
       ))}
     </Container>

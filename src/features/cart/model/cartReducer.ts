@@ -1,18 +1,21 @@
-import { initialState } from '@/features/amount/model/amountReducer';
+import { AnyAction } from 'redux';
+import { CART_ACTION_TYPE } from './actionTypes';
+
+// 모듈의 초기 상태 (test 데이터 / 추후 삭제)
+export const initialState = () => ({
+  category: {
+    amount: 1,
+  },
+  itemCount: 0,
+});
 
 // 리듀서 함수 (장바구니 정보 업데이트)
-function cartReducer(state = initialState(), action) {
-  const GENERALINFO = 'cart/generalInfo';
-  const CATEGORY = 'cart/category';
-  const BREAD = 'cart/bread';
-  const CHEESE = 'cart/cheese';
-  const VEGGIE = 'cart/veggie';
-  const SAUCE = 'cart/sauce';
-  const ADDITIONAL_REQUEST = 'cart/additionalRequest';
-  const ITEM_COUNT = 'cart/itemCount';
+function cartReducer(state = initialState(), action: AnyAction) {
+  const { GENERAL_INFO, CATEGORY, BREAD, CHEESE, VEGETABLE, SAUCE, ADDITIONAL_REQUEST, ITEM_COUNT } =
+    CART_ACTION_TYPE;
 
   switch (action.type) {
-    case GENERALINFO:
+    case GENERAL_INFO:
       return {
         ...state,
         generalInfo: action.payload,
@@ -32,10 +35,10 @@ function cartReducer(state = initialState(), action) {
         ...state,
         cheese: action.payload,
       };
-    case VEGGIE:
+    case VEGETABLE:
       return {
         ...state,
-        veggie: action.payload,
+        vegetable: action.payload,
       };
     case SAUCE:
       return {

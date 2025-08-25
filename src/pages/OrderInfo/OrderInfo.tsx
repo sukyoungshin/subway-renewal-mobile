@@ -23,8 +23,9 @@ const OrderInfo = () => {
     customerOrderRequest,
   });
 
-  const handleDeliverOrPickUp = (e) => handleRadioStatus(e.target.id);
-  const handleAgreementAndBtnActivate = (e) => {
+  const handleDeliverOrPickUp = (e: React.ChangeEvent<HTMLInputElement>) =>
+    handleRadioStatus(e.target.id);
+  const handleAgreementAndBtnActivate = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleCheckboxStatus(e);
     setIsActive((prev) => !prev);
   };

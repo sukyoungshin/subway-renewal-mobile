@@ -1,6 +1,7 @@
-import { Container, Text, Section, OrderDetail } from './OrderPickUp.style';
+import { getTodayTime } from '@/shared/utils/common-utils';
+import { Container, OrderDetail, Section, Text } from './OrderPickUp.style';
 
-const OrderPickUp = ({ orderDetail, timeString }) => {
+const OrderPickUp = ({ orderDetail }) => {
   const { orderMenu, subwayName, subwayPhone, subwayAddr, customerRequest } = orderDetail;
 
   return (
@@ -11,7 +12,7 @@ const OrderPickUp = ({ orderDetail, timeString }) => {
       </Text>
       <Section>
         <OrderDetail>
-          <li>주문일시 : {timeString}</li>
+          <li>주문일시 : {getTodayTime()}</li>
           <li>주문번호 : B0XK01HG6R</li>
           <li>주문하신 메뉴 : {orderMenu}</li>
           <li>추가 요청사항 : {customerRequest}</li>

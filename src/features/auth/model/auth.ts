@@ -1,3 +1,6 @@
+import { AnyAction } from 'redux';
+import { AUTH_ACTION_TYPES } from './actionTypes';
+
 // 모듈의 초기 상태
 const initialState = {
   // 로그인 된 유저정보
@@ -11,12 +14,9 @@ const initialState = {
 };
 
 // 리듀서
-function authReducer(state = initialState, action) {
-  const LOGIN = 'auth/login';
-  const LOGOUT = 'auth/logout';
-
+function authReducer(state = initialState, action: AnyAction) {
   switch (action.type) {
-    case LOGIN:
+    case AUTH_ACTION_TYPES.LOGIN:
       return {
         ...state,
         userInfo: {
@@ -26,7 +26,7 @@ function authReducer(state = initialState, action) {
         },
         isLoggedIn: true,
       };
-    case LOGOUT:
+    case AUTH_ACTION_TYPES.LOGOUT:
       return {
         ...state,
         userInfo: {

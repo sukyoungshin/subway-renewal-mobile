@@ -1,4 +1,5 @@
-import { breadOptionLists } from '@/shared/api/mock/food-menu.mock.js';
+import { breadOptionList } from '@/shared/api/mock/food-menu.mock.js';
+import { useCallback, useState } from 'react';
 import {
   BreadOptionItem,
   BreadOptionList,
@@ -8,12 +9,32 @@ import {
   Radio,
 } from './BreadOption.style';
 
-const BreadOption = ({ selectedRadio }) => {
+interface IBreadOption {
+  id: number;
+  nameKor: string;
+  nameEng: string;
+  boolean: boolean;
+  price: string;
+}
+
+const BreadOption = () => {
+  const [optionList, setOptionList] = useState<IBreadOption[]>([]); // 선택한 빵 옵션을 저장
+
+  /** 선택한 빵 옵션 저장 */
+  const handleSelectOption = useCallback(
+    ({ id, nameKor, nameEng, boolean, price }: IBreadOption) =>
+      () => {
+        const newOptionList = { id, nameEng, nameKor, boolean, price }; // 새로 선택된 빵 옵션
+        setOptionList([...optionList, newOptionList]); // 선택한 빵 옵션 저장
+      },
+    [optionList]
+  );
+
   return (
     <BreadOptionList>
-      {breadOptionLists.map(({ id, name, option, nameEng }) => (
+      {breadOptionList.map(({ id, option, nameEng, nameKor }) => (
         <BreadOptionItem key={id}>
-          <span>{name}</span>
+          <span>{nameKor}</span>
           <OptionTabList>
             <OptionTabItem>
               <Radio
@@ -21,11 +42,11 @@ const BreadOption = ({ selectedRadio }) => {
                 id={option['option1'].text}
                 name={nameEng}
                 defaultChecked={option['option1']?.default}
-                onChange={selectedRadio({
+                onChange={handleSelectOption({
                   id: id,
-                  name: nameEng,
-                  nameKor: name,
-                  bool: option['option1'].default,
+                  nameEng: nameEng,
+                  nameKor: nameKor,
+                  boolean: option['option1'].default,
                   price: option['option1'].price,
                 })}
               />
@@ -37,11 +58,11 @@ const BreadOption = ({ selectedRadio }) => {
                 id={option['option2'].text}
                 name={nameEng}
                 defaultChecked={option['option2'].default}
-                onChange={selectedRadio({
+                onChange={handleSelectOption({
                   id: id,
-                  nameKor: name,
-                  name: nameEng,
-                  bool: option['option2'].default,
+                  nameKor: nameKor,
+                  nameEng: nameEng,
+                  boolean: option['option2'].default,
                   price: option['option2'].price,
                 })}
               />

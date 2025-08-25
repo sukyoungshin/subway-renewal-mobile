@@ -7,7 +7,8 @@ export const usePostSearchAndButtons = () => {
   const [isBtnSelected, setIsBtnSelected] = useState(false); // 입력완료버튼
 
   // 주소 입력
-  const handleAddress = (data) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleAddress = (data: any) => {
     let roadAddress = data.address;
     let extraAddress = '';
 
@@ -25,7 +26,7 @@ export const usePostSearchAndButtons = () => {
   };
 
   // 상세주소 입력
-  const handleDetailAddress = (e) => {
+  const handleDetailAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDetailAddress(e.target.value); // 세부주소만 저장
     setFullAddress(`${roadAddress} ${e.target.value}`); // 전체주소 누적 저장 (도로명주소 + 세부주소)
     setIsBtnSelected(true); // 입력완료버튼 활성화

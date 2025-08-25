@@ -1,4 +1,4 @@
-import { CtaButton } from '@/shared/ui';
+import { CTAButton } from '@/shared/ui';
 import { CartContainer } from './CartEmpty.style';
 
 const CartEmpty = ({ handleOrderProcess }) => {
@@ -7,7 +7,7 @@ const CartEmpty = ({ handleOrderProcess }) => {
       <CartContainer empty>
         <h2>장바구니가 비어있어요</h2>
       </CartContainer>
-      <CtaButton
+      <CTAButton
         isBtnActivated={true}
         handleOrderProcess={handleOrderProcess}
         label="주문하러 가기 :)"

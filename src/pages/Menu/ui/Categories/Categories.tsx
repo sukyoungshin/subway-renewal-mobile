@@ -1,18 +1,29 @@
-import { MenuCategories } from '@/shared/api/mock/navigation.mock.js';
 import { CategoryButtonStyled } from './Categories.style';
 
-const Categories = ({ handleButtonActive, categoryId }) => {
+interface ICategory {
+  categoryId: number;
+  categoryMenuList: ICategoryMenuList[] | undefined;
+  handleCategoryMenu: (id: number) => void;
+}
+interface ICategoryMenuList {
+  id: number;
+  title: string;
+  titleEng: string;
+  imgPath: string;
+}
+
+const Categories = ({ categoryId, categoryMenuList, handleCategoryMenu }: ICategory) => {
   return (
     <article>
       <ul>
-        {MenuCategories.map(({ id, titleEng, title, imgSrc }) => (
+        {categoryMenuList?.map(({ id, title, imgPath }) => (
           <li key={id}>
             <CategoryButtonStyled
               type="button"
               isBtnSelected={id === categoryId}
-              onClick={() => handleButtonActive(id, titleEng)}
+              onClick={() => handleCategoryMenu(id)}
             >
-              <img src={imgSrc} alt={title} />
+              <img src={imgPath} alt={title} />
               <span>{title}</span>
             </CategoryButtonStyled>
           </li>

@@ -1,3 +1,6 @@
+import { AnyAction } from 'redux';
+import { AMOUNT_ACTION_TYPE } from './actionTypes';
+
 // 모듈의 초기 상태 (test 데이터 / 추후 삭제)
 export const initialState = () => ({
   category: {
@@ -7,12 +10,9 @@ export const initialState = () => ({
 });
 
 // 리듀서 함수 (장바구니 수량조절)
-function amountReducer(state = initialState(), action) {
-  const INCREMENT = 'cart/increment';
-  const DECREMENT = 'cart/decrement';
-
+function amountReducer(state = initialState(), action: AnyAction) {
   switch (action.type) {
-    case INCREMENT:
+    case AMOUNT_ACTION_TYPE.INCREMENT:
       return {
         ...state,
         category: {
@@ -21,7 +21,7 @@ function amountReducer(state = initialState(), action) {
         },
       };
 
-    case DECREMENT:
+    case AMOUNT_ACTION_TYPE.DECREMENT:
       return {
         ...state,
         category: {

@@ -1,4 +1,6 @@
+import { AMOUNT_ACTION_TYPE } from '@/features/amount/model/actionTypes';
 import { itemAmountSelector } from '@/features/amount/model/selector';
+import { CART_ACTION_TYPE } from '@/features/cart/model/actionTypes';
 import { itemCountSelector, orderSelector } from '@/features/cart/model/selector';
 import LINK from '@/shared/constants/link';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,13 +19,13 @@ export const useCountAmountOfItems = () => {
 
   const handleIncrement = () => {
     dispatch({
-      type: 'cart/increment',
+      type: AMOUNT_ACTION_TYPE.INCREMENT,
       payload: itemAmount,
     });
   };
   const handleDecrement = () => {
     dispatch({
-      type: 'cart/decrement',
+      type: AMOUNT_ACTION_TYPE.DECREMENT,
       payload: itemAmount,
     });
   };
@@ -38,7 +40,7 @@ export const useCTAButtons = () => {
 
   const goToCartPage = () => {
     dispatch({
-      type: 'cart/itemCount',
+      type: CART_ACTION_TYPE.ITEM_COUNT,
       payload: itemCount + 1,
     });
   };

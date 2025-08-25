@@ -1,20 +1,31 @@
-import { sauceOptionLists } from '@/shared/api/mock/food-menu.mock.js';
+import { ISauceOptionList } from '@/shared/api/mock/food-menu.types';
 import { Item, Label, OptionList, Radio } from './SauceOption.style';
 
-const SauceOption = ({ isChecked, selectedRadio }) => {
+interface ISauceOptionProps {
+  selectedOptionId: number;
+  handleSelectedOptionId: (id: number) => () => void;
+  sauceOptionList: ISauceOptionList[];
+  setButtonDisabled: () => void;
+}
+const SauceOption = ({
+  selectedOptionId,
+  handleSelectedOptionId,
+  sauceOptionList,
+  setButtonDisabled,
+}: ISauceOptionProps) => {
   return (
     <article>
-      <OptionList>
-        {sauceOptionLists.map(({ id, radioGroup, name }) => (
+      <OptionList onClick={setButtonDisabled}>
+        {sauceOptionList.map(({ id, radioGroup, nameKor }) => (
           <Item key={id}>
             <Radio
               type="radio"
               id={id}
               name={radioGroup}
-              checked={isChecked === id}
-              onChange={selectedRadio(id)}
+            checked={selectedOptionId === id}
+            onChange={handleSelectedOptionId(id)}
             />
-            <Label htmlFor={radioGroup}>{name}</Label>
+            <Label htmlFor={radioGroup}>{nameKor}</Label>
           </Item>
         ))}
       </OptionList>

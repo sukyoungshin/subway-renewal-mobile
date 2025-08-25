@@ -1,7 +1,7 @@
 import amountReducer from '@/features/amount/model/amountReducer';
 import authReducer from '@/features/auth/model/auth';
 import cartReducer from '@/features/cart/model/cartReducer';
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, legacy_createStore as createStore } from 'redux';
 
 // 루트 리듀서
 const rootReducer = combineReducers({

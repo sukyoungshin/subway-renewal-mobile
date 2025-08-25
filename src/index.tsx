@@ -6,13 +6,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { store } from './app/store';
 import { GlobalStyle } from './shared/styles/GlobalStyle.js';
 
-createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Routes />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
-);
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Routes />
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  );
+};
+

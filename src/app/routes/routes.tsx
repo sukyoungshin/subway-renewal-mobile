@@ -12,7 +12,7 @@ import {
   OrderMenu,
   Sauce,
   Signup,
-  Veggie,
+  Vegetable,
 } from '@/pages';
 import RouterPath from '@/shared/constants/routerPath';
 import { AppLayout } from '@/shared/layout';
@@ -49,8 +49,8 @@ const Routes = () => {
           element: <Cheese />,
         },
         {
-          path: RouterPath.VEGGIE,
-          element: <Veggie />,
+          path: RouterPath.VEGETABLE,
+          element: <Vegetable />,
         },
         {
           path: RouterPath.SAUCE,

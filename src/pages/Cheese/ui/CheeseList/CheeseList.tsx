@@ -1,4 +1,4 @@
-import { cheeses } from '@/shared/api/mock/food-menu.mock.js';
+import { ICheeseList } from '@/shared/api/mock/food-menu.types';
 import { Spinner } from '@/shared/ui';
 import { AiOutlinePlus } from 'react-icons/ai';
 import {
@@ -10,12 +10,18 @@ import {
   OrderButtonStyled,
 } from './CheeseList.style';
 
-const Cheeses = ({ menuId, handleOrderSelect }) => {
+interface ICheeseProps {
+  menuId: number;
+  cheeseList: ICheeseList[];
+  handleSelectCheese: (id: number) => () => void;
+}
+
+const Cheeses = ({ menuId, cheeseList, handleSelectCheese }: ICheeseProps) => {
   return (
     <Container>
-      {cheeses.map(({ id, nameKor, nameEng, imgSrc, description, price }) => (
+      {cheeseList.map(({ id, nameKor, nameEng, imgPath, description, price }) => (
         <CheeseCard key={id} isMenuSelected={menuId === id}>
-          <OrderButtonStyled isMenuSelected={menuId === id} onClick={handleOrderSelect(id)}>
+          <OrderButtonStyled isMenuSelected={menuId === id} onClick={handleSelectCheese(id)}>
             <AiOutlinePlus />
           </OrderButtonStyled>
           <MenuName>
@@ -23,7 +29,7 @@ const Cheeses = ({ menuId, handleOrderSelect }) => {
             <p>{nameEng}</p>
           </MenuName>
           <MenuIamge isMenuSelected={menuId === id}>
-            <Spinner src={imgSrc} alt={nameKor} />
+            <Spinner src={imgPath} alt={nameKor} />
             <span>{description}</span>
           </MenuIamge>
           <MenuPrice>{price ? `${price}KRW` : null}</MenuPrice>

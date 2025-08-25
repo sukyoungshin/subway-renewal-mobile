@@ -1,19 +1,32 @@
-import { CtaButton } from '@/shared/ui';
+import { CART_ACTION_TYPE } from '@/features/cart/model/actionTypes';
+import { breadList, breadOptionList } from '@/shared/api/mock/food-menu.mock';
+import LINK from '@/shared/constants/link';
+import { useCTAButton } from '@/shared/hooks/useCTAButton';
+import { useSelectMenu } from '@/shared/hooks/useSelectMenu';
+import { CTAButton } from '@/shared/ui';
+import { useDispatch } from 'react-redux';
 import { Container, Section } from './Bread.style';
-import { useCTAButton, useSelectBread, useSelectBreadOption } from './hooks';
 import BreadList from './ui/BreadList/BreadList';
 import BreadOption from './ui/BreadOption/BreadOption';
 
 const Bread = () => {
-  const { breadOptions, selectedRadio } = useSelectBreadOption(); // 빵 옵션선택 로직
-  const { menuId, currentMenu, handleOrderMenu } = useSelectBread(); // 빵 선택 로직
-  const { isBtnActivated, setIsBtnActivated, handleOrderProcess } = useCTAButton({
-    currentMenu,
-    breadOptions,
-  }); // CTA버튼
-  const handleSelectBread = (id) => () => {
+  const dispatch = useDispatch();
+  const { menuId, currentMenu: selectedBread, handleOrderMenu } = useSelectMenu(breadList);
+  const { buttonDisabled, setButtonDisabled, handleNextOrder } = useCTAButton(LINK.CHEESE);
+
+  const selectBread = (id: number) => () => {
     handleOrderMenu(id);
-    setIsBtnActivated(true);
+    setButtonDisabled(false);
+  };
+
+  const saveBread = () => {
+    dispatch({
+      type: CART_ACTION_TYPE.BREAD,
+      payload: {
+        currentMenu: selectedBread,
+        breadOptions: breadOptionList,
+      },
+    });
   };
 
   return (
@@ -21,18 +34,21 @@ const Bread = () => {
       <Section style={{ marginTop: '32px' }}>
         <h2>옵션선택</h2>
         <article>
-          <BreadOption selectedRadio={selectedRadio} />
+          <BreadOption />
         </article>
       </Section>
       <Section style={{ marginTop: '16px' }}>
         <h2>빵선택</h2>
-        <BreadList menuId={menuId} handleSelectBread={handleSelectBread} />
+        <BreadList menuId={menuId} breadList={breadList} handleSelectBread={selectBread} />
       </Section>
 
-      <CtaButton
-        isBtnActivated={isBtnActivated}
-        handleOrderProcess={handleOrderProcess}
-        label="빵 선택 (2 / 7)"
+      <CTAButton
+        label={`${selectedBread?.nameKor} 빵 선택 (2 / 7) `}
+        disabled={buttonDisabled}
+        handleNextOrder={(e) => {
+          saveBread();
+          handleNextOrder(e);
+        }}
       />
     </Container>
   );

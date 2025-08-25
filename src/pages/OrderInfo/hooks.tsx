@@ -1,3 +1,4 @@
+import { CART_ACTION_TYPE } from '@/features/cart/model/actionTypes';
 import LINK from '@/shared/constants/link';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -7,21 +8,23 @@ const DELIVER = 'deliver';
 
 export const useSelectDeliverOrPickUp = () => {
   const [isRadioChecked, setIsRadioChecked] = useState(DELIVER);
-  const handleRadioStatus = (id) => setIsRadioChecked(id);
+  const handleRadioStatus = (id: string) => setIsRadioChecked(id);
 
   return { isRadioChecked, handleRadioStatus };
 };
 
 export const useCustomerRequest = () => {
   const [customerOrderRequest, setCustomerOrderRequest] = useState('');
-  const handleOrderRequest = (e) => setCustomerOrderRequest(e.target.value);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleOrderRequest = (e: any) => setCustomerOrderRequest(e.target.value);
 
   return { customerOrderRequest, handleOrderRequest };
 };
 
 export const useConditionAgreement = () => {
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
-  const handleCheckboxStatus = (e) => setIsCheckboxChecked(e.target.checked);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleCheckboxStatus = (e: any) => setIsCheckboxChecked(e.target.checked);
 
   return { isCheckboxChecked, handleCheckboxStatus };
 };
@@ -39,7 +42,7 @@ export const useCTAButtons = ({ isRadioChecked, isCheckboxChecked, customerOrder
 
   const goToPaymentPage = () => {
     dispatch({
-      type: 'cart/additionalRequest',
+      type: CART_ACTION_TYPE.ADDITIONAL_REQUEST,
       payload: {
         customerRequest: customerOrderRequest,
       },

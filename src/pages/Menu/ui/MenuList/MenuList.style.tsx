@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   margin-bottom: 16px;
+  max-width: 440px;
   width: 100%;
   contain: layout;
 
@@ -11,98 +12,7 @@ export const Container = styled.div`
   grid-gap: 20px;
 `;
 
-export const SauceList = styled.article`
-  padding: 8px;
-  width: 100%;
-
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  grid-gap: 8px;
-  gap: 8px;
-
-  border: 1px solid var(--color-light-grey);
-  border-radius: 8px;
-
-  position: relative;
-
-  ${(props) =>
-    props.isMenuSelected &&
-    css`
-      border: 2px solid var(--color-green);
-    `}
-`;
-
-export const MenuName = styled.div`
-  max-width: 112px;
-  max-height: 30px;
-
-  h3 {
-    font-size: var(--font-size-12);
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  p {
-    font-size: var(--font-size-10);
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-`;
-
-export const MenuImage = styled.div`
-  width: 100%;
-  max-height: 84px;
-  flex: 1;
-  font-size: 0;
-
-  position: relative;
-
-  img {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    font-size: var(--font-size-10);
-
-    opacity: 1;
-    transition: opacity 0.3s;
-  }
-  ${(props) =>
-    props.isMenuSelected &&
-    css`
-      img {
-        opacity: 0.3;
-      }
-    `}
-`;
-
-export const MenuDescription = styled.span`
-width: 100%;
-font-size: var(--font-size-10);
-
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-
-opacity: 0;
-transition: opacity 0.5s;
-
-${(props) =>
-  props.isMenuSelected &&
-  css`
-    opacity: 1;
-  `}
-}
-`;
-
-export const MenuPrice = styled.p`
-  font-size: var(--font-size-10);
-`;
-export const OrderButton = styled.button`
+export const Button = styled.button`
   padding: 0;
   width: 32px;
   height: 32px;
@@ -125,5 +35,94 @@ export const OrderButton = styled.button`
     props.isMenuSelected &&
     css`
       background-color: var(--color-green);
+    `}
+`;
+
+export const StyledMenuList = styled.article`
+  padding: 8px;
+  width: 100%;
+
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-gap: 8px;
+  gap: 8px;
+
+  border: 1px solid var(--color-light-grey);
+  border-radius: 8px;
+
+  position: relative;
+
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      border: 2px solid var(--color-green);
+    `}
+`;
+
+export const MenuPrice = styled.p`
+  font-size: var(--font-size-10);
+`;
+
+export const MenuName = styled.section`
+  max-width: 112px;
+  max-height: 30px;
+
+  h3 {
+    font-size: var(--font-size-12);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  p {
+    font-size: var(--font-size-10);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+`;
+
+export const MenuImage = styled.section`
+  width: 100%;
+  max-height: 84px;
+  flex: 1;
+  font-size: 0;
+
+  position: relative;
+
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-size: var(--font-size-10);
+
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  span {
+    width: 100%;
+    font-size: var(--font-size-10);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  ${(props) =>
+    props.isMenuSelected &&
+    css`
+      img {
+        opacity: 0.3;
+      }
+      span {
+        opacity: 1;
+      }
     `}
 `;

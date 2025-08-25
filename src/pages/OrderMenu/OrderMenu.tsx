@@ -24,17 +24,18 @@ const OrderMenu = () => {
 
         <MenuCardStyled>
           <article className="card-img">
-            <Spinner src={order.category.imgSrc} alt={order.category.nameKor} />
+            <Spinner src={order.category?.currentMenu?.imgPath} alt={order.category.nameKor} />
           </article>
           <article className="card-content">
             <h2>
-              {order.category?.nameKor}
-              <span>{order.category?.price} krw</span>
+              {order.category?.currentMenu?.nameKor}
+              <span>{order.category?.currentMenu?.price} krw</span>
             </h2>
             <p>
-              {order.bread?.currentMenu.nameKor},{' '}
-              {order.bread?.breadOptions.map((opt) => opt.nameKor + opt.bool)},{' '}
-              {order.cheese?.nameKor}, {order.sauce?.nameKor}
+              {order.bread?.currentMenu?.nameKor},{' '}
+              {/* TODO
+              {order.bread?.breadOptions.map((opt) => opt.nameKor + opt.bool)},{' '} */}
+              {order.cheese?.currentMenu?.nameKor}, {order.sauce?.nameKor}
             </p>
 
             <AmountButtonWrapperStyled>
@@ -62,12 +63,12 @@ const OrderMenu = () => {
         <p>결제수단</p>
         <p>
           총 금액
-          <span>{order.category.price} krw</span>
+          <span>{order.category.currentMenu.price} krw</span>
         </p>
         <p>할인금액</p>
         <p className="total-price">
           총 주문 금액
-          <span>{order.category.price} krw</span>
+          <span>{order.category.currentMenu.price} krw</span>
         </p>
       </Section>
 
@@ -76,7 +77,12 @@ const OrderMenu = () => {
   );
 };
 
-const CTAButtons = ({ goToCartPage, goToOrderPage }) => {
+interface IButtonProps {
+  goToCartPage: () => void;
+  goToOrderPage: () => void;
+}
+
+const CTAButtons = ({ goToCartPage, goToOrderPage }: IButtonProps) => {
   return (
     <ButtonWrapper>
       <Button type="button" onClick={goToCartPage}>
