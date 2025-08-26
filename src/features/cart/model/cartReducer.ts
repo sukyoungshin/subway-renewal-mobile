@@ -11,8 +11,16 @@ export const initialState = () => ({
 
 // 리듀서 함수 (장바구니 정보 업데이트)
 function cartReducer(state = initialState(), action: AnyAction) {
-  const { GENERAL_INFO, CATEGORY, BREAD, CHEESE, VEGETABLE, SAUCE, ADDITIONAL_REQUEST, ITEM_COUNT } =
-    CART_ACTION_TYPE;
+  const {
+    GENERAL_INFO,
+    CATEGORY,
+    BREAD,
+    CHEESE,
+    VEGETABLE,
+    SAUCE,
+    ADDITIONAL_REQUEST,
+    ITEM_COUNT,
+  } = CART_ACTION_TYPE;
 
   switch (action.type) {
     case GENERAL_INFO:

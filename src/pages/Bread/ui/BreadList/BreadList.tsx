@@ -6,7 +6,7 @@ import { BreadCard, Button, Container, MenuImage, MenuName } from './BreadList.s
 interface IBreadProps {
   menuId: number;
   breadList: IBreadList[];
-  handleSelectBread: (id:number) => void;
+  handleSelectBread: (id: number) => void;
 }
 
 const BreadList = ({ menuId, breadList, handleSelectBread }: IBreadProps) => {

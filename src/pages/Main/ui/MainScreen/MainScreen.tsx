@@ -3,7 +3,7 @@ import Carousel from '../Carousel/Carousel';
 import RecommendedMenu from '../RecommendedMenu/RecommendedMenu';
 import { Container, Section } from './MainScreen.style';
 
-const MainScreen = ({ handleNavAddr }: {handleNavAddr: handleNavAddrType}) => {
+const MainScreen = ({ handleNavAddr }: { handleNavAddr: handleNavAddrType }) => {
   return (
     <Container>
       <Carousel />

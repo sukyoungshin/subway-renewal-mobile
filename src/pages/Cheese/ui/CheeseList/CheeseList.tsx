@@ -1,13 +1,7 @@
 import { ICheeseList } from '@/shared/api/mock/food-menu.types';
 import { Spinner } from '@/shared/ui';
 import { AiOutlinePlus } from 'react-icons/ai';
-import {
-  CheeseCard,
-  Container,
-  MenuIamge,
-  MenuName,
-  OrderButtonStyled
-} from './CheeseList.style';
+import { CheeseCard, Container, MenuIamge, MenuName, OrderButtonStyled } from './CheeseList.style';
 
 interface ICheeseProps {
   menuId: number;

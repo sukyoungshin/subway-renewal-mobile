@@ -2,7 +2,7 @@ import { Spinner } from '@/shared/ui';
 import { MenuCardStyled, MenuDescription, MenuImage } from './CartFullContent.style';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CartFullContent = ({ tempArray }: {tempArray: any[]}) => {
+const CartFullContent = ({ tempArray }: { tempArray: any[] }) => {
   return (
     <>
       {tempArray.map(({ imgPath, nameKor, nameEng, price, description }) => (

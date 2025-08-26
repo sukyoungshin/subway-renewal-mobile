@@ -5,7 +5,7 @@ import { Spinner } from '@/shared/ui';
 import { handleNavAddrType } from '../../hooks/usePageMove';
 import { Button, Container, Menu } from './RecommendedMenu.style';
 
-const RecommendedMenu = ({ handleNavAddr }: {handleNavAddr: handleNavAddrType}) => {
+const RecommendedMenu = ({ handleNavAddr }: { handleNavAddr: handleNavAddrType }) => {
   return (
     <Container>
       {RecommendedMenus.map(({ id, menuName, kcal }) => (

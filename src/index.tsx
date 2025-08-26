@@ -19,5 +19,4 @@ if (rootElement) {
       </Provider>
     </React.StrictMode>
   );
-};
-
+}

@@ -14,7 +14,7 @@ export const useGoogleLoginAndOut = () => {
 
   /* 구글 OAuth 로그인 */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSignIn = useCallback((googleUser: { getBasicProfile: () => any; }) => {
+  const onSignIn = useCallback((googleUser: { getBasicProfile: () => any }) => {
     const profile = googleUser.getBasicProfile();
 
     dispatch({

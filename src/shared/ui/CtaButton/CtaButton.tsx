@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler } from 'react';
 import { Button as StyledButton } from './CTAButton.style';
 
 interface IButtonProps {
@@ -8,16 +8,10 @@ interface IButtonProps {
   formId?: string;
 }
 
-const CTAButton = ({
-  label,
-  disabled,
-  handleNextOrder,
-  formId,
-}: IButtonProps) => {
-
+const CTAButton = ({ label, disabled, handleNextOrder, formId }: IButtonProps) => {
   return (
     <StyledButton
-      type={formId ? "submit" : "button"}
+      type={formId ? 'submit' : 'button'}
       form={formId}
       disabled={disabled}
       onClick={handleNextOrder}

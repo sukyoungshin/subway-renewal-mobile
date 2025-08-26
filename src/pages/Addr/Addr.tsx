@@ -10,14 +10,21 @@ import KakaoMap from './ui/KakaoMap/KakaoMap';
 
 const Addr = () => {
   const dispatch = useDispatch();
-  const { userAddress, nearbySubway, getGeocoder, setNearbySubway, setUserAddress, errorMessage, switchMapCenterToAddress } =
-    useKakaoMap();
+  const {
+    userAddress,
+    nearbySubway,
+    getGeocoder,
+    setNearbySubway,
+    setUserAddress,
+    errorMessage,
+    switchMapCenterToAddress,
+  } = useKakaoMap();
   const { buttonDisabled, setButtonDisabled, handleNextOrder } = useCTAButton(LINK.MENU);
   const handleMarkerAndButton = (index: number) => {
     const selected = nearbySubway[index];
-    
+
     // 선택한 매장 주소로 지도 이동
-    switchMapCenterToAddress(selected.address)
+    switchMapCenterToAddress(selected.address);
     setButtonDisabled(false);
   };
 

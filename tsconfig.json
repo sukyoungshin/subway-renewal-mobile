@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ESNext",                 // 최신 JS 문법 변환
-    "lib": ["DOM", "ESNext"],           // 브라우저 + 최신 JS API 지원
-    "jsx": "react-jsx",                 // React 17+ JSX transform
-    "module": "ESNext",                 
-    "moduleResolution": "Node",         
-    "esModuleInterop": true,            
-    "skipLibCheck": true,               // d.ts 검사 스킵 (빌드 속도↑)
-    "strict": true,                     // 엄격 모드 (추천)
+    "target": "ESNext", // 최신 JS 문법 변환
+    "lib": ["DOM", "ESNext"], // 브라우저 + 최신 JS API 지원
+    "jsx": "react-jsx", // React 17+ JSX transform
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "skipLibCheck": true, // d.ts 검사 스킵 (빌드 속도↑)
+    "strict": true, // 엄격 모드 (추천)
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "src",                   // 기존 jsconfig와 동일
+    "baseUrl": "src", // 기존 jsconfig와 동일
     "paths": {
-      "@/*": ["*"]                      // alias → import "@/shared/utils"
+      "@/*": ["*"] // alias → import "@/shared/utils"
     }
   },
-  "include": ["src", "config.js"],      // src 전체 + config.js 포함
-  "exclude": ["node_modules", "dist"]   // 빌드 불필요한 폴더 제외
+  "include": ["src", "config.js"], // src 전체 + config.js 포함
+  "exclude": ["node_modules", "dist"] // 빌드 불필요한 폴더 제외
 }

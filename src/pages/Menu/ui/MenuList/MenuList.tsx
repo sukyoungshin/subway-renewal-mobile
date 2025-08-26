@@ -2,7 +2,14 @@ import { ICategoryMenuDetail } from '@/shared/api/mock/food-menu.types';
 import { Spinner } from '@/shared/ui';
 import { formatPrice } from '@/shared/utils/common-utils';
 import { BsCart2 } from 'react-icons/bs';
-import { Button, Container, MenuImage, MenuName, MenuPrice, StyledMenuList } from './MenuList.style';
+import {
+  Button,
+  Container,
+  MenuImage,
+  MenuName,
+  MenuPrice,
+  StyledMenuList,
+} from './MenuList.style';
 interface IMenuProps {
   menuId: number;
   menuList: ICategoryMenuDetail[] | null;

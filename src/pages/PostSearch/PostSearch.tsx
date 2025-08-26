@@ -45,9 +45,9 @@ const PostSearch = () => {
 };
 
 interface IButtonProps {
-  isBtnSelected: boolean,
-  handleComplete: () => void,
-  handleClose: () => void
+  isBtnSelected: boolean;
+  handleComplete: () => void;
+  handleClose: () => void;
 }
 
 const CTAButton = ({ isBtnSelected, handleComplete, handleClose }: IButtonProps) => {

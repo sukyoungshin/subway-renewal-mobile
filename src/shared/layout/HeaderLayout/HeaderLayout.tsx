@@ -8,9 +8,7 @@ const HeaderLayout = () => {
 
   return (
     <>
-      {navModalOpened ? (
-        <SideMenu handleNavbar={handleNavbar} />
-      ) : null}
+      {navModalOpened ? <SideMenu handleNavbar={handleNavbar} /> : null}
 
       <Header handleNavbar={handleNavbar} />
     </>

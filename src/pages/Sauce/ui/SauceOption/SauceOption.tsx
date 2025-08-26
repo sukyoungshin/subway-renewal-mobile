@@ -22,8 +22,8 @@ const SauceOption = ({
               type="radio"
               id={id}
               name={radioGroup}
-            checked={selectedOptionId === id}
-            onChange={handleSelectedOptionId(id)}
+              checked={selectedOptionId === id}
+              onChange={handleSelectedOptionId(id)}
             />
             <Label htmlFor={radioGroup}>{nameKor}</Label>
           </Item>

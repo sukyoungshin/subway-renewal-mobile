@@ -29,7 +29,7 @@ const Menu = () => {
   const saveCategory = () => {
     dispatch({
       type: CART_ACTION_TYPE.CATEGORY,
-      payload: { currentMenu: menuList ? menuList[menuId]: null },
+      payload: { currentMenu: menuList ? menuList[menuId] : null },
     });
   };
 

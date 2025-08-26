@@ -134,9 +134,9 @@ const OrderInfo = () => {
 };
 
 interface IFloatButtonProps {
-  isActive: boolean,
-  goToPrevPage: () => void,
-  goToPaymentPage: () => void,
+  isActive: boolean;
+  goToPrevPage: () => void;
+  goToPaymentPage: () => void;
 }
 
 const FloatButton = ({ isActive, goToPrevPage, goToPaymentPage }: IFloatButtonProps) => {

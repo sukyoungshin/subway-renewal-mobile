@@ -1,5 +1,5 @@
-import { ISauceList } from "@/shared/api/mock/food-menu.types";
-import { useCallback, useEffect, useState } from "react";
+import { ISauceList } from '@/shared/api/mock/food-menu.types';
+import { useCallback, useEffect, useState } from 'react';
 
 interface IOptionList {
   id: number;
@@ -12,10 +12,7 @@ interface IOptionList {
 const NOT_SELECTED_MENU_ID = 0;
 const MAX_SELECT_NUMBER = 3;
 
-export const useSelectOptionAndMenu = (
-  sauceOptionList: IOptionList[],
-  sauceList: ISauceList[]
-) => {
+export const useSelectOptionAndMenu = (sauceOptionList: IOptionList[], sauceList: ISauceList[]) => {
   // 옵션선택 관련
   const initialId = sauceOptionList.filter((opt) => opt.defaultChecked)[0].id;
   const [selectedOptionId, setSelectedOptionId] = useState<number>(initialId);
@@ -55,7 +52,7 @@ export const useSelectOptionAndMenu = (
         setSelectedOptionId(id);
       }
     },
-     
+
     []
   );
 
@@ -68,9 +65,7 @@ export const useSelectOptionAndMenu = (
 
   // 최종적으로 선택한 메뉴 저장
   useEffect(() => {
-    const selectedMenuArray = sauceList.filter(({ id }) =>
-      menuIdArray.includes(id)
-    );
+    const selectedMenuArray = sauceList.filter(({ id }) => menuIdArray.includes(id));
     setCurrentMenu(selectedMenuArray);
   }, [menuIdArray, sauceList]);
 

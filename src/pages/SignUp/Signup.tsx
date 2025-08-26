@@ -117,12 +117,7 @@ const Signup = () => {
         </Fieldset>
       </Form>
 
-      <CTAButton
-        label="회원가입"
-        disabled={isBtnActivated}
-        type="submit"
-        form="signup-form"
-      />
+      <CTAButton label="회원가입" disabled={isBtnActivated} type="submit" form="signup-form" />
       <Message />
     </Container>
   );
