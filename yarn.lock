@@ -87,11 +87,9 @@
     regenerator-runtime "^0.13.4"
 
 "@babel/runtime@^7.15.4":
-  version "7.16.5"
-  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.16.5.tgz"
-  integrity sha512-TXWihFIS3Pyv5hzR7j6ihmeLkZfrXGxAr5UfSl8CHf+6q/wpiYDkUau0czckpYG8QmnCIuPpdLtuA9VmuGGyMA==
-  dependencies:
-    regenerator-runtime "^0.13.4"
+  version "7.28.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.28.3.tgz#75c5034b55ba868121668be5d5bb31cc64e6e61a"
+  integrity sha512-9uIQ10o0WGdpP6GDhXcdOJPJuDgFtIDtN/9+ArJQ2NAfAmiuhTQdzkaTGR33v43GYS2UrSA0eX2pPPHoFVvpxA==
 
 "@babel/template@^7.27.2":
   version "7.27.2"
@@ -323,12 +321,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@eslint/js@9.33.0":
-  version "9.33.0"
-  resolved "https://registry.npmjs.org/@eslint/js/-/js-9.33.0.tgz"
-  integrity sha512-5K1/mKhWaMfreBGJTwval43JJmkip0RmM+3+IuqupeSKNC/Th2Kc7ucaq5ovTSra/OOKB9c58CGSz3QMVbWt0A==
-
-"@eslint/js@^9.33.0":
+"@eslint/js@9.33.0", "@eslint/js@^9.33.0":
   version "9.33.0"
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-9.33.0.tgz#475c92fdddab59b8b8cab960e3de2564a44bf368"
   integrity sha512-5K1/mKhWaMfreBGJTwval43JJmkip0RmM+3+IuqupeSKNC/Th2Kc7ucaq5ovTSra/OOKB9c58CGSz3QMVbWt0A==
@@ -684,11 +677,10 @@
   integrity sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==
 
 "@types/hoist-non-react-statics@^3.3.0":
-  version "3.3.1"
-  resolved "https://registry.npmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz"
-  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.7.tgz#306e3a3a73828522efa1341159da4846e7573a6c"
+  integrity sha512-PQTyIulDkIDro8P+IHbKCsw7U2xxBYflVzW/FgWdCAePD9xGSidgA76/GeJ6lBKoblyhf9pBY763gbrN+1dI8g==
   dependencies:
-    "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
@@ -736,16 +728,23 @@
   integrity sha512-i5ZzwYpqjmrKenzkoLM2Ibzt6mAsM7pxB6BCIouEVVmgiqaMj1TjaK7hnA36hbW5aZv20kx7Lw6hWzPWg0Rurw==
 
 "@types/react-redux@^7.1.20":
-  version "7.1.20"
-  resolved "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.1.20.tgz"
-  integrity sha512-q42es4c8iIeTgcnB+yJgRTTzftv3eYYvCZOh1Ckn2eX/3o5TdsQYKUWpLoLuGlcY/p+VAhV9IOEZJcWk/vfkXw==
+  version "7.1.34"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.34.tgz#83613e1957c481521e6776beeac4fd506d11bd0e"
+  integrity sha512-GdFaVjEbYv4Fthm2ZLvj1VSCedV7TqE5y1kNwnjSdBOTXuRSgowux6J8TAct15T3CKBr63UMk+2CO7ilRhyrAQ==
   dependencies:
     "@types/hoist-non-react-statics" "^3.3.0"
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
 
-"@types/react@*", "@types/react@^19.1.10":
+"@types/react@*":
+  version "19.1.11"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.11.tgz#a64d8ec1769fc861d22f54e6e9f360ed67b54dc8"
+  integrity sha512-lr3jdBw/BGj49Eps7EvqlUaoeA0xpj3pc0RoJkHpYaCHkVK7i28dKyImLQb3JVlqs3aYSXf7qYuWOW/fgZnTXQ==
+  dependencies:
+    csstype "^3.0.2"
+
+"@types/react@^19.1.10":
   version "19.1.10"
   resolved "https://registry.npmjs.org/@types/react/-/react-19.1.10.tgz"
   integrity sha512-EhBeSYX0Y6ye8pNebpKrwFJq7BoQ8J5SO6NlvNwwHjSj6adXJViPQrKlsyPw7hLBLvckEMO1yxeGdR82YBBlDg==
@@ -2523,9 +2522,9 @@ react-is@^17.0.1, react-is@^17.0.2:
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
 react-redux@^7.2.6:
-  version "7.2.6"
-  resolved "https://registry.npmjs.org/react-redux/-/react-redux-7.2.6.tgz"
-  integrity sha512-10RPdsz0UUrRL1NZE0ejTkucnclYSgXp5q+tB5SWx2qeG2ZJQJyymgAhwKy73yiL/13btfB6fPr+rgbMAaZIAQ==
+  version "7.2.9"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.9.tgz#09488fbb9416a4efe3735b7235055442b042481d"
+  integrity sha512-Gx4L3uM182jEEayZfRbI/G11ZpYdNAnBs70lFVMNdHJI76XYtR+7m0MN+eAs7UHBPhWXcnFPaS+9owSCJQHNpQ==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@types/react-redux" "^7.1.20"
@@ -2563,9 +2562,9 @@ redent@^3.0.0:
     strip-indent "^3.0.0"
 
 redux@^4.0.0:
-  version "4.1.2"
-  resolved "https://registry.npmjs.org/redux/-/redux-4.1.2.tgz"
-  integrity sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.2.1.tgz#c08f4306826c49b5e9dc901dee0452ea8fce6197"
+  integrity sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==
   dependencies:
     "@babel/runtime" "^7.9.2"
 
