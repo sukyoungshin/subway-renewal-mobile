@@ -17,13 +17,11 @@
 
 **[ 주요작업 ]**
 
-- React 17 → 19 업그레이드
-- CRA → Vite 전환 (CRA 지원 종료 대응, 빌드 속도 개선)
-- Styled-Components → Tailwind CSS 전환
-- TypeScript 도입: 타입 안정성 확보 및 유지보수성 강화
-- FSD 구조 도입: 도메인 단위로 구조화 → 확장성·유지보수성 강화
-- GitHub Actions 활용하여 CI 단계에서 코드품질 관리 자동화 (ESLint, Prettier 검사)
-- UX 개선: 메인 캐러셀 스타일 변경
+- CRA → Vite 마이그레이션: 빌드 속도 7.9s → 1.4s (**약 82% 단축**)
+- Styled-Components → Tailwind CSS 전환: 유틸리티 기반 스타일링으로 전환하여 디자인 시스템 일관성 확보
+- TypeScript 도입: 목데이터 스키마 불일치 및 불필요한 Props 검출, 잘못된 로직 수정 등으로 타입 안정성과 코드 품질 향상
+- FSD 구조 도입: pages·features·shared 단위로 모듈화하여 관심사 분리 → 신규 기능 확장 용이성 확보
+- GitHub Actions 도입: PR 머지 전 ESLint·Prettier 자동 검사로 코드 스타일 일관성 유지
 
 ### 1차 개발 (2021.11 ~ 2022.02)
 
