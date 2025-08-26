@@ -14,5 +14,8 @@
     "**/node_modules": true
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "cSpell.words": [
+    "Kakao"
+  ]
 }
