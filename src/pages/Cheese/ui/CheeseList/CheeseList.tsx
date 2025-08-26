@@ -6,8 +6,7 @@ import {
   Container,
   MenuIamge,
   MenuName,
-  MenuPrice,
-  OrderButtonStyled,
+  OrderButtonStyled
 } from './CheeseList.style';
 
 interface ICheeseProps {
@@ -19,7 +18,7 @@ interface ICheeseProps {
 const Cheeses = ({ menuId, cheeseList, handleSelectCheese }: ICheeseProps) => {
   return (
     <Container>
-      {cheeseList.map(({ id, nameKor, nameEng, imgPath, description, price }) => (
+      {cheeseList.map(({ id, nameKor, nameEng, imgPath, description }) => (
         <CheeseCard key={id} isMenuSelected={menuId === id}>
           <OrderButtonStyled isMenuSelected={menuId === id} onClick={handleSelectCheese(id)}>
             <AiOutlinePlus />
@@ -32,7 +31,6 @@ const Cheeses = ({ menuId, cheeseList, handleSelectCheese }: ICheeseProps) => {
             <Spinner src={imgPath} alt={nameKor} />
             <span>{description}</span>
           </MenuIamge>
-          <MenuPrice>{price ? `${price}KRW` : null}</MenuPrice>
         </CheeseCard>
       ))}
     </Container>

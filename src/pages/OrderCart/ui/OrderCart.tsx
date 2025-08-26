@@ -11,7 +11,7 @@ const OrderCart = () => {
   return (
     <Container>
       {AddedCartItem.id !== undefined ? (
-        <CartFull AddedCartItem={AddedCartItem} itemCount={itemCount} />
+        <CartFull itemCount={itemCount} />
       ) : (
         <CartEmpty handleOrderProcess={handleOrderProcess} />
       )}

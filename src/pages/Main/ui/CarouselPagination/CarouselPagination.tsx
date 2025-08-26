@@ -1,9 +1,16 @@
-import { PaginationList, Item } from './CarouselPagination.style';
+import { carouselContentListType } from '@/shared/api/mock/carousel-content.types';
+import { Item, PaginationList } from './CarouselPagination.style';
 
-const CarouselPagination = ({ CarouselContents, selectedId, handleClick }) => {
+interface ICarouselProps {
+  carouselContentList: carouselContentListType;
+  selectedId: number;
+  handleClick: (id: number) => () => void;
+}
+
+const CarouselPagination = ({ carouselContentList, selectedId, handleClick }: ICarouselProps) => {
   return (
     <PaginationList>
-      {CarouselContents.map((content) => (
+      {carouselContentList.map((content) => (
         <Item
           key={content.id}
           isSelected={content.id === selectedId}

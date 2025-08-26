@@ -1,8 +1,9 @@
+import { handleNavAddrType } from '../../hooks/usePageMove';
 import Carousel from '../Carousel/Carousel';
 import RecommendedMenu from '../RecommendedMenu/RecommendedMenu';
 import { Container, Section } from './MainScreen.style';
 
-const MainScreen = ({ handleNavAddr }) => {
+const MainScreen = ({ handleNavAddr }: {handleNavAddr: handleNavAddrType}) => {
   return (
     <Container>
       <Carousel />

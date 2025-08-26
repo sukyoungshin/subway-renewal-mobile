@@ -2,9 +2,10 @@ import { RecommendedMenus } from '@/shared/api/mock/recommend-menu.mock.js';
 import OrderIcon from '@/shared/assets/icons/order.svg';
 import Sample from '@/shared/assets/sample.webp';
 import { Spinner } from '@/shared/ui';
+import { handleNavAddrType } from '../../hooks/usePageMove';
 import { Button, Container, Menu } from './RecommendedMenu.style';
 
-const RecommendedMenu = ({ handleNavAddr }) => {
+const RecommendedMenu = ({ handleNavAddr }: {handleNavAddr: handleNavAddrType}) => {
   return (
     <Container>
       {RecommendedMenus.map(({ id, menuName, kcal }) => (

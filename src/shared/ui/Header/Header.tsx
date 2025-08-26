@@ -6,7 +6,11 @@ import { HiMenuAlt1 } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
 import { Anchor, Button, Container, LinkStyled } from './Header.style';
 
-const Header = ({ handleNavbar }) => {
+interface IProps {
+  handleNavbar: () => void;
+}
+
+const Header = ({ handleNavbar }: IProps) => {
   const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
 
   return (
@@ -26,7 +30,7 @@ const Header = ({ handleNavbar }) => {
   );
 };
 
-const HamburgerMenu = ({ handleNavbar }) => {
+const HamburgerMenu = ({ handleNavbar }: IProps) => {
   return (
     <Button type="button" onClick={handleNavbar}>
       <HiMenuAlt1 />

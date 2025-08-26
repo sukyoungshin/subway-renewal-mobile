@@ -1,9 +1,22 @@
-import { Container, Text, Event, Button } from './CarouselContent.style';
+import { carouselContentListType } from '@/shared/api/mock/carousel-content.types';
+import { Button, Container, Event, Text } from './CarouselContent.style';
 
-const CarouselContent = ({ CarouselContents, selectedId, handleClick, goToOrderPage }) => {
+interface ICarouselProps {
+  carouselContentList: carouselContentListType;
+  selectedId: number;
+  handleClick: (id: number) => () => void;
+  goToOrderPage: () => void;
+}
+
+const CarouselContent = ({
+  carouselContentList,
+  selectedId,
+  handleClick,
+  goToOrderPage,
+}: ICarouselProps) => {
   return (
     <>
-      {CarouselContents.map(({ id, eventTitle, eventTitle2, eventDate, eventName }) => (
+      {carouselContentList.map(({ id, eventTitle, eventTitle2, eventDate, eventName }) => (
         <Container key={id} isSelected={id === selectedId} onClick={handleClick(id)}>
           <Text>
             <h2>{eventTitle}</h2>

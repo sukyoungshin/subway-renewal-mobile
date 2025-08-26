@@ -16,7 +16,11 @@ import {
 } from './SideMenu.style';
 import { usePageMove, useReduxSelector } from './hooks';
 
-const Navbar = ({ handleNavbar }) => {
+interface IProps {
+  handleNavbar: () => void;
+}
+
+const SideMenu = ({ handleNavbar }: IProps) => {
   const { loginFlag, userInfo } = useReduxSelector();
   const goToLoginPage = usePageMove();
 
@@ -31,7 +35,7 @@ const Navbar = ({ handleNavbar }) => {
   );
 };
 
-const Header = ({ handleNavbar }) => {
+const Header = ({ handleNavbar }: IProps) => {
   return (
     <HeaderContainer>
       <div>
@@ -48,7 +52,7 @@ const Header = ({ handleNavbar }) => {
   );
 };
 
-const Navigation = ({ handleNavbar }) => {
+const Navigation = ({ handleNavbar }: IProps) => {
   return (
     <NavContainer>
       <NavigationList>
@@ -57,7 +61,9 @@ const Navigation = ({ handleNavbar }) => {
             <NavLinkStyled
               to={category.pathName}
               onClick={handleNavbar}
-              className={({ isActive }) => (isActive ? 'var(--color-green)' : 'var(--color-black)')}
+              className={({ isActive }: { isActive: boolean }) =>
+                isActive ? 'var(--color-green)' : 'var(--color-black)'
+              }
             >
               {category.categoryName}
             </NavLinkStyled>
@@ -68,7 +74,14 @@ const Navigation = ({ handleNavbar }) => {
   );
 };
 
-const Main = ({ userInfo }) => {
+const Main = ({
+  userInfo,
+}: {
+  userInfo: {
+    userName: string;
+    imageURL: string;
+  };
+}) => {
   const { userName, imageURL } = userInfo;
 
   return (
@@ -85,7 +98,7 @@ const Main = ({ userInfo }) => {
   );
 };
 
-const LoginButton = ({ goToLoginPage }) => {
+const LoginButton = ({ goToLoginPage }: { goToLoginPage: () => void }) => {
   return (
     <Button type="button" onClick={goToLoginPage}>
       로그인
@@ -93,7 +106,7 @@ const LoginButton = ({ goToLoginPage }) => {
   );
 };
 
-const Footer = ({ loginFlag }) => {
+const Footer = ({ loginFlag }: { loginFlag: boolean }) => {
   return (
     <FooterContainer>
       {loginFlag && (
@@ -112,4 +125,4 @@ const Footer = ({ loginFlag }) => {
   );
 };
 
-export default Navbar;
+export default SideMenu;

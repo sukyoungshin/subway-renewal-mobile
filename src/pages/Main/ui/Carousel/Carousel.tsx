@@ -1,4 +1,4 @@
-import { CarouselContents } from '@/shared/api/mock/carousel-content.mock.js';
+import { carouselContentList } from '@/shared/api/mock/carousel-content.mock.js';
 import CarouselContent from '../CarouselContent/CarouselContent';
 import CarouselPagination from '../CarouselPagination/CarouselPagination';
 import { Container } from './Carousel.style';
@@ -11,12 +11,12 @@ const Carousel = () => {
   return (
     <Container>
       <CarouselPagination
-        CarouselContents={CarouselContents}
+        carouselContentList={carouselContentList}
         selectedId={selectedId}
         handleClick={handleClick}
       />
       <CarouselContent
-        CarouselContents={CarouselContents}
+        carouselContentList={carouselContentList}
         selectedId={selectedId}
         handleClick={handleClick}
         goToOrderPage={goToOrderPage}

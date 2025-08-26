@@ -10,10 +10,14 @@ import KakaoMap from './ui/KakaoMap/KakaoMap';
 
 const Addr = () => {
   const dispatch = useDispatch();
-  const { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue, errorMessage } =
+  const { userAddress, nearbySubway, getGeocoder, setNearbySubway, setUserAddress, errorMessage, switchMapCenterToAddress } =
     useKakaoMap();
   const { buttonDisabled, setButtonDisabled, handleNextOrder } = useCTAButton(LINK.MENU);
-  const handleMarkerAndButton = () => {
+  const handleMarkerAndButton = (index: number) => {
+    const selected = nearbySubway[index];
+    
+    // 선택한 매장 주소로 지도 이동
+    switchMapCenterToAddress(selected.address)
     setButtonDisabled(false);
   };
 
@@ -21,8 +25,8 @@ const Addr = () => {
     dispatch({
       type: CART_ACTION_TYPE.GENERAL_INFO,
       payload: {
-        customerInfo: addrValue,
-        subwayInfo: subwayPlaces[0],
+        customerInfo: userAddress,
+        subwayInfo: nearbySubway[0],
       },
     });
   };
@@ -35,7 +39,6 @@ const Addr = () => {
     const left = window.screenX + (window.innerWidth - width) / 2;
     const top = window.screenY + (window.innerHeight - height) / 2;
 
-    // openSearchWindow();
     window.open(
       '/search.html',
       'addressSearch',
@@ -45,14 +48,13 @@ const Addr = () => {
 
   // Dispatch Event
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const receiveMessage = (event: any) => {
+    const receiveMessage = (event: MessageEvent<string>) => {
       if (event.origin !== window.location.origin) return;
-      if (event.source.name !== 'addressSearch') return;
+      if ((event.source as Window)?.name !== 'addressSearch') return;
 
-      setAddrValue(event.data); // 고객의 주소지 저장
-      getGeocode(event.data); // x좌표 y좌표 셋팅
-      setSubwayPlaces([]); // 기존값 삭제
+      setUserAddress(event.data); // 고객의 주소지 저장
+      getGeocoder(event.data); // x좌표 y좌표 셋팅
+      setNearbySubway([]); // 기존값 삭제
     };
 
     window.addEventListener('message', receiveMessage, false);
@@ -71,7 +73,7 @@ const Addr = () => {
             id="addrSearch"
             name="addrSearch"
             placeholder="배달 받으실 주소를 입력해주세요"
-            value={addrValue}
+            value={userAddress}
             onClick={handleAddressPopUp}
             readOnly
           />
@@ -80,8 +82,8 @@ const Addr = () => {
         <Fieldset flex>
           <Title>주문가능매장</Title>
           <KakaoMap
-            userAddress={addrValue}
-            nearbyPlaces={subwayPlaces}
+            userAddress={userAddress}
+            nearbyPlaces={nearbySubway}
             handleMarkerAndButton={handleMarkerAndButton}
             errorMessage={errorMessage}
           />

@@ -1,13 +1,14 @@
 import { Spinner } from '@/shared/ui';
 import { MenuCardStyled, MenuDescription, MenuImage } from './CartFullContent.style';
 
-const CartFullContent = ({ ItemArray }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CartFullContent = ({ tempArray }: {tempArray: any[]}) => {
   return (
     <>
-      {ItemArray.map(({ imgSrc, nameKor, nameEng, price, description }) => (
-        <MenuCardStyled key={imgSrc}>
+      {tempArray.map(({ imgPath, nameKor, nameEng, price, description }) => (
+        <MenuCardStyled key={imgPath}>
           <MenuImage>
-            <Spinner src={imgSrc} alt={`${nameKor}, ${nameEng}`} />
+            <Spinner src={imgPath} alt={`${nameKor}, ${nameEng}`} />
           </MenuImage>
           <MenuDescription>
             <h3>

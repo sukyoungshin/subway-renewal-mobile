@@ -11,7 +11,7 @@ import {
 interface IKakaoMapProps {
   userAddress: string;
   nearbyPlaces: IPlaceReturnProps[];
-  handleMarkerAndButton: () => void;
+  handleMarkerAndButton: (i: number) => void;
   errorMessage?: string;
 }
 interface IPlaceReturnProps {
@@ -54,13 +54,13 @@ const KakaoMap = ({
         {/* 검색된 써브웨이 매장 목록 */}
         {userAddress.length > 0 && !hasErrorMessage && (
           <SubwaysList>
-            {nearbyPlaces.map((place) => (
+            {nearbyPlaces.map((place, i) => (
               <Subway key={place.id}>
                 <ResultInput
                   type="text"
                   name="placelists"
                   value={place.name}
-                  onClick={handleMarkerAndButton}
+                  onClick={() => handleMarkerAndButton(i)}
                   readOnly
                 />
                 <Span>선택</Span>

@@ -133,7 +133,13 @@ const OrderInfo = () => {
   );
 };
 
-const FloatButton = ({ isActive, goToPrevPage, goToPaymentPage }) => {
+interface IFloatButtonProps {
+  isActive: boolean,
+  goToPrevPage: () => void,
+  goToPaymentPage: () => void,
+}
+
+const FloatButton = ({ isActive, goToPrevPage, goToPaymentPage }: IFloatButtonProps) => {
   return (
     <ButtonWrapper>
       <Button type="button" onClick={goToPrevPage}>

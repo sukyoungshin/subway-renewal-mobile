@@ -99,9 +99,6 @@ ${(props) =>
 }
 `;
 
-export const MenuPrice = styled.p`
-  font-size: var(--font-size-10);
-`;
 export const OrderButton = styled.button`
   padding: 0;
   width: 32px;

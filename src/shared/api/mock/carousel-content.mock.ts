@@ -1,4 +1,4 @@
-export const CarouselContents = [
+export const carouselContentList = [
   {
     id: 0,
     eventTitle: '신선하고 건강한',

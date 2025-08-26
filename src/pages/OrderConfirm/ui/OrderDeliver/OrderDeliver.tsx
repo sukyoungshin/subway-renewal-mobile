@@ -1,7 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getTodayTime } from '@/shared/utils/common-utils';
 import { Container, OrderDetail, Section, Text } from './OrderDeliver.style';
+interface IProps {
+  orderMenu: any;
+  customerAddr: any;
+  subwayName: any;
+  subwayAddr: any;
+  subwayPhone: any;
+  customerRequest: any;
+}
 
-const OrderDeliver = ({ orderDetail }) => {
+const OrderDeliver = ({ orderDetail }: { orderDetail: IProps }) => {
   const { orderMenu, customerAddr, subwayName, subwayPhone, customerRequest } = orderDetail;
 
   return (

@@ -1,25 +1,58 @@
 /* global kakao */
 import loadKakaoMap from '@/shared/lib/loadKakaoMap';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+interface IPlaceReturnProps {
+  id: number;
+  name: string; // 써브웨이 지점명
+  distance: string; // 입력받은 주소지부터 근처 써브웨이까지의 거리 (m)
+  address: string; // 써브웨이 지점 도로명주소
+  phone: string; // 써브웨이 지점 전화번호
+  url: string; // 써브웨이 지점 링크
+}
+interface IPositionProps {
+  x: string;
+  y: string;
+}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface IGeocoderResultProps extends IPositionProps {}
+interface IKeywordSearchProps extends IPositionProps {
+  address_name: string;
+  category_group_code: string;
+  category_group_name: string;
+  category_name: string;
+  distance: string;
+  id: string;
+  phone: string;
+  place_name: string;
+  place_url: string;
+  road_address_name: string;
+}
+interface IMarkerPositionProps {
+  La: number;
+  Ma: number;
+}
+type StatusReturnType = 'OK' | 'ZERO_RESULT' | 'ERROR';
 
 export const useKakaoMap = () => {
   /* 카카오맵, 유저 및 써브웨이 매장정보 관리 */
-  const kakaoMap = useRef(); // KakaoMap 상태관리
-  const [addrValue, setAddrValue] = useState(''); // 고객의 주소지
-  const [position, setPosition] = useState(''); // 고객의 위치 좌표
-  const [subwayPlaces, setSubwayPlaces] = useState([]); // 써브웨이 리스트 및 거리를 저장할 배열
-  const [errorMessage, setErrorMessage] = useState('');
+  const kakaoMap = useRef<kakao.maps.Map | null>(null);
+  const [userAddress, setUserAddress] = useState<string>('');
+  const [userPosition, setUserPosition] = useState<IPositionProps>({
+    y: '',
+    x: '',
+  });
+  const [nearbySubway, setNearbySubway] = useState<IPlaceReturnProps[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-  // Geocoder init
-  const getGeocode = (addrValue) => {
-    if (!window.kakao?.maps) return;
+  // 주소 → 좌표 변환
+  const getGeocoder = async (address: string) => {
+    const kakao = await loadKakaoMap();
+    const geocoder = new kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체를 생성
 
-    // 주소-좌표 변환 객체를 생성
-    const geocoder = new kakao.maps.services.Geocoder();
-
-    const callback = (result, status) => {
+    const callback = (result: IGeocoderResultProps[], status: StatusReturnType) => {
       if (status === kakao.maps.services.Status.OK) {
-        setPosition({
+        setUserPosition({
           y: result[0].y,
           x: result[0].x,
         });
@@ -30,150 +63,147 @@ export const useKakaoMap = () => {
     };
 
     // 입력받은 주소 정보에 해당하는 좌표값을 요청한다.
-    geocoder.addressSearch(addrValue, callback);
+    geocoder.addressSearch(address, callback);
   };
 
-  // RepaintMap
-  const repaintMap = (markerPosition) => {
-    kakaoMap.current.relayout();
-    kakaoMap.current.setCenter(markerPosition); // 지도 중심을 변경
-    kakaoMap.current.setDraggable(true); // 마우스 드래그 or 모바일 터치를 이용한 지도이동 가능
-    kakaoMap.current.setZoomable(true); // 지도의 마우스 휠 or 모바일 터치를 이용한 확대/축소 기능
+  // 지도 중심 이동
+  const repaintMap = (markerPosition: IMarkerPositionProps) => {
+    if (kakaoMap.current) {
+      kakaoMap.current.relayout();
+      kakaoMap.current.setCenter(markerPosition); // 지도 중심을 변경
+      kakaoMap.current.setDraggable(true); // 마우스 드래그 or 모바일 터치를 이용한 지도이동 가능
+      kakaoMap.current.setZoomable(true); // 지도의 마우스 휠 or 모바일 터치를 이용한 확대/축소 기능
+    }
   };
 
-  // Marker를 생성하고 지도에 올림
-  const setMarker = (LatLng) => {
-    const marker = new kakao.maps.Marker({ position: LatLng }); // 마커 생성
+  // 마커 생성 (공통)
+  const createMarker = (pos: kakao.maps.LatLng) => {
+    const marker = new kakao.maps.Marker({ position: pos });
+    marker.setMap(kakaoMap.current);
+    marker.setPosition(pos);
 
-    marker.setMap(kakaoMap.current); // 지도에 마커를 올림
-    marker.setPosition(LatLng); // 마커를 결과값으로 받은 위치로 옮김
+    return marker;
   };
 
-  // InfoWindow 생성 및 표시
-  const setInfoWindow = (markerPosition, subwaylists, i) => {
-    // 인포윈도우 생성
-    new kakao.maps.InfoWindow({
-      map: kakaoMap.current, // 인포윈도우가 표시될 지도
-      position: markerPosition, //인포윈도우 표시 위치
-      content: `  
-        <p>
-          <strong>
-          ${subwaylists[i].name}
-          </strong>
-        </p>
-        <p>
-          ${subwaylists[i].address}
-        </p>
-        <p>
-          연락처 : ${subwaylists[i].phone}
-        </p>
-        <p>
-          영업시간 : 
-          <a 
-            href=${subwaylists[i].url} 
-            title="상세 정보를 확인하기 위해 카카오맵 웹페이지로 이동하기"
-            target="_blank" 
-            style="font-size: inherit; text-decoration: underline;"
-          >
-          홈페이지${' '}참고
-          </a>
-        </p>
-        <p>
-          거리 : ${subwaylists[i].distance}m
-        </p>
-      `, // 인포윈도우에 나타낼 정보
+  // 인포윈도우 생성 (공통)
+  const createInfoWindow = (pos: kakao.maps.LatLng, content: string, marker: kakao.maps.Marker) => {
+    const infoWindow = new kakao.maps.InfoWindow({
+      position: pos,
+      content,
     });
+    infoWindow.open(kakaoMap.current, marker);
   };
 
-  // KakaoMap 입력받은 정보를 토대로, 근처 써브웨이 매장정보, 마커 및 인포윈도 생성 및 표시
-  useEffect(() => {
-    const initMapSearch = async () => {
-      try {
-        const kakao = await loadKakaoMap();
-        if (kakaoMap.current === undefined) return;
-        const markerPosition = new kakao.maps.LatLng(position.y, position.x); // 마커위치 지정
+  // 사용자 위치 마커 & 인포윈도우
+  const showUserLocation = useCallback(
+    (pos: kakao.maps.LatLng) => {
+      const marker = createMarker(pos);
+      const content = `<div style="text-align:center; white-space:nowrap;">
+      <p><strong>내 위치</strong></p>
+      <p>${userAddress}</p>
+    </div>`;
+      createInfoWindow(pos, content, marker);
+    },
+    [userAddress]
+  );
 
-        // 키워드 검색
-        const keywordSearch = () => {
-          const places = new kakao.maps.services.Places(); // 장소 검색 서비스 객체를 생성
+  // 써브웨이 매장 마커
+  const showSubwayMarker = useCallback((pos: kakao.maps.LatLng, place: IPlaceReturnProps) => {
+    const marker = createMarker(pos);
+    const content = `<p><strong>${place.name}</strong></p><p>${place.address}</p>`;
+    createInfoWindow(pos, content, marker);
+  }, []);
 
-          // 장소 검색이 완료됐을 때 호출되는 콜백함수
-          const callback = function (result, status) {
-            const placeNamesArr = []; // 장소이름을 저장할 배열
+  // 주소로 지도 중심 이동
+  const switchMapCenterToAddress = async (address: string) => {
+    const kakao = await loadKakaoMap();
+    const geocoder = new kakao.maps.services.Geocoder();
 
-            if (status === kakao.maps.services.Status.OK) {
-              // 정상적으로 검색이 완료됐으면, 검색목록과 마커를 표시한다.
-              for (let i = 0; i < result.length; i++) {
-                // 받아온 주소지 근처의 모든 써브웨이 지점을 불러옴
-                const markerPosition = new kakao.maps.LatLng(result[i].y, result[i].x);
-                setSubwayPlaces((previous) => [
-                  ...previous,
-                  {
-                    id: i,
-                    name: result[i].place_name, // 써브웨이 지점명
-                    distance: result[i].distance, // 입력받은 주소지부터 근처 써브웨이까지의 거리 (m)
-                    address: result[i].road_address_name, // 써브웨이 지점 도로명주소
-                    phone: result[i].phone, // 써브웨이 지점 전화번호
-                    url: result[i].place_url, // 써브웨이 지점 링크
-                  },
-                ]);
-                placeNamesArr.push({
-                  id: i,
-                  name: result[i].place_name,
-                  distance: result[i].distance,
-                  address: result[i].road_address_name,
-                  phone: result[i].phone,
-                  url: result[i].place_url,
-                });
-                setMarker(markerPosition); // 마커를 생성하고 지도에 표시
-                setInfoWindow(markerPosition, placeNamesArr, i); // 인포윈도우를 생성하고 지도에 표시
-              }
-            }
-          };
+    const callback = (result: IGeocoderResultProps[], status: StatusReturnType) => {
+      if (status === kakao.maps.services.Status.OK) {
+        const pos = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-          // 고객이 입력한 좌표 근처의 '써브웨이' 키워드를 callback 함수를 이용하여 검색한다.
-          places.keywordSearch('써브웨이', callback, {
-            location: new kakao.maps.LatLng(position.y, position.x),
-            radius: 1500,
-          });
-        };
+        // 지도 중심 이동
+        kakaoMap.current?.setCenter(pos);
 
-        keywordSearch(); // 키워드검색
-        repaintMap(markerPosition); // 지도 다시 그려줌
-        setMarker(markerPosition); // 마커 그려줌
-      } catch (error) {
-        setErrorMessage('카카오지도 검색 에러: ', error);
+        // 선택된 위치에 마커 추가
+        const marker = new kakao.maps.Marker({ position: pos });
+        marker.setMap(kakaoMap.current);
       }
     };
 
-    if (position) {
-      initMapSearch();
-    }
-  }, [position]);
+    geocoder.addressSearch(address, callback);
+  };
 
-  // KakaoMap 최초 생성
+  // userPosition 변경될 때마다, 주변 Subway 검색 + 마커 표시
+  useEffect(() => {
+    const searchNearby = async () => {
+      const kakao = await loadKakaoMap();
+      if (!kakaoMap.current || !userPosition.x || !userPosition.y) return;
+
+      const center = new kakao.maps.LatLng(userPosition.y, userPosition.x);
+      repaintMap(center);
+
+      // 사용자 위치 마커 + InfoWindow
+      showUserLocation(center);
+
+      const places = new kakao.maps.services.Places();
+      places.keywordSearch(
+        '써브웨이',
+        (result: IKeywordSearchProps[], status: StatusReturnType) => {
+          if (status !== kakao.maps.services.Status.OK) return;
+
+          const transformed = result.map((place) => ({
+            id: parseInt(place.id),
+            name: place.place_name,
+            distance: place.distance,
+            address: place.road_address_name,
+            phone: place.phone,
+            url: place.place_url,
+          }));
+
+          setNearbySubway(transformed);
+
+          // Subway 마커
+          result.forEach((place, i) => {
+            const pos = new kakao.maps.LatLng(place.y, place.x);
+            showSubwayMarker(pos, transformed[i]);
+          });
+        },
+        { location: center, radius: 1500 }
+      );
+    };
+
+    searchNearby();
+  }, [showSubwayMarker, showUserLocation, userPosition]);
+
+  // KakaoMap 초기화 (최초 1회)
   useEffect(() => {
     const initMap = async () => {
-      try {
-        const kakao = await loadKakaoMap();
-        const container = document.getElementById('map');
-        if (!container) return;
+      const kakao = await loadKakaoMap();
+      const mapContainer = document.getElementById('map');
+      if (!mapContainer) return;
 
-        const options = {
-          center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488), // 지도의 중심좌표
-          draggable: true, // 지도 이동 및 확대/축소 가능
-          level: 5, // 지도의 확대레벨
-        };
+      const mapOptions = {
+        center: new kakao.maps.LatLng(37.3652645, 127.1067686), // 지도의 중심좌표
+        draggable: true, // 지도 이동 및 확대/축소 가능
+        level: 5, // 지도의 확대레벨
+      };
 
-        const map = new kakao.maps.Map(container, options); // 지도 생성
-        kakaoMap.current = map; // 카카오맵을 ref로 지정
-      } catch (error) {
-        console.error('카카오맵 로딩 실패', error);
-      }
+      const map = new kakao.maps.Map(mapContainer, mapOptions);
+      kakaoMap.current = map; // 카카오맵을 ref로 지정
     };
 
     initMap();
   }, []);
 
-  return { addrValue, subwayPlaces, getGeocode, setSubwayPlaces, setAddrValue, errorMessage };
+  return {
+    userAddress,
+    nearbySubway,
+    getGeocoder,
+    setNearbySubway,
+    setUserAddress,
+    errorMessage,
+    switchMapCenterToAddress,
+  };
 };
