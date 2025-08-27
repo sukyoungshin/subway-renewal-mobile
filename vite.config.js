@@ -19,6 +19,13 @@ export default defineConfig({
       },
     },
     sourcemap: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // console.log 제거
+        dead_code: true, // 사용하지 않는 코드 제거
+      },
+    },
   },
   server: {
     port: 3000,
