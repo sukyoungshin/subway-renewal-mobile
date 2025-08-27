@@ -1,9 +1,10 @@
 import react from '@vitejs/plugin-react-swc';
 import path from 'node:path';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), visualizer({ filename: 'stats.html', template: 'treemap' })],
   root: '.',
   resolve: {
     alias: {
@@ -17,6 +18,7 @@ export default defineConfig({
         search: path.resolve(__dirname, 'search.html'),
       },
     },
+    sourcemap: true,
   },
   server: {
     port: 3000,
