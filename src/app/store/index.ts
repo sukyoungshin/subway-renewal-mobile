@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 });
 
 // 단일 스토어 생성
-export const store = createStore(rootReducer);
+const store = createStore(rootReducer);
 console.log('@App store', store.getState()); // 스토어의 상태 확인
 
-export default rootReducer;
+export default store;
