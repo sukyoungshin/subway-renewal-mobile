@@ -4,7 +4,10 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react(), visualizer({ filename: 'stats.html', template: 'treemap' })],
+  plugins: [
+    react(),
+    visualizer({ filename: './docs/stats.html', open: false, template: 'treemap' }),
+  ],
   root: '.',
   resolve: {
     alias: {
