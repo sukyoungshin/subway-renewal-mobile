@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import PostSearch from './pages/PostSearch/PostSearch.jsx';
+import { PostSearch } from './pages/index';
 import { GlobalStyle } from './shared/styles/GlobalStyle.js';
 
 const rootElement = document.getElementById('wrap');
