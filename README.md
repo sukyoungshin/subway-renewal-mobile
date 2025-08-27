@@ -15,6 +15,10 @@
 
 **[ 기술스택 ]** React, React-Router, Redux, TailwindCSS, TypeScript<br/>
 
+**[ 링크 ]**
+
+- 📄 [프로젝트 상세 소개 (2차구현)](https://sukyoungshin.notion.site/2-25c0c117cc2c8009a808e18ee60f92fc)
+
 **[ 주요작업 ]**
 
 - CRA → Vite 마이그레이션: 빌드 속도 7.9s → 1.4s 단축 (약 82%)
@@ -26,6 +30,11 @@
 ### 초기 작업 (2021.11 ~ 2022.02, 1차 개발)
 
 **[ 기술스택 ]** React, React-Router, Redux, Styled-Components, JavaScript<br/>
+
+**[ 링크 ]**
+
+- 📄 [프로젝트 상세 소개 (1차구현)](https://www.notion.so/f87299ddf4fa471a9def39386c7492ea)
+- 📝 [배운 내용 정리 (1차구현)](https://github.com/sukyoungshin/TIL/blob/main/Note/subway-renewal-mobile.md)
 
 **[ 주요작업 ]**
 
@@ -44,13 +53,3 @@ yarn install
 ```
 
 로컬 실행 시 `.env.local` 파일을 생성하여 카카오맵 자바스크립트 API Key를 추가해야 합니다. (**.env.sample** 참고)
-
-<br/>
-
-## 프로젝트 히스토리
-
-본 프로젝트는 2021~2022년에 1차 구현을 거쳐, 2025년에 리뉴얼을 진행했습니다. <br/>
-1차 구현 관련 문서:
-
-- 📄 [프로젝트 상세 소개 (1차구현)](https://www.notion.so/f87299ddf4fa471a9def39386c7492ea)
-- 📝 [배운 내용 정리 (1차구현)](https://github.com/sukyoungshin/TIL/blob/main/Note/subway-renewal-mobile.md)
