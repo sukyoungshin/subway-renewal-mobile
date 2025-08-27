@@ -11,7 +11,7 @@
 
 ## 주요 기능
 
-### 2차 리뉴얼 (2025.08 ~ )
+### 최근 작업 (2025.08, 2차 유지보수 및 리펙터링)
 
 **[ 기술스택 ]** React, React-Router, Redux, TailwindCSS, TypeScript<br/>
 
@@ -23,7 +23,7 @@
 - FSD 구조 적용: pages·features·shared 단위 관심사 분리 → 기능 확장 및 유지보수 용이성 확보
 - GitHub Actions 적용: PR 병합 전 ESLint·Prettier 자동 검사 → 코드 스타일 일관성 및 품질 유지
 
-### 1차 개발 (2021.11 ~ 2022.02)
+### 초기 작업 (2021.11 ~ 2022.02, 1차 개발)
 
 **[ 기술스택 ]** React, React-Router, Redux, Styled-Components, JavaScript<br/>
 
