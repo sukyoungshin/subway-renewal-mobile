@@ -1,7 +1,7 @@
 import usePageMove from './hooks/usePageMove';
 import useSplashScreen from './hooks/useSplashScreen';
-import MainScreen from './ui/MainScreen/MainScreen';
-import SplashScreen from './ui/SplashScreen/SplashScreen';
+import MainScreen from './ui/MainScreen';
+import SplashScreen from './ui/SplashScreen';
 
 const Main = () => {
   const handleNavAddr = usePageMove();

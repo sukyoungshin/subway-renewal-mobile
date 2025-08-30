@@ -1,23 +1,23 @@
-export const RecommendedMenus = [
+export const recommendedMenuList = [
   {
     id: 1,
-    img: '',
-    imgDecript: '첫번째 이미지',
-    menuName: '다이어터를 위한11',
+    menu: '다이어터를 위한11',
+    imgPath: '',
+    altMessage: '첫번째 이미지',
     kcal: 245,
   },
   {
     id: 2,
-    img: '',
-    imgDecript: '두번째 이미지',
-    menuName: '다이어터를 위한22',
+    menu: '다이어터를 위한22',
+    imgPath: '',
+    altMessage: '두번째 이미지',
     kcal: 245,
   },
   {
     id: 3,
-    img: '',
-    imgDecript: '세번째 이미지',
-    menuName: '다이어터를 위한333',
+    menu: '다이어터를 위한333',
+    imgPath: '',
+    altMessage: '세번째 이미지',
     kcal: 245,
   },
 ];

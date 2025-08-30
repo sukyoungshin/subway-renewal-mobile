@@ -4,6 +4,9 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  css: {
+    postcss: './postcss.config.js',
+  },
   plugins: [
     react(),
     visualizer({ filename: './docs/stats.html', open: false, template: 'treemap' }),

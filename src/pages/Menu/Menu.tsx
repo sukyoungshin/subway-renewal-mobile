@@ -6,9 +6,8 @@ import { useCTAButton } from '@/shared/hooks/useCTAButton';
 import { CTAButton } from '@/shared/ui';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container, Section } from './Menu.style';
-import Categories from './ui/Categories/Categories';
-import MenuList from './ui/MenuList/MenuList';
+import CategoryList from './ui/CategoryList';
+import MenuList from './ui/MenuList';
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -41,33 +40,33 @@ const Menu = () => {
   }, [categoryId]);
 
   return (
-    <Container>
-      <Section style={{ marginTop: '32px' }}>
-        <h2>카테고리</h2>
-        <Categories
-          categoryId={categoryId}
-          categoryMenuList={menuCategoryList}
-          handleCategoryMenu={setCategoryId}
-        />
-      </Section>
-      <Section style={{ marginTop: '16px' }}>
-        <h2>메뉴선택</h2>
-        <MenuList menuId={menuId} menuList={menuList} handleSelectMenu={handleSelectMenu} />
-      </Section>
+    <main className="flex-1 overflow-auto pb-[96px]">
+      <form className="relative min-h-[calc(100%_-_136px)] w-full max-w-[440px] p-4">
+        <fieldset className="mb-4 inline-flex w-full flex-col gap-2">
+          <CategoryList
+            categoryId={categoryId}
+            categoryMenuList={menuCategoryList}
+            handleCategoryMenu={setCategoryId}
+          />
+        </fieldset>
+        <fieldset className="mb-4 inline-flex w-full flex-col gap-2">
+          <MenuList menuId={menuId} menuList={menuList} handleSelectMenu={handleSelectMenu} />
+        </fieldset>
 
-      <CTAButton
-        label={`${
-          menuList && menuList.length !== 0
-            ? menuList[menuId]?.nameKor || menuList[0]?.nameKor
-            : '메뉴'
-        } 선택 (1 / 7)`}
-        disabled={buttonDisabled}
-        handleNextOrder={(e) => {
-          saveCategory();
-          handleNextOrder(e);
-        }}
-      />
-    </Container>
+        <CTAButton
+          label={`${
+            menuList && menuList.length !== 0
+              ? menuList[menuId]?.nameKor || menuList[0]?.nameKor
+              : '메뉴'
+          } 선택 (1 / 7)`}
+          disabled={buttonDisabled}
+          handleNextOrder={(e) => {
+            saveCategory();
+            handleNextOrder(e);
+          }}
+        />
+      </form>
+    </main>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useReduxSelector, useRouterLocation } from './hooks';
-import OrderDeliver from './ui/OrderDeliver/OrderDeliver';
-import OrderPickUp from './ui/OrderPickUp/OrderPickUp';
+import OrderDeliver from './ui/OrderDeliver';
+import OrderPickUp from './ui/OrderPickUp';
 
 const DELIVER = 'deliver';
 const OrderConfirm = () => {

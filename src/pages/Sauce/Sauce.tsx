@@ -3,11 +3,11 @@ import { sauceList, sauceOptionList } from '@/shared/api/mock/food-menu.mock';
 import LINK from '@/shared/constants/link';
 import { useCTAButton } from '@/shared/hooks/useCTAButton';
 import { CTAButton } from '@/shared/ui';
+import Title from '@/shared/ui/Title';
 import { useDispatch } from 'react-redux';
-import { Container, Section } from './Sauce.style';
 import { useSelectOptionAndMenu } from './hooks';
-import SauceList from './ui/SauceList/SauceList';
-import SauceOption from './ui/SauceOption/SauceOption';
+import SauceList from './ui/SauceList';
+import SauceOption from './ui/SauceOption';
 
 const Sauce = () => {
   const dispatch = useDispatch();
@@ -23,47 +23,49 @@ const Sauce = () => {
   };
 
   return (
-    <Container>
-      <Section style={{ marginTop: '32px' }}>
-        <h2>옵션선택 (다중선택)</h2>
-        <SauceOption
-          selectedOptionId={selectedOptionId}
-          handleSelectedOptionId={handleSelectedOptionId}
-          sauceOptionList={sauceOptionList}
-          setButtonDisabled={() => setButtonDisabled(false)}
-        />
-      </Section>
+    <main className="flex-1 overflow-auto pb-[96px]">
+      <form className="h-full p-4">
+        <fieldset className="mb-4 flex flex-col gap-2">
+          <Title>옵션선택 (다중선택)</Title>
+          <SauceOption
+            selectedOptionId={selectedOptionId}
+            handleSelectedOptionId={handleSelectedOptionId}
+            sauceOptionList={sauceOptionList}
+            setButtonDisabled={() => setButtonDisabled(false)}
+          />
+        </fieldset>
 
-      <Section>
-        <h2>소즈/시즈닝 선택</h2>
-        <SauceList
-          menuId={menuId}
-          sauceList={sauceList}
-          handleOrderMenu={handleOrderMenu}
-          setButtonDisabled={() => setButtonDisabled(false)}
-        />
-      </Section>
+        <fieldset className="mb-4 flex flex-col gap-2">
+          <Title>소스/시즈닝 선택</Title>
+          <SauceList
+            menuId={menuId}
+            sauceList={sauceList}
+            handleOrderMenu={handleOrderMenu}
+            setButtonDisabled={() => setButtonDisabled(false)}
+          />
+        </fieldset>
 
-      <CTAButton
-        label="소스 선택 (5 / 7)"
-        disabled={buttonDisabled}
-        handleNextOrder={(e) => {
-          // 소스를 선택하지 않은 경우, alert
-          const condition = currentMenu?.find(({ id }) => id === 0);
-          if (condition) {
-            const confirm = window.confirm('소스를 선택하지 않으셨습니다.\n이대로 주문할까요?');
-            if (confirm) {
+        <CTAButton
+          label="소스 선택 (5 / 7)"
+          disabled={buttonDisabled}
+          handleNextOrder={(e) => {
+            // 소스를 선택하지 않은 경우, alert
+            const condition = currentMenu?.find(({ id }) => id === 0);
+            if (condition) {
+              const confirm = window.confirm('소스를 선택하지 않으셨습니다.\n이대로 주문할까요?');
+              if (confirm) {
+                saveSauce();
+                handleNextOrder(e);
+              }
+              return null;
+            } else {
               saveSauce();
               handleNextOrder(e);
             }
-            return null;
-          } else {
-            saveSauce();
-            handleNextOrder(e);
-          }
-        }}
-      />
-    </Container>
+          }}
+        />
+      </form>
+    </main>
   );
 };
 

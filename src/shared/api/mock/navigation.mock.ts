@@ -2,7 +2,7 @@ import LINK from '@/shared/constants/link';
 import { bestMenuList, saladList, sandwichList, wrapList } from './food-menu.mock';
 
 /** 왼쪽상단 햄버거메뉴, 네비 카테고리 */
-export const NavCategories = [
+export const navigationMenuList = [
   {
     pathName: LINK.MAIN,
     categoryName: '메인화면',

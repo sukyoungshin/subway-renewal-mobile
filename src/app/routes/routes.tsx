@@ -3,6 +3,7 @@ import {
   Auth,
   Bread,
   Cheese,
+  Login,
   Main,
   Menu,
   NoMatch,
@@ -85,6 +86,10 @@ const Routes = () => {
           element: <NoMatch />,
         },
       ],
+    },
+    {
+      path: RouterPath.LOGIN,
+      element: <Login />,
     },
   ]);
 

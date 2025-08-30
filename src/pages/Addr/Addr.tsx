@@ -2,11 +2,11 @@ import { CART_ACTION_TYPE } from '@/features/cart/model/actionTypes';
 import LINK from '@/shared/constants/link';
 import { useCTAButton } from '@/shared/hooks/useCTAButton';
 import { CTAButton } from '@/shared/ui';
+import Title from '@/shared/ui/Title';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { AddressInput, Container, Fieldset, Form, Label, Title } from './Addr.style';
 import { useKakaoMap } from './hooks';
-import KakaoMap from './ui/KakaoMap/KakaoMap';
+import KakaoMap from './ui/KakaoMap';
 
 const Addr = () => {
   const dispatch = useDispatch();
@@ -71,22 +71,22 @@ const Addr = () => {
   }, []);
 
   return (
-    <Container>
-      <Form id="addrsearch-form">
-        <Fieldset>
-          <Label htmlFor="addrSearch">배송지</Label>
-          <AddressInput
+    <main className="h-full max-h-[calc(100%-136px)] flex-1 overflow-auto">
+      <form id="address-search-form" className="flex h-full flex-col justify-center gap-4 p-4">
+        <fieldset className="inline-flex flex-col gap-2 border-[none]">
+          <Title>배송지</Title>
+          <input
             type="text"
-            id="addrSearch"
-            name="addrSearch"
+            name="address-search"
             placeholder="배달 받으실 주소를 입력해주세요"
             value={userAddress}
             onClick={handleAddressPopUp}
+            className="relative box-border h-12 w-full rounded-lg border border-solid border-grey-light p-3 text-xs text-grey placeholder-grey"
             readOnly
           />
-        </Fieldset>
+        </fieldset>
 
-        <Fieldset flex>
+        <fieldset className="inline-flex flex-1 flex-col gap-2 border-[none]">
           <Title>주문가능매장</Title>
           <KakaoMap
             userAddress={userAddress}
@@ -94,7 +94,7 @@ const Addr = () => {
             handleMarkerAndButton={handleMarkerAndButton}
             errorMessage={errorMessage}
           />
-        </Fieldset>
+        </fieldset>
 
         <CTAButton
           formId="addrsearch-form"
@@ -105,8 +105,8 @@ const Addr = () => {
             handleNextOrder(e);
           }}
         />
-      </Form>
-    </Container>
+      </form>
+    </main>
   );
 };
 

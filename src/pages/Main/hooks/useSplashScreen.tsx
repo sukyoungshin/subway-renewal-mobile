@@ -1,23 +1,29 @@
 import { useEffect, useState } from 'react';
 
+const NEED_SPLASH_SCREEN = 'needSplashScreen';
+
 const useSplashScreen = () => {
-  const LOADING = 'loading';
-  const [isLoading, setIsLoading] = useState(JSON.parse(sessionStorage.getItem(LOADING)));
+  const sessionStatus = sessionStorage.getItem(NEED_SPLASH_SCREEN);
+  const [isSplashNeeded, setIsSplashNeeded] = useState(sessionStatus !== 'false');
 
   useEffect(() => {
-    if (!isLoading) {
-      sessionStorage.setItem(LOADING, true);
-      setIsLoading(true);
+    if (sessionStorage.getItem(NEED_SPLASH_SCREEN) === 'false') {
+      setIsSplashNeeded(false);
+      return;
     }
-    setTimeout(() => {
-      sessionStorage.setItem(LOADING, false);
-      setIsLoading(false);
+
+    sessionStorage.setItem(NEED_SPLASH_SCREEN, 'true');
+    setIsSplashNeeded(true);
+
+    const timer = setTimeout(() => {
+      sessionStorage.setItem(NEED_SPLASH_SCREEN, 'false');
+      setIsSplashNeeded(false);
     }, 3000);
 
-    // eslint-disable-next-line
+    return () => clearTimeout(timer);
   }, []);
 
-  return isLoading;
+  return isSplashNeeded;
 };
 
 export default useSplashScreen;
