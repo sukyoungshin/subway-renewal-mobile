@@ -1,5 +1,4 @@
 import { ISauceOptionList } from '@/shared/api/mock/food-menu.types';
-import { Item, Label, OptionList, Radio } from './SauceOption.style';
 
 interface ISauceOptionProps {
   selectedOptionId: number;
@@ -14,22 +13,30 @@ const SauceOption = ({
   setButtonDisabled,
 }: ISauceOptionProps) => {
   return (
-    <article>
-      <OptionList onClick={setButtonDisabled}>
-        {sauceOptionList.map(({ id, radioGroup, nameKor }) => (
-          <Item key={id}>
-            <Radio
-              type="radio"
-              id={id}
-              name={radioGroup}
-              checked={selectedOptionId === id}
-              onChange={handleSelectedOptionId(id)}
-            />
-            <Label htmlFor={radioGroup}>{nameKor}</Label>
-          </Item>
-        ))}
-      </OptionList>
-    </article>
+    <ul
+      onClick={setButtonDisabled}
+      className="inline-flex w-full flex-col justify-center gap-2 rounded-lg bg-[rgba(255,255,255,0.5)] text-[0]"
+    >
+      {sauceOptionList.map(({ id, nameKor, radioGroup }) => (
+        <li
+          key={id}
+          className="my-0 ml-2 mr-0 inline-flex flex-row items-center justify-start gap-2"
+        >
+          <input
+            type="radio"
+            id={`${id}`}
+            name={radioGroup}
+            checked={selectedOptionId === id}
+            onChange={handleSelectedOptionId(id)}
+            className="u-accent-color"
+            readOnly
+          />
+          <label htmlFor={radioGroup} className="text-xs">
+            {nameKor}
+          </label>
+        </li>
+      ))}
+    </ul>
   );
 };
 

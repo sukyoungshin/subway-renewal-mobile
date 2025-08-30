@@ -1,48 +1,81 @@
-import LogoSmall from '@/shared/assets/small-logo.webp';
+import logo_subway_small from '@/shared/assets/small-logo.webp';
 import LINK from '@/shared/constants/link';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import {
-  ClosedButton,
-  Container,
-  LinkStyled,
-  SignInTitle,
-  SignUpWrapper,
-  SubwayLogo,
-} from './Login.style';
-import LoginButtons from './LoginButtons/LoginButtons';
-import SubwayLogin from './SubwayLogin/SubwayLogin';
+import FacebookLogin from './FacebookLogin/FacebookLogin';
+import GoogleLogin from './GoogleLogin/GoogleLogin';
+import KakaoLogin from './KakaoLogin/KakaoLogin';
+import { useSubwayLogin } from './SubwayLogin/hooks';
 
 const Login = () => {
+  const { loginFlag, userInfo, handleUserInfo, onSignIn, onSignOut } = useSubwayLogin();
+
   return (
-    <Container>
-      <ClosedButton>
-        <LinkStyled to={LINK.ROOT}>
-          <HiOutlineChevronLeft />
-        </LinkStyled>
-      </ClosedButton>
-
-      <SubwayLogo>
-        <Link to={LINK.ROOT}>
-          <img src={LogoSmall} alt="로고" />
+    <main className="w-full h-full p-4 bg-white inline-flex flex-col gap-4">
+      {/* 상단 섹션: 뒤로가기 버튼과 로고 */}
+      <section className="flex justify-between items-center h-12">
+        <Link to={LINK.ROOT} aria-label="뒤로가기">
+          <HiOutlineChevronLeft className="w-6 h-6" />
         </Link>
-      </SubwayLogo>
+        <Link to={LINK.ROOT} aria-label="메인 페이지로 이동">
+          <img src={logo_subway_small} alt="서브웨이 로고" className="w-32 h-8" />
+        </Link>
+        <div className="w-6 h-6" /> {/* Spacer */}
+      </section>
 
-      <SubwayLogin />
+      {/* 로그인/로그아웃 섹션 */}
+      {loginFlag ? (
+        <button
+          type="button"
+          onClick={onSignOut}
+          className="w-full h-12 inline-flex items-center justify-center gap-2 text-white text-sm font-bold bg-green rounded-lg"
+        >
+          로그아웃
+        </button>
+      ) : (
+        <div className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="아이디를 입력하세요"
+            id="userid"
+            value={userInfo.id}
+            onChange={handleUserInfo}
+            className="w-full h-12 p-3 text-grey text-sm border border-light-grey rounded-lg placeholder-grey placeholder-text-xs"
+          />
+          <input
+            type="password"
+            placeholder="비밀번호를 입력하세요"
+            id="userpassword"
+            value={userInfo.id}
+            onChange={handleUserInfo}
+            className="w-full h-12 p-3 text-grey text-sm border border-light-grey rounded-lg placeholder-grey placeholder-text-xs"
+          />
+          <button
+            type="button"
+            onClick={onSignIn}
+            className="w-full h-12 inline-flex items-center justify-center gap-2 text-white text-sm font-bold bg-green rounded-lg"
+          >
+            로그인
+          </button>
+        </div>
+      )}
 
-      <SignUpWrapper>
-        <p>
-          아직 회원이 아니시라면,
-          <Link to={LINK.SIGNUP}>회원가입</Link>
-        </p>
-      </SignUpWrapper>
-
-      <SignInTitle>
-        <p>간편 SNS 로그인</p>
-      </SignInTitle>
-
-      <LoginButtons />
-    </Container>
+      {/* 소셜 로그인 및 회원가입 섹션 */}
+      {!loginFlag && (
+        <div className="flex flex-col gap-4 mt-6">
+          <p className="flex flex-1 items-center text-xs font-normal text-grey c-divider">아직 회원이 아니시라면,</p>
+          <Link to={LINK.SIGNUP} className="text-sm !important font-bold border-b border-solid border-white">
+            회원가입
+          </Link>
+          <p className="flex flex-1 items-center text-xs font-normal text-grey c-divider">간편 SNS 로그인</p>
+          <div className="flex flex-col gap-2">
+            <GoogleLogin />
+            <KakaoLogin />
+            <FacebookLogin />
+          </div>
+        </div>
+      )}
+    </main>
   );
 };
 

@@ -1,11 +1,12 @@
 import { CART_ACTION_TYPE } from '@/features/cart/model/actionTypes';
 import { breadList, breadOptionList } from '@/shared/api/mock/food-menu.mock';
+import { defaultBreadList } from '@/shared/constants/image';
 import LINK from '@/shared/constants/link';
 import { useCTAButton } from '@/shared/hooks/useCTAButton';
 import { useSelectMenu } from '@/shared/hooks/useSelectMenu';
 import { CTAButton } from '@/shared/ui';
+import Title from '@/shared/ui/Title';
 import { useDispatch } from 'react-redux';
-import { Container, Section } from './Bread.style';
 import BreadList from './ui/BreadList/BreadList';
 import BreadOption from './ui/BreadOption/BreadOption';
 
@@ -14,7 +15,7 @@ const Bread = () => {
   const { menuId, currentMenu: selectedBread, handleOrderMenu } = useSelectMenu(breadList);
   const { buttonDisabled, setButtonDisabled, handleNextOrder } = useCTAButton(LINK.CHEESE);
 
-  const selectBread = (id: number) => () => {
+  const selectBread = (id: number) => {
     handleOrderMenu(id);
     setButtonDisabled(false);
   };
@@ -30,27 +31,33 @@ const Bread = () => {
   };
 
   return (
-    <Container>
-      <Section style={{ marginTop: '32px' }}>
-        <h2>옵션선택</h2>
-        <article>
+    <main className="flex-1 overflow-auto pb-[96px]">
+      <form className="relative h-full w-full p-4">
+        <fieldset className="mb-4 inline-flex w-full flex-col gap-2">
+          <Title>옵션선택</Title>
           <BreadOption />
-        </article>
-      </Section>
-      <Section style={{ marginTop: '16px' }}>
-        <h2>빵선택</h2>
-        <BreadList menuId={menuId} breadList={breadList} handleSelectBread={selectBread} />
-      </Section>
+        </fieldset>
+        <fieldset className="mb-4 inline-flex h-full w-full flex-col gap-2">
+          <Title>빵 선택</Title>
+          <BreadList
+            menuId={menuId}
+            breadList={breadList ?? defaultBreadList}
+            handleSelectBread={selectBread}
+          />
+        </fieldset>
 
-      <CTAButton
-        label={`${selectedBread?.nameKor} 빵 선택 (2 / 7) `}
-        disabled={buttonDisabled}
-        handleNextOrder={(e) => {
-          saveBread();
-          handleNextOrder(e);
-        }}
-      />
-    </Container>
+        {breadList && breadList.length !== 0 && (
+          <CTAButton
+            label={`${selectedBread?.nameKor} 빵 선택 (2 / 7) `}
+            disabled={buttonDisabled}
+            handleNextOrder={(e) => {
+              saveBread();
+              handleNextOrder(e);
+            }}
+          />
+        )}
+      </form>
+    </main>
   );
 };
 

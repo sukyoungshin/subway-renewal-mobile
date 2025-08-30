@@ -693,7 +693,7 @@ export const breadList = [
     nameEng: 'Honey Oat',
     description: '고소한 위트빵에 오트밀 가루를 묻혀 고소함과 식감이 두배로',
     imgPath: 'assets/bread/honeyoat.webp',
-    price: '1',
+    price: '',
   },
   {
     id: 1,
@@ -701,7 +701,7 @@ export const breadList = [
     nameEng: 'Hearty Italian',
     description: '부드러운 화이트빵에 옥수수가루를 묻혀 겉은 바삭하고 고소하며 속은 부드럽게',
     imgPath: 'assets/bread/hearty.webp',
-    price: '1',
+    price: '',
   },
   {
     id: 2,
@@ -709,7 +709,7 @@ export const breadList = [
     nameEng: 'Wheat',
     description: '9가지 곡물로 만들어 건강하고 고소한 맛의 곡물빵',
     imgPath: 'assets/bread/wheat.webp',
-    price: '1',
+    price: '',
   },
   {
     id: 3,
@@ -717,7 +717,7 @@ export const breadList = [
     nameEng: 'Parmesan Oregano',
     description: '부드러운 화이트빵에 파마산 오레가노 시즈닝을 묻혀 허브향 가득',
     imgPath: 'assets/bread/parmesan.webp',
-    price: '1',
+    price: '',
   },
   {
     id: 4,
@@ -725,7 +725,7 @@ export const breadList = [
     nameEng: 'White',
     description: '가장 클래식한 빵으로 부드러운 식감이 매력 포인트',
     imgPath: 'assets/bread/white.webp',
-    price: '1',
+    price: '',
   },
   {
     id: 5,
@@ -733,7 +733,7 @@ export const breadList = [
     nameEng: 'Flat Bread',
     description: '납작한 모양의 식감이 쫀득한 빵',
     imgPath: 'assets/bread/flatbread.webp',
-    price: '1',
+    price: '',
   },
 ];
 

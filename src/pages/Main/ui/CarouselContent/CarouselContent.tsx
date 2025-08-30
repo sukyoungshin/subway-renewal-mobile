@@ -1,37 +1,41 @@
 import { carouselContentListType } from '@/shared/api/mock/carousel-content.types';
-import { Button, Container, Event, Text } from './CarouselContent.style';
+import usePageMove from '../../hooks/usePageMove';
 
 interface ICarouselProps {
-  carouselContentList: carouselContentListType;
+  contentList: carouselContentListType;
   selectedId: number;
   handleClick: (id: number) => () => void;
-  goToOrderPage: () => void;
 }
 
-const CarouselContent = ({
-  carouselContentList,
-  selectedId,
-  handleClick,
-  goToOrderPage,
-}: ICarouselProps) => {
+const CarouselContent = ({ contentList, selectedId, handleClick }: ICarouselProps) => {
+  const goToOrderPage = usePageMove();
+
   return (
     <>
-      {carouselContentList.map(({ id, eventTitle, eventTitle2, eventDate, eventName }) => (
-        <Container key={id} isSelected={id === selectedId} onClick={handleClick(id)}>
-          <Text>
-            <h2>{eventTitle}</h2>
-            <h2>{eventTitle2}</h2>
-          </Text>
-          <Event>
-            <p>{eventName}</p>
-            <p>{eventDate}</p>
-          </Event>
-          <article>
-            <Button type="button" onClick={goToOrderPage}>
+      {contentList.map(({ id, title, subTitle, period, event }) => (
+        <div
+          key={id}
+          onClick={() => handleClick(id)}
+          className={`absolute left-0 flex h-[232px] w-full flex-1 flex-col gap-4  bg-green p-4 ${id === selectedId ? 'z-[5]' : ''}`}
+        >
+          <div>
+            <h2 className="text-xl font-bold text-yellow">{title}</h2>
+            <h2 className="text-xl font-bold text-white">{subTitle}</h2>
+          </div>
+          <div>
+            <p className="text-sm text-white">{event}</p>
+            <p className="text-sm text-white">{period}</p>
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={goToOrderPage}
+              className="px-4 py-2 rounded-lg bg-transparent border border-white text-white text-2xs transition-[background-color] duration-400"
+            >
               ORDER NOW
-            </Button>
-          </article>
-        </Container>
+            </button>
+          </div>
+        </div>
       ))}
     </>
   );

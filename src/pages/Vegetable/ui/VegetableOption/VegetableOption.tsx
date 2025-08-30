@@ -1,5 +1,4 @@
 import { ChangeEvent } from 'react';
-import { Checkbox, Item, Label, OptionList } from '../VegetableOption/VegetableOption.style';
 
 interface IVegetableOptionProps {
   isChecked: boolean;
@@ -12,26 +11,24 @@ const VegetableOption = ({
   selectedCheckBox,
 }: IVegetableOptionProps) => {
   return (
-    <article>
-      <OptionList>
-        <Item>
-          <Checkbox
-            type="checkbox"
-            id="check-all"
-            name="체크박스"
-            checked={isChecked}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              selectedCheckBox(e);
-              setButtonDisabled();
-            }}
-            className="c-accent-color"
-          />
-          <Label htmlFor="check-all" className="text-xs">
-            전체선택 (기본값 : 모든 야채 적당히)
-          </Label>
-        </Item>
-      </OptionList>
-    </article>
+    <div className="rounded-lg bg-[color:rgba(233,233,233,0.4)]">
+      <div className="inline-flex flex-row justify-start gap-4 p-2 text-xs">
+        <input
+          type="checkbox"
+          id="check-all"
+          name="체크박스"
+          checked={isChecked}
+          onChange={(e) => {
+            selectedCheckBox(e);
+            setButtonDisabled();
+          }}
+          className="u-accent-color"
+        />
+        <label htmlFor="check-all" className="text-xs">
+          전체선택 (기본값 : 모든 야채 적당히)
+        </label>
+      </div>
+    </div>
   );
 };
 

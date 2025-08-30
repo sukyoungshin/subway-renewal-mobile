@@ -1,3 +1,4 @@
+import { AUTH_ACTION_TYPES } from '@/features/auth/model/actionTypes';
 import { loginFlagSelector } from '@/features/auth/model/selector.js';
 import LINK from '@/shared/constants/link';
 import { useState } from 'react';
@@ -34,10 +35,13 @@ export const useSubwayLogin = () => {
     } else if (userInfo.userid.length === 0 || userInfo.userpassword.length === 0) {
       console.log('아이디 또는 비밀번호를 확인하세요');
       return;
+    }else if (userInfo.userid.trim().length === 0 || userInfo.userpassword.trim().length === 0) {
+      console.log('아이디 또는 비밀번호를 확인하세요');
+      return;
     }
 
     dispatch({
-      type: 'auth/login',
+      type: AUTH_ACTION_TYPES.LOGIN,
       userInfo: {
         id: userInfo.userid,
         userName: userInfo.userid,
@@ -52,7 +56,7 @@ export const useSubwayLogin = () => {
   // 로그아웃
   const onSignOut = () => {
     dispatch({
-      type: 'auth/logout',
+      type: AUTH_ACTION_TYPES.LOGOUT,
       userInfo: {
         id: null,
         userName: null,

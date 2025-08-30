@@ -6,10 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 export const useGoogleLoginAndOut = () => {
-  /* 리덕스 */
   const loginFlag = useSelector(loginFlagSelector);
   const dispatch = useDispatch();
-  /* 라우터 */
   const navigate = useNavigate();
 
   /* 구글 OAuth 로그인 */

@@ -1,6 +1,5 @@
 import { OAuthButtonLayout } from '@/shared/layout';
 import { RiGoogleLine } from 'react-icons/ri';
-import { LoginButtonStyled, LogoutButtonStyled } from './GoogleLogin.style';
 
 import { useGoogleLoginAndOut } from './hooks';
 
@@ -9,20 +8,22 @@ const GoogleLogin = () => {
 
   return (
     <OAuthButtonLayout>
-      {!loginFlag.id ? <LoginButton /> : <LogoutButton onSignOut={onSignOut} label="구글logout" />}
+      {!loginFlag.id ? (
+        <div
+          className="g-signin2 c-google-login-button"
+          data-height="48"
+          data-onsuccess="onSignIn"
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={onSignOut}
+          className="w-full h-full inline-flex items-center justify-center gap-2 text-white text-sm bg-google rounded-lg hover:text-black focus:text-black active:text-black"
+        >
+          <RiGoogleLine /> 구글 logout
+        </button>
+      )}
     </OAuthButtonLayout>
-  );
-};
-
-const LoginButton = () => {
-  return <LoginButtonStyled className="g-signin2" data-height="48" data-onsuccess="onSignIn" />;
-};
-
-const LogoutButton = ({ onSignOut, label }) => {
-  return (
-    <LogoutButtonStyled type="button" onClick={onSignOut}>
-      <RiGoogleLine /> {label}
-    </LogoutButtonStyled>
   );
 };
 

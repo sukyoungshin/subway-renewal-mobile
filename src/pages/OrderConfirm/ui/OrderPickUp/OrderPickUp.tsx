@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getTodayTime } from '@/shared/utils/common-utils';
-import { Container, OrderDetail, Section, Text } from './OrderPickUp.style';
 
 interface IProps {
   orderMenu: any;
@@ -15,23 +14,25 @@ const OrderPickUp = ({ orderDetail }: { orderDetail: IProps }) => {
   const { orderMenu, subwayName, subwayPhone, subwayAddr, customerRequest } = orderDetail;
 
   return (
-    <Container>
-      <Text>
-        <h2>주문이 완료되었습니다!</h2>
-        <p>픽업을 위해 40분 뒤 매장으로 방문해주세요.</p>
-      </Text>
-      <Section>
-        <OrderDetail>
-          <li>주문일시 : {getTodayTime()}</li>
-          <li>주문번호 : B0XK01HG6R</li>
-          <li>주문하신 메뉴 : {orderMenu}</li>
-          <li>추가 요청사항 : {customerRequest}</li>
-          <li>방문하실 매장명 : {subwayName}</li>
-          <li>방문하실 매장 연락처: {subwayPhone}</li>
-          <li>방문하실 매장 주소 : {subwayAddr}</li>
-        </OrderDetail>
-      </Section>
-    </Container>
+    <main className="flex-1 overflow-auto pb-[96px]">
+      <form className="h-full p-4">
+        <section className="mt-12 mb-4 w-full">
+          <h2 className="text-xl">주문이 완료되었습니다!</h2>
+          <p className="text-sm">픽업을 위해 40분 뒤 매장으로 방문해주세요.</p>
+        </section>
+        <section className="mt-12 mb-4 w-full">
+          <ul className="inline-flex flex-col gap-2">
+            <li className="text-sm">주문일시 : {getTodayTime()}</li>
+            <li className="text-sm">주문번호 : B0XK01HG6R</li>
+            <li className="text-sm">주문하신 메뉴 : {orderMenu}</li>
+            <li className="text-sm">추가 요청사항 : {customerRequest}</li>
+            <li className="text-sm">방문하실 매장명 : {subwayName}</li>
+            <li className="text-sm">방문하실 매장 연락처: {subwayPhone}</li>
+            <li className="text-sm">방문하실 매장 주소 : {subwayAddr}</li>
+          </ul>
+        </section>
+      </form>
+    </main>
   );
 };
 

@@ -4,9 +4,9 @@ import LINK from '@/shared/constants/link';
 import { useCTAButton } from '@/shared/hooks/useCTAButton';
 import { useSelectMenu } from '@/shared/hooks/useSelectMenu';
 import { CTAButton } from '@/shared/ui';
+import Title from '@/shared/ui/Title';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container, Section } from './Cheese.style';
 import CheeseList from './ui/CheeseList/CheeseList';
 
 const Cheese = () => {
@@ -33,37 +33,35 @@ const Cheese = () => {
   };
 
   return (
-    <Container>
-      <Section style={{ marginTop: '32px' }}>
-        <h2>옵션선택</h2>
-        <article />
-      </Section>
-      <Section>
-        <h2>치즈선택</h2>
-        <CheeseList menuId={menuId} cheeseList={cheeseList} handleSelectCheese={selectCheese} />
-      </Section>
+    <main className="flex-1 overflow-auto pb-[96px]">
+      <form className="relative h-full p-4">
+        <fieldset className="mb-4 inline-flex h-full flex-col gap-2">
+          <Title>치즈선택</Title>
+          <CheeseList menuId={menuId} cheeseList={cheeseList} handleSelectCheese={selectCheese} />
+        </fieldset>
 
-      <CTAButton
-        label={`${currentCheese.nameKor} 치즈 선택 (3 / 7) `}
-        disabled={buttonDisabled}
-        handleNextOrder={(e) => {
-          // 치즈를 하나도 선택하지 않은 경우, alert
-          const condition = currentCheese.id === 0;
-          if (condition) {
-            const confirm = window.confirm('치즈를 선택하지 않으셨습니다.\n이대로 주문할까요?');
-            if (confirm) {
+        <CTAButton
+          label={`${currentCheese.nameKor} 치즈 선택 (3 / 7) `}
+          disabled={buttonDisabled}
+          handleNextOrder={(e) => {
+            // 치즈를 하나도 선택하지 않은 경우, alert
+            const condition = currentCheese.id === 0;
+            if (condition) {
+              const confirm = window.confirm('치즈를 선택하지 않으셨습니다.\n이대로 주문할까요?');
+              if (confirm) {
+                saveCheese();
+                handleNextOrder(e);
+              }
+
+              return null;
+            } else {
               saveCheese();
               handleNextOrder(e);
             }
-
-            return null;
-          } else {
-            saveCheese();
-            handleNextOrder(e);
-          }
-        }}
-      />
-    </Container>
+          }}
+        />
+      </form>
+    </main>
   );
 };
 

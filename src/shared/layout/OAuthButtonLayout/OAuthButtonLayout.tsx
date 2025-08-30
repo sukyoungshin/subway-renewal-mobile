@@ -1,8 +1,6 @@
-import React from 'react';
-import { Container } from './OAuthButtonLayout.style';
 
-const OAuthButtonLayout = ({ children }: { children: React.ReactNode }) => {
-  return <Container>{children}</Container>;
+const OAuthButtonLayout = () => {
+  return <div className="w-full h-12 text-center"></div>;
 };
 
 export default OAuthButtonLayout;

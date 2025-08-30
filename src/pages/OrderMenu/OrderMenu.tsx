@@ -1,97 +1,91 @@
 import { Spinner } from '@/shared/ui';
+import Title from '@/shared/ui/Title';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useCountAmountOfItems, useCTAButtons, useReduxSelector } from './hooks';
-import {
-  AmountButtonWrapperStyled,
-  Button,
-  ButtonStyled,
-  ButtonWrapper,
-  Container,
-  DeleteButtonStyled,
-  MenuCardStyled,
-  Section,
-} from './OrderMenu.style';
+
+
 
 const OrderMenu = () => {
   const { order, itemAmount } = useReduxSelector();
   const { handleIncrement, handleDecrement } = useCountAmountOfItems();
   const { goToCartPage, goToOrderPage } = useCTAButtons();
 
-  return (
-    <Container>
-      <Section style={{ marginTop: '32px' }}>
-        <h2>주문메뉴</h2>
+  const disabled = true; // FIXME
 
-        <MenuCardStyled>
-          <article className="card-img">
-            <Spinner src={order.category?.currentMenu?.imgPath} alt={order.category.nameKor} />
-          </article>
-          <article className="card-content">
-            <h2>
-              {order.category?.currentMenu?.nameKor}
-              <span>{order.category?.currentMenu?.price} krw</span>
-            </h2>
-            <p>
-              {order.bread?.currentMenu?.nameKor},{' '}
-              {/* TODO
+  return (
+    <main className="flex-1 overflow-auto pb-[96px]">
+      <form className="h-full p-4">
+        <fieldset className="mb-4 flex flex-col gap-2">
+          <Title>주문메뉴</Title>
+          <div className="p-2 w-full h-24 rounded-lg inline-flex flex-row">
+            <article className="inline-flex items-center justify-center h-full">
+              <Spinner src={order.category?.currentMenu?.imgPath} alt={order.category.nameKor} className="h-24 object-cover" />
+            </article>
+            <article className="pt-2 flex-1 inline-flex flex-col overflow-hidden">
+              <h2 className="text-sm">
+                {order.category?.currentMenu?.nameKor}
+                <span className="float-right">{order.category?.currentMenu?.price} krw</span>
+              </h2>
+              <p className="text-xs max-h-8 u-ellipsis-multiline">
+                {order.bread?.currentMenu?.nameKor},{' '}
+                {/* TODO
               {order.bread?.breadOptions.map((opt) => opt.nameKor + opt.bool)},{' '} */}
-              {order.cheese?.currentMenu?.nameKor}, {order.sauce?.nameKor}
-            </p>
+                {order.cheese?.currentMenu?.nameKor}, {order.sauce?.nameKor}
+              </p>
 
-            <AmountButtonWrapperStyled>
-              <div className="button-wrapper">
-                <ButtonStyled type="button" onClick={handleDecrement}>
-                  -
-                </ButtonStyled>
-                <span>{itemAmount}</span>
-                <ButtonStyled type="button" onClick={handleIncrement}>
-                  +
-                </ButtonStyled>
+              <div className="mt-auto inline-flex flex-row justify-between">
+                <div className="w-full inline-flex flex-row items-center justify-between">
+                  <button type="button" onClick={handleDecrement} className="w-6 h-6 bg-white-light rounded-full text-2xs">
+                    -
+                  </button>
+                  <span className='text-2xs font-bold'>{itemAmount}</span>
+                  <button type="button" onClick={handleIncrement} className="w-6 h-6 bg-white-light rounded-full text-2xs">
+                    +
+                  </button>
+                </div>
+
+                <button type="button" className="w-6 h-6 bg-white-light rounded-full text-2xs ml-auto justify-self-end">
+                  <RiDeleteBinLine className="w-6 h-6" />
+                </button>
               </div>
+            </article>
+          </div>
+        </fieldset>
 
-              <DeleteButtonStyled type="button">
-                <RiDeleteBinLine />
-              </DeleteButtonStyled>
-            </AmountButtonWrapperStyled>
-          </article>
-        </MenuCardStyled>
-      </Section>
+        <fieldset className="mb-4 flex flex-col gap-2">
+          <Title>결제정보</Title>
+          <p className="text-xs">할인쿠폰</p>
+          <p className="text-xs">결제수단</p>
+          <p className="text-xs">
+            총 금액
+            <span className="float-right">{order.category.currentMenu?.price} krw</span>
+          </p>
+          <p className="text-xs">할인금액</p>
+          <hr/>
+          <p className="total-price">
+            총 주문 금액
+            <span className="float-right">{order.category.currentMenu?.price} krw</span>
+          </p>
+        </fieldset>
 
-      <Section style={{ marginTop: '24px' }}>
-        <h2>결제정보</h2>
-        <p>할인쿠폰</p>
-        <p>결제수단</p>
-        <p>
-          총 금액
-          <span>{order.category.currentMenu.price} krw</span>
-        </p>
-        <p>할인금액</p>
-        <p className="total-price">
-          총 주문 금액
-          <span>{order.category.currentMenu.price} krw</span>
-        </p>
-      </Section>
-
-      <CTAButtons goToCartPage={goToCartPage} goToOrderPage={goToOrderPage} />
-    </Container>
-  );
-};
-
-interface IButtonProps {
-  goToCartPage: () => void;
-  goToOrderPage: () => void;
-}
-
-const CTAButtons = ({ goToCartPage, goToOrderPage }: IButtonProps) => {
-  return (
-    <ButtonWrapper>
-      <Button type="button" onClick={goToCartPage}>
-        장바구니 담기
-      </Button>
-      <Button type="button" onClick={goToOrderPage}>
-        주문정보 (1 / 2)
-      </Button>
-    </ButtonWrapper>
+        <fieldset className="fixed left-0 bottom-[88px] w-full max-w-[440px] h-12 flex gap-[8px]">
+          <button
+            type="button"
+            onClick={goToCartPage}
+            className={`mx-auto my-0 h-full w-1/2 rounded-lg border border-solid backdrop-blur-sm transition-all duration-[0.3s] ${disabled ? 'border-grey-light bg-transparent font-light text-grey' : 'border-green bg-green font-semibold text-white'}`}
+          >
+            장바구니 담기
+          </button>
+          <button
+            type="button"
+            onClick={goToOrderPage}
+            className={`mx-auto my-0 h-full w-1/2 rounded-lg border border-solid backdrop-blur-sm transition-all duration-[0.3s] ${disabled ? 'border-grey-light bg-transparent font-light text-grey' : 'border-green bg-green font-semibold text-white'}`}
+          >
+            주문정보 (1 / 2)
+          </button>
+        </fieldset>
+      </form>
+    </main>
   );
 };
 

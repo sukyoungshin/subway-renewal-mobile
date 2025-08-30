@@ -1,13 +1,5 @@
 import { isEmptyString } from '@/shared/utils/common-utils';
-import {
-  MapContainer,
-  MapViewer,
-  Paragraph,
-  ResultInput,
-  Span,
-  Subway,
-  SubwaysList,
-} from './KakaoMap.style';
+
 interface IKakaoMapProps {
   userAddress: string;
   nearbyPlaces: IPlaceReturnProps[];
@@ -34,42 +26,51 @@ const KakaoMap = ({
   const hasErrorMessage = !isEmptyString(errorMessage);
 
   // 지도와 메시지 스타일 분리
-  const isHiddenKakaoMap = isAddressNotProvided || hasErrorMessage ? true : false;
-  const wrapperPadding = !userAddress.length || hasErrorMessage ? true : false;
+  const kakaoMapHidden = isAddressNotProvided || hasErrorMessage ? 'hidden' : 'block';
+  const wrapperPadding = !userAddress.length || hasErrorMessage ? 'p-3' : 'p-0';
 
   return (
-    <MapContainer>
+    <div
+      className={`relative min-h-[500px] w-full rounded-lg border border-solid border-grey-light ${wrapperPadding}`}
+    >
       {/* 지도 */}
-      <MapViewer id="map" isHidden={isHiddenKakaoMap} />
+      <div id="map" className={`min-h-[500px] w-[400px] ${kakaoMapHidden}`} />
 
       {/* 주소 입력 안내 메시지 */}
       {isAddressNotProvided && (
-        <Paragraph>주소를 입력하면 주변 써브웨이 매장을 찾을 수 있습니다.</Paragraph>
+        <p className="text-grey text-xs font-light">
+          주소를 입력하면 주변 써브웨이 매장을 찾을 수 있습니다.
+        </p>
       )}
 
       {/* 에러 메시지 */}
-      {hasErrorMessage && <Paragraph>{errorMessage}</Paragraph>}
+      {hasErrorMessage && <p className="text-grey text-xs font-light">{errorMessage}</p>}
 
-      <MapContainer padding={wrapperPadding}>
-        {/* 검색된 써브웨이 매장 목록 */}
-        {userAddress.length > 0 && !hasErrorMessage && (
-          <SubwaysList>
-            {nearbyPlaces.map((place, i) => (
-              <Subway key={place.id}>
-                <ResultInput
-                  type="text"
-                  name="placelists"
-                  value={place.name}
-                  onClick={() => handleMarkerAndButton(i)}
-                  readOnly
-                />
-                <Span>선택</Span>
-              </Subway>
-            ))}
-          </SubwaysList>
-        )}
-      </MapContainer>
-    </MapContainer>
+      {/* 검색된 써브웨이 매장 목록 */}
+      {userAddress.length > 0 && !hasErrorMessage && (
+        <ul className="absolute right-0 top-0 z-10 inline-flex w-full flex-col gap-2 bg-transparent">
+          {nearbyPlaces.map((place, i) => (
+            <li key={place.id} className="relative w-full">
+              <input
+                type="text"
+                id={`place-${place.id}`}
+                value={place.name}
+                onClick={() => handleMarkerAndButton(i)}
+                className="peer box-border h-10 w-full rounded-lg border border-solid border-grey-light bg-[rgba(255,255,255,0.5)] pl-[22px] text-xs text-black focus:bg-green focus:text-white active:bg-green active:text-white"
+                style={{ paddingLeft: '8px'}}
+                readOnly
+              />
+              <label
+                htmlFor={`place-${place.id}`}
+                className="absolute right-[5%] top-2/4 inline-block -translate-y-2/4 text-xs text-black peer-focus:bg-green peer-focus:text-white"
+              >
+                선택
+              </label>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 

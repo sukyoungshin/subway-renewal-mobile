@@ -1,6 +1,4 @@
-import LINK from '@/shared/constants/link';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const CHECKBOX = 'checkbox';
 const TEXT = 'text';
@@ -50,35 +48,34 @@ export const usePasswordHideAndShow = () => {
 
 export const useAddrSearchButton = () => {
   const [tempAddr, setTempAddr] = useState('');
+
   // postMessage
   const HandlePopUp = () => {
-    window
-      .open('search', 'addressSearch', 'width=380 height=500 left=726 top=306')
-      .postMessage('message');
+    const width = 400;
+    const height = 600;
+    const left = window.screenX + (window.innerWidth - width) / 2;
+    const top = window.screenY + (window.innerHeight - height) / 2;
+
+    window.open(
+      '/search.html',
+      'addressSearch',
+      `width=${width},height=${height},left=${left},top=${top}` // 화면정중앙에 위치
+    );
   };
 
   // Dispatch Event
   useEffect(() => {
-    const receiveMessage = (e) => {
-      if (e.origin !== window.location.origin) return;
-      if (e.source.name !== 'addressSearch') return;
-      setTempAddr(e.data);
+    const receiveMessage = (event: MessageEvent<string>) => {
+      if (event.origin !== window.location.origin) return;
+      if ((event.source as Window)?.name !== 'addressSearch') return;
+
+      setTempAddr(event.data);
     };
 
     window.addEventListener('message', receiveMessage, false);
+
+    return () => window.removeEventListener('message', receiveMessage, false);
   }, []);
 
   return { tempAddr, HandlePopUp };
-};
-
-export const useCTAButton = ({ userInfo }) => {
-  const navigate = useNavigate();
-  const [isBtnActivated, setIsBtnActivated] = useState(false);
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    window.alert(`환영합니다, ${userInfo.username}님! \n메인페이지로 이동합니다.`);
-    navigate(LINK.ROOT);
-  };
-
-  return { isBtnActivated, setIsBtnActivated, handleSubmitForm };
 };

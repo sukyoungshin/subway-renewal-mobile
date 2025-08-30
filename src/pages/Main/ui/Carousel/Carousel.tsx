@@ -1,27 +1,24 @@
 import { carouselContentList } from '@/shared/api/mock/carousel-content.mock.js';
+import { useCarouselIndex } from '../../hooks/useCarouselIndex';
 import CarouselContent from '../CarouselContent/CarouselContent';
 import CarouselPagination from '../CarouselPagination/CarouselPagination';
-import { Container } from './Carousel.style';
-import { useCarouselIndex, usePageMove } from './hooks';
 
 const Carousel = () => {
   const { selectedId, handleClick } = useCarouselIndex();
-  const goToOrderPage = usePageMove();
 
   return (
-    <Container>
+    <section className={`relative flex h-[232px] max-w-[440px]`}>
       <CarouselPagination
-        carouselContentList={carouselContentList}
+        contentList={carouselContentList}
         selectedId={selectedId}
         handleClick={handleClick}
       />
       <CarouselContent
-        carouselContentList={carouselContentList}
+        contentList={carouselContentList}
         selectedId={selectedId}
         handleClick={handleClick}
-        goToOrderPage={goToOrderPage}
       />
-    </Container>
+    </section>
   );
 };
 

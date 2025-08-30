@@ -1,13 +1,8 @@
 import { breadOptionList } from '@/shared/api/mock/food-menu.mock.js';
 import { useCallback, useState } from 'react';
-import {
-  BreadOptionItem,
-  BreadOptionList,
-  Label,
-  OptionTabItem,
-  OptionTabList,
-  Radio,
-} from './BreadOption.style';
+
+
+import { formatPrice } from '@/shared/utils/common-utils';
 
 interface IBreadOption {
   id: number;
@@ -31,50 +26,64 @@ const BreadOption = () => {
   );
 
   return (
-    <BreadOptionList>
-      {breadOptionList.map(({ id, option, nameEng, nameKor }) => (
-        <BreadOptionItem key={id}>
-          <span>{nameKor}</span>
-          <OptionTabList>
-            <OptionTabItem>
-              <Radio
+    <ul className="inline-flex min-h-[104px] w-full flex-col justify-center gap-2 rounded-lg bg-[rgba(233,233,233,0.4)] p-2">
+      {breadOptionList.map(({ id, nameKor, nameEng, option }) => (
+        <li key={id} className="inline-flex items-center gap-2">
+          <span className="w-20 text-xs font-medium text-black">{nameKor}</span>
+          <ul className="inline-flex w-[238px] flex-row gap-4">
+            <li className="inline-flex flex-row justify-between gap-2 text-xs">
+              <input
                 type="radio"
-                id={option['option1'].text}
+                id={option["option1"].text}
                 name={nameEng}
-                defaultChecked={option['option1']?.default}
+                defaultChecked={option["option1"]?.default}
                 onChange={handleSelectOption({
                   id: id,
                   nameEng: nameEng,
                   nameKor: nameKor,
-                  boolean: option['option1'].default,
-                  price: option['option1'].price,
+                  boolean: option["option1"].default,
+                  price: option["option1"].price,
                 })}
+                className="u-accent-color"
               />
-              <Label htmlFor={option['option1'].text}>{option['option1'].text}</Label>
-            </OptionTabItem>
-            <OptionTabItem>
-              <Radio
+              <label
+                htmlFor={option["option1"].text}
+                className="text-xs text-black"
+              >
+                {option["option1"].text}
+              </label>
+            </li>
+            <li className="inline-flex flex-row justify-between gap-2 text-xs">
+              <input
                 type="radio"
-                id={option['option2'].text}
+                id={option["option2"].text}
                 name={nameEng}
-                defaultChecked={option['option2'].default}
+                defaultChecked={option["option2"].default}
                 onChange={handleSelectOption({
                   id: id,
                   nameKor: nameKor,
                   nameEng: nameEng,
-                  boolean: option['option2'].default,
-                  price: option['option2'].price,
+                  boolean: option["option2"].default,
+                  price: option["option2"].price,
                 })}
+                className="u-accent-color"
               />
-              <Label htmlFor={option['option2'].text}>
-                {option['option2'].text}{' '}
-                {option['option2'].price ? `(${option['option2'].price})` : null}
-              </Label>
-            </OptionTabItem>
-          </OptionTabList>
-        </BreadOptionItem>
+              <label
+                htmlFor={option["option2"].text}
+                className="text-xs text-black"
+              >
+                {option["option2"].text}{" "}
+                {!!Number(option["option2"].price) && (
+                  <span>
+                    (추가 {formatPrice(Number(option["option2"].price))}원)
+                  </span>
+                )}
+              </label>
+            </li>
+          </ul>
+        </li>
       ))}
-    </BreadOptionList>
+    </ul>
   );
 };
 
