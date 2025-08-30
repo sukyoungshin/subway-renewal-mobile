@@ -57,7 +57,7 @@ const KakaoMap = ({
                 value={place.name}
                 onClick={() => handleMarkerAndButton(i)}
                 className="peer box-border h-10 w-full rounded-lg border border-solid border-grey-light bg-[rgba(255,255,255,0.5)] pl-[22px] text-xs text-black focus:bg-green focus:text-white active:bg-green active:text-white"
-                style={{ paddingLeft: '8px'}}
+                style={{ paddingLeft: '8px' }}
                 readOnly
               />
               <label

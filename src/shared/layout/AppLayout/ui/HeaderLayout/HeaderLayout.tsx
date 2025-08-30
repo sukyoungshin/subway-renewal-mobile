@@ -21,7 +21,7 @@ const HeaderLayout = () => {
 
   return (
     <>
-      {isSideVisible && <SideNavigation handleNavbar={handleSideNavigationVisibility} /> }
+      {isSideVisible && <SideNavigation handleNavbar={handleSideNavigationVisibility} />}
 
       <TopNavigation handleNavbar={handleSideNavigationVisibility} />
     </>

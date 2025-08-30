@@ -35,7 +35,9 @@ const OrderInfo = () => {
     <main className="flex-1 overflow-auto pb-[96px]">
       <form className="h-full p-4">
         <fieldset className="mb-4 flex flex-col gap-2">
-          <h2 className="inline-flex flex-row items-center justify-between text-black text-sm">배송받으실 주소지</h2>
+          <h2 className="inline-flex flex-row items-center justify-between text-black text-sm">
+            배송받으실 주소지
+          </h2>
           <article className="mt-4 w-full h-auto inline-flex flex-col gap-2">
             <ul className="p-2 w-full bg-transparent rounded-lg box-border min-h-14 inline-flex flex-col justify-center text-0 ">
               <li className="leading-5 text-grey text-xs">{order.generalInfo?.customerInfo}</li>
@@ -45,7 +47,9 @@ const OrderInfo = () => {
         </fieldset>
 
         <fieldset className="mb-4 flex flex-col gap-2">
-          <h2 className="inline-flex flex-row items-center justify-between text-black text-sm">배송방법</h2>
+          <h2 className="inline-flex flex-row items-center justify-between text-black text-sm">
+            배송방법
+          </h2>
           <article className="mt-4 w-full h-auto inline-flex flex-col gap-2">
             <ul className="p-2 w-full bg-transparent rounded-lg box-border min-h-14 inline-flex flex-col justify-center text-0">
               <li className="leading-5 text-grey text-xs">
@@ -105,12 +109,14 @@ const OrderInfo = () => {
         </fieldset>
 
         <fieldset className="mb-4 flex flex-col gap-2">
-          <h2 className="inline-flex flex-row items-center justify-between text-black text-sm">주문 요청사항</h2>
+          <h2 className="inline-flex flex-row items-center justify-between text-black text-sm">
+            주문 요청사항
+          </h2>
           <textarea
             placeholder="매장에 요청사항이 있으시면 여기에 입력해주세요"
             value={customerOrderRequest}
             onChange={handleOrderRequest}
-            className='p-2 w-full h-full min-h-[72px] rounded-lg bg-transparent text-grey text-xs resize-none'
+            className="p-2 w-full h-full min-h-[72px] rounded-lg bg-transparent text-grey text-xs resize-none"
           />
         </fieldset>
 
@@ -128,10 +134,18 @@ const OrderInfo = () => {
         </fieldset>
 
         <fieldset className="fixed left-0 bottom-[88px] w-full max-w-[440px] h-12 flex gap-[8px]">
-          <button type="button" onClick={goToPrevPage} className={`mx-auto my-0 h-full w-1/2 rounded-lg border border-solid backdrop-blur-sm transition-all duration-[0.3s] ${disabled ? 'border-grey-light bg-transparent font-light text-grey' : 'border-green bg-green font-semibold text-white'}`}>
+          <button
+            type="button"
+            onClick={goToPrevPage}
+            className={`mx-auto my-0 h-full w-1/2 rounded-lg border border-solid backdrop-blur-sm transition-all duration-[0.3s] ${disabled ? 'border-grey-light bg-transparent font-light text-grey' : 'border-green bg-green font-semibold text-white'}`}
+          >
             이전페이지
           </button>
-          <button type="button" onClick={goToPaymentPage} className={`mx-auto my-0 h-full w-1/2 rounded-lg border border-solid backdrop-blur-sm transition-all duration-[0.3s] ${!isActive ? 'border-grey-light bg-transparent font-light text-grey' : 'border-green bg-green font-semibold text-white'}`}>
+          <button
+            type="button"
+            onClick={goToPaymentPage}
+            className={`mx-auto my-0 h-full w-1/2 rounded-lg border border-solid backdrop-blur-sm transition-all duration-[0.3s] ${!isActive ? 'border-grey-light bg-transparent font-light text-grey' : 'border-green bg-green font-semibold text-white'}`}
+          >
             결제하기
           </button>
         </fieldset>

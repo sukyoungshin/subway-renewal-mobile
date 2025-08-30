@@ -57,7 +57,11 @@ const SideNavigation = ({ handleNavbar }: IProps) => {
         <main className="pt-8 h-[210px] inline-flex flex-col gap-8 border-t border-solid border-transparent">
           <h1 className="text-[18px] inline-flex flex-row items-center gap-2">
             안녕하세요, {userInfo.userName}님
-            <img src={userInfo.imageURL} alt={userInfo.userName} className="w-6 h-6 rounded-lg text-2xs" />            
+            <img
+              src={userInfo.imageURL}
+              alt={userInfo.userName}
+              className="w-6 h-6 rounded-lg text-2xs"
+            />
           </h1>
           <div className="text-sm inline-flex flex-col gap-2">
             <p>멤버십포인트 : 000원</p>

@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext", 
+    "target": "ESNext",
     "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "skipLibCheck": true, // d.ts 검사 스킵 (빌드 속도↑)
-    "strict": true, 
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"] 
+      "@/*": ["*"]
     }
   },
   "include": ["src", "src/shared/types", "config.js", "tailwind.config.js"],

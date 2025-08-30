@@ -1,6 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
-
 import { defaultProductImageUrl } from '@/shared/constants/image';
 
 interface IVegetableProps {
@@ -35,7 +34,7 @@ const Vegetable = ({
       {vegetableList.map(({ id, nameKor, nameEng, imgPath }) => (
         <div
           key={id}
-          className={`inline-flex w-full flex-col justify-between rounded-lg border border-solid p-2 ${!(step[`${id}`] < 10) ? "border-green" : "border-grey-light"}`}
+          className={`inline-flex w-full flex-col justify-between rounded-lg border border-solid p-2 ${!(step[`${id}`] < 10) ? 'border-green' : 'border-grey-light'}`}
         >
           <div
             onClick={setButtonDisabled}
@@ -43,7 +42,7 @@ const Vegetable = ({
           >
             <button
               type="button"
-              onClick={handleVegetableAmount(`${id}`, "prev")}
+              onClick={handleVegetableAmount(`${id}`, 'prev')}
               className="u-button-round select-none bg-[color:rgba(233,233,233,0.4)] text-lg text-grey focus:bg-green focus:text-white"
             >
               -
@@ -53,7 +52,7 @@ const Vegetable = ({
             </label>
             <button
               type="button"
-              onClick={handleVegetableAmount(`${id}`, "next")}
+              onClick={handleVegetableAmount(`${id}`, 'next')}
               className="u-button-round select-none bg-[color:rgba(233,233,233,0.4)] text-lg text-grey focus:bg-green focus:text-white"
             >
               +
@@ -61,7 +60,7 @@ const Vegetable = ({
           </div>
           <div>
             <img
-              src={imgPath !== "" ? imgPath : defaultProductImageUrl}
+              src={imgPath !== '' ? imgPath : defaultProductImageUrl}
               alt={nameKor}
               className="max-h-[84px] w-full object-contain"
             />

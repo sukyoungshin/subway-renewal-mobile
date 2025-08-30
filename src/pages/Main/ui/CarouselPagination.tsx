@@ -15,7 +15,7 @@ const CarouselPagination = ({ contentList, selectedId, handleClick }: IPaginatio
         return (
           <li
             key={id}
-            className={`h-2 w-2 rounded-xl border border-solid border-white transition-[background-color] duration-[0.4s] ${isSelected ? "border-[none] bg-white" : "bg-transparent"}`}
+            className={`h-2 w-2 rounded-xl border border-solid border-white transition-[background-color] duration-[0.4s] ${isSelected ? 'border-[none] bg-white' : 'bg-transparent'}`}
             onClick={handleClick(id)}
           />
         );

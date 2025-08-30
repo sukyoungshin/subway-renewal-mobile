@@ -3,8 +3,6 @@ import Title from '@/shared/ui/Title';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useCountAmountOfItems, useCTAButtons, useReduxSelector } from './hooks';
 
-
-
 const OrderMenu = () => {
   const { order, itemAmount } = useReduxSelector();
   const { handleIncrement, handleDecrement } = useCountAmountOfItems();
@@ -19,7 +17,11 @@ const OrderMenu = () => {
           <Title>주문메뉴</Title>
           <div className="p-2 w-full h-24 rounded-lg inline-flex flex-row">
             <article className="inline-flex items-center justify-center h-full">
-              <Spinner src={order.category?.currentMenu?.imgPath} alt={order.category.nameKor} className="h-24 object-cover" />
+              <Spinner
+                src={order.category?.currentMenu?.imgPath}
+                alt={order.category.nameKor}
+                className="h-24 object-cover"
+              />
             </article>
             <article className="pt-2 flex-1 inline-flex flex-col overflow-hidden">
               <h2 className="text-sm">
@@ -35,16 +37,27 @@ const OrderMenu = () => {
 
               <div className="mt-auto inline-flex flex-row justify-between">
                 <div className="w-full inline-flex flex-row items-center justify-between">
-                  <button type="button" onClick={handleDecrement} className="w-6 h-6 bg-white-light rounded-full text-2xs">
+                  <button
+                    type="button"
+                    onClick={handleDecrement}
+                    className="w-6 h-6 bg-white-light rounded-full text-2xs"
+                  >
                     -
                   </button>
-                  <span className='text-2xs font-bold'>{itemAmount}</span>
-                  <button type="button" onClick={handleIncrement} className="w-6 h-6 bg-white-light rounded-full text-2xs">
+                  <span className="text-2xs font-bold">{itemAmount}</span>
+                  <button
+                    type="button"
+                    onClick={handleIncrement}
+                    className="w-6 h-6 bg-white-light rounded-full text-2xs"
+                  >
                     +
                   </button>
                 </div>
 
-                <button type="button" className="w-6 h-6 bg-white-light rounded-full text-2xs ml-auto justify-self-end">
+                <button
+                  type="button"
+                  className="w-6 h-6 bg-white-light rounded-full text-2xs ml-auto justify-self-end"
+                >
                   <RiDeleteBinLine className="w-6 h-6" />
                 </button>
               </div>
@@ -61,7 +74,7 @@ const OrderMenu = () => {
             <span className="float-right">{order.category.currentMenu?.price} krw</span>
           </p>
           <p className="text-xs">할인금액</p>
-          <hr/>
+          <hr />
           <p className="total-price">
             총 주문 금액
             <span className="float-right">{order.category.currentMenu?.price} krw</span>

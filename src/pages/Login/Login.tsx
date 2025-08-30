@@ -63,11 +63,18 @@ const Login = () => {
       {/* 소셜 로그인 및 회원가입 섹션 */}
       {!loginFlag && (
         <div className="flex flex-col gap-4 mt-6">
-          <p className="flex flex-1 items-center text-xs font-normal text-grey c-divider">아직 회원이 아니시라면,</p>
-          <Link to={LINK.SIGNUP} className="text-sm !important font-bold border-b border-solid border-white">
+          <p className="flex flex-1 items-center text-xs font-normal text-grey c-divider">
+            아직 회원이 아니시라면,
+          </p>
+          <Link
+            to={LINK.SIGNUP}
+            className="text-sm !important font-bold border-b border-solid border-white"
+          >
             회원가입
           </Link>
-          <p className="flex flex-1 items-center text-xs font-normal text-grey c-divider">간편 SNS 로그인</p>
+          <p className="flex flex-1 items-center text-xs font-normal text-grey c-divider">
+            간편 SNS 로그인
+          </p>
           <div className="flex flex-col gap-2">
             <GoogleLogin />
             <KakaoLogin />

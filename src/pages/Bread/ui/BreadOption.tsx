@@ -1,7 +1,6 @@
 import { breadOptionList } from '@/shared/api/mock/food-menu.mock.js';
 import { useCallback, useState } from 'react';
 
-
 import { formatPrice } from '@/shared/utils/common-utils';
 
 interface IBreadOption {
@@ -34,49 +33,41 @@ const BreadOption = () => {
             <li className="inline-flex flex-row justify-between gap-2 text-xs">
               <input
                 type="radio"
-                id={option["option1"].text}
+                id={option['option1'].text}
                 name={nameEng}
-                defaultChecked={option["option1"]?.default}
+                defaultChecked={option['option1']?.default}
                 onChange={handleSelectOption({
                   id: id,
                   nameEng: nameEng,
                   nameKor: nameKor,
-                  boolean: option["option1"].default,
-                  price: option["option1"].price,
+                  boolean: option['option1'].default,
+                  price: option['option1'].price,
                 })}
                 className="u-accent-color"
               />
-              <label
-                htmlFor={option["option1"].text}
-                className="text-xs text-black"
-              >
-                {option["option1"].text}
+              <label htmlFor={option['option1'].text} className="text-xs text-black">
+                {option['option1'].text}
               </label>
             </li>
             <li className="inline-flex flex-row justify-between gap-2 text-xs">
               <input
                 type="radio"
-                id={option["option2"].text}
+                id={option['option2'].text}
                 name={nameEng}
-                defaultChecked={option["option2"].default}
+                defaultChecked={option['option2'].default}
                 onChange={handleSelectOption({
                   id: id,
                   nameKor: nameKor,
                   nameEng: nameEng,
-                  boolean: option["option2"].default,
-                  price: option["option2"].price,
+                  boolean: option['option2'].default,
+                  price: option['option2'].price,
                 })}
                 className="u-accent-color"
               />
-              <label
-                htmlFor={option["option2"].text}
-                className="text-xs text-black"
-              >
-                {option["option2"].text}{" "}
-                {!!Number(option["option2"].price) && (
-                  <span>
-                    (추가 {formatPrice(Number(option["option2"].price))}원)
-                  </span>
+              <label htmlFor={option['option2'].text} className="text-xs text-black">
+                {option['option2'].text}{' '}
+                {!!Number(option['option2'].price) && (
+                  <span>(추가 {formatPrice(Number(option['option2'].price))}원)</span>
                 )}
               </label>
             </li>

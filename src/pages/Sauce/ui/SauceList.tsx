@@ -1,6 +1,5 @@
 import { ISauceList } from '@/shared/api/mock/food-menu.types';
 
-
 import { defaultProductImageUrl } from '@/shared/constants/image';
 
 interface ISauce {
@@ -26,7 +25,7 @@ const SauceList = ({ menuId, sauceList, handleOrderMenu, setButtonDisabled }: IS
               setButtonDisabled();
               handleOrderMenu({ id });
             }}
-            className={`relative flex w-full flex-col gap-2 cursor-pointer rounded-lg border border-solid p-2 ${isMenuSelected ? "border-green" : "border-grey-light"}`}
+            className={`relative flex w-full flex-col gap-2 cursor-pointer rounded-lg border border-solid p-2 ${isMenuSelected ? 'border-green' : 'border-grey-light'}`}
           >
             <div className="max-h-[30px] max-w-[112px]">
               <h3 className="u-text-ellipsis text-xs font-bold">{nameKor}</h3>
@@ -34,12 +33,12 @@ const SauceList = ({ menuId, sauceList, handleOrderMenu, setButtonDisabled }: IS
             </div>
             <div className="relative max-h-[84px] w-full flex-1 text-[0]">
               <img
-                src={imgPath !== "" ? imgPath : defaultProductImageUrl}
+                src={imgPath !== '' ? imgPath : defaultProductImageUrl}
                 alt={nameKor}
-                className={`relative h-full w-full object-cover text-2xs transition-opacity duration-[0.3s] ${isMenuSelected ? "opacity-30" : "opacity-100"}`}
+                className={`relative h-full w-full object-cover text-2xs transition-opacity duration-[0.3s] ${isMenuSelected ? 'opacity-30' : 'opacity-100'}`}
               />
               <span
-                className={`absolute left-2/4 top-2/4 w-full -translate-x-2/4 -translate-y-2/4 text-2xs transition-opacity duration-[0.5s] ${isMenuSelected ? "opacity-100" : "opacity-0"}`}
+                className={`absolute left-2/4 top-2/4 w-full -translate-x-2/4 -translate-y-2/4 text-2xs transition-opacity duration-[0.5s] ${isMenuSelected ? 'opacity-100' : 'opacity-0'}`}
               >
                 {description}
               </span>

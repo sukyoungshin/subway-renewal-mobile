@@ -52,7 +52,7 @@ const PostSearch = () => {
         </main>
       </section>
 
-        <fieldset className="w-full max-w-[408px] h-12 flex gap-[8px]">
+      <fieldset className="w-full max-w-[408px] h-12 flex gap-[8px]">
         <button
           type="button"
           onClick={handleClose}

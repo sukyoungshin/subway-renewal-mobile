@@ -18,7 +18,7 @@ const Cheeses = ({ menuId, cheeseList, handleSelectCheese }: ICheeseProps) => {
             key={id}
             onClick={handleSelectCheese(id)}
             className={`relative inline-flex w-full flex-col justify-center cursor-pointer gap-2 rounded-lg border border-solid  p-2
-              ${selected ? "border-green" : "border-grey-light"}`}
+              ${selected ? 'border-green' : 'border-grey-light'}`}
           >
             <div className="max-h-[30px] max-w-[112px]">
               <h3 className="u-text-ellipsis text-xs font-bold">{nameKor}</h3>
@@ -26,12 +26,12 @@ const Cheeses = ({ menuId, cheeseList, handleSelectCheese }: ICheeseProps) => {
             </div>
             <div className="relative max-h-[84px] w-full flex-1 text-[0]">
               <img
-                src={imgPath !== "" ? imgPath : defaultProductImageUrl}
+                src={imgPath !== '' ? imgPath : defaultProductImageUrl}
                 alt={nameKor}
-                className={`relative inline-block h-full w-full text-2xs transition-opacity duration-[0.3s] ${selected ? "opacity-30" : "opacity-100"}`}
+                className={`relative inline-block h-full w-full text-2xs transition-opacity duration-[0.3s] ${selected ? 'opacity-30' : 'opacity-100'}`}
               />
               <span
-                className={`absolute left-2/4 top-2/4 w-full -translate-x-2/4 -translate-y-2/4 text-2xs transition-opacity duration-[0.5s] ${selected ? "opacity-100" : "opacity-0"}`}
+                className={`absolute left-2/4 top-2/4 w-full -translate-x-2/4 -translate-y-2/4 text-2xs transition-opacity duration-[0.5s] ${selected ? 'opacity-100' : 'opacity-0'}`}
               >
                 {description}
               </span>

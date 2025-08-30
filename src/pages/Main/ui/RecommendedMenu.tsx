@@ -19,11 +19,9 @@ const RecommendedMenu = ({ handleNavAddr }: { handleNavAddr: handleNavAddrType }
               alt={altMessage}
               width={235}
               height={135}
-              style={{ width: "235px", height: "135px" }}
+              style={{ width: '235px', height: '135px' }}
             />
-            <h3 className="mx-0 mb-[11px] mt-2.5 text-sm font-bold text-black">
-              {menu}
-            </h3>
+            <h3 className="mx-0 mb-[11px] mt-2.5 text-sm font-bold text-black">{menu}</h3>
             <p className="text-sm text-grey">{kcal}kcal</p>
             <button
               type="button"
@@ -35,7 +33,7 @@ const RecommendedMenu = ({ handleNavAddr }: { handleNavAddr: handleNavAddrType }
                 alt="주문하기 버튼"
                 width={40}
                 height={40}
-                style={{ width: "40px", height: "40px" }}
+                style={{ width: '40px', height: '40px' }}
               />
             </button>
           </div>

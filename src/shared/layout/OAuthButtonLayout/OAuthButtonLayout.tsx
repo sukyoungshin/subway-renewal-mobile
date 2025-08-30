@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
 
-const OAuthButtonLayout = ({children}: PropsWithChildren) => {
+const OAuthButtonLayout = ({ children }: PropsWithChildren) => {
   return <div className="w-full h-12 text-center">{children}</div>;
 };
 

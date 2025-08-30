@@ -35,7 +35,7 @@ export const useSubwayLogin = () => {
     } else if (userInfo.userid.length === 0 || userInfo.userpassword.length === 0) {
       console.log('아이디 또는 비밀번호를 확인하세요');
       return;
-    }else if (userInfo.userid.trim().length === 0 || userInfo.userpassword.trim().length === 0) {
+    } else if (userInfo.userid.trim().length === 0 || userInfo.userpassword.trim().length === 0) {
       console.log('아이디 또는 비밀번호를 확인하세요');
       return;
     }

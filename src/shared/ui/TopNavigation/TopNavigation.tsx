@@ -27,12 +27,12 @@ const TopNavigation = ({ handleNavbar }: IProps) => {
             title="메인페이지로 이동"
             className="text-inherit text-[0px] no-underline"
           >
-            <img src={logo_subway} alt="써브웨이 로고" className='ml-auto mr-auto h-[32px]'/>
+            <img src={logo_subway} alt="써브웨이 로고" className="ml-auto mr-auto h-[32px]" />
           </Link>
         </li>
         <li className="h-14 p-2.5">
           <Link to={LINK.CART} title="장바구니" className="relative h-8 w-8">
-            <img src={icon_cart} alt="장바구니 아이콘" className="h-full w-full object-cover"/>
+            <img src={icon_cart} alt="장바구니 아이콘" className="h-full w-full object-cover" />
             <span className="absolute left-0 top-2/4 translate-x-[-30%] rounded-[50%] bg-yellow px-1.5 py-0.5 text-2xs font-bold text-white">
               {itemCount}
             </span>
