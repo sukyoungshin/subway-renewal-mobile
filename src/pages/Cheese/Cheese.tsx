@@ -7,7 +7,7 @@ import { CTAButton } from '@/shared/ui';
 import Title from '@/shared/ui/Title';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import CheeseList from './ui/CheeseList/CheeseList';
+import CheeseList from './ui/CheeseList';
 
 const Cheese = () => {
   const dispatch = useDispatch();

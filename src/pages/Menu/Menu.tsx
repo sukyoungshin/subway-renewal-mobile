@@ -6,8 +6,8 @@ import { useCTAButton } from '@/shared/hooks/useCTAButton';
 import { CTAButton } from '@/shared/ui';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import CategoryList from './ui/CategoryList/CategoryList';
-import MenuList from './ui/MenuList/MenuList';
+import CategoryList from './ui/CategoryList';
+import MenuList from './ui/MenuList';
 
 const Menu = () => {
   const dispatch = useDispatch();

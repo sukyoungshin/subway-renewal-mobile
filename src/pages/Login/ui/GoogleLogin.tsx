@@ -1,7 +1,7 @@
 import { OAuthButtonLayout } from '@/shared/layout';
 import { RiGoogleLine } from 'react-icons/ri';
 
-import { useGoogleLoginAndOut } from './hooks';
+import { useGoogleLoginAndOut } from '../hooks/useGoogleLogin';
 
 const GoogleLogin = () => {
   const { loginFlag, onSignOut } = useGoogleLoginAndOut();

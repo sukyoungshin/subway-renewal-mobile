@@ -3,11 +3,11 @@ import { vegetableList } from '@/shared/api/mock/food-menu.mock';
 import LINK from '@/shared/constants/link';
 import { useCTAButton } from '@/shared/hooks/useCTAButton';
 import { CTAButton } from '@/shared/ui';
+import Title from '@/shared/ui/Title';
 import { useDispatch } from 'react-redux';
 import { useHandleVegetableAmount } from './hooks';
-import VegetableList from './ui/VegetableList/VegetableList';
-import VegetableOption from './ui/VegetableOption/VegetableOption';
-import { Title } from './Vegetable.style';
+import VegetableList from './ui/VegetableList';
+import VegetableOption from './ui/VegetableOption';
 
 const Vegetable = () => {
   const dispatch = useDispatch();

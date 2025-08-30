@@ -1,7 +1,7 @@
 import { carouselContentList } from '@/shared/api/mock/carousel-content.mock.js';
-import { useCarouselIndex } from '../../hooks/useCarouselIndex';
-import CarouselContent from '../CarouselContent/CarouselContent';
-import CarouselPagination from '../CarouselPagination/CarouselPagination';
+import { useCarouselIndex } from '../hooks/useCarouselIndex';
+import CarouselContent from './CarouselContent';
+import CarouselPagination from './CarouselPagination';
 
 const Carousel = () => {
   const { selectedId, handleClick } = useCarouselIndex();

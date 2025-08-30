@@ -1,5 +1,5 @@
 import { carouselContentListType } from '@/shared/api/mock/carousel-content.types';
-import usePageMove from '../../hooks/usePageMove';
+import usePageMove from '../hooks/usePageMove';
 
 interface ICarouselProps {
   contentList: carouselContentListType;

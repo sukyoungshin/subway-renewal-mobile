@@ -6,7 +6,7 @@ import Title from '@/shared/ui/Title';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useKakaoMap } from './hooks';
-import KakaoMap from './ui/KakaoMap/KakaoMap';
+import KakaoMap from './ui/KakaoMap';
 
 const Addr = () => {
   const dispatch = useDispatch();

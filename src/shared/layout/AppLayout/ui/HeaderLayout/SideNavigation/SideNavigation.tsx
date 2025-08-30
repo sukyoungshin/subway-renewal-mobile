@@ -3,7 +3,6 @@ import logo_subway_small from '@/shared/assets/small-logo.webp';
 import LINK from '@/shared/constants/link';
 import { HiLogout, HiX } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
-import { MainContainer } from './SideNavigation.style';
 import { usePageMove, useReduxSelector } from './hooks';
 
 interface IProps {
@@ -55,16 +54,16 @@ const SideNavigation = ({ handleNavbar }: IProps) => {
         </button>
       )}
       {loginFlag && (
-        <MainContainer>
-          <h1>
+        <main className="pt-8 h-[210px] inline-flex flex-col gap-8 border-t border-solid border-transparent">
+          <h1 className="text-[18px] inline-flex flex-row items-center gap-2">
             안녕하세요, {userInfo.userName}님
-            <img src={userInfo.imageURL} alt={userInfo.userName} />            
+            <img src={userInfo.imageURL} alt={userInfo.userName} className="w-6 h-6 rounded-lg text-2xs" />            
           </h1>
-          <div>
+          <div className="text-sm inline-flex flex-col gap-2">
             <p>멤버십포인트 : 000원</p>
             <p>주문내역 : 0건</p>
           </div>
-        </MainContainer>
+        </main>
       )}
       <footer className="inline-flex flex-row items-center gap-4 text-0">
         {loginFlag && (

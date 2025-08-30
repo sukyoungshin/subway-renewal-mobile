@@ -7,8 +7,8 @@ import { useSelectMenu } from '@/shared/hooks/useSelectMenu';
 import { CTAButton } from '@/shared/ui';
 import Title from '@/shared/ui/Title';
 import { useDispatch } from 'react-redux';
-import BreadList from './ui/BreadList/BreadList';
-import BreadOption from './ui/BreadOption/BreadOption';
+import BreadList from './ui/BreadList';
+import BreadOption from './ui/BreadOption';
 
 const Bread = () => {
   const dispatch = useDispatch();

@@ -6,8 +6,8 @@ import { CTAButton } from '@/shared/ui';
 import Title from '@/shared/ui/Title';
 import { useDispatch } from 'react-redux';
 import { useSelectOptionAndMenu } from './hooks';
-import SauceList from './ui/SauceList/SauceList';
-import SauceOption from './ui/SauceOption/SauceOption';
+import SauceList from './ui/SauceList';
+import SauceOption from './ui/SauceOption';
 
 const Sauce = () => {
   const dispatch = useDispatch();

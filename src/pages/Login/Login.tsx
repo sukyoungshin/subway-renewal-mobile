@@ -2,10 +2,10 @@ import logo_subway_small from '@/shared/assets/small-logo.webp';
 import LINK from '@/shared/constants/link';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import FacebookLogin from './FacebookLogin/FacebookLogin';
-import GoogleLogin from './GoogleLogin/GoogleLogin';
-import KakaoLogin from './KakaoLogin/KakaoLogin';
-import { useSubwayLogin } from './SubwayLogin/hooks';
+import { useSubwayLogin } from './hooks/useSubwayLogin';
+import FacebookLogin from './ui/FacebookLogin';
+import GoogleLogin from './ui/GoogleLogin';
+import KakaoLogin from './ui/KakaoLogin';
 
 const Login = () => {
   const { loginFlag, userInfo, handleUserInfo, onSignIn, onSignOut } = useSubwayLogin();

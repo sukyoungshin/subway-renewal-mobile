@@ -2,7 +2,7 @@ import { recommendedMenuList } from '@/shared/api/mock/recommend-menu.mock.js';
 import icon_order from '@/shared/assets/icons/order.svg';
 import image_sandwich_sample from '@/shared/assets/sample.webp';
 // import { Spinner } from '@/shared/ui';
-import { handleNavAddrType } from '../../hooks/usePageMove';
+import { handleNavAddrType } from '../hooks/usePageMove';
 
 const RecommendedMenu = ({ handleNavAddr }: { handleNavAddr: handleNavAddrType }) => {
   return (
