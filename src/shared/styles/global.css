@@ -1,0 +1,299 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import 'tailwindcss';
+@config '../../../tailwind.config.js';
+
+/* Color Palette */
+@layer base {
+  :root {
+    --color-light-white: #fffffa;
+    --color-white: #ffffff;
+    --color-black: #292f28;
+    --color-yellow: #ffcb08;
+    --color-green: #009743;
+    --color-green-dark: #007936;
+    --color-red: #ff0000;
+    --color-grey: #8c8c8c;
+    --color-light-grey: #dfdfdf;
+    --color-transparent: 233 233 233 0.4;
+
+    --color-kakao: #ffe812;
+    --color-facebook: #3c5997;
+    --color-google: 66 133 244;
+  }
+}
+
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* CSS RESET */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    font-family:
+      'Montserrat, Apple SD Gothic Neo, -apple-system, BlinkMacSystemFont, Malgun Gothic, sans-serif',
+      'Apple SD Gothic Neo, -apple-system, BlinkMacSystemFont, Malgun Gothic, sans-serif';
+    margin: 0 auto;
+    padding:
+      env(safe-area-inset-top), env(safe-area-inset-right), env(safe-area-inset-bottom),
+      env(safe-area-inset-left);
+    width: 100%;
+    max-width: 440px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--color-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  a,
+  button,
+  input {
+    cursor: pointer;
+  }
+
+  a {
+    display: inline-block;
+    font-size: 0;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  input,
+  button,
+  textarea {
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* MOUSE DRAG EFFECT */
+@layer base {
+  ::selection {
+    color: var(--color-white);
+    background-color: var(--color-yellow);
+  }
+
+  ::-moz-selection {
+    color: var(--color-white);
+    background-color: var(--color-yellow);
+  }
+}
+
+body {
+  font-family: 'Pretendard';
+  color: var(--color-black);
+  background-color: rgba(var(--color-white));
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    background-color: var(--color-transparent);
+  }
+  #root {
+    margin: 0 auto;
+    max-width: 440px;
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    background-color: var(--color-white);
+  }  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    list-style-type: none;
+  }
+  a,
+  button,
+  input {
+    cursor: pointer;
+  }
+  a {
+    display: inline-block;
+    font-size: 0;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+  }
+  input,
+  button,
+  textarea {
+    outline: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--color-white);
+    background-color: rgba(var(--color-black));
+  }
+}
+
+@layer components {
+  .c-category-filter {
+    filter: drop-shadow(0px 2px 2px var(--color-black));
+  }
+    .c-custom-fieldset {
+    margin: 8px 0 0 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+
+    display: inline-flex;
+    grid-gap: 8px;
+    gap: 8px;
+
+    position: relative;
+
+    &:first-child {
+      margin: 0 0 0 0;
+    }
+    &:last-child {
+      margin: 32px 0 16px 0;
+      flex-direction: row;
+      align-items: center;
+    }
+    &:not(:last-child) {
+      flex-direction: column;
+    }
+    &:nth-child(2) {
+      position: relative;
+    }
+  }
+
+  .c-divider::before,
+  .c-divider::after {
+    content: '';
+    @apply flex-grow mx-4 bg-grey-light h-px;
+  }
+
+  .c-google-login-button {
+      border-radius: 8px;
+
+  /* css override - 구글기본스타일을 override하기 위해 어쩔 수 없이 important 사용*/
+  div.abcRioButton.abcRioButtonLightBlue {
+    width: 100% !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    color: var(--color-white) !important;
+    background-color: var(--color-google) !important;
+
+    .abcRioButtonContentWrapper {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+
+      .abcRioButtonContents {
+        margin-left: 8px !important;
+        line-height: 0 !important;
+        font-size: var(--font-size-14) !important;
+      }
+    }
+    .abcRioButtonIcon {
+      padding: 0 !important;
+
+      div {
+        width: 14px !important;
+        height: 14px !important;
+
+        svg {
+          width: 14px !important;
+          height: 14px !important;
+          filter: drop-shadow(0 0 1px white) !important;
+        }
+      }
+    }
+  }
+  }
+}
+
+@layer utilities {
+  .u-no-scroll {
+    overflow: hidden;
+  }
+  .u-accent-color {
+    accent-color: var(--color-green);
+  }
+
+  .u-button-round {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+  }
+
+  .u-button-half {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+  }
+
+  .u-text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .u-ellipsis-multiline {
+    overflow: hidden;
+    position: relative;
+    /* This creates a gradient fade effect, which is often a better UX than '...' */
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+  .u-ellipsis-multiline::after {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
