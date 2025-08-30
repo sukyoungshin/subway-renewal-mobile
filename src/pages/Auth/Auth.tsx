@@ -3,7 +3,6 @@ import LINK from '@/shared/constants/link';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MainStyled } from './Auth.style';
 
 const Auth = () => {
   /* 리덕스 & 라우터 */
@@ -87,7 +86,7 @@ const Auth = () => {
     document.head.append(script);
   }, []);
 
-  return <MainStyled>Loading...</MainStyled>;
+  return <main className="w-full min-h-[calc(100%-136px)]">Loading...</main>;
 };
 
 export default Auth;
