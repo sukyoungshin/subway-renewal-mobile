@@ -137,6 +137,7 @@ body {
     position: relative;
     background-color: var(--color-white);
   }
+  }  
   h1,
   h2,
   h3,
@@ -184,6 +185,7 @@ body {
     filter: drop-shadow(0px 2px 2px var(--color-black));
   }
   .c-custom-fieldset {
+    .c-custom-fieldset {
     margin: 8px 0 0 0;
     padding: 0;
     width: 100%;
@@ -252,9 +254,43 @@ body {
             height: 14px !important;
             filter: drop-shadow(0 0 1px white) !important;
           }
+      border-radius: 8px;
+
+  /* css override - 구글기본스타일을 override하기 위해 어쩔 수 없이 important 사용*/
+  div.abcRioButton.abcRioButtonLightBlue {
+    width: 100% !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    color: var(--color-white) !important;
+    background-color: var(--color-google) !important;
+
+    .abcRioButtonContentWrapper {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+
+      .abcRioButtonContents {
+        margin-left: 8px !important;
+        line-height: 0 !important;
+        font-size: var(--font-size-14) !important;
+      }
+    }
+    .abcRioButtonIcon {
+      padding: 0 !important;
+
+      div {
+        width: 14px !important;
+        height: 14px !important;
+
+        svg {
+          width: 14px !important;
+          height: 14px !important;
+          filter: drop-shadow(0 0 1px white) !important;
         }
       }
     }
+  }
   }
 }
 
@@ -296,4 +332,5 @@ body {
     right: 0;
     bottom: 0;
   }
+}
 }

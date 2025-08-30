@@ -4,7 +4,7 @@ import { ComponentType, ReactNode, Suspense, lazy } from 'react';
 import { useRoutes } from 'react-router-dom';
 
 // 첫 화면은 그대로 로딩
-import { Main } from '@/pages';
+import { Login, Main } from '@/pages';
 
 export function withSuspense<T extends object>(
   Component: React.LazyExoticComponent<ComponentType<T>>,
