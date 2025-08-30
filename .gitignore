@@ -30,4 +30,4 @@ yarn-error.log*
 /dist
 
 # 리포트
-/docs
+stats.html
