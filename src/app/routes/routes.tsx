@@ -24,7 +24,7 @@ const Bread = withSuspense(lazy(() => import('@/pages/Bread/Bread')));
 const Cheese = withSuspense(lazy(() => import('@/pages/Cheese/Cheese')));
 const Menu = withSuspense(lazy(() => import('@/pages/Menu/Menu')));
 const NoMatch = withSuspense(lazy(() => import('@/pages/NoMatch/NoMatch')));
-const OrderCart = withSuspense(lazy(() => import('@/pages/OrderCart/ui/OrderCart')));
+const OrderCart = withSuspense(lazy(() => import('@/pages/OrderCart/OrderCart')));
 const OrderConfirm = withSuspense(lazy(() => import('@/pages/OrderConfirm/OrderConfirm')));
 const OrderInfo = withSuspense(lazy(() => import('@/pages/OrderInfo/OrderInfo')));
 const OrderMenu = withSuspense(lazy(() => import('@/pages/OrderMenu/OrderMenu')));
