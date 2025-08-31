@@ -14,13 +14,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
-      - name: Install deps
-        run: yarn install
-
-      - name: Run sync script
-        run: node script.js
+      - name: Install dependencies and Run sync script
+        run: yarn install && yarn sync
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
