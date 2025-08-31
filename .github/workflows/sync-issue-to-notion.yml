@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies and Run sync script
         run: yarn install && yarn sync
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
           OWNER: ${{ secrets.OWNER }}
