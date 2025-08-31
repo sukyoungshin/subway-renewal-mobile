@@ -23,8 +23,8 @@
     "lint": "eslint .",
     "format": "prettier .",
     "sync:build": "tsc -p scripts/tsconfig.scripts.json",
-    "sync:run": "node dist-scripts/sync-issue-to-notion.js",
-    "sync": "yarn sync:build && yarn sync:run"
+    "sync:run": "node dist-scripts/sync-issue-to-notion.cjs",
+    "sync": "yarn sync:build && mv dist-scripts/sync-issue-to-notion.js dist-scripts/sync-issue-to-notion.cjs && yarn sync:run"
   },
   "eslintConfig": {
     "extends": [
