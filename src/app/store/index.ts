@@ -1,7 +1,8 @@
 import amountReducer from '@/features/amount/model/amountReducer';
 import authReducer from '@/features/auth/model/auth';
 import cartReducer from '@/features/cart/model/cartReducer';
-import { combineReducers, legacy_createStore as createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 
 // 루트 리듀서
 const rootReducer = combineReducers({
@@ -10,8 +11,14 @@ const rootReducer = combineReducers({
   amountReducer,
 });
 
-// 단일 스토어 생성
-const store = createStore(rootReducer);
-console.log('@App store', store.getState()); // 스토어의 상태 확인
+// store 요청시마다 생성 (팩토리)
+export type RootState = ReturnType<typeof rootReducer>;
 
-export default store;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function createAppStore(preloadedState?: any) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  });
+}
+export type AppStore = ReturnType<typeof createAppStore>;

@@ -4,7 +4,7 @@ import { ComponentType, ReactNode, Suspense, lazy } from 'react';
 import { useRoutes } from 'react-router-dom';
 
 // 첫 화면은 그대로 로딩
-import { Login, Main } from '@/pages';
+import { Main } from '@/pages';
 
 export function withSuspense<T extends object>(
   Component: React.LazyExoticComponent<ComponentType<T>>,
@@ -29,8 +29,9 @@ const OrderConfirm = withSuspense(lazy(() => import('@/pages/OrderConfirm/OrderC
 const OrderInfo = withSuspense(lazy(() => import('@/pages/OrderInfo/OrderInfo')));
 const OrderMenu = withSuspense(lazy(() => import('@/pages/OrderMenu/OrderMenu')));
 const Sauce = withSuspense(lazy(() => import('@/pages/Sauce/Sauce')));
-const Signup = withSuspense(lazy(() => import('@/pages/SignUp/Signup')));
 const Vegetable = withSuspense(lazy(() => import('@/pages/Vegetable/Vegetable')));
+const Login = withSuspense(lazy(() => import('@/pages/Login/Login')));
+const Signup = withSuspense(lazy(() => import('@/pages/SignUp/Signup')));
 
 const Routes = () => {
   const routes = useRoutes([
