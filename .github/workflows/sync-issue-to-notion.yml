@@ -16,10 +16,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies and Run sync script
-        run: yarn install && yarn sync
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run sync script
+        run: yarn sync
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
           OWNER: ${{ secrets.OWNER }}
