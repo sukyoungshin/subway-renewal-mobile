@@ -8,6 +8,7 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    environment: sync-issue-to-notion
     steps:
       - uses: actions/checkout@v3
 
