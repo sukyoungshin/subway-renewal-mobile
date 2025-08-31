@@ -19,6 +19,7 @@ type NotionQueryResponse = {
 
 const { GH_TOKEN, NOTION_TOKEN, NOTION_DB_ID, OWNER, REPO } = process.env;
 if (!GH_TOKEN || !NOTION_TOKEN || !NOTION_DB_ID || !OWNER || !REPO) {
+  console.log({ GH_TOKEN, NOTION_DB_ID, NOTION_TOKEN, OWNER, REPO });
   throw new Error('환경변수가 설정되지 않았습니다.');
 }
 

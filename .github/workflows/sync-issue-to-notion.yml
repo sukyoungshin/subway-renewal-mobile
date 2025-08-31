@@ -22,7 +22,7 @@ jobs:
       - name: Run sync script
         run: yarn sync
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
           OWNER: ${{ secrets.OWNER }}
