@@ -5,14 +5,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const node_fetch_1 = __importDefault(require("node-fetch"));
-const { GITHUB_TOKEN, NOTION_TOKEN, NOTION_DB_ID, OWNER, REPO } = process.env;
-if (!GITHUB_TOKEN || !NOTION_TOKEN || !NOTION_DB_ID || !OWNER || !REPO) {
+const { GH_TOKEN, NOTION_TOKEN, NOTION_DB_ID, OWNER, REPO } = process.env;
+if (!GH_TOKEN || !NOTION_TOKEN || !NOTION_DB_ID || !OWNER || !REPO) {
     throw new Error('환경변수가 설정되지 않았습니다.');
 }
 // GitHub Issues 가져오기
 async function getGithubIssues() {
     const res = await (0, node_fetch_1.default)(`https://api.github.com/repos/${OWNER}/${REPO}/issues?state=all`, {
-        headers: { Authorization: `token ${GITHUB_TOKEN}` },
+        headers: { Authorization: `token ${GH_TOKEN}` },
     });
     if (!res.ok)
         throw new Error(`GitHub API error: ${res.statusText}`);
