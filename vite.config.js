@@ -7,10 +7,7 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.js',
   },
-  plugins: [
-    react(),
-    visualizer({ filename: './docs/stats.html', open: false, template: 'treemap' }),
-  ],
+  plugins: [react(), visualizer({ filename: 'stats.html', open: false, template: 'treemap' })],
   root: '.',
   resolve: {
     alias: {
@@ -18,6 +15,7 @@ export default defineConfig({
     },
   },
   build: {
+    ssr: true,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
@@ -38,9 +36,5 @@ export default defineConfig({
     fs: {
       allow: ['.'],
     },
-    // CRA의 proxy 대체
-    // proxy: {
-    //   '/api': 'http://localhost:4000'
-    // }
   },
 });
