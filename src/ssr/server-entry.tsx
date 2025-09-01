@@ -12,12 +12,14 @@ export async function render(req: Request, res: Response, templateEnd?: string) 
   console.log('SSR render called for:', url, 'isSSRable:', ssrable);
 
   if (!ssrable) {
-    res.end();
+    // SSR이 불가능한 경로는 404 상태 코드와 함께 응답을 종료합니다.
+    res.status(404).end('Not Found');
     return;
   }
 
   try {
     const store = createAppStore();
+    const preloadedState = store.getState();
     let didError = false;
 
     const { pipe } = renderToPipeableStream(
@@ -33,9 +35,14 @@ export async function render(req: Request, res: Response, templateEnd?: string) 
           }
         },
         onAllReady() {
-          // 모든 React 렌더링이 완료되면 templateEnd를 보냅니다.
-          if (templateEnd && !didError) {
-            res.write(templateEnd);
+          console.log('onAllReady called');
+          if (!didError) {
+            const stateJson = JSON.stringify(preloadedState).replace(/</g, '\\u003c');
+            res.write(`<script>window.__PRELOADED_STATE__=${stateJson}</script>`);
+
+            if (templateEnd) {
+              res.write(templateEnd);
+            }
           }
           res.end();
         },
@@ -47,7 +54,7 @@ export async function render(req: Request, res: Response, templateEnd?: string) 
         },
         onError(error) {
           console.error('SSR Error:', error);
-        }
+        },
       }
     );
   } catch (error) {

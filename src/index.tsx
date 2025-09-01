@@ -13,11 +13,11 @@ declare global {
   }
 }
 
-const preloaded = window.__PRELOADED_STATE__;
-if (preloaded) delete window.__PRELOADED_STATE__;
+const preloaded = typeof window !== 'undefined' ? window.__PRELOADED_STATE__ : undefined;
+if (preloaded && typeof window !== 'undefined') delete window.__PRELOADED_STATE__;
 
 const store = createAppStore(preloaded);
-const rootElement = document.getElementById('root');
+const rootElement = typeof window !== 'undefined' ? document.getElementById('root') : null;
 
 if (rootElement) {
   const App = (

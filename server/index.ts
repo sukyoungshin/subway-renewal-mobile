@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import compression from 'compression';
 import express from 'express';
 import fs from 'fs/promises';
 import path from 'path';
+import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 import type { ViteDevServer } from 'vite';
 
@@ -22,51 +23,61 @@ async function createServer() {
     });
     // **Vite 미들웨어를 가장 먼저 호출**
     app.use(vite.middlewares);
+
+    // 개발 환경: 명시적으로 루트 경로를 처리
+    app.use('/', async (req, res, next) => {
+      try {
+        const url = req.originalUrl;
+        let htmlTemplate = await fs.readFile(resolve('index.html'), 'utf-8');
+        htmlTemplate = await vite!.transformIndexHtml(url, htmlTemplate);
+        const render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
+        const [templateStart, templateEnd] = htmlTemplate.split('<!--app-html-->');
+
+        res.status(200).set({ 'Content-Type': 'text/html' });
+        res.write(templateStart);
+        await render(req, res, templateEnd);
+      } catch (e: unknown) {
+        if (!isProduction && vite) {
+          vite.ssrFixStacktrace(e as Error);
+        }
+        next(e);
+      }
+    });
   } else {
-    const compression = (await import('compression')).default;
-    const serveStatic = (await import('serve-static')).default;
+    // 운영 환경
     app.use(compression());
     app.use(serveStatic(resolve('dist/client'), { index: false }));
-  }
 
-  // 모든 요청을 하나의 라우트 핸들러로 처리
-  app.use(async (req, res, next) => {
-    try {
-      const url = req.originalUrl;
-      let htmlTemplate: string;
-      let render: any;
+    const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
+    const ssrModule = await import(ssrModulePath);
 
-      if (!isProduction) {
-        htmlTemplate = await fs.readFile(resolve('index.html'), 'utf-8');
-        htmlTemplate = await vite!.transformIndexHtml(url, htmlTemplate);
-        render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
-      } else {
-        htmlTemplate = await fs.readFile(resolve('dist/client/index.html'), 'utf-8');
-        render = (await import('../dist/server/server-entry.js')).render;
-      }
+    // 운영 환경: 모든 요청을 SSR로 처리
+    app.use('*', async (req, res, next) => {
+      try {
+        const url = req.originalUrl;
+        const htmlTemplate = await fs.readFile(
+          path.resolve(__dirname, '..', 'dist/client/index.html'),
+          'utf-8'
+        );
+        const render = ssrModule.render;
 
-      const isSSRable = url === '/' || url.startsWith('/main');
+        if (!render || typeof render !== 'function') {
+          throw new Error('SSR render function not found or is not a function.');
+        }
 
-      if (isSSRable) {
+        // render 함수를 한 번만 호출하고, 반환된 HTML을 사용
+        const appHtml = await render(url);
         const [templateStart, templateEnd] = htmlTemplate.split('<!--app-html-->');
-        
-        // 헤더를 설정하고, HTML 문서의 시작 부분을 먼저 보냅니다.
-        res.status(200).set({ 'Content-Type': 'text/html; charset=utf-8' });
-        res.write(templateStart);
+        const fullHtml = templateStart + appHtml + templateEnd;
 
-        // render 함수에 templateEnd를 전달하여 React 스트림 후에 보내도록 합니다.
-        await render(req, res, templateEnd);
-      } else {
-        const finalHtml = htmlTemplate.replace('<!--app-html-->', '');
-        res.status(200).set({ 'Content-Type': 'text/html; charset=utf-8' }).end(finalHtml);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
+      } catch (e: unknown) {
+        // 에러 발생 시 500 상태 코드와 함께 에러 메시지를 보냄
+        console.error(e);
+        res.status(500).end('Internal Server Error');
       }
-    } catch (e: unknown) {
-      if (!isProduction && vite) {
-        vite.ssrFixStacktrace(e as Error);
-      }
-      next(e);
-    }
-  });
+    });
+  }
 
   // 서버 시작
   app.listen(port, () => {
