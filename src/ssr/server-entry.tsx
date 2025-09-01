@@ -7,7 +7,7 @@ import { StaticRouter } from 'react-router-dom/server';
 
 export async function render(req: Request, res: Response, templateEnd?: string) {
   const url = req.url;
-  const ssrable = url === '/' || url === '/main';
+   const ssrable = url === '/' || url === '/main';
 
   console.log('SSR render called for:', url, 'isSSRable:', ssrable);
 
@@ -44,22 +44,23 @@ export async function render(req: Request, res: Response, templateEnd?: string) 
               res.write(templateEnd);
             }
           }
-          res.end();
         },
         onShellError(error) {
           didError = true;
           console.error('SSR Shell Error:', error);
-          res.status(500);
-          res.end('SSR Error');
+          res.statusCode = 500;
+          res.end('<h1>SSR Error</h1><p>Failed to render the application shell.</p>');
         },
         onError(error) {
+          didError = true;
           console.error('SSR Error:', error);
+          res.end();
         },
       }
     );
   } catch (error) {
     console.error('SSR Render Error:', error);
-    res.status(500);
-    res.end('SSR Error');
+    res.statusCode = 500;
+    res.end('<h1>SSR Render Error</h1><p>An unexpected error occurred during rendering.</p>');
   }
 }

@@ -14,6 +14,7 @@ const port = Number(process.env.PORT) || 5173;
 async function createServer() {
   const app = express();
   let vite: ViteDevServer | undefined;
+  let templateHtml = '';
 
   if (!isProduction) {
     const viteModule = await import('vite');
@@ -21,63 +22,43 @@ async function createServer() {
       server: { middlewareMode: true },
       appType: 'custom',
     });
-    // **Vite 미들웨어를 가장 먼저 호출**
     app.use(vite.middlewares);
-
-    // 개발 환경: 명시적으로 루트 경로를 처리
-    app.use('/', async (req, res, next) => {
-      try {
-        const url = req.originalUrl;
-        let htmlTemplate = await fs.readFile(resolve('index.html'), 'utf-8');
-        htmlTemplate = await vite!.transformIndexHtml(url, htmlTemplate);
-        const render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
-        const [templateStart, templateEnd] = htmlTemplate.split('<!--app-html-->');
-
-        res.status(200).set({ 'Content-Type': 'text/html' });
-        res.write(templateStart);
-        await render(req, res, templateEnd);
-      } catch (e: unknown) {
-        if (!isProduction && vite) {
-          vite.ssrFixStacktrace(e as Error);
-        }
-        next(e);
-      }
-    });
   } else {
-    // 운영 환경
+    templateHtml = await fs.readFile(resolve('dist/client/index.html'), 'utf-8');
     app.use(compression());
     app.use(serveStatic(resolve('dist/client'), { index: false }));
-
-    const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
-    const ssrModule = await import(ssrModulePath);
-
-    // 운영 환경: 모든 요청을 SSR로 처리
-    app.use('*', async (req, res, next) => {
-      try {
-        const url = req.originalUrl;
-        const htmlTemplate = await fs.readFile(
-          path.resolve(__dirname, '..', 'dist/client/index.html'),
-          'utf-8'
-        );
-        const render = ssrModule.render;
-
-        if (!render || typeof render !== 'function') {
-          throw new Error('SSR render function not found or is not a function.');
-        }
-
-        // render 함수를 한 번만 호출하고, 반환된 HTML을 사용
-        const appHtml = await render(url);
-        const [templateStart, templateEnd] = htmlTemplate.split('<!--app-html-->');
-        const fullHtml = templateStart + appHtml + templateEnd;
-
-        res.status(200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
-      } catch (e: unknown) {
-        // 에러 발생 시 500 상태 코드와 함께 에러 메시지를 보냄
-        console.error(e);
-        res.status(500).end('Internal Server Error');
-      }
-    });
   }
+
+  app.get('*', async (req, res, next) => {
+    try {
+      const url = req.originalUrl;
+      let template: string;
+      let render: (req: express.Request, res: express.Response, templateEnd?: string) => void;
+
+      if (!isProduction) {
+        template = await fs.readFile(resolve('index.html'), 'utf-8');
+        template = await vite!.transformIndexHtml(url, template);
+        render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
+      } else {
+        template = templateHtml;
+        const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
+        render = (await import(ssrModulePath)).render;
+      }
+
+      const [templateStart, templateEnd] = template.split('<!--app-html-->');
+
+      res.status(200).set({ 'Content-Type': 'text/html' });
+      res.write(templateStart);
+
+      render(req, res, templateEnd);
+    } catch (e: unknown) {
+      if (!isProduction && vite) {
+        vite.ssrFixStacktrace(e as Error);
+      }
+      console.error(e);
+      res.status(500).end('Internal Server Error');
+    }
+  });
 
   // 서버 시작
   app.listen(port, () => {

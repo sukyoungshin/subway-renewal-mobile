@@ -27,10 +27,7 @@ export default defineConfig(({ command }) => {
             'express',
             'compression',
             'serve-static',
-            'react-dom/server.mjs',
             '@reduxjs/toolkit',
-            'react',
-            'react-dom',
             'react-router',
             'react-router-dom',
             'react-redux',
@@ -38,7 +35,7 @@ export default defineConfig(({ command }) => {
         },
       },
       ssr: {
-        noExternal: ['react-icons', '@'],
+        noExternal: ['react-icons', 'react', 'react-dom', '@'],
       },
     };
   }
