@@ -18,7 +18,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 export function createAppStore(preloadedState?: any) {
   return configureStore({
     reducer: rootReducer,
-    preloadedState
+    preloadedState,
   });
 }
 export type AppStore = ReturnType<typeof createAppStore>;

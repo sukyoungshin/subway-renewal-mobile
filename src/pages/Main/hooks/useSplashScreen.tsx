@@ -7,7 +7,7 @@ const useSplashScreen = () => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
+
     if (sessionStorage.getItem(NEED_SPLASH_SCREEN) === 'false') {
       setIsSplashNeeded(false);
       return;

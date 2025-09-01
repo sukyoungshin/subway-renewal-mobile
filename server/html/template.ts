@@ -4,11 +4,7 @@ export function loadTemplate(p: string) {
   return fs.readFileSync(p, 'utf-8');
 }
 
-export function injectAppHtml(
-  template: string,
-  appHtml: string | null,
-  preloadedState?: unknown
-) {
+export function injectAppHtml(template: string, appHtml: string | null, preloadedState?: unknown) {
   let html = template;
 
   if (appHtml) {
