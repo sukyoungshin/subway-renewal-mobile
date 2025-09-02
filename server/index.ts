@@ -8,13 +8,14 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const resolve = (p: string) => path.resolve(__dirname, '..', p);
 const isProduction = process.env.NODE_ENV === 'production';
+const isVercel = process.env.VERCEL === '1';
 const port = Number(process.env.PORT) || 5173;
 
 const app = express();
 app.use(compression());
 
 // 프로덕션 환경에서는 클라이언트 빌드 폴더를 정적 파일로 제공합니다.
-if (isProduction) {
+if (isProduction && !isVercel) {
   app.use(serveStatic(resolve('dist/client'), { index: false }));
 }
 
@@ -37,8 +38,39 @@ app.get('*', async (req, res, next) => {
       template = await fs.readFile(resolve('index.html'), 'utf-8');
       template = await vite!.transformIndexHtml(url, template);
       render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
+    } else if (isVercel) {
+      // Vercel 환경에서는 직접 SSR 엔트리를 로드합니다.
+      try {
+        const { render: ssrRender } = await import('../src/ssr/server-entry.tsx');
+        render = ssrRender;
+        template = await fs.readFile(resolve('index.html'), 'utf-8');
+      } catch (ssrError) {
+        console.error('SSR module load error:', ssrError);
+        // SSR 실패 시 기본 HTML 응답
+        res.status(200).send(`
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <title>Subway</title>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+            </head>
+            <body>
+              <div id="root">
+                <h1>Subway App</h1>
+                <p>Loading...</p>
+              </div>
+              <script>
+                // Client-side hydration을 위한 기본 스크립트
+                window.location.reload();
+              </script>
+            </body>
+          </html>
+        `);
+        return;
+      }
     } else {
-      // 프로덕션 환경에서는 빌드된 SSR 모듈을 로드합니다.
+      // 로컬 프로덕션 환경
       const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
       render = (await import(ssrModulePath)).render;
       template = await fs.readFile(resolve('dist/client/index.html'), 'utf-8');
@@ -54,7 +86,7 @@ app.get('*', async (req, res, next) => {
     if (!isProduction && 'ssrFixStacktrace' in (e as object)) {
       (e as { ssrFixStacktrace: (e: Error) => void }).ssrFixStacktrace(e as Error);
     }
-    console.error(e);
+    console.error('SSR Error:', e);
     res.status(500).end('Internal Server Error');
   }
 });

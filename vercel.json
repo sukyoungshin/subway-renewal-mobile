@@ -5,18 +5,23 @@
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "dist/**"
+        "includeFiles": [
+          "src/**",
+          "public/**",
+          "index.html",
+          "search.html"
+        ]
       }
     }
   ],
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "/dist/client/assets/$1"
+      "dest": "/public/assets/$1"
     },
     {
       "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|webp))",
-      "dest": "/dist/client/$1"
+      "dest": "/public/$1"
     },
     {
       "src": "/(.*)",
