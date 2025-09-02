@@ -39,49 +39,24 @@ app.get('*', async (req, res, next) => {
       template = await vite!.transformIndexHtml(url, template);
       render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
     } else if (isVercel) {
-      // Vercel 환경에서는 빌드된 SSR 모듈을 사용합니다.
-      console.log('Vercel: Loading built SSR module...');
+      // 프로덕션 환경에서는 빌드된 SSR 모듈을 로드합니다.
+      let ssrModulePath: string;
+      let templatePath: string;
 
-      try {
-        // Vercel에서 빌드된 SSR 모듈 로드
-        const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
-        console.log('Vercel: SSR module path:', ssrModulePath);
-
-        render = (await import(ssrModulePath)).render;
-        template = await fs.readFile(resolve('dist/client/index.html'), 'utf-8');
-
-        console.log('Vercel: SSR module loaded successfully');
-      } catch (ssrError) {
-        console.error('Vercel SSR module load error:', ssrError);
-        console.error('Error details:', {
-          message: ssrError.message,
-          stack: ssrError.stack,
-          code: ssrError.code,
-        });
-
-        // SSR 실패 시 기본 HTML 응답
-        res.status(200).send(`
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <title>Subway</title>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-            </head>
-            <body>
-              <div id="root">
-                <h1>Subway App</h1>
-                <p>SSR Loading Failed - Check server logs</p>
-                <p>Error: ${ssrError.message}</p>
-              </div>
-            </body>
-          </html>
-        `);
-        return;
+      if (isVercel) {
+        ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.mjs');
+        templatePath = resolve('dist/client/index.html');
+      } else {
+        ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.mjs');
+        templatePath = resolve('dist/client/index.html');
       }
+
+      const { render: ssrRender } = await import(ssrModulePath as unknown as string);
+      render = ssrRender;
+      template = await fs.readFile(templatePath, 'utf-8');
     } else {
       // 로컬 프로덕션 환경
-      const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
+      const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.mjs');
       render = (await import(ssrModulePath)).render;
       template = await fs.readFile(resolve('dist/client/index.html'), 'utf-8');
     }

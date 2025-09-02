@@ -14,9 +14,9 @@ export default defineConfig({
     lib: {
       entry: 'src/ssr/server-entry.tsx',
       fileName: 'server-entry',
-      formats: ['cjs'],
+      formats: ['es'],
     },
-    outDir: 'dist/server-temp',
+    outDir: 'dist/server',
     rollupOptions: {
       external: [
         'express',
@@ -30,6 +30,9 @@ export default defineConfig({
         'path',
         'url',
       ],
+      output: {
+        entryFileNames: 'server-entry.mjs',
+      },
     },
   },
   ssr: {
