@@ -39,13 +39,26 @@ app.get('*', async (req, res, next) => {
       template = await vite!.transformIndexHtml(url, template);
       render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
     } else if (isVercel) {
-      // Vercel 환경에서는 직접 SSR 엔트리를 로드합니다.
+      // Vercel 환경에서는 빌드된 SSR 모듈을 사용합니다.
+      console.log('Vercel: Loading built SSR module...');
+      
       try {
-        const { render: ssrRender } = await import('../src/ssr/server-entry.tsx');
-        render = ssrRender;
-        template = await fs.readFile(resolve('index.html'), 'utf-8');
+        // Vercel에서 빌드된 SSR 모듈 로드
+        const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
+        console.log('Vercel: SSR module path:', ssrModulePath);
+        
+        render = (await import(ssrModulePath)).render;
+        template = await fs.readFile(resolve('dist/client/index.html'), 'utf-8');
+        
+        console.log('Vercel: SSR module loaded successfully');
       } catch (ssrError) {
-        console.error('SSR module load error:', ssrError);
+        console.error('Vercel SSR module load error:', ssrError);
+        console.error('Error details:', {
+          message: ssrError.message,
+          stack: ssrError.stack,
+          code: ssrError.code
+        });
+        
         // SSR 실패 시 기본 HTML 응답
         res.status(200).send(`
           <!DOCTYPE html>
@@ -58,12 +71,9 @@ app.get('*', async (req, res, next) => {
             <body>
               <div id="root">
                 <h1>Subway App</h1>
-                <p>Loading...</p>
+                <p>SSR Loading Failed - Check server logs</p>
+                <p>Error: ${ssrError.message}</p>
               </div>
-              <script>
-                // Client-side hydration을 위한 기본 스크립트
-                window.location.reload();
-              </script>
             </body>
           </html>
         `);

@@ -2,21 +2,35 @@
   "version": 2,
   "builds": [
     {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/client",
+        "buildCommand": "yarn build"
+      }
+    },
+    {
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["src/**", "public/**", "index.html", "search.html"]
+        "includeFiles": [
+          "dist/**",
+          "src/**",
+          "public/**",
+          "index.html",
+          "search.html"
+        ]
       }
     }
   ],
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "/public/assets/$1"
+      "dest": "/dist/client/assets/$1"
     },
     {
       "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|webp))",
-      "dest": "/public/$1"
+      "dest": "/dist/client/$1"
     },
     {
       "src": "/(.*)",
