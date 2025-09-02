@@ -11,8 +11,13 @@ export async function render(req: Request, res: Response, templateEnd?: string) 
   console.log('SSR render called for:', url, 'isSSRable:', ssrable);
 
   if (!ssrable) {
-    // SSR이 불가능한 경로는 404 상태 코드와 함께 응답을 종료합니다.
-    res.status(404).end('Not Found');
+    // SSR 불가 경로는 CSR로 폴백: 이미 server에서 templateStart를 write 했으므로
+    // templateEnd만 마저 보내고 종료합니다.
+    res.status(200);
+    if (templateEnd) {
+      res.write(templateEnd);
+    }
+    res.end();
     return;
   }
 
