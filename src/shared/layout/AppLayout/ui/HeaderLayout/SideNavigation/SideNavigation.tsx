@@ -34,8 +34,9 @@ const SideNavigation = ({ handleNavbar }: IProps) => {
               <NavLink
                 to={menu.pathName}
                 onClick={handleNavbar}
+                style={{ fontSize: '1rem' }}
                 className={({ isActive }: { isActive: boolean }) =>
-                  `text-sm hover:text-green ${isActive ? 'text-green' : 'text-black'}`
+                  `hover:text-green ${isActive ? 'text-green' : 'text-black'}`
                 }
               >
                 {menu.categoryName}
