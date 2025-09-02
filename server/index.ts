@@ -62,7 +62,7 @@ app.get('*', async (req, res, next) => {
 export default app;
 
 // 로컬 환경에서만 서버를 시작합니다. Vercel에서는 이 코드가 실행되지 않습니다.
-if (!isProduction) {
+if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
     console.log(`Server listening on http://localhost:${port}`);
   });

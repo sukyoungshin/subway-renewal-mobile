@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/server/index.cjs",
+      "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
         "includeFiles": "dist/**"
@@ -11,12 +11,16 @@
   ],
   "routes": [
     {
-      "src": "/_next/static/(.*)",
-      "dest": "/_next/static/$1"
+      "src": "/assets/(.*)",
+      "dest": "/dist/client/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|webp))",
+      "dest": "/dist/client/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "dist/server/index.cjs"
+      "dest": "/server/index.ts"
     }
   ]
 }
