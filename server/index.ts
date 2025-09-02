@@ -41,24 +41,24 @@ app.get('*', async (req, res, next) => {
     } else if (isVercel) {
       // Vercel 환경에서는 빌드된 SSR 모듈을 사용합니다.
       console.log('Vercel: Loading built SSR module...');
-      
+
       try {
         // Vercel에서 빌드된 SSR 모듈 로드
         const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.cjs');
         console.log('Vercel: SSR module path:', ssrModulePath);
-        
+
         render = (await import(ssrModulePath)).render;
         template = await fs.readFile(resolve('dist/client/index.html'), 'utf-8');
-        
+
         console.log('Vercel: SSR module loaded successfully');
       } catch (ssrError) {
         console.error('Vercel SSR module load error:', ssrError);
         console.error('Error details:', {
           message: ssrError.message,
           stack: ssrError.stack,
-          code: ssrError.code
+          code: ssrError.code,
         });
-        
+
         // SSR 실패 시 기본 HTML 응답
         res.status(200).send(`
           <!DOCTYPE html>
