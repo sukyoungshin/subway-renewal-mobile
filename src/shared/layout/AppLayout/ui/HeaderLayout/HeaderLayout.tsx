@@ -7,6 +7,8 @@ const HeaderLayout = () => {
   const handleSideNavigationVisibility = () => setIsSideVisible((prev) => !prev);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const root = document.getElementById('root');
     if (!root) return;
 

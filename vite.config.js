@@ -3,44 +3,82 @@ import path from 'node:path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 
-export default defineConfig({
-  css: {
-    postcss: './postcss.config.js',
-  },
-  plugins: [
-    react(),
-    visualizer({ filename: './docs/stats.html', open: false, template: 'treemap' }),
-  ],
-  root: '.',
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
+export default defineConfig(({ command }) => {
+  const isSsrBuild = command === 'build' && process.env.SSR_BUILD;
+
+  if (isSsrBuild) {
+    return {
+      plugins: [react()],
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, 'src'),
+        },
+      },
+      build: {
+        ssr: true,
+        lib: {
+          entry: 'src/ssr/server-entry.tsx',
+          fileName: 'server-entry',
+          formats: ['cjs'],
+        },
+        outDir: 'dist/server',
+        rollupOptions: {
+          external: [
+            'express',
+            'compression',
+            'serve-static',
+            '@reduxjs/toolkit',
+            'react-router',
+            'react-router-dom',
+            'react-redux',
+          ],
+        },
+      },
+      ssr: {
+        noExternal: ['react-icons', 'react', 'react-dom', '@'],
+      },
+    };
+  }
+
+  return {
+    css: {
+      postcss: './postcss.config.js',
     },
-  },
-  build: {
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'index.html'),
-        search: path.resolve(__dirname, 'search.html'),
+    plugins: [
+      react(),
+      !isSsrBuild && visualizer({ filename: 'stats.html', open: false, template: 'treemap' }),
+    ],
+    root: '.',
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
       },
     },
-    sourcemap: true,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // console.log 제거
-        dead_code: true, // 사용하지 않는 코드 제거
+    build: {
+      outDir: 'dist/client',
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          search: path.resolve(__dirname, 'search.html'),
+        },
+      },
+      sourcemap: true,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          dead_code: true,
+        },
       },
     },
-  },
-  server: {
-    port: 3000,
-    fs: {
-      allow: ['.'],
+    server: {
+      port: 5173,
+      fs: {
+        allow: ['.'],
+      },
     },
-    // CRA의 proxy 대체
-    // proxy: {
-    //   '/api': 'http://localhost:4000'
-    // }
-  },
+    ssr: {
+      noExternal: ['react-icons', 'compression', 'serve-static'],
+    },
+  };
 });
