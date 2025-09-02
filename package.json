@@ -23,17 +23,20 @@
   "scripts": {
     "dev:client": "vite",
     "dev:server": "tsx --env-file=.env server/index.ts",
-    "build:client": "vite build",
-    "build:server": "SSR_BUILD=true vite build --ssr",
-    "build": "yarn build:client && yarn build:server",
-    "start": "NODE_ENV=production tsx server/index.ts",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "SSR_BUILD=true vite build --ssr --outDir dist/server",
+    "build:ssr-entry": "SSR_ENTRY=true vite build --ssr --outDir dist/server --config vite.ssr-entry.config.js",
+    "build": "yarn build:server && yarn build:ssr-entry && yarn build:client",
+    "vercel-build": "yarn build",
+    "start": "NODE_ENV=development node dist/server/index.cjs",
+    "start:prod": "NODE_ENV=production node dist/server/index.cjs",
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint .",
     "format": "prettier .",
     "sync:build": "tsc -p scripts/tsconfig.scripts.json",
     "sync:run": "node dist-scripts/sync-issue-to-notion.cjs",
-    "sync": "yarn sync:build && mv dist-scripts/sync-issue-to-notion.js dist-scripts/sync-issue-to-notion.cjs && yarn sync:run"
+    "sync": "yarn sync:build && mv dist-scripts/sync-issue-to-notion.cjs && yarn sync:run"
   },
   "eslintConfig": {
     "extends": [
