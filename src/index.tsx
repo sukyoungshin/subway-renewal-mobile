@@ -22,7 +22,7 @@ if (rootElement) {
   const App = (
     <React.StrictMode>
       <Provider store={store}>
-        <AppRouter >
+        <AppRouter>
           <Routes />
         </AppRouter>
       </Provider>

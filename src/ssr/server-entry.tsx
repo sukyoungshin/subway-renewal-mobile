@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 export async function render(req: Request, res: Response, templateEnd?: string) {
   const url = req.url;
-   const ssrable = url === '/' || url === '/main';
+  const ssrable = url === '/' || url === '/main';
 
   console.log('SSR render called for:', url, 'isSSRable:', ssrable);
 
