@@ -13,7 +13,13 @@
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["dist/**", "src/**", "public/**", "index.html", "search.html"]
+        "includeFiles": [
+          "dist/**",
+          "src/**",
+          "public/**",
+          "index.html",
+          "search.html"
+        ]
       }
     }
   ],
@@ -23,7 +29,7 @@
       "dest": "/dist/client/assets/$1"
     },
     {
-      "src": "/search",
+      "src": "/search(\.html)?",
       "dest": "/dist/client/search.html"
     },
     {
