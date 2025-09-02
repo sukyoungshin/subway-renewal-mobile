@@ -5,12 +5,7 @@
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": [
-          "src/**",
-          "public/**",
-          "index.html",
-          "search.html"
-        ]
+        "includeFiles": ["src/**", "public/**", "index.html", "search.html"]
       }
     }
   ],
