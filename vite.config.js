@@ -17,8 +17,8 @@ export default defineConfig(({ command }) => {
       build: {
         ssr: true,
         lib: {
-          entry: 'src/ssr/server-entry.tsx',
-          fileName: 'server-entry',
+          entry: 'server/index.ts',
+          fileName: 'index',
           formats: ['cjs'],
         },
         outDir: 'dist/server',
@@ -31,6 +31,12 @@ export default defineConfig(({ command }) => {
             'react-router',
             'react-router-dom',
             'react-redux',
+            'fs',
+            'fs/promises',
+            'path',
+            'url',
+            'compression',
+            'serve-static',
           ],
         },
       },
