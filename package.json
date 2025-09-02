@@ -23,8 +23,8 @@
   "scripts": {
     "dev:client": "vite",
     "dev:server": "tsx --env-file=.env server/index.ts",
-    "build:client": "vite build",
-    "build:server": "SSR_BUILD=true vite build --ssr",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "SSR_BUILD=true vite build --ssr --outDir dist/server",
     "build": "yarn build:client && yarn build:server",
     "start": "NODE_ENV=production tsx server/index.ts",
     "preview": "vite preview",
