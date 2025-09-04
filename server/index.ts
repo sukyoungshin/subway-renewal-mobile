@@ -34,8 +34,7 @@ app.get('*', async (req, res, next) => {
         appType: 'custom',
       });
       app.use(vite.middlewares);
-
-      template = await fs.readFile(resolve('index.html'), 'utf-8');
+      template = await fs.readFile(path.resolve(__dirname, '../../index.html'), 'utf-8');
       template = await vite!.transformIndexHtml(url, template);
       render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
     } else if (isVercel) {
