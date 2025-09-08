@@ -1,7 +1,8 @@
-import { AppRouter, Routes } from '@/app';
+import { Routes } from '@/app';
 import React from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { createAppStore } from './app/store';
 import './shared/styles/global.css';
 
@@ -22,9 +23,9 @@ if (rootElement) {
   const App = (
     <React.StrictMode>
       <Provider store={store}>
-        <AppRouter>
+        <BrowserRouter>
           <Routes />
-        </AppRouter>
+        </BrowserRouter>
       </Provider>
     </React.StrictMode>
   );

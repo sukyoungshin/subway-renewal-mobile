@@ -180,18 +180,22 @@ export const useKakaoMap = () => {
   // KakaoMap 초기화 (최초 1회)
   useEffect(() => {
     const initMap = async () => {
-      const kakao = await loadKakaoMap();
-      const mapContainer = document.getElementById('map');
-      if (!mapContainer) return;
+      try {
+        const kakao = await loadKakaoMap();
+        const mapContainer = document.getElementById('map');
+        if (!mapContainer) return;
 
-      const mapOptions = {
-        center: new kakao.maps.LatLng(37.3652645, 127.1067686), // 지도의 중심좌표
-        draggable: true, // 지도 이동 및 확대/축소 가능
-        level: 5, // 지도의 확대레벨
-      };
+        const mapOptions = {
+          center: new kakao.maps.LatLng(37.3652645, 127.1067686), // 지도의 중심좌표
+          draggable: true, // 지도 이동 및 확대/축소 가능
+          level: 5, // 지도의 확대레벨
+        };
 
-      const map = new kakao.maps.Map(mapContainer, mapOptions);
-      kakaoMap.current = map; // 카카오맵을 ref로 지정
+        const map = new kakao.maps.Map(mapContainer, mapOptions);
+        kakaoMap.current = map; // 카카오맵을 ref로 지정
+      } catch (error) {
+        console.error('카카오맵 스크립트 로딩 실패:', error);
+      }
     };
 
     initMap();

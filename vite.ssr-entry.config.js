@@ -14,28 +14,28 @@ export default defineConfig({
     lib: {
       entry: 'src/ssr/server-entry.tsx',
       fileName: 'server-entry',
-      formats: ['cjs'],
+      formats: ['es'],
     },
     outDir: 'dist/server-temp',
     rollupOptions: {
-      external: [
-        'express',
-        'compression',
-        'serve-static',
-        '@reduxjs/toolkit',
-        'react-router',
-        'react-router-dom',
-        'react-redux',
-        'fs',
-        'path',
-        'url',
-      ],
+      external: ['express', 'compression', 'serve-static', 'fs', 'path', 'url'],
       output: {
         entryFileNames: 'server-entry.mjs',
+        chunkFileNames: '[name]-[hash].mjs',
+        manualChunks: {}, // 코드 분리 방지
       },
     },
   },
   ssr: {
-    noExternal: ['react-icons', 'react', 'react-dom', '@'],
+    noExternal: [
+      'react-icons',
+      'react',
+      'react-dom',
+      'react-router',
+      'react-router-dom',
+      '@',
+      'react-redux',
+      '@reduxjs/toolkit',
+    ],
   },
 });
