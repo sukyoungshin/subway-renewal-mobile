@@ -13,6 +13,17 @@ const port = Number(process.env.PORT) || 5173;
 
 const app = express();
 app.use(compression());
+let vite; // vite 인스턴스를 외부에 선언
+
+// 개발 환경에서는 ViteDevServer 미들웨어를 가장 먼저 등록합니다.
+if (!isProduction) {
+  const viteModule = await import('vite');
+  vite = await viteModule.createServer({
+    server: { middlewareMode: true },
+    appType: 'custom',
+  });
+  app.use(vite.middlewares);
+}
 
 // 프로덕션 환경에서는 클라이언트 빌드 폴더를 정적 파일로 제공합니다.
 if (isProduction && !isVercel) {
@@ -27,29 +38,15 @@ app.get('*', async (req, res, next) => {
 
   try {
     if (!isProduction) {
-      // 개발 환경에서는 ViteDevServer에서 렌더링 모듈을 로드합니다.
-      const viteModule = await import('vite');
-      const vite = await viteModule.createServer({
-        server: { middlewareMode: true },
-        appType: 'custom',
-      });
-      app.use(vite.middlewares);
-      template = await fs.readFile(path.resolve(__dirname, '../../index.html'), 'utf-8');
+      // 개발 환경에서는 이미 생성된 vite 인스턴스를 재사용합니다.
+      template = await fs.readFile(path.resolve(__dirname, '../index.html'), 'utf-8');
       template = await vite!.transformIndexHtml(url, template);
       render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
     } else if (isVercel) {
       // 프로덕션 환경에서는 빌드된 SSR 모듈을 로드합니다.
-      let ssrModulePath: string;
-      let templatePath: string;
-
-      if (isVercel) {
-        ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.mjs');
-        templatePath = resolve('dist/client/index.html');
-      } else {
-        ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.mjs');
-        templatePath = resolve('dist/client/index.html');
-      }
-
+      const ssrModulePath = path.resolve(__dirname, '..', 'dist/server', 'server-entry.mjs');
+      const templatePath = resolve('dist/client/index.html');
+      
       const { render: ssrRender } = await import(ssrModulePath as unknown as string);
       render = ssrRender;
       template = await fs.readFile(templatePath, 'utf-8');
@@ -67,7 +64,7 @@ app.get('*', async (req, res, next) => {
 
     render(req, res, templateEnd);
   } catch (e: unknown) {
-    if (!isProduction && 'ssrFixStacktrace' in (e as object)) {
+    if (!isProduction && vite && 'ssrFixStacktrace' in (e as object)) {
       (e as { ssrFixStacktrace: (e: Error) => void }).ssrFixStacktrace(e as Error);
     }
     console.error('SSR Error:', e);
