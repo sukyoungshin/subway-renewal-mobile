@@ -7,12 +7,11 @@ import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const resolve = (p: string) => path.resolve(__dirname, '..', p);
+const resolvePublic = (p: string) => path.resolve(__dirname, '..', 'public', p);
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isVercel = process.env.VERCEL === '1';
 const port = Number(process.env.PORT) || 5173;
-// yarn start 시에도 production 모드로 작동하도록 isDev 변수 로직 수정
 const isDev = (NODE_ENV === 'development' || NODE_ENV === undefined) && !isVercel;
 
 async function createServer() {
@@ -52,7 +51,7 @@ async function createServer() {
       if (isDev) {
         // 개발 모드 (yarn dev)
         console.log('🔍 Using Vite dev mode');
-        template = await fs.readFile(resolve('index.html'), 'utf-8');
+        template = await fs.readFile(resolvePublic('index.html'), 'utf-8');
         template = await vite!.transformIndexHtml(url, template);
         render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
       } else {
