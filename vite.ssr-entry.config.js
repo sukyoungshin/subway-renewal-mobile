@@ -22,10 +22,8 @@ export default defineConfig({
         'express',
         'compression',
         'serve-static',
-        '@reduxjs/toolkit',
         'react-router',
         'react-router-dom',
-        'react-redux',
         'fs',
         'path',
         'url',
@@ -38,6 +36,6 @@ export default defineConfig({
     },
   },
   ssr: {
-    noExternal: ['react-icons', 'react', 'react-dom', '@'],
+    noExternal: ['react-icons', 'react', 'react-dom', '@', 'react-redux', '@reduxjs/toolkit'],
   },
 });
