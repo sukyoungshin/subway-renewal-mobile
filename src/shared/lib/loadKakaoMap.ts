@@ -28,7 +28,7 @@ const loadKakaoMap = (): Promise<typeof kakao> => {
     };
 
     script.onerror = () => {
-      console.log('kakao > ', script)
+      console.log('kakao > ', script);
       reject(new Error('카카오맵 스크립트 로딩에 실패했습니다.'));
     };
   });
