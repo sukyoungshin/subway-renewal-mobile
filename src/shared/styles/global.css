@@ -3,23 +3,21 @@
 @config '../../../tailwind.config.js';
 
 /* Color Palette */
-@layer base {
-  :root {
-    --color-light-white: #fffffa;
-    --color-white: #ffffff;
-    --color-black: #292f28;
-    --color-yellow: #ffcb08;
-    --color-green: #009743;
-    --color-green-dark: #007936;
-    --color-red: #ff0000;
-    --color-grey: #8c8c8c;
-    --color-light-grey: #dfdfdf;
-    --color-transparent: 233 233 233 0.4;
+@theme {
+  --color-light-white: #fffffa;
+  --color-white: #ffffff;
+  --color-black: #292f28;
+  --color-yellow: #ffcb08;
+  --color-green: #009743;
+  --color-green-dark: #007936;
+  --color-red: #ff0000;
+  --color-grey: #8c8c8c;
+  --color-light-grey: #dfdfdf;
+  --color-transparent: 233 233 233 0.4;
 
-    --color-kakao: #ffe812;
-    --color-facebook: #3c5997;
-    --color-google: 66 133 244;
-  }
+  --color-kakao: #ffe812;
+  --color-facebook: #3c5997;
+  --color-google: 66 133 244;
 }
 
 @layer base {
