@@ -1,8 +1,9 @@
-import { AppRouter, Routes } from '@/app';
+import { Routes } from '@/app';
 import { createAppStore } from '@/app/store';
 import { Request, Response } from 'express';
 import { renderToPipeableStream } from 'react-dom/server';
 import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router-dom/server';
 
 export async function render(req: Request, res: Response, templateEnd?: string) {
   const url = req.url;
@@ -28,9 +29,9 @@ export async function render(req: Request, res: Response, templateEnd?: string) 
 
     const { pipe } = renderToPipeableStream(
       <Provider store={store}>
-        <AppRouter>
+        <StaticRouter location={req.originalUrl}>
           <Routes />
-        </AppRouter>
+        </StaticRouter>
       </Provider>,
       {
         onShellReady() {
