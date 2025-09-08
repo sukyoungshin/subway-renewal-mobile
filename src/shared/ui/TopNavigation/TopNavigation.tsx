@@ -14,7 +14,7 @@ const TopNavigation = ({ handleNavbar }: IProps) => {
   const itemCount = useSelector(itemCountSelector); // 장바구니 주문갯수
 
   return (
-    <header className="z-10 shadow-[0px_4px_4px_rgb(0_0_0_/_10%)]">
+    <header className="z-10 shadow-[0px_4px_4px_rgb(0_0_0/10%)]">
       <menu className="flex h-full list-none flex-row items-center header-nav-wrapper">
         <li className="h-14 p-2.5">
           <button type="button" className="bg-transparent text-[0]" onClick={handleNavbar}>

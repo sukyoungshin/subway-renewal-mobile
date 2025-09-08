@@ -11,7 +11,7 @@ const VegetableOption = ({
   selectedCheckBox,
 }: IVegetableOptionProps) => {
   return (
-    <div className="rounded-lg bg-[color:rgba(233,233,233,0.4)]">
+    <div className="rounded-lg bg-[rgba(233,233,233,0.4)]">
       <div className="inline-flex flex-row justify-start gap-4 p-2 text-xs">
         <input
           type="checkbox"

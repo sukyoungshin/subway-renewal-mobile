@@ -16,7 +16,7 @@ const PostSearch = () => {
   return (
     <form
       onSubmit={handleComplete}
-      className="flex h-full min-h-[calc(100%_-_136px)] flex-col gap-4 p-4"
+      className="flex h-full min-h-[calc(100%-136px)] flex-col gap-4 p-4"
     >
       <Title>배달주소 입력</Title>
       <section className="address-wrapper pb-[96px]">

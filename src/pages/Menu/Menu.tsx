@@ -41,7 +41,7 @@ const Menu = () => {
 
   return (
     <main className="flex-1 overflow-auto pb-[96px]">
-      <form className="relative min-h-[calc(100%_-_136px)] w-full max-w-[440px] p-4">
+      <form className="relative min-h-[calc(100%-136px)] w-full max-w-[440px] p-4">
         <fieldset className="mb-4 inline-flex w-full flex-col gap-2">
           <CategoryList
             categoryId={categoryId}

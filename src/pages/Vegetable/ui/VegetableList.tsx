@@ -43,7 +43,7 @@ const Vegetable = ({
             <button
               type="button"
               onClick={handleVegetableAmount(`${id}`, 'prev')}
-              className="u-button-round select-none bg-[color:rgba(233,233,233,0.4)] text-lg text-grey focus:bg-green focus:text-white"
+              className="u-button-round select-none bg-[rgba(233,233,233,0.4)] text-lg text-grey focus:bg-green focus:text-white"
             >
               -
             </button>
@@ -53,7 +53,7 @@ const Vegetable = ({
             <button
               type="button"
               onClick={handleVegetableAmount(`${id}`, 'next')}
-              className="u-button-round select-none bg-[color:rgba(233,233,233,0.4)] text-lg text-grey focus:bg-green focus:text-white"
+              className="u-button-round select-none bg-[rgba(233,233,233,0.4)] text-lg text-grey focus:bg-green focus:text-white"
             >
               +
             </button>
