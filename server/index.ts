@@ -65,7 +65,7 @@ async function createServer() {
         render = ssrRender;
         template = await fs.readFile(templatePath, 'utf-8');
       }
-
+      
       const [templateStart, templateEnd] = template.split('<!--app-html-->');
 
       res.status(200).set({ 'Content-Type': 'text/html' });

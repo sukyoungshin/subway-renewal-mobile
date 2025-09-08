@@ -18,16 +18,7 @@ export default defineConfig({
     },
     outDir: 'dist/server-temp',
     rollupOptions: {
-      external: [
-        'express',
-        'compression',
-        'serve-static',
-        'react-router',
-        'react-router-dom',
-        'fs',
-        'path',
-        'url',
-      ],
+      external: ['express', 'compression', 'serve-static', 'fs', 'path', 'url'],
       output: {
         entryFileNames: 'server-entry.mjs',
         chunkFileNames: '[name]-[hash].mjs',
@@ -36,6 +27,15 @@ export default defineConfig({
     },
   },
   ssr: {
-    noExternal: ['react-icons', 'react', 'react-dom', '@', 'react-redux', '@reduxjs/toolkit'],
+    noExternal: [
+      'react-icons',
+      'react',
+      'react-dom',
+      'react-router',
+      'react-router-dom',
+      '@',
+      'react-redux',
+      '@reduxjs/toolkit',
+    ],
   },
 });
