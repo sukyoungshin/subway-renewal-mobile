@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import compression from 'compression';
 import express from 'express';
 import fs from 'fs/promises';
@@ -8,17 +9,17 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const resolve = (p: string) => path.resolve(__dirname, '..', p);
 
-// 실행 환경 vs 빌드 상태 구분
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isVercel = process.env.VERCEL === '1';
 const port = Number(process.env.PORT) || 5173;
-const isDev = NODE_ENV === 'development' && !isVercel; // 개발 모드 여부 확인
+// yarn start 시에도 production 모드로 작동하도록 isDev 변수 로직 수정
+const isDev = (NODE_ENV === 'development' || NODE_ENV === undefined) && !isVercel;
 
 async function createServer() {
   const app = express();
   app.use(compression());
 
-  let vite;
+  let vite: any;
 
   console.log('🔍 Server environment:', {
     NODE_ENV,
@@ -27,7 +28,6 @@ async function createServer() {
     port,
   });
 
-  // 개발 모드 (yarn dev)
   if (isDev) {
     console.log('🔍 Loading Vite dev server...');
     const viteModule = await import('vite');
@@ -37,12 +37,12 @@ async function createServer() {
     });
     app.use(vite.middlewares);
   } else {
-    // 빌드 모드 (yarn start:prod, yarn vercel-build)
+    // 빌드 모드 (yarn start:prod, vercel)
     console.log('🔍 Serving static files from dist/client');
-    app.use(serveStatic(resolve('dist/client'), { index: false }));
+    // 모든 정적 파일 요청을 dist/client 폴더에서 처리하도록 수정합니다.
+    app.use(serveStatic(path.resolve(__dirname, '..', 'client'), { index: false }));
   }
 
-  // 모든 요청에 대한 SSR 핸들러
   app.get('*', async (req, res, next) => {
     const url = req.originalUrl;
     let render: (req: express.Request, res: express.Response, templateEnd?: string) => void;
@@ -50,23 +50,16 @@ async function createServer() {
 
     try {
       if (isDev) {
-        // 개발 모드 (yarn dev) - Vite 사용
-        // TODO: yarn start 분기처리 필요
+        // 개발 모드 (yarn dev)
         console.log('🔍 Using Vite dev mode');
-        // resolve() 함수를 사용해 프로젝트 루트 기준 경로로 변경
         template = await fs.readFile(resolve('index.html'), 'utf-8');
         template = await vite!.transformIndexHtml(url, template);
         render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
       } else {
         // 빌드 모드 (로컬/Vercel)
         console.log('🔍 Using built mode');
-        const ssrModulePath = path.resolve(
-          __dirname,
-          '..',
-          'dist/server',
-          isVercel ? 'server-entry.mjs' : 'server-entry.cjs'
-        );
-        const templatePath = resolve('dist/client/index.html');
+        const ssrModulePath = path.resolve(__dirname, '..', 'server', 'server-entry.mjs');
+        const templatePath = path.resolve(__dirname, '..', 'client', 'index.html');
 
         const { render: ssrRender } = await import(ssrModulePath as unknown as string);
         render = ssrRender;
@@ -91,12 +84,10 @@ async function createServer() {
   return app;
 }
 
-// 서버 시작 함수
 async function startServer() {
   try {
     const app = await createServer();
 
-    // Vercel 환경에서는 app을 export하고, 로컬에서는 listen
     if (!isVercel) {
       app.listen(port, () => {
         console.log(`🚀 Server listening on http://localhost:${port}`);
@@ -112,8 +103,6 @@ async function startServer() {
   }
 }
 
-// 모든 환경에서 서버 시작
 startServer();
 
-// Vercel 프로덕션 빌드를 위한 기본 export
 export default createServer;

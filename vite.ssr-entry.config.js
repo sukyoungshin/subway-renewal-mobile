@@ -14,7 +14,7 @@ export default defineConfig({
     lib: {
       entry: 'src/ssr/server-entry.tsx',
       fileName: 'server-entry',
-      formats: ['cjs'],
+      formats: ['es'],
     },
     outDir: 'dist/server-temp',
     rollupOptions: {
@@ -32,6 +32,8 @@ export default defineConfig({
       ],
       output: {
         entryFileNames: 'server-entry.mjs',
+        chunkFileNames: '[name]-[hash].mjs',
+        manualChunks: {}, // 코드 분리 방지
       },
     },
   },
