@@ -21,8 +21,7 @@
     "serve-static": "^2.2.0"
   },
   "scripts": {
-    "dev:client": "vite",
-    "dev:server": "tsx --env-file=.env server/index.ts",
+    "dev": "tsx --env-file=.env server/index.ts",
     "build:client": "vite build --outDir dist/client",
     "build:server": "SSR_BUILD=true vite build --ssr --outDir dist/server",
     "build:ssr-entry": "SSR_ENTRY=true vite build --ssr --outDir dist/server-temp --config vite.ssr-entry.config.js && cp dist/server-temp/*.cjs dist/server/ && rm -rf dist/server-temp",
@@ -36,7 +35,11 @@
     "format": "prettier .",
     "sync:build": "tsc -p scripts/tsconfig.scripts.json",
     "sync:run": "node dist-scripts/sync-issue-to-notion.cjs",
-    "sync": "yarn sync:build && mv dist-scripts/sync-issue-to-notion.cjs && yarn sync:run"
+    "sync": "yarn sync:build && mv dist-scripts/sync-issue-to-notion.cjs && yarn sync:run",
+    
+    "_comment": "아래는 디버깅/특수 상황용 (일반적으로 사용하지 않음)",
+    "dev:client": "vite --port 5174",
+    "dev:server": "tsx --env-file=.env server/index.ts"
   },
   "eslintConfig": {
     "extends": [
