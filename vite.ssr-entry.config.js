@@ -14,9 +14,9 @@ export default defineConfig({
     lib: {
       entry: 'src/ssr/server-entry.tsx',
       fileName: 'server-entry',
-      formats: ['es'],
+      formats: ['cjs'],
     },
-    outDir: 'dist/server',
+    outDir: 'dist/server-temp',
     rollupOptions: {
       external: [
         'express',

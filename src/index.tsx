@@ -29,11 +29,18 @@ if (rootElement) {
     </React.StrictMode>
   );
 
-  // #root 엘리먼트가 자식 노드를 가지고 있으면 (SSR), hydrate를 사용
-  if (rootElement.hasChildNodes()) {
+  const isSSRMode = window.location.port === '5173';
+  console.log('🔍 Render Mode:', {
+    port: window.location.port,
+    mode: isSSRMode ? 'SSR (hydrate)' : 'CSR (createRoot)',
+  });
+
+  if (isSSRMode) {
+    console.log('🔍 Port 5173 → hydrateRoot (SSR)');
     hydrateRoot(rootElement, App);
   } else {
-    // 그렇지 않으면 (CSR), createRoot를 사용
+    console.log('🔍 Port ' + window.location.port + ' → createRoot (CSR)');
+    rootElement.innerHTML = '';
     createRoot(rootElement).render(App);
   }
 }
