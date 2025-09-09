@@ -28,7 +28,7 @@ const SauceOption = ({
             name={radioGroup}
             checked={selectedOptionId === id}
             onChange={handleSelectedOptionId(id)}
-            className="u-accent-color"
+            className="accent-green"
             readOnly
           />
           <label htmlFor={radioGroup} className="text-xs">

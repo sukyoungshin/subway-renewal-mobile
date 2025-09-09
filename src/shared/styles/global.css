@@ -249,38 +249,33 @@ a {
       }
     }
 
-    @layer utilities {
-      .u-no-scroll {
-        overflow: hidden;
-      }
-      .u-accent-color {
-        accent-color: var(--color-green);
-      }
+    .u-no-scroll {
+      overflow: hidden;
+    }
 
-      .u-button-round {
-        padding: 0;
-        width: 32px;
-        height: 32px;
-        border-radius: 100%;
-      }
+    .u-button-round {
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 100%;
+    }
 
-      .u-text-ellipsis {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-      .u-ellipsis-multiline {
-        overflow: hidden;
-        position: relative;
-        /* This creates a gradient fade effect, which is often a better UX than '...' */
-        mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-      }
-      .u-ellipsis-multiline::after {
-        content: '...';
-        position: absolute;
-        right: 0;
-        bottom: 0;
-      }
+    .u-text-ellipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .u-ellipsis-multiline {
+      overflow: hidden;
+      position: relative;
+      /* This creates a gradient fade effect, which is often a better UX than '...' */
+      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    }
+    .u-ellipsis-multiline::after {
+      content: '...';
+      position: absolute;
+      right: 0;
+      bottom: 0;
     }
   }
 }

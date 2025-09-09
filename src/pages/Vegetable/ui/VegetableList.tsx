@@ -81,7 +81,7 @@ const Vegetable = ({
                 });
                 setButtonDisabled();
               }}
-              className="u-accent-color w-full"
+              className="accent-green w-full"
             />
           </div>
         </div>

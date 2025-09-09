@@ -22,7 +22,7 @@ const VegetableOption = ({
             selectedCheckBox(e);
             setButtonDisabled();
           }}
-          className="u-accent-color"
+          className="accent-green"
         />
         <label htmlFor="check-all" className="text-xs">
           전체선택 (기본값 : 모든 야채 적당히)
