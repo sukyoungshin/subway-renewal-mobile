@@ -2,6 +2,7 @@
 export default {
   content: [
     './index.html',
+    './search.html',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/shared/**/*.{js,ts,jsx,tsx,mdx}',
