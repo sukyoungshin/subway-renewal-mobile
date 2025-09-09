@@ -249,12 +249,9 @@ a {
       }
     }
 
-    @layer utilities {
+
       .u-no-scroll {
         overflow: hidden;
-      }
-      .u-accent-color {
-        accent-color: var(--color-green);
       }
 
       .u-button-round {
@@ -283,4 +280,3 @@ a {
       }
     }
   }
-}

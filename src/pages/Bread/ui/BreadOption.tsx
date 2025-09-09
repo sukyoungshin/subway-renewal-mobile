@@ -43,7 +43,7 @@ const BreadOption = () => {
                   boolean: option['option1'].default,
                   price: option['option1'].price,
                 })}
-                className="u-accent-color"
+                className="accent-green"
               />
               <label htmlFor={option['option1'].text} className="text-xs text-black">
                 {option['option1'].text}
@@ -62,7 +62,7 @@ const BreadOption = () => {
                   boolean: option['option2'].default,
                   price: option['option2'].price,
                 })}
-                className="u-accent-color"
+                className="accent-green"
               />
               <label htmlFor={option['option2'].text} className="text-xs text-black">
                 {option['option2'].text}{' '}

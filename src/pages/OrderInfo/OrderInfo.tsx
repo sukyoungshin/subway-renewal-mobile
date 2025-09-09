@@ -127,7 +127,7 @@ const OrderInfo = () => {
               id="agreement"
               checked={isCheckboxChecked}
               onChange={handleAgreementAndBtnActivate}
-              className="u-accent-color"
+              className="accent-green"
             />
             <label htmlFor="agreement">주문 후 제조가 시작되면 주문을 취소할 수 없습니다.</label>
           </p>

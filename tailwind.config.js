@@ -49,5 +49,19 @@ export default {
       },
     },
   },
+  extend: {
+    accentColor: {
+      green: 'var(--color-green)',
+    },
+  },
+  safelist: [
+    'u-no-scroll',
+    'u-button-round',
+    'u-text-ellipsis',
+    'u-ellipsis-multiline',
+    'c-divider',
+    'c-custom-fieldset',
+    'c-category-filter',
+  ],
   plugins: [],
 };
