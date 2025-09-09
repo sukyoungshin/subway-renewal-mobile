@@ -12,7 +12,7 @@
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["dist/client/**"]
+        "includeFiles": ["dist/**", "src/**", "public/**", "index.html", "search.html"]
       }
     }
   ],
