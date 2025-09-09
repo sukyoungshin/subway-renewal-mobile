@@ -263,13 +263,7 @@ a {
         height: 32px;
         border-radius: 100%;
       }
-
-      .u-button-half {
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 0.5rem;
-      }
-
+      
       .u-text-ellipsis {
         overflow: hidden;
         white-space: nowrap;

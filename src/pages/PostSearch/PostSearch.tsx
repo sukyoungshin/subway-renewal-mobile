@@ -56,13 +56,13 @@ const PostSearch = () => {
         <button
           type="button"
           onClick={handleClose}
-          className="u-button-half h-12 flex-1 gap-[2] border-grey-light bg-transparent font-light text-grey"
+          className="rounded-lg border border-solid h-12 flex-1 gap-[2] border-grey-light bg-transparent font-light text-grey"
         >
           창닫기
         </button>
         <button
           type="submit"
-          className={`u-button-half h-12 flex-1 gap-[2] transition-all duration-[0.3s] ${isBtnSelected ? 'border-green bg-green font-semibold text-white' : 'border-grey-light bg-transparent font-light text-grey'}`}
+          className={`rounded-lg border border-solid h-12 flex-1 gap-[2] transition-all duration-[0.3s] ${isBtnSelected ? 'border-green bg-green font-semibold text-white' : 'border-grey-light bg-transparent font-light text-grey'}`}
         >
           입력완료
         </button>
