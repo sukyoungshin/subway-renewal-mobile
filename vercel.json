@@ -12,7 +12,9 @@
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["dist/**", "src/**", "public/**", "index.html", "search.html"]
+        "includeFiles": [
+          "dist/client/**"
+        ]
       }
     }
   ],
@@ -22,23 +24,23 @@
       "headers": {
         "cache-control": "public,max-age=31536000,immutable"
       },
-      "dest": "/dist/client/assets/$1"
+      "dest": "/client/assets/$1"
     },
     {
       "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|webp|json))",
-      "dest": "/dist/client/$1"
+      "dest": "/client/$1"
     },
     {
       "src": "/search(\\.html)?",
-      "dest": "/dist/client/search.html"
+      "dest": "/client/search.html"
     },
     {
       "src": "/manifest.json",
-      "dest": "/dist/client/manifest.json"
+      "dest": "/client/manifest.json"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/server/index.cjs"
+      "dest": "/server/index.cjs"
     }
   ]
 }
