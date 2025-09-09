@@ -2,21 +2,39 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/server/index.cjs",
-      "use": "@vercel/node"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "yarn build"
+      }
     },
     {
-      "src": "dist/client/**",
-      "use": "@vercel/static"
+      "src": "server/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**", "src/**", "public/**", "index.html", "search.html"]
+      }
     }
   ],
   "routes": [
     {
-      "src": "/_assets/(.*)",
+      "src": "/assets/(.*)",
       "headers": {
         "cache-control": "public,max-age=31536000,immutable"
       },
-      "dest": "/dist/client/_assets/$1"
+      "dest": "/dist/client/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|webp|json))",
+      "dest": "/dist/client/$1"
+    },
+    {
+      "src": "/search(\\.html)?",
+      "dest": "/dist/client/search.html"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/dist/client/manifest.json"
     },
     {
       "src": "/(.*)",
