@@ -7,7 +7,7 @@ import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const resolvePublic = (p: string) => path.resolve(__dirname, '..', 'public', p);
+const resolve = (p: string) => path.resolve(__dirname, '..', p);
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isVercel = process.env.VERCEL === '1';
@@ -39,7 +39,7 @@ async function createServer() {
     // 빌드 모드 (yarn start:prod, vercel)
     console.log('🔍 Serving static files from dist/client');
     // 모든 정적 파일 요청을 dist/client 폴더에서 처리하도록 수정합니다.
-    app.use(serveStatic(path.resolve(__dirname, '..', 'dist', 'client'), { index: false }));
+    app.use(serveStatic(path.resolve(__dirname, '..', 'client'), { index: false }));
   }
 
   app.get('*', async (req, res, next) => {
@@ -51,7 +51,7 @@ async function createServer() {
       if (isDev) {
         // 개발 모드 (yarn dev)
         console.log('🔍 Vite Dev Mode: Reading template...');
-        template = await fs.readFile(resolvePublic('index.html'), 'utf-8');
+        template = await fs.readFile(resolve('index.html'), 'utf-8');
         console.log('🔍 Vite Dev Mode: Transforming index.html...');
         template = await vite!.transformIndexHtml(url, template);
         console.log('🔍 Vite Dev Mode: Loading SSR module...');
