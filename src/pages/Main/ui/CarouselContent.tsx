@@ -16,7 +16,7 @@ const CarouselContent = ({ contentList, selectedId, handleClick }: ICarouselProp
         <div
           key={id}
           onClick={() => handleClick(id)}
-          className={`absolute left-0 flex h-[232px] w-full flex-1 flex-col gap-4  bg-green p-4 ${id === selectedId ? 'z-[5]' : ''}`}
+          className={`absolute left-0 flex h-[232px] w-full flex-1 flex-col gap-4  bg-green p-4 ${id === selectedId ? 'z-5' : ''}`}
         >
           <div>
             <h2 className="text-xl font-bold text-yellow">{title}</h2>

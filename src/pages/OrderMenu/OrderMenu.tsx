@@ -81,7 +81,7 @@ const OrderMenu = () => {
           </p>
         </fieldset>
 
-        <fieldset className="fixed left-0 bottom-[88px] w-full max-w-[440px] h-12 flex gap-[8px]">
+        <fieldset className="fixed left-0 right-0 bottom-[88px] mx-auto w-full max-w-[440px] h-12 flex gap-[8px]">
           <button
             type="button"
             onClick={goToCartPage}
