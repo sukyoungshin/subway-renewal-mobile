@@ -7,7 +7,7 @@ import serveStatic from 'serve-static';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const resolvePublic = (p: string) => path.resolve(__dirname, '..', 'public', p);
+const resolve = (p: string) => path.resolve(__dirname, '..', p);
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isVercel = process.env.VERCEL === '1';
@@ -50,27 +50,30 @@ async function createServer() {
     try {
       if (isDev) {
         // 개발 모드 (yarn dev)
-        console.log('🔍 Using Vite dev mode');
-        template = await fs.readFile(resolvePublic('index.html'), 'utf-8');
+        console.log('🔍 Vite Dev Mode: Reading template...');
+        template = await fs.readFile(resolve('index.html'), 'utf-8');
+        console.log('🔍 Vite Dev Mode: Transforming index.html...');
         template = await vite!.transformIndexHtml(url, template);
+        console.log('🔍 Vite Dev Mode: Loading SSR module...');
         render = (await vite!.ssrLoadModule('/src/ssr/server-entry.tsx')).render;
       } else {
         // 빌드 모드 (로컬/Vercel)
-        console.log('🔍 Using built mode');
+        console.log('🔍 Production Mode: Reading template...');
         const ssrModulePath = path.resolve(__dirname, '..', 'server', 'server-entry.mjs');
         const templatePath = path.resolve(__dirname, '..', 'client', 'index.html');
-
+        console.log('🔍 Production Mode: Loading SSR module...');
         const { render: ssrRender } = await import(ssrModulePath as unknown as string);
         render = ssrRender;
         template = await fs.readFile(templatePath, 'utf-8');
       }
-
+      console.log('🔍 Starting SSR render function...');
       const [templateStart, templateEnd] = template.split('<!--app-html-->');
 
       res.status(200).set({ 'Content-Type': 'text/html' });
       res.write(templateStart);
 
       render(req, res, templateEnd);
+      console.log('🔍 SSR render function finished.');
     } catch (e: unknown) {
       if (isDev && vite && 'ssrFixStacktrace' in (e as object)) {
         (e as { ssrFixStacktrace: (e: Error) => void }).ssrFixStacktrace(e as Error);

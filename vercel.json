@@ -19,6 +19,10 @@
   ],
   "routes": [
     {
+      "src": "/",
+      "dest": "/dist/client/index.html"
+    },
+    {
       "src": "/assets/(.*)",
       "dest": "/dist/client/assets/$1"
     },
@@ -36,7 +40,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/server/index.ts"
+      "dest": "/dist/server/index.cjs"
     }
   ]
 }
