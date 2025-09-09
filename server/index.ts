@@ -39,7 +39,7 @@ async function createServer() {
     // 빌드 모드 (yarn start:prod, vercel)
     console.log('🔍 Serving static files from dist/client');
     // 모든 정적 파일 요청을 dist/client 폴더에서 처리하도록 수정합니다.
-    app.use(serveStatic(path.resolve(__dirname, '..', 'client'), { index: false }));
+    app.use(serveStatic(path.resolve(__dirname, '..', 'dist', 'client'), { index: false }));
   }
 
   app.get('*', async (req, res, next) => {
