@@ -34,7 +34,7 @@ const KakaoMap = ({
       className={`relative min-h-[500px] w-full rounded-lg border border-solid border-grey-light ${wrapperPadding}`}
     >
       {/* 지도 */}
-      <div id="map" className={`min-h-[500px] w-[400px] ${kakaoMapHidden}`} />
+      <div id="map" className={`min-h-[500px] w-full ${kakaoMapHidden}`} />
 
       {/* 주소 입력 안내 메시지 */}
       {isAddressNotProvided && (

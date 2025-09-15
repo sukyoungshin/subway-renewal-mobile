@@ -60,6 +60,7 @@ const OrderInfo = () => {
                   name="del-or-pickup"
                   checked={isRadioChecked === DELIVER}
                   onChange={handleDeliverOrPickUp}
+                  className="accent-green mr-2"
                 />
                 <label htmlFor="deliver">고객님의 주소지로 배달</label>
               </li>
@@ -71,6 +72,7 @@ const OrderInfo = () => {
                   name="del-or-pickup"
                   checked={isRadioChecked === PICKUP}
                   onChange={handleDeliverOrPickUp}
+                  className="accent-green mr-2"
                 />
                 <label htmlFor="pickup">매장에 직접 방문하여 수령</label>
               </li>
