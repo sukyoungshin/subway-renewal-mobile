@@ -14,7 +14,7 @@ const SideNavigation = ({ handleNavbar }: IProps) => {
   const goToLoginPage = usePageMove();
 
   return (
-    <aside className="p-4 w-full max-w-[440px] h-full bg-white-light inline-flex flex-col absolute top-0 z-999">
+    <aside className="p-4 w-full max-w-[440px] h-full bg-white-light inline-flex flex-col fixed top-0 z-999">
       <header className="w-full inline-flex flex-row justify-between items-center gap-2 text-0">
         <div className="flex-1">
           <NavLink to={LINK.ROOT} onClick={handleNavbar} className="text-sm">

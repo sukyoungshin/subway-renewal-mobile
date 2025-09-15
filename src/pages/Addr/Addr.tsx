@@ -71,7 +71,7 @@ const Addr = () => {
   }, []);
 
   return (
-    <main className="h-full max-h-[calc(100%-136px)] flex-1 overflow-auto">
+    <main className="h-full flex-1 overflow-auto">
       <form id="address-search-form" className="flex h-full flex-col justify-center gap-4 p-4">
         <fieldset className="inline-flex flex-col gap-2 border-[none]">
           <Title>배송지</Title>
