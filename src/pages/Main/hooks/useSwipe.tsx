@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from 'react';
 
 interface UseSwipeOptions {
   threshold?: number; // 기본값 40
@@ -6,11 +6,7 @@ interface UseSwipeOptions {
   onSwipeRight?: () => void;
 }
 
-export const useSwipe = ({
-  threshold = 40,
-  onSwipeLeft,
-  onSwipeRight,
-}: UseSwipeOptions) => {
+export const useSwipe = ({ threshold = 40, onSwipeLeft, onSwipeRight }: UseSwipeOptions) => {
   const [isDragging, setIsDragging] = useState(false);
   const startXRef = useRef(0);
   const deltaXRef = useRef(0);

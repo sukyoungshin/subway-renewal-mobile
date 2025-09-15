@@ -16,7 +16,6 @@ const Carousel = () => {
     onSwipeRight: () => setSelectedId((prev) => Math.max(prev - 1, 0)),
   });
 
-  
   const onPrev = useCallback(() => {
     setSelectedId((prev) => (prev > 0 ? prev - 1 : prev));
   }, [setSelectedId]);
@@ -49,7 +48,7 @@ const Carousel = () => {
         disabled={selectedId === 0}
         className={`absolute left-2 top-1/2 z-50 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-opacity duration-200 disabled:cursor-not-allowed disabled:opacity-40`}
       >
-        {"<"}
+        {'<'}
       </button>
       <button
         type="button"
@@ -58,7 +57,7 @@ const Carousel = () => {
         disabled={selectedId === maxIndex}
         className={`absolute right-2 top-1/2 z-50 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-opacity duration-200 disabled:cursor-not-allowed disabled:opacity-40`}
       >
-        {">"}
+        {'>'}
       </button>
     </section>
   );
