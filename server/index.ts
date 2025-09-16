@@ -42,7 +42,7 @@ async function createServer() {
     app.use(serveStatic(path.resolve(__dirname, '..', 'client'), { index: false }));
   }
 
-  app.get('*', async (req, res, next) => {
+  app.get('*', async (req, res) => {
     const url = req.originalUrl;
     let render: (req: express.Request, res: express.Response, templateEnd?: string) => void;
     let template: string;
