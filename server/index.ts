@@ -18,7 +18,7 @@ async function createServer() {
       index: false, // index.html은 SSR에서 직접 읽는다
       // 캐시는 원하면 조정 (예: 1시간)
       // maxAge: '1h',
-    }),
+    })
   );
 
   // 모든 라우트: SSR
