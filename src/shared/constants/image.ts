@@ -1,4 +1,6 @@
-export const defaultProductImageUrl = 'assets/noimage.webp';
+import { asset } from '../utils/assets';
+
+export const defaultProductImageUrl = asset('/assets/noimage.webp');
 
 const menuItem = {
   id: 0,

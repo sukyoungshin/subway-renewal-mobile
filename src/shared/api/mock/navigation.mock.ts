@@ -1,4 +1,5 @@
 import LINK from '@/shared/constants/link';
+import { asset } from '@/shared/utils/assets';
 import { bestMenuList, saladList, sandwichList, wrapList } from './food-menu.mock';
 
 /** 왼쪽상단 햄버거메뉴, 네비 카테고리 */
@@ -27,25 +28,25 @@ export const menuCategoryList = [
     id: 0,
     title: '추천메뉴',
     titleEng: 'bestMenuList',
-    imgPath: '/assets/sandwich/italianbmt.webp',
+    imgPath: asset('/assets/sandwich/italianbmt.webp'),
   },
   {
     id: 1,
     title: '샌드위치',
     titleEng: 'sandwichList',
-    imgPath: '/assets/sandwich/eggmayo.webp',
+    imgPath: asset('/assets/sandwich/eggmayo.webp'),
   },
   {
     id: 2,
     title: '샐러드',
     titleEng: 'saladList',
-    imgPath: '/assets/salad/shrimp.webp',
+    imgPath: asset('/assets/salad/shrimp.webp'),
   },
   {
     id: 3,
     title: '랩기타',
     titleEng: 'wrapList',
-    imgPath: '/assets/wrap/shrimp_egg_grilled_wrap.webp',
+    imgPath: asset('/assets/wrap/shrimp_egg_grilled_wrap.webp'),
   },
 ];
 
