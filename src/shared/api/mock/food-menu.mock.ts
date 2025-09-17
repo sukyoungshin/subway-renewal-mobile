@@ -1,4 +1,4 @@
-import { asset } from "@/shared/utils/assets";
+import { asset } from '@/shared/utils/assets';
 
 /** 기본 셋팅된 메뉴 */
 export const bestMenuList = [

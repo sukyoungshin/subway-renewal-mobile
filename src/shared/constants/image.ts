@@ -1,4 +1,4 @@
-import { asset } from "../utils/assets";
+import { asset } from '../utils/assets';
 
 export const defaultProductImageUrl = asset('/assets/noimage.webp');
 
