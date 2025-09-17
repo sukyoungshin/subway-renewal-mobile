@@ -52,6 +52,7 @@ export default defineConfig(({ command }) => {
   }
 
   return {
+    base: '/',
     css: {
       postcss: './postcss.config.js',
     },
@@ -67,10 +68,16 @@ export default defineConfig(({ command }) => {
     },
     build: {
       outDir: 'dist/client',
+      assetsDir: 'assets',
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, 'index.html'),
           search: path.resolve(__dirname, 'search.html'),
+        },
+        output: {
+          assetFileNames: 'assets/[name].[hash][extname]',
+          chunkFileNames: 'assets/[name].[hash].js',
+          entryFileNames: 'assets/[name].[hash].js',
         },
       },
       sourcemap: true,

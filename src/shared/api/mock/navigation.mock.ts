@@ -27,25 +27,25 @@ export const menuCategoryList = [
     id: 0,
     title: '추천메뉴',
     titleEng: 'bestMenuList',
-    imgPath: 'assets/sandwich/italianbmt.webp',
+    imgPath: '/assets/sandwich/italianbmt.webp',
   },
   {
     id: 1,
     title: '샌드위치',
     titleEng: 'sandwichList',
-    imgPath: 'assets/sandwich/eggmayo.webp',
+    imgPath: '/assets/sandwich/eggmayo.webp',
   },
   {
     id: 2,
     title: '샐러드',
     titleEng: 'saladList',
-    imgPath: 'assets/salad/shrimp.webp',
+    imgPath: '/assets/salad/shrimp.webp',
   },
   {
     id: 3,
     title: '랩기타',
     titleEng: 'wrapList',
-    imgPath: 'assets/wrap/shrimp_egg_grilled_wrap.webp',
+    imgPath: '/assets/wrap/shrimp_egg_grilled_wrap.webp',
   },
 ];
 

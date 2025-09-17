@@ -32,7 +32,11 @@ const CategoryList = ({ categoryId, categoryMenuList, handleCategoryMenu }: ICat
                   : 'bg-[rgba(233,233,233,0.4)] font-light text-grey'
               }`}
               >
-                <img src={imgPath} alt={title} />
+                <img
+                  src={imgPath}
+                  alt={title}
+                  className={`h-full w-full object-cover transition-transform delay-[0s] duration-[0.3s] ease-[ease] ${selected ? 'c-category-filter scale-150' : ''}`}
+                />
                 <span
                   className={`text-xs ${selected ? 'font-semibold text-white' : 'font-light text-grey'}`}
                 >
